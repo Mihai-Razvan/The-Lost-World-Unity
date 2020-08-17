@@ -56,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
 
        Vector3 move = transform.right * x + transform.forward * z;
 
+        if(MovementFrozen == false)
         controller.Move(move * moveSpeed * Time.deltaTime);
 
         velocity.y += gravity * Time.deltaTime;
