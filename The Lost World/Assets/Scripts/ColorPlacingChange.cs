@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ColorPlacingChange : MonoBehaviour
 {
+                                      /// clasa asta se pune pe obiect cand il plasezi ////
+                                      
     private bool IsPlaced;
     [SerializeField]
     private int numberOfCollidingObjects;
@@ -47,13 +49,29 @@ public class ColorPlacingChange : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.gameObject.layer == 11 || collision.collider.gameObject.layer == 13)
-        numberOfCollidingObjects++;
-    }
+        if (gameObject.layer == 13)      // inseamna ca e building si nu e prob daca se loveste de floor ca se pune pe floor
+        {
+            if (collision.collider.gameObject.layer == 11 || collision.collider.gameObject.layer == 13)
+                numberOfCollidingObjects++;
+        }
+        else if (gameObject.layer == 15)   // e floor si la asta se pune si flooru ca nu se poate lovi de el sau pune peste
+        {
+            if (collision.collider.gameObject.layer == 11 || collision.collider.gameObject.layer == 13 || collision.collider.gameObject.layer == 15)
+                numberOfCollidingObjects++;
+        }
+    }  
 
     void OnCollisionExit(Collision collision)
     {
-        if (collision.collider.gameObject.layer == 11 || collision.collider.gameObject.layer == 13)
-        numberOfCollidingObjects--;
+        if (gameObject.layer == 13)
+        {
+            if (collision.collider.gameObject.layer == 11 || collision.collider.gameObject.layer == 13)
+                numberOfCollidingObjects--;
+        }
+        else if (gameObject.layer == 15)   
+        {
+            if (collision.collider.gameObject.layer == 11 || collision.collider.gameObject.layer == 13 || collision.collider.gameObject.layer == 15)
+                numberOfCollidingObjects--;
+        }
     }
 }

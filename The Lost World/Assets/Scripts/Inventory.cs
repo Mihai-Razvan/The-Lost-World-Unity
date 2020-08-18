@@ -60,9 +60,10 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
                 if (Slot_Item_Quantity[i] == 0)
                     Slot_Item_Code[i] = 0;
 
-        for (int i = 16; i <= 24; i++)
+       /* for (int i = 16; i <= 24; i++)
             if (Slot_Item_Quantity[i] == 0)
                 Slot_Item_Code[i] = 0;
+                */
         
 
         Center_Dot.SetActive(!inventory_craftingIsActive);

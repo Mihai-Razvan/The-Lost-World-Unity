@@ -16,7 +16,7 @@ public class Item_004 : MonoBehaviour
     public int[] Slot_Item_Quantity;          //cantitatea
     private int quantityToAdd;
     private int itemCodeToAdd;
-
+    [SerializeField]
     private float fuel;
     private float Transforming_Time_Left;
     private int produced_item_code;
@@ -29,7 +29,7 @@ public class Item_004 : MonoBehaviour
     public 
     void Start()
     {
-            
+        
     }
 
     
@@ -42,10 +42,12 @@ public class Item_004 : MonoBehaviour
         fuel -= Time.deltaTime;
         Transforming_Time_Left -= Time.deltaTime;
 
-        if(Transforming_Time_Left > 0)   // produce ceva
+        /*
+         if(Transforming_Time_Left > 0)   // produce ceva
             for (int i = 1; i <= 24; i++)
                 if (Slot_Item_Quantity[i] == 0)
                     Slot_Item_Code[i] = 0;
+                    */
     }
 
     
@@ -55,10 +57,12 @@ public class Item_004 : MonoBehaviour
         if (fuel <= 0)
         {
             for (int i = 1; i <= 20; i++)
-                if (Slot_Item_Code[i] == 1)  //wood
+                if (Slot_Item_Code[i] == 1 && Slot_Item_Quantity[i] < FindObjectOfType<List_Of_Items>().Item_Stack_Number[i])  //wood
                 {
                     fuel = woodFuel;
                     Slot_Item_Quantity[i]--;
+                    if (Slot_Item_Quantity[i] == 0)
+                        Slot_Item_Code[i] = 0;
                 }
 
 
@@ -68,6 +72,8 @@ public class Item_004 : MonoBehaviour
                     {
                         fuel = woodFuel;
                         Slot_Item_Quantity[i]--;
+                        if (Slot_Item_Quantity[i] == 0)
+                            Slot_Item_Code[i] = 0;
                     }
         }
 
@@ -91,6 +97,8 @@ public class Item_004 : MonoBehaviour
                     {
 
                         Slot_Item_Quantity[i]--;
+                        if (Slot_Item_Quantity[i] == 0)
+                            Slot_Item_Code[i] = 0;
                         Transforming_Time_Left = iron_ore_transform_time;
                         produced_item_code = 6;
                     }
@@ -101,6 +109,8 @@ public class Item_004 : MonoBehaviour
                         if (Slot_Item_Code[i] == 3)
                         {
                             Slot_Item_Quantity[i]--;
+                            if (Slot_Item_Quantity[i] == 0)
+                                Slot_Item_Code[i] = 0;
                             Transforming_Time_Left = iron_ore_transform_time;
                             produced_item_code = 6;
                         }
