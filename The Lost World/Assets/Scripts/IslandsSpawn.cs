@@ -5,7 +5,7 @@ using UnityEngine;
 public class IslandsSpawn : MonoBehaviour
 {
     private float sphereRadius = 750f;
-    private float IslanSPhereRadius = 250f;
+    private float IslanSPhereRadius = 300f;
     private int randomIslandNumber;
     [SerializeField]
     GameObject island_forest_1;

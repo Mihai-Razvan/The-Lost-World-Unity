@@ -220,7 +220,7 @@ public class IslandObjects : MonoBehaviour
 
     void CollectablesSpawn()
     {
-        numberOfCollectables = Random.Range(50, 100);
+        numberOfCollectables = Random.Range(20, 30);
         while(spawnedAlready < numberOfCollectables && notSpawnedConsecutively < 20)
         {
             RaycastHit hit;
