@@ -14,7 +14,7 @@ public class Handing_Item : MonoBehaviour
     [SerializeField]
     public GameObject Building_Spawn_Position;
     [SerializeField]
-    public LayerMask Building_placeable_Surface_Mask;    //pe care pot ffi puse cladirile
+    public LayerMask Building_placeable_Surface_Mask;    //pe care pot fi puse cladirile
     [SerializeField]
     public LayerMask Floor_placeable_Surface_Mask;       //pt pe care poate ffi pusa floor asta nu poate ffi pusa pe alt floor 
     public GameObject Object_In_Hand;
@@ -154,7 +154,7 @@ public class Handing_Item : MonoBehaviour
             }
 
             SelectedItemCode = -1;
-            SelectedItemBarSlot = -16;
+            SelectedItemBarSlot = -5;
             handing_item = false;           
         }
 

@@ -8,14 +8,15 @@ public class IslandObjects : MonoBehaviour
     private LayerMask playerMask;
     [SerializeField]
     private bool objectsHasSpawned;
+
     [SerializeField]
-    private int island_Relief_Radius;                             //cat e sfera deasupra insulei cand se spawneaza reliefu
-    [SerializeField]
-    private int island_Objects_Radius;                            //cat e sfera deasupra insulei cand se spawneaza obiectele
-    [SerializeField]
-    private int island_Collectables_Radius;
-    [SerializeField]
-    private int islandHeight;
+    private float SpawnHeight;         // se adunna la pozitia insulei si acolo spawneaza obiectele si de acolo face uin ray in jos 
+    private int minRange = -100;     //de la centru insulei la ce x si z random sa se spawneze obiectele
+    private int maxRange = 100; 
+    private int minRangeRelief = -60;   // e mai mic ca iese de pe insula
+    private int maxRangeRelief = 60;
+    private float randomReliefScale;
+
     private int numberOfObjects;
     private int numberOfRelief;
     private int numberOfCollectables;
@@ -24,8 +25,6 @@ public class IslandObjects : MonoBehaviour
     private int objectRandomNumber;
     private int notSpawnedConsecutively;
     private int spawnedAlready;
-    [SerializeField]
-    private int minimIslandRadius;                //sa nu spawneze in afara insulei
     [SerializeField]
     private LayerMask reliefMask;
     [SerializeField]
@@ -63,24 +62,7 @@ public class IslandObjects : MonoBehaviour
 
    
     void Start()
-    {   ///////////////////////////// METODA PATRATULUI ////////////////////////////////////////
-
-
-        /* for (int i = (int)transform.position.x - islandRadius; i <= (int)transform.position.x + islandRadius; i+=15)
-             for (int j = (int)transform.position.z - islandRadius; j <= (int)transform.position.z + islandRadius; j+=15)
-             {
-
-                 RaycastHit hit;
-                 if(Physics.Raycast(new Vector3(i, transform.position.y + islandHeight, j), Vector3.down, out hit, islandMask))
-                 {
-
-                     Instantiate(stone_1, new Vector3(i, hit.point.y, j), Quaternion.Euler(-90f, 0f, 0f));
-                 }
-             } */
-
-
-        /////////////////////////// MERODA SFEREI //////////////////////////////////////////
-        ///
+    {   
         ReliefSpawn();
         ObjectsSpawn();
 
@@ -98,7 +80,7 @@ public class IslandObjects : MonoBehaviour
     {
         if(objectsHasSpawned == false)
         {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, 300f, playerMask);
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 400f, playerMask);
             if (colliders.Length != 0)
             {
                 CollectablesSpawn();
@@ -110,38 +92,53 @@ public class IslandObjects : MonoBehaviour
 
     void ReliefSpawn()
     {
-        numberOfRelief = Random.Range(2, 5);
+        numberOfRelief = Random.Range(3, 7);
         while (spawnedReliefNumeber < numberOfRelief)
         {
-            Vector3 spawnPosition = Random.insideUnitSphere * island_Relief_Radius + new Vector3(transform.position.x, transform.position.y + islandHeight, transform.position.z);
-
+           
             RaycastHit hit;
-            Physics.Raycast(spawnPosition, Vector3.down, out hit, islandMask);
+            Physics.Raycast(new Vector3(transform.position.x + Random.Range(minRangeRelief, maxRangeRelief), transform.position.y + SpawnHeight, transform.position.z + Random.Range(minRangeRelief, maxRangeRelief)), Vector3.down, out hit, 100, islandMask);
 
             objectRandomNumber = Random.Range(1, 4);
             if (objectRandomNumber == 1)
             {
                 Collider[] colliders = Physics.OverlapSphere(hit.point, 25, reliefMask);
                 if (colliders.Length == 0)
-                    Instantiate(relief_1, hit.point, Quaternion.identity);
+                {
+                    randomReliefScale = Random.Range(1, 3);
+                    GameObject relief = Instantiate(relief_1, hit.point, Quaternion.identity);
+                    relief.transform.localScale = new Vector3(randomReliefScale, randomReliefScale, randomReliefScale);
+                }
             }
             else if (objectRandomNumber == 2)
             {
                 Collider[] colliders = Physics.OverlapSphere(hit.point, 20, reliefMask);
                 if (colliders.Length == 0)
-                    Instantiate(relief_2, hit.point, Quaternion.identity);
+                {
+                    randomReliefScale = Random.Range(1, 3);
+                    GameObject relief = Instantiate(relief_2, hit.point, Quaternion.identity);
+                    relief.transform.localScale = new Vector3(randomReliefScale, randomReliefScale, randomReliefScale);
+                }
             }
             else if (objectRandomNumber == 3)
             {
                 Collider[] colliders = Physics.OverlapSphere(hit.point, 15, reliefMask);
                 if (colliders.Length == 0)
-                    Instantiate(relief_3, hit.point, Quaternion.identity);
+                {
+                    randomReliefScale = Random.Range(1, 3);
+                    GameObject relief = Instantiate(relief_3, hit.point, Quaternion.identity);
+                    relief.transform.localScale = new Vector3(randomReliefScale, randomReliefScale, randomReliefScale);
+                }
             }
             else if (objectRandomNumber == 4)
             {
                 Collider[] colliders = Physics.OverlapSphere(hit.point, 20, reliefMask);
                 if (colliders.Length == 0)
-                    Instantiate(relief_4, hit.point, Quaternion.identity);
+                {
+                    randomReliefScale = Random.Range(1, 3);
+                    GameObject relief = Instantiate(relief_4, hit.point, Quaternion.identity);
+                    relief.transform.localScale = new Vector3(randomReliefScale, randomReliefScale, randomReliefScale);
+                }
             }
 
             spawnedReliefNumeber++;
@@ -154,14 +151,9 @@ public class IslandObjects : MonoBehaviour
         numberOfObjects = Random.Range(15, 30);
         while (spawnedObjectsNumber < numberOfObjects && notSpawnedConsecutively < 30)
         {
-            Vector3 spawnPosition = Random.insideUnitSphere * island_Objects_Radius + new Vector3(transform.position.x, transform.position.y + islandHeight, transform.position.z);
-
-            if (Mathf.Abs(spawnPosition.x - transform.position.x) < minimIslandRadius && Mathf.Abs(spawnPosition.z - transform.position.z) < minimIslandRadius)
-
-            {
-                RaycastHit hit;
-                Physics.Raycast(spawnPosition, Vector3.down, out hit, islandMask);
-
+            RaycastHit hit;
+            Physics.Raycast(new Vector3(transform.position.x + Random.Range(minRange, maxRange), transform.position.y + SpawnHeight, transform.position.z + Random.Range(minRange, maxRange)), Vector3.down, out hit, 100, islandMask);
+          
                 objectRandomNumber = Random.Range(1, 5);
                 if (objectRandomNumber == 1)
                 {
@@ -220,7 +212,7 @@ public class IslandObjects : MonoBehaviour
                 }
 
                 spawnedObjectsNumber++;
-            }
+            
         }
     }
     
@@ -228,18 +220,13 @@ public class IslandObjects : MonoBehaviour
 
     void CollectablesSpawn()
     {
-        numberOfCollectables = Random.Range(30, 50);
+        numberOfCollectables = Random.Range(50, 100);
         while(spawnedAlready < numberOfCollectables && notSpawnedConsecutively < 20)
         {
-            Vector3 spawnPosition = Random.insideUnitSphere * island_Collectables_Radius + new Vector3(transform.position.x, transform.position.y + islandHeight, transform.position.z);
+            RaycastHit hit;
+            Physics.Raycast(new Vector3(transform.position.x + Random.Range(minRange, maxRange), transform.position.y + SpawnHeight, transform.position.z + Random.Range(minRange, maxRange)), Vector3.down, out hit, 100, islandMask);
 
-            if (Mathf.Abs(spawnPosition.x - transform.position.x) < minimIslandRadius && Mathf.Abs(spawnPosition.z - transform.position.z) < minimIslandRadius)
-
-            {
-                RaycastHit hit;
-                Physics.Raycast(spawnPosition, Vector3.down, out hit, islandMask);
-
-                Collider[] colliders = Physics.OverlapSphere(hit.point, 3, collectablesMask);
+            Collider[] colliders = Physics.OverlapSphere(hit.point, 3, collectablesMask);
                 if (colliders.Length == 0)
                 {
                     objectRandomNumber = Random.Range(1, 5);
@@ -256,7 +243,7 @@ public class IslandObjects : MonoBehaviour
                 }
                 else
                     notSpawnedConsecutively++;
-            }
+            
         }
     }
 }

@@ -10,9 +10,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: -8229636908576287411, guid: 7dc576718b242d043913ffe664871ca2, type: 3}
 --- !u!1 &2391071011022119934
 GameObject:
@@ -61,11 +61,8 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 16384
-  island_Relief_Radius: 60
-  island_Objects_Radius: 150
-  island_Collectables_Radius: 150
-  islandHeight: 200
-  minimIslandRadius: 65
+  objectsHasSpawned: 0
+  SpawnHeight: 50
   reliefMask:
     serializedVersion: 2
     m_Bits: 1024
@@ -107,6 +104,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1938822434563726179}
     m_Modifications:
+    - target: {fileID: 239667293425235389, guid: 1727a20dc69575a40922fe894a2c7b82,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976990276269490529, guid: 1727a20dc69575a40922fe894a2c7b82,
+        type: 3}
+      propertyPath: m_Name
+      value: Snow_Island_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976990276269490529, guid: 1727a20dc69575a40922fe894a2c7b82,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976990276269490529, guid: 1727a20dc69575a40922fe894a2c7b82,
+        type: 3}
+      propertyPath: m_TagString
+      value: Island
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976990276269490529, guid: 1727a20dc69575a40922fe894a2c7b82,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3257501068223263602, guid: 1727a20dc69575a40922fe894a2c7b82,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -162,30 +184,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1976990276269490529, guid: 1727a20dc69575a40922fe894a2c7b82,
+    - target: {fileID: 3257501068223263602, guid: 1727a20dc69575a40922fe894a2c7b82,
         type: 3}
-      propertyPath: m_Name
-      value: Snow_Island_1
+      propertyPath: m_LocalScale.x
+      value: 9500
       objectReference: {fileID: 0}
-    - target: {fileID: 1976990276269490529, guid: 1727a20dc69575a40922fe894a2c7b82,
+    - target: {fileID: 3257501068223263602, guid: 1727a20dc69575a40922fe894a2c7b82,
         type: 3}
-      propertyPath: m_Layer
-      value: 9
+      propertyPath: m_LocalScale.y
+      value: 9500
       objectReference: {fileID: 0}
-    - target: {fileID: 1976990276269490529, guid: 1727a20dc69575a40922fe894a2c7b82,
+    - target: {fileID: 3257501068223263602, guid: 1727a20dc69575a40922fe894a2c7b82,
         type: 3}
-      propertyPath: m_TagString
-      value: Island
-      objectReference: {fileID: 0}
-    - target: {fileID: 1976990276269490529, guid: 1727a20dc69575a40922fe894a2c7b82,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 239667293425235389, guid: 1727a20dc69575a40922fe894a2c7b82,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 0
+      propertyPath: m_LocalScale.z
+      value: 9500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1727a20dc69575a40922fe894a2c7b82, type: 3}

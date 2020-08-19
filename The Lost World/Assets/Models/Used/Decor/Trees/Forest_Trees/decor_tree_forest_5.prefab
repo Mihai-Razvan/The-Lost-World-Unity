@@ -71,9 +71,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 2161587995108179689, guid: 383fa91a25468f64d96d185962d8d792, type: 3}
 --- !u!135 &4480950246260214906
 SphereCollider:
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9140845452330746588}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55da28d2ad67726499a0b2fac5dc4adb, type: 3}
   m_Name: 
@@ -163,6 +163,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3133194904642067205, guid: e2dc49ca20a67c04699337738e943b8b,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3695078316946173913, guid: e2dc49ca20a67c04699337738e943b8b,
         type: 3}
       propertyPath: m_Name
@@ -177,11 +182,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Tree
-      objectReference: {fileID: 0}
-    - target: {fileID: 3133194904642067205, guid: e2dc49ca20a67c04699337738e943b8b,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2dc49ca20a67c04699337738e943b8b, type: 3}

@@ -14,6 +14,7 @@ TagManager:
   - stone
   - Building
   - Relief
+  - Snap_Floor_Collider
   layers:
   - Default
   - TransparentFX

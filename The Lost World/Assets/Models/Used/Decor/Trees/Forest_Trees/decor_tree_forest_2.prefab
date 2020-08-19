@@ -50,7 +50,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4516530132572455996}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55da28d2ad67726499a0b2fac5dc4adb, type: 3}
   m_Name: 
@@ -94,6 +94,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1494372037065054188}
     m_Modifications:
+    - target: {fileID: 714655046701083234, guid: e63d2aa0ffef1ad448a19c6068ee06ab,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285250985502760638, guid: e63d2aa0ffef1ad448a19c6068ee06ab,
+        type: 3}
+      propertyPath: m_Name
+      value: forest_tree_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285250985502760638, guid: e63d2aa0ffef1ad448a19c6068ee06ab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285250985502760638, guid: e63d2aa0ffef1ad448a19c6068ee06ab,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tree
+      objectReference: {fileID: 0}
     - target: {fileID: 2850067381320559789, guid: e63d2aa0ffef1ad448a19c6068ee06ab,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -147,26 +167,6 @@ PrefabInstance:
     - target: {fileID: 2850067381320559789, guid: e63d2aa0ffef1ad448a19c6068ee06ab,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1285250985502760638, guid: e63d2aa0ffef1ad448a19c6068ee06ab,
-        type: 3}
-      propertyPath: m_Name
-      value: forest_tree_2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1285250985502760638, guid: e63d2aa0ffef1ad448a19c6068ee06ab,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1285250985502760638, guid: e63d2aa0ffef1ad448a19c6068ee06ab,
-        type: 3}
-      propertyPath: m_TagString
-      value: Tree
-      objectReference: {fileID: 0}
-    - target: {fileID: 714655046701083234, guid: e63d2aa0ffef1ad448a19c6068ee06ab,
-        type: 3}
-      propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
