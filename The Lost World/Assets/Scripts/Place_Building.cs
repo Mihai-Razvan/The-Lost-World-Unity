@@ -10,7 +10,7 @@ public class Place_Building : MonoBehaviour
     [SerializeField]
     public GameObject Building_Spawn_Position;
     [SerializeField]
-    private LayerMask Building_placeable_Surface_Mask;
+    private LayerMask Building_placeable_Surface_Mask;          //pe care pot fi puse cladirile
     void Start()
     {
         
@@ -47,7 +47,7 @@ public class Place_Building : MonoBehaviour
         if (FindObjectOfType<Handing_Item>().SelectedItemCode == 4) // place furnace
         {
             RaycastHit hit;
-            if (Physics.Raycast(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform.position, -transform.up, out hit, 10f, FindObjectOfType<Handing_Item>().Building_placeable_Surface_Mask))
+            if (Physics.Raycast(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform.position, -transform.up, out hit, 10f, Building_placeable_Surface_Mask))
             {
                 FindObjectOfType<Handing_Item>().handing_item = true;
                 Building_In_Hand = Instantiate(Item_004, hit.point, Quaternion.Euler(Building_Spawn_Position.transform.rotation.x, Building_Spawn_Position.transform.rotation.y, Building_Spawn_Position.transform.rotation.z));

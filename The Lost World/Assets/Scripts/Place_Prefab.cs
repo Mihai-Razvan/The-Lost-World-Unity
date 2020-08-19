@@ -10,7 +10,7 @@ public class Place_Prefab : MonoBehaviour
     [SerializeField]
     public GameObject Building_Spawn_Position;
     [SerializeField]
-    private LayerMask Floor_placeable_Surface_Mask;
+    private LayerMask Floor_placeable_Surface_Mask;      //pt pe care poate ffi pusa floor asta nu poate ffi pusa pe alt floor
     [SerializeField]
     private LayerMask Floor_Mask;      //ala cu layeru de floor ca sa poate ffface snap apte fflooruri sau walluri
 
@@ -32,6 +32,7 @@ public class Place_Prefab : MonoBehaviour
         if (FindObjectOfType<Handing_Item>().handing_item == true)  //aici il muta
         {
             SnapDetach();     // e snapeed si te departezi sa nu mai ffie snapped si sa fie din nou dupa tine
+
             if (isSnapped == false)   // daca e snapped sa nu l mai poti muta(oricum nu puteai pe x,z ca i scoteai parentu dar se schimba pe y
             {
                 RaycastHit hit;
@@ -55,7 +56,7 @@ public class Place_Prefab : MonoBehaviour
         if (FindObjectOfType<Handing_Item>().SelectedItemCode == 8) // place wooden_floor
         {
             RaycastHit hit;
-            if (Physics.Raycast(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform.position, -transform.up, out hit, 10f, FindObjectOfType<Handing_Item>().Building_placeable_Surface_Mask))
+            if (Physics.Raycast(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform.position, -transform.up, out hit, 10f, Floor_placeable_Surface_Mask))
             {
                 FindObjectOfType<Handing_Item>().handing_item = true;
                 Prefab_In_Hand = Instantiate(Item_008, hit.point, Quaternion.Euler(Building_Spawn_Position.transform.rotation.x, Building_Spawn_Position.transform.rotation.y, Building_Spawn_Position.transform.rotation.z));
@@ -94,7 +95,7 @@ public class Place_Prefab : MonoBehaviour
         {
             isSnapped = false;
             RaycastHit hit;
-            if (Physics.Raycast(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform.position, -transform.up, out hit, 10f, FindObjectOfType<Handing_Item>().Building_placeable_Surface_Mask))
+            if (Physics.Raycast(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform.position, -transform.up, out hit, 10f, Floor_placeable_Surface_Mask))
             {
                 Prefab_In_Hand.transform.position = hit.point;
             }
