@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class Place_Building : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject Item_004;
     public GameObject Building_In_Hand;
     [SerializeField]
     public GameObject Building_Spawn_Position;
     [SerializeField]
     private LayerMask Building_placeable_Surface_Mask;          //pe care pot fi puse cladirile
+
+    /// items
+    
+    [SerializeField]
+    private GameObject Item_004;
+    [SerializeField]
+    private GameObject Item_009;
+
     void Start()
     {
         
@@ -44,13 +50,27 @@ public class Place_Building : MonoBehaviour
 
     void BuildingSpawn()     //cand o ai in inventar si selectezi slotu sa apara buildingu si sa l poti muta
     {
-        if (FindObjectOfType<Handing_Item>().SelectedItemCode == 4) // place furnace
+        if (FindObjectOfType<Handing_Item>().SelectedItemCode == 4) // furnace
         {
             RaycastHit hit;
             if (Physics.Raycast(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform.position, -transform.up, out hit, 10f, Building_placeable_Surface_Mask))
             {
                 FindObjectOfType<Handing_Item>().handing_item = true;
                 Building_In_Hand = Instantiate(Item_004, hit.point, Quaternion.Euler(Building_Spawn_Position.transform.rotation.x, Building_Spawn_Position.transform.rotation.y, Building_Spawn_Position.transform.rotation.z));
+                Building_In_Hand.transform.GetChild(0).gameObject.AddComponent<ColorPlacingChange>();
+            }
+
+            Building_In_Hand.transform.SetParent(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform);
+            Building_In_Hand.transform.localRotation = Quaternion.identity;
+
+        }
+        else if (FindObjectOfType<Handing_Item>().SelectedItemCode == 9) // wooden table
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform.position, -transform.up, out hit, 10f, Building_placeable_Surface_Mask))
+            {
+                FindObjectOfType<Handing_Item>().handing_item = true;
+                Building_In_Hand = Instantiate(Item_009, hit.point, Quaternion.Euler(Building_Spawn_Position.transform.rotation.x, Building_Spawn_Position.transform.rotation.y, Building_Spawn_Position.transform.rotation.z));
                 Building_In_Hand.transform.GetChild(0).gameObject.AddComponent<ColorPlacingChange>();
             }
 
@@ -67,7 +87,9 @@ public class Place_Building : MonoBehaviour
 
         if (FindObjectOfType<Handing_Item>().SelectedItemCode == 4)  //furnace
             Instantiate(Item_004, Building_In_Hand.transform.position, Quaternion.Euler(Building_In_Hand.transform.rotation.x, Building_In_Hand.transform.eulerAngles.y, Building_In_Hand.transform.rotation.z));
-      
+        else if (FindObjectOfType<Handing_Item>().SelectedItemCode == 9)  //wooden table
+            Instantiate(Item_009, Building_In_Hand.transform.position, Quaternion.Euler(Building_In_Hand.transform.rotation.x, Building_In_Hand.transform.eulerAngles.y, Building_In_Hand.transform.rotation.z));
+
 
 
         Destroy(Building_In_Hand.gameObject);
