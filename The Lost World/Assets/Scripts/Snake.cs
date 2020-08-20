@@ -32,6 +32,7 @@ public class Snake : MonoBehaviour
     private float dis;
     [SerializeField]
     private float mindis;
+    private float angle;
 
     
 
@@ -84,6 +85,9 @@ public class Snake : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
 
+        angle = Mathf.Atan2(move.y, move.x) * Mathf.Rad2Deg;
+
+        
     }
 
 
