@@ -9,15 +9,21 @@ public class Bee : MonoBehaviour
     public float moveSpeed;
     [SerializeField]
     private Vector3 destination;
-    private float sphereRadius = 200;
+    private float sphereRadius = 200; //sfera inuntrul careia alege un punct unde sa se duca
     [SerializeField]
     private LayerMask islandMask;
+    [SerializeField]
+    private LayerMask playerMask;
        
       
     void Start()
     {
         player = FindObjectOfType<PlayerMovement>().player;
-       
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, -transform.up, out hit, islandMask))     //se pot spawna la un y prea sus (prea jos nu pot ca e facut in animal spawn sa fie deasupra insulei)
+            transform.position = new Vector3(transform.position.x, hit.collider.transform.position.y + Random.Range(7, 23), transform.position.z);
+            
         destination = Random.insideUnitSphere * 1 + new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
     }
@@ -28,7 +34,9 @@ public class Bee : MonoBehaviour
         if (Vector3.Distance(transform.position, destination) < 2)
             Destination();
 
-        Movement(); 
+        Movement();
+
+        Despawn();   //daca sunt departe de player
     }
 
 
@@ -60,5 +68,15 @@ public class Bee : MonoBehaviour
             Destination();      //daca destinatia e inafara insulei alege alta dest          
     }
 
-   
+    void Despawn()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 300, playerMask);
+        if (colliders.Length == 0)
+            Destroy(this.gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)   //daca se loveste de cv schimba destinatia
+    {
+        Destination();
+    }
 }

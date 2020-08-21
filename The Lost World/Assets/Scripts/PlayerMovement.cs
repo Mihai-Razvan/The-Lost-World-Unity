@@ -24,10 +24,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     public LayerMask GroundMask;
     public bool MovementFrozen;  //daca e deschis vreun inventar sau ceva
-   
-
-   
-
 
 
     void Start()
@@ -37,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
    
     void FixedUpdate()
-    {
+    {   
         isGrounded = Physics.CheckSphere(groundCheck.position, sphereRadius, GroundMask);
 
         if (isGrounded == true && velocity.y < 0)

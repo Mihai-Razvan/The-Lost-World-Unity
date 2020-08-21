@@ -2257,6 +2257,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Island
       objectReference: {fileID: 0}
+    - target: {fileID: 6885608610452281017, guid: 7aba3d7791ba09d41819b9857fd81e2f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6885608610452281022, guid: 7aba3d7791ba09d41819b9857fd81e2f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3487,6 +3492,7 @@ GameObject:
   - component: {fileID: 446034141}
   - component: {fileID: 446034140}
   - component: {fileID: 446034139}
+  - component: {fileID: 446034138}
   m_Layer: 14
   m_Name: Player
   m_TagString: Untagged
@@ -3494,6 +3500,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &446034138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446034137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30d6c5ca73948e848b7f6150bc101620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  islandMask:
+    serializedVersion: 2
+    m_Bits: 512
+  animalMask:
+    serializedVersion: 2
+    m_Bits: 65536
+  animal_1: {fileID: 4406930104288571550, guid: 4301f74a0dfcc06489486a777d848b85,
+    type: 3}
 --- !u!114 &446034139
 MonoBehaviour:
   m_ObjectHideFlags: 0

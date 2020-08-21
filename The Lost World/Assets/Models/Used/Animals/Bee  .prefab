@@ -1,5 +1,34 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!54 &4572670533604997709
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3596658962186470244}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!65 &4220288289784137985
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3596658962186470244}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.027269147, y: 0.029883737, z: 0.020753264}
+  m_Center: {x: 0.0048784316, y: 0.00017118643, z: 0.0058508823}
 --- !u!1 &4406930104288571550
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,7 +40,7 @@ GameObject:
   - component: {fileID: 4406930104288571548}
   - component: {fileID: 4406930104288571551}
   - component: {fileID: 7142505488294006803}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: 'Bee  '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,6 +98,9 @@ MonoBehaviour:
   islandMask:
     serializedVersion: 2
     m_Bits: 512
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 16384
 --- !u!1001 &4406930103463252653
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -156,6 +188,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: beeF2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 890d0306b5a58e84ca02a2f597c5058d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 890d0306b5a58e84ca02a2f597c5058d, type: 3}
 --- !u!1001 &4406930104678399541
@@ -235,8 +272,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: beeC 1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7bd47b17615840243861b7a8da3ed56b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bd47b17615840243861b7a8da3ed56b, type: 3}
+--- !u!1 &3596658962186470244 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7bd47b17615840243861b7a8da3ed56b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4406930104678399541}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4224999777767119326 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7bd47b17615840243861b7a8da3ed56b,
@@ -329,6 +377,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: beeF1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5efa795e17012204db6a971b87c5c60a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5efa795e17012204db6a971b87c5c60a, type: 3}
