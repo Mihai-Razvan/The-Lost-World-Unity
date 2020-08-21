@@ -10,7 +10,7 @@ public class IslandObjects : MonoBehaviour
     private bool objectsHasSpawned;
 
     [SerializeField]
-    private float SpawnHeight;         // se adunna la pozitia insulei si acolo spawneaza obiectele si de acolo face uin ray in jos 
+    public float SpawnHeight;         // se adunna la pozitia insulei si acolo spawneaza obiectele si de acolo face uin ray in jos 
     private int minRange = -100;     //de la centru insulei la ce x si z random sa se spawneze obiectele
     private int maxRange = 100; 
     private int minRangeRelief = -60;   // e mai mic ca iese de pe insula

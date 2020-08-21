@@ -6,48 +6,59 @@ public class Bee : MonoBehaviour
 {
     private GameObject player;
     [SerializeField]
-    public CharacterController controller;
     public float moveSpeed;
     [SerializeField]
     private Vector3 destination;
-    private float circleRadius = 200;
+    private float sphereRadius = 200;
     [SerializeField]
-    private Vector3 ppos;
+    private LayerMask islandMask;
        
       
     void Start()
     {
         player = FindObjectOfType<PlayerMovement>().player;
+       
+        destination = Random.insideUnitSphere * 1 + new Vector3(transform.position.x, transform.position.y, transform.position.z);
+
     }
 
     
     void Update()
     {
         if (Vector3.Distance(transform.position, destination) < 2)
-            ChooseDestination();
-        Movement();
+            Destination();
+
+        Movement(); 
     }
 
 
-    
-    
-     
-    void Movement()
-    {       
+
+
+
+     void Movement()
+     {       
         Vector3 move = destination - transform.position;
 
-        transform.rotation = Quaternion.LookRotation(new Vector3(move.x, move.y, move.z));
+         transform.rotation = Quaternion.LookRotation(move);
 
-        controller.Move(move * moveSpeed * Time.deltaTime);
-   
-    }
+         transform.position = Vector3.MoveTowards(transform.position, destination, moveSpeed);     
 
-    void ChooseDestination()
+     }
+     
+
+
+    void Destination()
     {
-        ppos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        destination = Random.insideUnitSphere * circleRadius + ppos;
+        destination = Random.insideUnitSphere * sphereRadius + new Vector3(transform.position.x, transform.position.y, transform.position.z);
+
+        RaycastHit hit;
+        if (Physics.Raycast(destination, -transform.up, out hit, 100, islandMask))
+        {
+            destination.y = hit.collider.transform.position.y + Random.Range(7, 23);   //alege y
+        }
+        else
+            Destination();      //daca destinatia e inafara insulei alege alta dest          
     }
 
-
-    
+   
 }

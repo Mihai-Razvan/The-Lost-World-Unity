@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4406930104288571548}
   - component: {fileID: 4406930104288571551}
-  - component: {fileID: 8621270561679555985}
   - component: {fileID: 7142505488294006803}
   m_Layer: 0
   m_Name: 'Bee  '
@@ -28,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4406930104288571550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
   - {fileID: 4224999777767119326}
   m_Father: {fileID: 0}
@@ -53,24 +52,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!143 &8621270561679555985
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4406930104288571550}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7142505488294006803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,8 +64,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1438e96b59d9bfe4b9ca3f251c05c8fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
-  moveSpeed: 10
+  moveSpeed: 0.1
+  destination: {x: 0, y: 0, z: 0}
+  islandMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1001 &4406930103463252653
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -199,22 +183,22 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7bd47b17615840243861b7a8da3ed56b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.6908132
+      value: 0.6112804
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7bd47b17615840243861b7a8da3ed56b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.15092129
+      value: -0.5779758
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7bd47b17615840243861b7a8da3ed56b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.15092126
+      value: -0.35543817
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7bd47b17615840243861b7a8da3ed56b,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.69081306
+      value: -0.40736222
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7bd47b17615840243861b7a8da3ed56b,
         type: 3}
@@ -224,17 +208,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7bd47b17615840243861b7a8da3ed56b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -65.353004
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7bd47b17615840243861b7a8da3ed56b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -185
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7bd47b17615840243861b7a8da3ed56b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -90.00001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7bd47b17615840243861b7a8da3ed56b,
         type: 3}
