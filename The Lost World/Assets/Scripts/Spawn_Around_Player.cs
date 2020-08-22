@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Spawn_Around_Player : MonoBehaviour
 {
+    /// ISLANDS                                   
+
     private float IslandSpawnsphereRadius = 750f;       //750     //sfera in care se spawneza insulele
-    private float IslanSPhereRadius = 300f;   //300    //sfera unei insule cand se alege punctu de spawn verifica sa nu fie alta insula in sfera aia
+    private float IslanSphereRadius = 300f;   //300    //sfera unei insule cand se alege punctu de spawn verifica sa nu fie alta insula in sfera aia
     private int randomIslandNumber;
+    private GameObject spawnedIsland;
     [SerializeField]
     GameObject island_forest_1;
     [SerializeField]
@@ -29,6 +32,8 @@ public class Spawn_Around_Player : MonoBehaviour
     GameObject island_forest_10;
     [SerializeField]
     GameObject island_snow_1;
+                                                                      
+    //CLOUDS                                                              
 
     [SerializeField]
     private LayerMask islandMask;
@@ -40,7 +45,9 @@ public class Spawn_Around_Player : MonoBehaviour
     private int animalRandomNumber;     //ce animal sa spawneze
     [SerializeField]
     private GameObject animal_1;   //bee
-
+             
+    ///CLOUDS
+  
     [SerializeField]
     private LayerMask cloudMask;
     private int maxCloudNumber = 100;
@@ -48,12 +55,23 @@ public class Spawn_Around_Player : MonoBehaviour
     [SerializeField]
     private GameObject cloud;
 
+    ///MINI ISLANDS
+
+    private int MiniIslandSpawnsphereRadius = 750;
+    private int MiniIslanSphereRadius = 150;
+    private GameObject spawnedMiniIsland;
+    [SerializeField]
+    private GameObject Mini_Forest_Island;
+
+
     void Start()
     {
-        for(int i = 1; i <= 50; i++)         //spawneaza nori la inceput ca dupa nu spawneaza odata la cateva sec am facut asa ca sa nu verifice cati nori sunt in jur sa nu pun box coliider pe nori
+        for(int i = 1; i <= 50; i++)         //spawneaza nori la inceput 
         {
-            spawnPoint = Random.insideUnitSphere * cloudSphereRadius + transform.position;
-            Instantiate(cloud, spawnPoint, Quaternion.Euler(0, Random.Range(-180, 180), 0));
+            IslandSpawn();
+            AnimalSpawn();
+            if ((int)Random.Range(1, 3) == 1)
+                CloudsSpawn();
         }
     }
 
@@ -70,16 +88,16 @@ public class Spawn_Around_Player : MonoBehaviour
     {
         Vector3 spawnPosition = Random.insideUnitSphere * IslandSpawnsphereRadius + new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
-        Collider[] colliders = Physics.OverlapSphere(spawnPosition, IslanSPhereRadius);
+        Collider[] colliders = Physics.OverlapSphere(spawnPosition, IslanSphereRadius);
         if (colliders.Length == 0)
         {
             randomIslandNumber = Random.Range(1, 4) ;
             if (randomIslandNumber < 3)
-                Instantiate(island_forest_1, spawnPosition, Quaternion.identity);
+              spawnedIsland =  Instantiate(island_forest_1, spawnPosition, Quaternion.identity);
             else
-                Instantiate(island_snow_1, spawnPosition, Quaternion.identity);
+              spawnedIsland = Instantiate(island_snow_1, spawnPosition, Quaternion.identity);
 
-
+            SpawnMiniIsland();
         }
     }
 
@@ -94,11 +112,15 @@ public class Spawn_Around_Player : MonoBehaviour
             {
                 spawnPoint = Random.insideUnitSphere * animalSphereRadius + transform.position;
 
-                if (Physics.Raycast(spawnPoint, -transform.up, 50, islandMask))   // sa nu spawneze animale in afara insulei
+                RaycastHit hit2;
+                if (Physics.Raycast(spawnPoint, -transform.up, out hit2 , 50, islandMask))   // sa nu spawneze animale in afara insulei
                 {
-                    animalRandomNumber = Random.Range(1, 1);
-                    if (animalRandomNumber == 1)     //bee
-                        Instantiate(animal_1, spawnPoint, Quaternion.identity);
+                    if (hit.collider.tag != "MiniIsland")                  //sa nu spawneze si pe miniislanduri ca alea tot Island au layeru si intra in islandMask
+                    {
+                        animalRandomNumber = Random.Range(1, 1);
+                        if (animalRandomNumber == 1)     //bee
+                            Instantiate(animal_1, spawnPoint, Quaternion.identity);
+                    }
 
                 }
 
@@ -111,6 +133,42 @@ public class Spawn_Around_Player : MonoBehaviour
     {
         spawnPoint = Random.insideUnitSphere * cloudSphereRadius + transform.position;
         Instantiate(cloud, spawnPoint, Quaternion.Euler(0, Random.Range(-180, 180), 0));
+    }
+
+
+    void SpawnMiniIsland()
+    {
+        /*
+        Vector3 spawnPosition = Random.insideUnitSphere * MiniIslandSpawnsphereRadius + new Vector3(transform.position.x, transform.position.y, transform.position.z);
+
+        Collider[] colliders = Physics.OverlapSphere(spawnPosition, MiniIslanSphereRadius);
+        if (colliders.Length == 0)
+            Instantiate(Mini_Forest_Island, spawnPosition, Quaternion.identity);
+        */
+
+        for (int i = 1; i <= 5; )
+        {
+            float y = 15 * i;                //asta nu e random ca e ca sa nu se ciocneasca mini insulele
+            if ((int)Random.Range(1, 3) == 1)
+                y = -y;
+
+            float z = Random.Range(0, 100);  
+
+            if ((int)Random.Range(1, 3) == 1)
+                z = -z;
+
+            float x = Random.Range(0, 100);
+
+            if ((int)Random.Range(1, 3) == 1)
+                x = -x;
+
+            if (Vector3.Distance(spawnedIsland.transform.position, new Vector3(spawnedIsland.transform.position.x + x, spawnedIsland.transform.position.y + y, spawnedIsland.transform.position.z + z)) > 100)  // sa nu spawneze in insula
+            {
+                spawnedMiniIsland = Instantiate(Mini_Forest_Island, new Vector3(spawnedIsland.transform.position.x + x, spawnedIsland.transform.position.y + y, spawnedIsland.transform.position.z + z), Quaternion.identity);
+                spawnedMiniIsland.transform.SetParent(spawnedIsland.transform);
+                i++;
+            }
+        }
     }
 
 }

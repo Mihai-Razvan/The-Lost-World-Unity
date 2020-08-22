@@ -15,6 +15,7 @@ TagManager:
   - Building
   - Relief
   - Snap_Floor_Collider
+  - MiniIsland
   layers:
   - Default
   - TransparentFX

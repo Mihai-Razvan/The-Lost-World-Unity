@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     public LayerMask GroundMask;
     public bool MovementFrozen;  //daca e deschis vreun inventar sau ceva
+    
 
 
     void Start()
@@ -59,6 +60,6 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
 
-
     }
+    
 }

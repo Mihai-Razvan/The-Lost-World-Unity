@@ -951,7 +951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9aa0fc0562f7fd459e66089730b67a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item_Stack_Number: 000000003200000032000000320000003200000032000000f4010000f4010000f4010000f4010000
+  Item_Stack_Number: 000000003200000032000000320000003200000032000000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000
   Inventory_Sprite:
   - {fileID: 0}
   - {fileID: 21300000, guid: 20d31e0f68488b543ba564a928b249c5, type: 3}
@@ -963,6 +963,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ebba7ab24488dac4b990d50283df5d4e, type: 3}
   - {fileID: 21300000, guid: 11cb66dbe38b79d4b82a032f1141301d, type: 3}
   - {fileID: 21300000, guid: 5a7644597c5dced4797e8da6be97bced, type: 3}
+  - {fileID: 21300000, guid: 54b0d85e5a6ef874ca62bdd3a3eb52d5, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &95051175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1458,6 +1468,12 @@ PrefabInstance:
         type: 3}
       propertyPath: Object_Sprite
       value: 
+      objectReference: {fileID: 21300000, guid: 54b0d85e5a6ef874ca62bdd3a3eb52d5,
+        type: 3}
+    - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
+        type: 3}
+      propertyPath: Item_Code_Has_To_Craft
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3da4af9806bc6f479944953db00a2f0, type: 3}
@@ -3536,6 +3552,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 131072
   cloud: {fileID: 7989258041735985984, guid: e996eff700dfbef4394549202526a2f1, type: 3}
+  Mini_Forest_Island: {fileID: 6964081990431678984, guid: 006ec46504747d34fb4ec49e84521f1e,
+    type: 3}
 --- !u!114 &446034140
 MonoBehaviour:
   m_ObjectHideFlags: 0
