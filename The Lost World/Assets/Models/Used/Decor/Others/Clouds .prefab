@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7989258041735985985}
   - component: {fileID: 1239156221385301226}
-  m_Layer: 17
+  m_Layer: 0
   m_Name: 'Clouds '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ PrefabInstance:
     - target: {fileID: 3505268213732035742, guid: ede1d53534ef54d4ea4b5f064841d722,
         type: 3}
       propertyPath: m_Layer
-      value: 17
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4318642474211284516, guid: ede1d53534ef54d4ea4b5f064841d722,
         type: 3}

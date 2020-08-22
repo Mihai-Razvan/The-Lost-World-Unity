@@ -48,7 +48,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16384
   objectsHasSpawned: 0
-  SpawnHeight: 50
+  SpawnHeight: 100
   reliefMask:
     serializedVersion: 2
     m_Bits: 1024
@@ -149,17 +149,17 @@ PrefabInstance:
     - target: {fileID: 389269590480850146, guid: e78e302339381cf4e8a4b99e1b144167,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 9500
+      value: 20000
       objectReference: {fileID: 0}
     - target: {fileID: 389269590480850146, guid: e78e302339381cf4e8a4b99e1b144167,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 9500
+      value: 20000
       objectReference: {fileID: 0}
     - target: {fileID: 389269590480850146, guid: e78e302339381cf4e8a4b99e1b144167,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 9500
+      value: 20000
       objectReference: {fileID: 0}
     - target: {fileID: 3098891562369534509, guid: e78e302339381cf4e8a4b99e1b144167,
         type: 3}

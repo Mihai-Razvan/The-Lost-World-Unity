@@ -6,15 +6,15 @@ public class IslandObjects : MonoBehaviour
 {
     [SerializeField]
     private LayerMask playerMask;
-    [SerializeField]
-    private bool objectsHasSpawned;
+    private bool CollesctablesHaveSpawned;
+    private bool ObjectdHaveSpawned;
 
     [SerializeField]
     public float SpawnHeight;         // se adunna la pozitia insulei si acolo spawneaza obiectele si de acolo face uin ray in jos 
-    private int minRange = -100;     //de la centru insulei la ce x si z random sa se spawneze obiectele
-    private int maxRange = 100; 
-    private int minRangeRelief = -60;   // e mai mic ca iese de pe insula
-    private int maxRangeRelief = 60;
+    private int minRange = -250;     //de la centru insulei la ce x si z random sa se spawneze obiectele
+    private int maxRange = 250; 
+    private int minRangeRelief = -120;   // e mai mic ca iese de pe insula
+    private int maxRangeRelief = 120;
     private float randomReliefScale;
 
     private int numberOfObjects;
@@ -58,41 +58,50 @@ public class IslandObjects : MonoBehaviour
     private GameObject collectables_2;                   //iron_ore
     [SerializeField]
     private GameObject collectables_3;                   //stone
-   
 
+    private GameObject lastSpawned;
    
     void Start()
     {   
-        ReliefSpawn();
-        ObjectsSpawn();
-
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 300f, playerMask);
-        if (colliders.Length != 0)
-        {
-            CollectablesSpawn();
-            objectsHasSpawned = true;
-        }
-
+        ReliefSpawn();  
     }
 
     
     void Update()
     {
-        if(objectsHasSpawned == false)
+        if(CollesctablesHaveSpawned == false)
+        {
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 200f, playerMask);
+            if (colliders.Length != 0)
+            {
+                CollectablesSpawn();
+                CollesctablesHaveSpawned = true;
+            }
+        }
+
+        if (ObjectdHaveSpawned == false)
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, 400f, playerMask);
             if (colliders.Length != 0)
             {
-                CollectablesSpawn();
-                objectsHasSpawned = true;
+                ObjectsSpawn();
+                ObjectdHaveSpawned = true;
             }
         }
+
+
+        Collider[] despawncolliders = Physics.OverlapSphere(transform.position, 300f, playerMask);
+        if (despawncolliders.Length != 0)
+            for (int i = 1; i < transform.GetChild(0).childCount; i++)
+                transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(false);
+
+
     }
 
 
     void ReliefSpawn()
     {
-        numberOfRelief = Random.Range(3, 7);
+        numberOfRelief = Random.Range(8, 13);
         while (spawnedReliefNumeber < numberOfRelief)
         {
            
@@ -148,8 +157,8 @@ public class IslandObjects : MonoBehaviour
 
     void ObjectsSpawn()
     {
-        numberOfObjects = Random.Range(30, 70);       //15,30
-        while (spawnedObjectsNumber < numberOfObjects && notSpawnedConsecutively < 30)
+        numberOfObjects = Random.Range(80, 120);       //15,30
+        while (spawnedObjectsNumber < numberOfObjects && notSpawnedConsecutively < 50)
         {
             RaycastHit hit;
             Physics.Raycast(new Vector3(transform.position.x + Random.Range(minRange, maxRange), transform.position.y + SpawnHeight, transform.position.z + Random.Range(minRange, maxRange)), Vector3.down, out hit, 100, islandMask);
@@ -157,61 +166,69 @@ public class IslandObjects : MonoBehaviour
                 objectRandomNumber = Random.Range(1, 5);
                 if (objectRandomNumber == 1)
                 {
-                    Collider[] colliders = Physics.OverlapSphere(hit.point, 15, objectsMask);
+                    Collider[] colliders = Physics.OverlapSphere(hit.point, 10, objectsMask);
                     if (colliders.Length == 0)
                     {
-                        Instantiate(object_1, hit.point, Quaternion.identity);
+                        lastSpawned = Instantiate(object_1, hit.point, Quaternion.identity);
+                        lastSpawned.transform.SetParent(hit.collider.transform);
                         notSpawnedConsecutively = 0;
+                        spawnedObjectsNumber++;
                     }
                     else
                         notSpawnedConsecutively++;
                 }
                 else if (objectRandomNumber == 2)
                 {
-                    Collider[] colliders = Physics.OverlapSphere(hit.point, 15, objectsMask);
+                    Collider[] colliders = Physics.OverlapSphere(hit.point, 10, objectsMask);
                     if (colliders.Length == 0)
                     {
-                        Instantiate(object_2, hit.point, Quaternion.identity);
+                        lastSpawned = Instantiate(object_2, hit.point, Quaternion.identity);
+                        lastSpawned.transform.SetParent(hit.collider.transform);
                         notSpawnedConsecutively = 0;
+                        spawnedObjectsNumber++;
                     }
                     else
                         notSpawnedConsecutively++;
                 }
                 else if (objectRandomNumber == 3)
                 {
-                    Collider[] colliders = Physics.OverlapSphere(hit.point, 20, objectsMask);
+                    Collider[] colliders = Physics.OverlapSphere(hit.point, 15, objectsMask);
                     if (colliders.Length == 0)
                     {
-                        Instantiate(object_3, hit.point, Quaternion.identity);
+                        lastSpawned = Instantiate(object_3, hit.point, Quaternion.identity);
+                        lastSpawned.transform.SetParent(hit.collider.transform);
                         notSpawnedConsecutively = 0;
+                        spawnedObjectsNumber++;
                     }
                     else
                         notSpawnedConsecutively++;
                 }
                 else if (objectRandomNumber == 4)
                 {
-                    Collider[] colliders = Physics.OverlapSphere(hit.point, 10, objectsMask);
+                    Collider[] colliders = Physics.OverlapSphere(hit.point, 5, objectsMask);
                     if (colliders.Length == 0)
                     {
-                        Instantiate(object_4, hit.point, Quaternion.identity);
+                        lastSpawned = Instantiate(object_4, hit.point, Quaternion.identity);
+                        lastSpawned.transform.SetParent(hit.collider.transform);
                         notSpawnedConsecutively = 0;
-                    }
+                        spawnedObjectsNumber++;
+                }
                     else
                         notSpawnedConsecutively++;
                 }
                 else if (objectRandomNumber == 5)
                 {
-                    Collider[] colliders = Physics.OverlapSphere(hit.point, 15, objectsMask);
+                    Collider[] colliders = Physics.OverlapSphere(hit.point, 10, objectsMask);
                     if (colliders.Length == 0)
                     {
-                        Instantiate(object_5, hit.point, Quaternion.identity);
+                        lastSpawned = Instantiate(object_5, hit.point, Quaternion.identity);
+                        lastSpawned.transform.SetParent(hit.collider.transform);
                         notSpawnedConsecutively = 0;
+                        spawnedObjectsNumber++;
                     }
                     else
                         notSpawnedConsecutively++;
-                }
-
-                spawnedObjectsNumber++;
+                }              
             
         }
     }
@@ -220,30 +237,41 @@ public class IslandObjects : MonoBehaviour
 
     void CollectablesSpawn()
     {
-        numberOfCollectables = Random.Range(40, 80);     //20,30
+        numberOfCollectables = Random.Range(20, 30);     //20,30
         while(spawnedAlready < numberOfCollectables && notSpawnedConsecutively < 20)
         {
             RaycastHit hit;
             Physics.Raycast(new Vector3(transform.position.x + Random.Range(minRange, maxRange), transform.position.y + SpawnHeight, transform.position.z + Random.Range(minRange, maxRange)), Vector3.down, out hit, 100, islandMask);
 
             Collider[] colliders = Physics.OverlapSphere(hit.point, 3, collectablesMask);
-                if (colliders.Length == 0)
+            if (colliders.Length == 0)
+            {
+                objectRandomNumber = Random.Range(1, 4);
+
+                if (objectRandomNumber == 1)
                 {
-                    objectRandomNumber = Random.Range(1, 5);
-
-                    if (objectRandomNumber <= 2)
-                        Instantiate(collectables_1, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
-                    else if (objectRandomNumber == 3)
-                        Instantiate(collectables_2, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
-                    else if (objectRandomNumber == 4)
-                        Instantiate(collectables_3, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
-
-                    notSpawnedConsecutively = 0;
-                    spawnedAlready ++ ;
+                    lastSpawned = Instantiate(collectables_1, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+                    lastSpawned.transform.SetParent(hit.collider.transform);
                 }
-                else
-                    notSpawnedConsecutively++;
+                else if (objectRandomNumber == 2)
+                {
+                    lastSpawned = Instantiate(collectables_2, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+                    lastSpawned.transform.SetParent(hit.collider.transform);
+                }
+                else if (objectRandomNumber == 3)
+                {
+                    lastSpawned = Instantiate(collectables_3, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+                    lastSpawned.transform.SetParent(hit.collider.transform);
+                }
+
+                notSpawnedConsecutively = 0;
+                spawnedAlready++;
+            }
+            else
+                notSpawnedConsecutively++;
             
         }
     }
+
+    
 }

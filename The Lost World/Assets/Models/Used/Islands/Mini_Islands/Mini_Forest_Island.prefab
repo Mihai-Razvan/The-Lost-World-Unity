@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3015104723308955408}
   - component: {fileID: 5287699121085383936}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Mini_Forest_Island
   m_TagString: MiniIsland
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ PrefabInstance:
     - target: {fileID: 3487629607701166881, guid: 548de59528b273c44af386d6cb5056e2,
         type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 3487629607701166881, guid: 548de59528b273c44af386d6cb5056e2,
         type: 3}

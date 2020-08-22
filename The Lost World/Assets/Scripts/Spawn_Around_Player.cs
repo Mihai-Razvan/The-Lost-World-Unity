@@ -6,8 +6,8 @@ public class Spawn_Around_Player : MonoBehaviour
 {
     /// ISLANDS                                   
 
-    private float IslandSpawnsphereRadius = 750f;       //750     //sfera in care se spawneza insulele
-    private float IslanSphereRadius = 300f;   //300    //sfera unei insule cand se alege punctu de spawn verifica sa nu fie alta insula in sfera aia
+    private float IslandSpawnsphereRadius = 1000f;       //750     //sfera in care se spawneza insulele
+    private float IslanSphereRadius = 500f;   //300    //sfera unei insule cand se alege punctu de spawn verifica sa nu fie alta insula in sfera aia
     private int randomIslandNumber;
     private GameObject spawnedIsland;
     [SerializeField]
@@ -39,7 +39,7 @@ public class Spawn_Around_Player : MonoBehaviour
     private LayerMask islandMask;
     [SerializeField]
     private LayerMask animalMask;
-    private float animalSphereRadius = 250;           //in asta verifica cate animale sunt
+    private float animalSphereRadius = 500;           //in asta verifica cate animale sunt
     private int maxAnimalNumber = 10;
     private Vector3 spawnPoint;
     private int animalRandomNumber;     //ce animal sa spawneze
@@ -50,15 +50,12 @@ public class Spawn_Around_Player : MonoBehaviour
   
     [SerializeField]
     private LayerMask cloudMask;
-    private int maxCloudNumber = 100;
-    private int cloudSphereRadius = 750;
+    private int cloudSphereRadius = 800;
     [SerializeField]
     private GameObject cloud;
 
     ///MINI ISLANDS
 
-    private int MiniIslandSpawnsphereRadius = 750;
-    private int MiniIslanSphereRadius = 150;
     private GameObject spawnedMiniIsland;
     [SerializeField]
     private GameObject Mini_Forest_Island;
@@ -66,20 +63,23 @@ public class Spawn_Around_Player : MonoBehaviour
 
     void Start()
     {
-        for(int i = 1; i <= 50; i++)         //spawneaza nori la inceput 
+        spawnedIsland = Instantiate(island_forest_1, new Vector3(2315, 0 ,1000), Quaternion.identity);    //spawn island
+        SpawnMiniIsland();
+
+        for (int i = 1; i <= 100; i++)         //spawneaza nori la inceput 
         {
             IslandSpawn();
-            AnimalSpawn();
-            if ((int)Random.Range(1, 3) == 1)
-                CloudsSpawn();
+           // AnimalSpawn();
+            CloudsSpawn();
         }
+        
     }
 
 
     void Update()
     {
         IslandSpawn();
-        AnimalSpawn();
+       // AnimalSpawn();
         if((int) Random.Range(1, 1000) == 1)
            CloudsSpawn();
     }
@@ -146,23 +146,23 @@ public class Spawn_Around_Player : MonoBehaviour
             Instantiate(Mini_Forest_Island, spawnPosition, Quaternion.identity);
         */
 
-        for (int i = 1; i <= 5; )
+        for (int i = 1; i <= 15; )
         {
             float y = 15 * i;                //asta nu e random ca e ca sa nu se ciocneasca mini insulele
             if ((int)Random.Range(1, 3) == 1)
                 y = -y;
 
-            float z = Random.Range(0, 100);  
+            float z = Random.Range(0, 200);  
 
             if ((int)Random.Range(1, 3) == 1)
                 z = -z;
 
-            float x = Random.Range(0, 100);
+            float x = Random.Range(0, 200);
 
             if ((int)Random.Range(1, 3) == 1)
                 x = -x;
 
-            if (Vector3.Distance(spawnedIsland.transform.position, new Vector3(spawnedIsland.transform.position.x + x, spawnedIsland.transform.position.y + y, spawnedIsland.transform.position.z + z)) > 100)  // sa nu spawneze in insula
+            if (Vector3.Distance(spawnedIsland.transform.position, new Vector3(spawnedIsland.transform.position.x + x, spawnedIsland.transform.position.y + y, spawnedIsland.transform.position.z + z)) > 250)  // sa nu spawneze in insula
             {
                 spawnedMiniIsland = Instantiate(Mini_Forest_Island, new Vector3(spawnedIsland.transform.position.x + x, spawnedIsland.transform.position.y + y, spawnedIsland.transform.position.z + z), Quaternion.identity);
                 spawnedMiniIsland.transform.SetParent(spawnedIsland.transform);

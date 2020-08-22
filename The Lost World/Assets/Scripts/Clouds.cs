@@ -10,7 +10,7 @@ public class Clouds : MonoBehaviour
     private float speed;
     void Start()
     {
-        scale = Random.Range(0.5f, 10);
+        scale = Random.Range(0.5f, 5);
         transform.localScale = new Vector3(scale, scale, scale);
         speed = 0.4f / scale;    // cu cat e mai mare noru cu atat e mai incet
     }
