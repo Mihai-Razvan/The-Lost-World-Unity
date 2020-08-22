@@ -13,11 +13,10 @@ public class Handing_Item : MonoBehaviour
     public bool handing_item;
     [SerializeField]
     public GameObject Building_Spawn_Position;
-    public GameObject Object_In_Hand;
     public RaycastHit hit;
   
 
-    //pt scriptu  ColorPlacingChange ca acolo nu pot atrinui
+    //pt scriptu  ColorPlacingChange 
     public Material OkMaterial;
     [SerializeField]
     public Material CollidingMaterial;
@@ -154,9 +153,12 @@ public class Handing_Item : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha8))
         {
             if (handing_item == true)
-                Destroy(Object_In_Hand.gameObject);
+            {
+                Destroy(FindObjectOfType<Place_Building>().Building_In_Hand.gameObject);
+                Destroy(FindObjectOfType<Place_Prefab>().Prefab_In_Hand.gameObject);
+            }
 
-            SelectedItemBarSlot = 8;
+                SelectedItemBarSlot = 8;
             handing_item = false;
 
             if (FindObjectOfType<Inventory>().Slot_Item_Quantity[23] <= 0)
@@ -187,7 +189,7 @@ public class Handing_Item : MonoBehaviour
             }
 
             SelectedItemCode = -1;
-            SelectedItemBarSlot = -5;
+            SelectedItemBarSlot = -1;
             handing_item = false;           
         }
 

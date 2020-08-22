@@ -48,7 +48,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16384
   objectsHasSpawned: 0
-  SpawnHeight: 50
+  SpawnHeight: 20
   reliefMask:
     serializedVersion: 2
     m_Bits: 1024

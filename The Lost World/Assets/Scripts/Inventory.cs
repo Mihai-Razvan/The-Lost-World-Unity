@@ -55,10 +55,18 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
         AddToInventory();
 
-        if(inventory_craftingIsActive == true)
-            for (int i = 0; i <= 15; i++)       
+        if (inventory_craftingIsActive == true)
+        {
+            for (int i = 0; i <= 15; i++)
                 if (Slot_Item_Quantity[i] == 0)
                     Slot_Item_Code[i] = 0;
+
+            Destroy(FindObjectOfType<Place_Building>().Building_In_Hand.gameObject);
+            Destroy(FindObjectOfType<Place_Prefab>().Prefab_In_Hand.gameObject);
+            FindObjectOfType<Handing_Item>().handing_item = false;
+            FindObjectOfType<Handing_Item>().SelectedItemBarSlot = -1;
+            FindObjectOfType<Handing_Item>().SelectedItemCode = -1;
+        }
 
        /* for (int i = 16; i <= 24; i++)
             if (Slot_Item_Quantity[i] == 0)
@@ -67,6 +75,7 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         
 
         Center_Dot.SetActive(!inventory_craftingIsActive);
+        Cursor.visible = inventory_craftingIsActive;
     }
     
 
