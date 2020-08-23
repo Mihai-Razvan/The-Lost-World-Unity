@@ -11,7 +11,9 @@ public class Pickup_Item : MonoBehaviour
     [SerializeField]
     private LayerMask CollectablesMask;
     [SerializeField]
-    bool aaa;
+    private LayerMask animalMask;
+    [SerializeField]
+    private GameObject player;
     void Start()
     {
         
@@ -30,20 +32,39 @@ public class Pickup_Item : MonoBehaviour
                 FindObjectOfType<Inventory>().quantityToAdd = 1;
 
                 if (colliders[0].gameObject.tag == "branch")
+                {
                     FindObjectOfType<Inventory>().itemCodeToAdd = 1;
+                    Destroy(colliders[0].transform.parent.gameObject);
+                }
                 else if (colliders[0].gameObject.tag == "iron_ore")
+                {
                     FindObjectOfType<Inventory>().itemCodeToAdd = 3;
+                    Destroy(colliders[0].transform.parent.gameObject);
+                }
                 else if (colliders[0].gameObject.tag == "stone")
+                {
                     FindObjectOfType<Inventory>().itemCodeToAdd = 5;
+                    Destroy(colliders[0].transform.parent.gameObject);    //distruge si punctu la care e atasat
+                }
                 else if (colliders[0].gameObject.tag == "apple")
+                {
                     FindObjectOfType<Inventory>().itemCodeToAdd = 11;
+                    Destroy(colliders[0].gameObject);    //maru nu are pct ca nu trebuie si optimizare
+                    BeeAttract();
+                }
                    
-                      if(colliders[0].gameObject.tag == "apple")  //maru nu are pct ca nu trebuie si optimizare
-                         Destroy(colliders[0].gameObject);         
-                      else
-                         Destroy(colliders[0].transform.parent.gameObject);
             }
 
         }
+    }
+
+
+    void BeeAttract()
+    {
+        Collider[] colliders = Physics.OverlapSphere(player.transform.position, 500f, animalMask);
+        for (int i = 0; i < colliders.Length; i++)
+            if(colliders[i].tag == "Bee")
+              colliders[i].gameObject.transform.parent.GetComponent<Bee>().attackPhase = true;
+
     }
 }

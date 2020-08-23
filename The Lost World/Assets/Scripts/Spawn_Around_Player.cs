@@ -69,7 +69,7 @@ public class Spawn_Around_Player : MonoBehaviour
         for (int i = 1; i <= 50; i++)         //spawneaza nori la inceput 
         {
             IslandSpawn();
-           // AnimalSpawn();
+            AnimalSpawn();
             CloudsSpawn();
         }
         
@@ -79,7 +79,7 @@ public class Spawn_Around_Player : MonoBehaviour
     void Update()
     {
         IslandSpawn();
-       // AnimalSpawn();
+        AnimalSpawn();
         if((int) Random.Range(1, 1000) == 1)
            CloudsSpawn();
 

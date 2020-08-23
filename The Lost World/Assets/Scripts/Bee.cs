@@ -14,7 +14,9 @@ public class Bee : MonoBehaviour
     private LayerMask islandMask;
     [SerializeField]
     private LayerMask playerMask;
-       
+
+    [SerializeField]
+    public bool attackPhase;
       
     void Start()
     {
@@ -31,10 +33,13 @@ public class Bee : MonoBehaviour
     
     void Update()
     {
-        if (Vector3.Distance(transform.position, destination) < 2)
+        if (Vector3.Distance(transform.position, destination) < 2 && attackPhase == false)
+        {
             Destination();
-
-        Movement();
+            Movement();
+        }
+        else if (attackPhase == true)
+            Attack();
 
         Despawn();   //daca sunt departe de player
     }
@@ -74,6 +79,21 @@ public class Bee : MonoBehaviour
         if (colliders.Length == 0)
             Destroy(this.gameObject);
     }
+
+
+    void Attack()
+    {
+        destination = player.transform.position + player.transform.forward * 3;
+
+        if (transform.position != destination)
+        {
+            Vector3 move = destination - transform.position;
+            transform.rotation = Quaternion.LookRotation(move);
+        }
+
+        transform.position = Vector3.MoveTowards(transform.position, destination, moveSpeed);
+    }
+
 
     private void OnCollisionEnter(Collision collision)   //daca se loveste de cv schimba destinatia
     {

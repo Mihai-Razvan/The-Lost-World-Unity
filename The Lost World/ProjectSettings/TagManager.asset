@@ -5,8 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Island
-  - Branch
-  - Iron_Ore
   - Tree
   - Inventory_Slot
   - Furnace_Inventory_Slot
@@ -16,6 +14,11 @@ TagManager:
   - Relief
   - Snap_Floor_Collider
   - MiniIsland
+  - branch
+  - iron_ore
+  - apple
+  - Branch
+  - Bee
   layers:
   - Default
   - TransparentFX
