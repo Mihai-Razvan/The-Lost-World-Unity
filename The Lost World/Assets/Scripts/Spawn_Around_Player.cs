@@ -66,7 +66,7 @@ public class Spawn_Around_Player : MonoBehaviour
         spawnedIsland = Instantiate(island_forest_1, new Vector3(2315, 0 ,1000), Quaternion.identity);    //spawn island
         SpawnMiniIsland();
 
-        for (int i = 1; i <= 20; i++)         //spawneaza nori la inceput 
+        for (int i = 1; i <= 50; i++)         //spawneaza nori la inceput 
         {
             IslandSpawn();
            // AnimalSpawn();

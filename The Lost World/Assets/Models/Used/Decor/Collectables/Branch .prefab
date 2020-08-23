@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 633433248437772872}
   m_Layer: 12
   m_Name: 'Branch '
-  m_TagString: Branch
+  m_TagString: branch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,7 +106,7 @@ PrefabInstance:
     - target: {fileID: 3184800941335152543, guid: 8a992e8479b0b644385672048a0017b6,
         type: 3}
       propertyPath: m_TagString
-      value: Branch
+      value: branch
       objectReference: {fileID: 0}
     - target: {fileID: 3751069240385254211, guid: 8a992e8479b0b644385672048a0017b6,
         type: 3}

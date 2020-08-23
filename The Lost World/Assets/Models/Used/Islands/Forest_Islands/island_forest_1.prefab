@@ -84,6 +84,9 @@ MonoBehaviour:
     type: 3}
   collectables_3: {fileID: 5186552759174715207, guid: 0f6208a86a3bdfb4d8ec6a5cbbcd77fa,
     type: 3}
+  collectables_4: {fileID: 4396889561522956999, guid: d62a0b4101528bb49896ecc77fb6d2fc,
+    type: 3}
+  islandActivated: 1
 --- !u!1001 &6885608609901726655
 PrefabInstance:
   m_ObjectHideFlags: 0

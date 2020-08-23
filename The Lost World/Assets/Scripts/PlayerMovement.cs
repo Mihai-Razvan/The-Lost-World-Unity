@@ -13,8 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public int moveSpeed;
     [SerializeField]
     public Vector3 velocity;
-    [SerializeField]
-    float gravity = -9.81f;
+    float gravity = -20f;
     [SerializeField]
     Transform groundCheck;
     [SerializeField]

@@ -244,7 +244,7 @@ public class IslandObjects : MonoBehaviour
 
     void CollectablesSpawn()
     {
-        numberOfCollectables = Random.Range(20, 30);     //20,30
+        numberOfCollectables = Random.Range(100, 150);     //20,30
         while(spawnedAlready < numberOfCollectables && notSpawnedConsecutively < 20)
         {
             RaycastHit hit;
@@ -270,6 +270,7 @@ public class IslandObjects : MonoBehaviour
                     lastSpawned = Instantiate(collectables_3, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
                     lastSpawned.transform.SetParent(hit.collider.transform);
                 }
+              
 
                 notSpawnedConsecutively = 0;
                 spawnedAlready++;

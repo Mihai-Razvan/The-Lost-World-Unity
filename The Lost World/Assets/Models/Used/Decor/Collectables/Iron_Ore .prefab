@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4868029925245412023}
   m_Layer: 12
   m_Name: 'Iron_Ore '
-  m_TagString: Iron_Ore
+  m_TagString: iron_ore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,16 +38,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4868029925245412023}
     m_Modifications:
-    - target: {fileID: 7138555997840041944, guid: f02a4c3f3133264478ca85d6249db1e5,
-        type: 3}
-      propertyPath: m_Name
-      value: Iron_Ore
-      objectReference: {fileID: 0}
-    - target: {fileID: 7138555997840041944, guid: f02a4c3f3133264478ca85d6249db1e5,
-        type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 6145837905490974155, guid: f02a4c3f3133264478ca85d6249db1e5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -102,6 +92,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138555997840041944, guid: f02a4c3f3133264478ca85d6249db1e5,
+        type: 3}
+      propertyPath: m_Name
+      value: Iron_Ore
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138555997840041944, guid: f02a4c3f3133264478ca85d6249db1e5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138555997840041944, guid: f02a4c3f3133264478ca85d6249db1e5,
+        type: 3}
+      propertyPath: m_TagString
+      value: iron_ore
       objectReference: {fileID: 0}
     - target: {fileID: 8876006450899407620, guid: f02a4c3f3133264478ca85d6249db1e5,
         type: 3}
