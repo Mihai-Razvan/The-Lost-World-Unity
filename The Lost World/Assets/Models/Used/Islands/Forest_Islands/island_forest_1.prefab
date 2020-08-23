@@ -47,7 +47,7 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 16384
-  objectsHasSpawned: 0
+  island: {fileID: 7832665703248278862}
   SpawnHeight: 100
   reliefMask:
     serializedVersion: 2
@@ -178,6 +178,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e78e302339381cf4e8a4b99e1b144167, type: 3}
+--- !u!1 &7832665703248278862 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3692300206456438513, guid: e78e302339381cf4e8a4b99e1b144167,
+    type: 3}
+  m_PrefabInstance: {fileID: 6885608609901726655}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6550606801218914141 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 389269590480850146, guid: e78e302339381cf4e8a4b99e1b144167,

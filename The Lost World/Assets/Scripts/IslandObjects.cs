@@ -8,7 +8,8 @@ public class IslandObjects : MonoBehaviour
     private LayerMask playerMask;
     private bool CollesctablesHaveSpawned;
     private bool ObjectdHaveSpawned;
-
+    [SerializeField]
+    private GameObject island;
     [SerializeField]
     public float SpawnHeight;         // se adunna la pozitia insulei si acolo spawneaza obiectele si de acolo face uin ray in jos 
     private int minRange = -250;     //de la centru insulei la ce x si z random sa se spawneze obiectele
@@ -60,16 +61,20 @@ public class IslandObjects : MonoBehaviour
     private GameObject collectables_3;                   //stone
 
     private GameObject lastSpawned;
-   
+
+    private bool thingsOnIslandActive;
+    [SerializeField]
+    private bool islandActivated = true;
+
     void Start()
-    {   
+    {
         ReliefSpawn();  
     }
 
     
     void Update()
     {
-        if(CollesctablesHaveSpawned == false)
+        if(CollesctablesHaveSpawned == false)       //spawneaza cand e playeru aproape de is
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, 200f, playerMask);
             if (colliders.Length != 0)
@@ -79,23 +84,21 @@ public class IslandObjects : MonoBehaviour
             }
         }
 
-        if (ObjectdHaveSpawned == false)
+        if (ObjectdHaveSpawned == false)  
         {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, 400f, playerMask);
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 450f, playerMask);
             if (colliders.Length != 0)
             {
                 ObjectsSpawn();
                 ObjectdHaveSpawned = true;
+                thingsOnIslandActive = true;
             }
         }
 
 
-        Collider[] despawncolliders = Physics.OverlapSphere(transform.position, 300f, playerMask);
-        if (despawncolliders.Length != 0)
-            for (int i = 1; i < transform.GetChild(0).childCount; i++)
-                transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(false);
-
-
+        DespawnIsland();
+        InactiveIsland();
+        IslandObjectsDeavtivateAtivate();                          
     }
 
 
@@ -117,6 +120,7 @@ public class IslandObjects : MonoBehaviour
                     randomReliefScale = Random.Range(1, 3);
                     GameObject relief = Instantiate(relief_1, hit.point, Quaternion.identity);
                     relief.transform.localScale = new Vector3(randomReliefScale, randomReliefScale, randomReliefScale);
+                    relief.transform.SetParent(hit.collider.transform);         //relief ca e lastspawned
                 }
             }
             else if (objectRandomNumber == 2)
@@ -127,6 +131,7 @@ public class IslandObjects : MonoBehaviour
                     randomReliefScale = Random.Range(1, 3);
                     GameObject relief = Instantiate(relief_2, hit.point, Quaternion.identity);
                     relief.transform.localScale = new Vector3(randomReliefScale, randomReliefScale, randomReliefScale);
+                    relief.transform.SetParent(hit.collider.transform);
                 }
             }
             else if (objectRandomNumber == 3)
@@ -137,6 +142,7 @@ public class IslandObjects : MonoBehaviour
                     randomReliefScale = Random.Range(1, 3);
                     GameObject relief = Instantiate(relief_3, hit.point, Quaternion.identity);
                     relief.transform.localScale = new Vector3(randomReliefScale, randomReliefScale, randomReliefScale);
+                    relief.transform.SetParent(hit.collider.transform);
                 }
             }
             else if (objectRandomNumber == 4)
@@ -147,6 +153,7 @@ public class IslandObjects : MonoBehaviour
                     randomReliefScale = Random.Range(1, 3);
                     GameObject relief = Instantiate(relief_4, hit.point, Quaternion.identity);
                     relief.transform.localScale = new Vector3(randomReliefScale, randomReliefScale, randomReliefScale);
+                    relief.transform.SetParent(hit.collider.transform);
                 }
             }
 
@@ -273,5 +280,55 @@ public class IslandObjects : MonoBehaviour
         }
     }
 
+
+    void IslandObjectsDeavtivateAtivate()
+    {
+        Collider[] despawnObjectsCollider = Physics.OverlapSphere(transform.position, 600f, playerMask);
+        if (despawnObjectsCollider.Length == 0) //deactivate objects
+        {
+            if (thingsOnIslandActive == true)
+            {
+                thingsOnIslandActive = false;
+
+                for (int i = 0; i < island.transform.childCount; i++)
+                    island.transform.GetChild(i).gameObject.SetActive(false);
+
+
+                  for (int j = 1; j < transform.childCount; j++)     //despawneaza miniislandurile care sunt puse la punctu pe care e pusa insula insulei
+                  Destroy(transform.GetChild(j).gameObject);
+            }
+        }
+        else if (thingsOnIslandActive == false)   //reactivate objects
+        {
+            thingsOnIslandActive = true;
+
+            for (int i = 0; i < island.transform.childCount; i++)
+                island.transform.GetChild(i).gameObject.SetActive(true);
+        }
+    }
+
+
+
+    void DespawnIsland()     //daca e la sit mare dispare de tot CU TOT CU PUNCT
+    {
+        Collider[] despawnIslandCollider = Physics.OverlapSphere(transform.position, 10000f, playerMask);   
+        if (despawnIslandCollider.Length == 0)
+            Destroy(gameObject);
+    }
+
+    void InactiveIsland()   //daca e la dist medie dezactiveaza is NU PUNCTUL
+    {
+        Collider[] despawnIslandCollider = Physics.OverlapSphere(transform.position, 1500f, playerMask);
+        if (despawnIslandCollider.Length == 0)
+        {
+            if(islandActivated == true)
+                for (int i = 0; i < transform.childCount; i++)
+                    transform.GetChild(i).gameObject.SetActive(false);
+        }
+        else if (islandActivated == false )
+            for (int i = 0; i < transform.childCount; i++)
+                transform.GetChild(i).gameObject.SetActive(true);
+
+    }
     
 }

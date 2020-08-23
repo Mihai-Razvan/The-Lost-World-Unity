@@ -61,7 +61,7 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 16384
-  objectsHasSpawned: 0
+  island: {fileID: 1679264429335094142}
   SpawnHeight: 100
   reliefMask:
     serializedVersion: 2

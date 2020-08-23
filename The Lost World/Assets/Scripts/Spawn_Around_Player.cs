@@ -7,7 +7,7 @@ public class Spawn_Around_Player : MonoBehaviour
     /// ISLANDS                                   
 
     private float IslandSpawnsphereRadius = 1000f;       //750     //sfera in care se spawneza insulele
-    private float IslanSphereRadius = 500f;   //300    //sfera unei insule cand se alege punctu de spawn verifica sa nu fie alta insula in sfera aia
+    private float IslanSphereRadius = 700f;   //300    //sfera unei insule cand se alege punctu de spawn verifica sa nu fie alta insula in sfera aia
     private int randomIslandNumber;
     private GameObject spawnedIsland;
     [SerializeField]
@@ -66,7 +66,7 @@ public class Spawn_Around_Player : MonoBehaviour
         spawnedIsland = Instantiate(island_forest_1, new Vector3(2315, 0 ,1000), Quaternion.identity);    //spawn island
         SpawnMiniIsland();
 
-        for (int i = 1; i <= 100; i++)         //spawneaza nori la inceput 
+        for (int i = 1; i <= 20; i++)         //spawneaza nori la inceput 
         {
             IslandSpawn();
            // AnimalSpawn();
@@ -82,6 +82,11 @@ public class Spawn_Around_Player : MonoBehaviour
        // AnimalSpawn();
         if((int) Random.Range(1, 1000) == 1)
            CloudsSpawn();
+
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 1000f, islandMask);      //activeaza insulele din apropiere; dezactivarea insulelor se face din scriptu lor
+        for (int i = 0; i < colliders.Length; i++)
+            colliders[i].gameObject.SetActive(true);
+       
     }
 
     void IslandSpawn()
@@ -138,37 +143,30 @@ public class Spawn_Around_Player : MonoBehaviour
 
     void SpawnMiniIsland()
     {
-        /*
-        Vector3 spawnPosition = Random.insideUnitSphere * MiniIslandSpawnsphereRadius + new Vector3(transform.position.x, transform.position.y, transform.position.z);
-
-        Collider[] colliders = Physics.OverlapSphere(spawnPosition, MiniIslanSphereRadius);
-        if (colliders.Length == 0)
-            Instantiate(Mini_Forest_Island, spawnPosition, Quaternion.identity);
-        */
-
-        for (int i = 1; i <= 15; )
+        for (int i = 1; i <= 15; i++)
         {
             float y = 15 * i;                //asta nu e random ca e ca sa nu se ciocneasca mini insulele
-            if ((int)Random.Range(1, 3) == 1)
-                y = -y;
+                if ((int)Random.Range(1, 3) == 1)
+                    y = -y;
 
-            float z = Random.Range(0, 200);  
+                float z = Random.Range(0, 200);
 
-            if ((int)Random.Range(1, 3) == 1)
-                z = -z;
+                if ((int)Random.Range(1, 3) == 1)
+                    z = -z;
 
-            float x = Random.Range(0, 200);
+                float x = Random.Range(0, 200);
 
-            if ((int)Random.Range(1, 3) == 1)
-                x = -x;
+                if ((int)Random.Range(1, 3) == 1)
+                    x = -x;
 
-            if (Vector3.Distance(spawnedIsland.transform.position, new Vector3(spawnedIsland.transform.position.x + x, spawnedIsland.transform.position.y + y, spawnedIsland.transform.position.z + z)) > 250)  // sa nu spawneze in insula
-            {
-                spawnedMiniIsland = Instantiate(Mini_Forest_Island, new Vector3(spawnedIsland.transform.position.x + x, spawnedIsland.transform.position.y + y, spawnedIsland.transform.position.z + z), Quaternion.identity);
-                spawnedMiniIsland.transform.SetParent(spawnedIsland.transform);
-                i++;
-            }
+                if (Vector3.Distance(spawnedIsland.transform.position, new Vector3(spawnedIsland.transform.position.x + x, spawnedIsland.transform.position.y + y, spawnedIsland.transform.position.z + z)) > 250)  // sa nu spawneze in insula
+                {
+                    spawnedMiniIsland = Instantiate(Mini_Forest_Island, new Vector3(spawnedIsland.transform.position.x + x, spawnedIsland.transform.position.y + y, spawnedIsland.transform.position.z + z), Quaternion.identity);
+                    spawnedMiniIsland.transform.SetParent(spawnedIsland.transform);
+                }
         }
+ 
     }
 
+   
 }

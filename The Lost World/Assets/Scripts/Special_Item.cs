@@ -8,7 +8,7 @@ public class Special_Item : MonoBehaviour
     [SerializeField]
     private float flySpeed = 10;              //cu cat zboara
     [SerializeField]
-    private int MaximumjetpackMoveSpeed;     //viteza maxima
+    private int MaximumjetpackMoveSpeed = 1000;     //viteza maxima //100 normal
     private int MinimumjetpackMoveSpeed;
     [SerializeField]
     private float acceleration;
@@ -39,7 +39,7 @@ public class Special_Item : MonoBehaviour
             if (isLanded == false) //sa nu abuzeze sa mearga pe insula mai repede cu jetu
             {
                 if (flySpeed <= MaximumjetpackMoveSpeed)
-                    flySpeed += acceleration * Time.deltaTime;
+                    flySpeed += acceleration * 5 *Time.deltaTime;     //scoate * 5 e pt teste
             }
             else if (flySpeed > MinimumjetpackMoveSpeed)
                 flySpeed -= acceleration * 5 * Time.deltaTime;
