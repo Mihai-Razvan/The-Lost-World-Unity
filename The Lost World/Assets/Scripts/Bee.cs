@@ -17,6 +17,8 @@ public class Bee : MonoBehaviour
     private float attackInstantiateTime;   //cat timp a stat aproape de player si daca a stat un timp il ataca
     [SerializeField]
     private LayerMask groundLayerMask;        //daca e prea jos sa urce da aici intra orice ar putea fi sub adica si player si cladiri
+
+    public int health = 10;
     
       
     void Start()
@@ -34,12 +36,18 @@ public class Bee : MonoBehaviour
     
     void Update()
     {
-        if (transform.position == destination && attackPhase == false)     
-            Destination();       
-        else if (attackPhase == true)
-            Attack();
+        if (health > 0)
+        {
+            if (transform.position == destination && attackPhase == false)
+                Destination();
+            else if (attackPhase == true)
+                Attack();
 
-        Movement();
+            Movement();
+        }
+        else
+            Die();
+
         Despawn();   //daca sunt departe de player
     }
 
@@ -78,7 +86,7 @@ public class Bee : MonoBehaviour
             Destination();      //daca destinatia e inafara insulei alege alta dest          
     }
 
-    void Despawn()
+    void Despawn()      //cand e playeru departe
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, 300, playerMask);
         if (colliders.Length == 0)
@@ -89,8 +97,6 @@ public class Bee : MonoBehaviour
     void Attack()
     {
         destination = player.transform.position + player.transform.forward * 0.01f;
-
-       // if (Vector3.Distance(transform.position, player.transform.position) > 3)
         
         if(Vector3.Distance(transform.position, player.transform.position) <= 3)
         {
@@ -105,6 +111,15 @@ public class Bee : MonoBehaviour
         if (Vector3.Distance(transform.position, player.transform.position) > 30) //daca e prea departe renunta la atac
             attackPhase = false;
         
+    }
+
+
+
+    void Die()
+    {
+        transform.GetChild(0).GetComponent<Rigidbody>().useGravity = true;
+        transform.GetChild(0).GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        Destroy(GetComponent<Animator>());
     }
 
 

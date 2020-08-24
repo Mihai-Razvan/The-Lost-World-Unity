@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item_011 : MonoBehaviour
+public class Item_012 : MonoBehaviour
 {                                               
                                                                // SPEAR //
     [SerializeField]
@@ -10,6 +10,10 @@ public class Item_011 : MonoBehaviour
     private float animationCooldown;
     [SerializeField]
     private LayerMask hitableMask;
+    private int damage = 10;
+    [SerializeField]
+    private bool attackedThisRound;   //sa se puna atacu odata pe animatie nu de mai multe ori ca se intampla de multe ori intre intervalu ala
+
     void Start()
     {
         
@@ -19,13 +23,9 @@ public class Item_011 : MonoBehaviour
     void Update()
     {
         AnimationTrigger();
-
-        if(animationCooldown > 0.28f && animationCooldown < 0.35f)
+        if (attackedThisRound == false)
         {
-            RaycastHit hit;
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 5f, hitableMask))
-                Destroy(hit.collider.gameObject);
-
+            Attack();
         }
     }
 
@@ -36,12 +36,29 @@ public class Item_011 : MonoBehaviour
         {
             animator.SetBool("playAnimation", true);
             animationCooldown = 0;
+            attackedThisRound = false;
         }
 
         animationCooldown += Time.deltaTime;
 
         if (animator.GetBool("playAnimation") == true && animationCooldown >= 0.7f)
             animator.SetBool("playAnimation", false);
+    }
+
+
+    void Attack()
+    {
+        if (animationCooldown > 0.35f && animationCooldown < 0.4f)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 5f, hitableMask))
+            {
+                 if (hit.collider.tag == "Bee")
+                    hit.collider.transform.GetComponentInParent<Bee>().health -= damage;
+            }
+
+            attackedThisRound = true;
+        }
     }
         
 }
