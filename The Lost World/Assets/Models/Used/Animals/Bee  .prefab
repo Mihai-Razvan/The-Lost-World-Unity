@@ -102,6 +102,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16384
   attackPhase: 0
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 192000
 --- !u!1001 &4406930103463252653
 PrefabInstance:
   m_ObjectHideFlags: 0

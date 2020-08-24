@@ -24,12 +24,12 @@ public class Place_Prefab : MonoBehaviour
     void Update()
     {      
 
-        if (FindObjectOfType<Handing_Item>().handing_item == false)      //daca nu e cond asta ai mai multe iteme in mana in ac timp
+        if (FindObjectOfType<Handing_Item>().handing_placeable == false)      //daca nu e cond asta ai mai multe iteme in mana in ac timp
             PrefabSpawn();
 
                    
 
-        if (FindObjectOfType<Handing_Item>().handing_item == true)  //aici il muta
+        if (FindObjectOfType<Handing_Item>().handing_placeable == true)  //aici il muta
         {
             SnapDetach();     // e snapeed si te departezi sa nu mai ffie snapped si sa fie din nou dupa tine
 
@@ -58,7 +58,7 @@ public class Place_Prefab : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform.position, -transform.up, out hit, 10f, Floor_placeable_Surface_Mask))
             {
-                FindObjectOfType<Handing_Item>().handing_item = true;
+                FindObjectOfType<Handing_Item>().handing_placeable = true;
                 Prefab_In_Hand = Instantiate(Item_008, hit.point, Quaternion.Euler(Building_Spawn_Position.transform.rotation.x, Building_Spawn_Position.transform.rotation.y, Building_Spawn_Position.transform.rotation.z));
                 Prefab_In_Hand.transform.GetChild(0).gameObject.AddComponent<ColorPlacingChange>();
             }
@@ -73,7 +73,7 @@ public class Place_Prefab : MonoBehaviour
 
     void PlacePrefab()   // ui ai handing si apesi sa ramana pe pozitie
     {
-        FindObjectOfType<Handing_Item>().handing_item = false;
+        FindObjectOfType<Handing_Item>().handing_placeable = false;
 
         if (FindObjectOfType<Handing_Item>().SelectedItemCode == 8)  //furnace
             Instantiate(Item_008, Prefab_In_Hand.transform.position, Quaternion.Euler(Prefab_In_Hand.transform.rotation.x, Prefab_In_Hand.transform.eulerAngles.y, Prefab_In_Hand.transform.rotation.z));

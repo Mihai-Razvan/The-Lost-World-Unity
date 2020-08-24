@@ -26,14 +26,14 @@ public class Place_Building : MonoBehaviour
     void Update()
     {
 
-        if (FindObjectOfType<Handing_Item>().handing_item == false)      //daca nu e cond asta ai mai multe iteme in mana in ac timp
+        if (FindObjectOfType<Handing_Item>().handing_placeable == false)      //daca nu e cond asta ai mai multe iteme in mana in ac timp
             BuildingSpawn();
 
 
         /// pt urmatoarele de plasat codu asta si intu in prefab si selectez o rotatie nu la punct da la obiectu de e pus pe punct in prefab  a i sa fie cu fata la player
 
 
-        if (FindObjectOfType<Handing_Item>().handing_item == true)
+        if (FindObjectOfType<Handing_Item>().handing_placeable == true)
         {
             RaycastHit hit;
 
@@ -55,7 +55,7 @@ public class Place_Building : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform.position, -transform.up, out hit, 10f, Building_placeable_Surface_Mask))
             {
-                FindObjectOfType<Handing_Item>().handing_item = true;
+                FindObjectOfType<Handing_Item>().handing_placeable = true;
                 Building_In_Hand = Instantiate(Item_004, hit.point, Quaternion.Euler(Building_Spawn_Position.transform.rotation.x, Building_Spawn_Position.transform.rotation.y, Building_Spawn_Position.transform.rotation.z));
                 Building_In_Hand.transform.GetChild(0).gameObject.AddComponent<ColorPlacingChange>();
             }
@@ -69,7 +69,7 @@ public class Place_Building : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform.position, -transform.up, out hit, 10f, Building_placeable_Surface_Mask))
             {
-                FindObjectOfType<Handing_Item>().handing_item = true;
+                FindObjectOfType<Handing_Item>().handing_placeable = true;
                 Building_In_Hand = Instantiate(Item_009, hit.point, Quaternion.Euler(Building_Spawn_Position.transform.rotation.x, Building_Spawn_Position.transform.rotation.y, Building_Spawn_Position.transform.rotation.z));
                 Building_In_Hand.transform.GetChild(0).gameObject.AddComponent<ColorPlacingChange>();
             }
@@ -83,7 +83,7 @@ public class Place_Building : MonoBehaviour
 
     void PlaceBuilding()   // ui ai handing si apesi sa ramana pe pozitie
     {
-        FindObjectOfType<Handing_Item>().handing_item = false;
+        FindObjectOfType<Handing_Item>().handing_placeable = false;
 
         if (FindObjectOfType<Handing_Item>().SelectedItemCode == 4)  //furnace
             Instantiate(Item_004, Building_In_Hand.transform.position, Quaternion.Euler(Building_In_Hand.transform.rotation.x, Building_In_Hand.transform.eulerAngles.y, Building_In_Hand.transform.rotation.z));

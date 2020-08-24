@@ -63,7 +63,7 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
             Destroy(FindObjectOfType<Place_Building>().Building_In_Hand.gameObject);
             Destroy(FindObjectOfType<Place_Prefab>().Prefab_In_Hand.gameObject);
-            FindObjectOfType<Handing_Item>().handing_item = false;
+            FindObjectOfType<Handing_Item>().handing_placeable = false;
             FindObjectOfType<Handing_Item>().SelectedItemBarSlot = -1;
             FindObjectOfType<Handing_Item>().SelectedItemCode = -1;
         }

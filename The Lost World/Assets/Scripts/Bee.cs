@@ -5,7 +5,6 @@ using UnityEngine;
 public class Bee : MonoBehaviour
 {
     private GameObject player;
-    [SerializeField]
     public float moveSpeed;
     [SerializeField]
     private Vector3 destination;
@@ -14,9 +13,11 @@ public class Bee : MonoBehaviour
     private LayerMask islandMask;
     [SerializeField]
     private LayerMask playerMask;
-
-    [SerializeField]
     public bool attackPhase;
+    private float attackInstantiateTime;   //cat timp a stat aproape de player si daca a stat un timp il ataca
+    [SerializeField]
+    private LayerMask groundLayerMask;        //daca e prea jos sa urce da aici intra orice ar putea fi sub adica si player si cladiri
+    
       
     void Start()
     {
@@ -33,14 +34,12 @@ public class Bee : MonoBehaviour
     
     void Update()
     {
-        if (Vector3.Distance(transform.position, destination) < 2 && attackPhase == false)
-        {
-            Destination();
-            Movement();
-        }
+        if (transform.position == destination && attackPhase == false)     
+            Destination();       
         else if (attackPhase == true)
             Attack();
 
+        Movement();
         Despawn();   //daca sunt departe de player
     }
 
@@ -50,12 +49,18 @@ public class Bee : MonoBehaviour
 
      void Movement()
      {       
-        Vector3 move = destination - transform.position;
+         Vector3 move = destination - transform.position;
 
          transform.rotation = Quaternion.LookRotation(move);
 
-         transform.position = Vector3.MoveTowards(transform.position, destination, moveSpeed);     
+        float y;
 
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, -transform.up, out hit, 3f, groundLayerMask))
+            y = hit.point.y + 5;
+        else
+            y = destination.y;
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(destination.x, y, destination.z) , moveSpeed);
      }
      
 
@@ -83,15 +88,23 @@ public class Bee : MonoBehaviour
 
     void Attack()
     {
-        destination = player.transform.position + player.transform.forward * 3;
+        destination = player.transform.position + player.transform.forward * 0.01f;
 
-        if (transform.position != destination)
+       // if (Vector3.Distance(transform.position, player.transform.position) > 3)
+        
+        if(Vector3.Distance(transform.position, player.transform.position) <= 3)
         {
-            Vector3 move = destination - transform.position;
-            transform.rotation = Quaternion.LookRotation(move);
+            attackInstantiateTime += Time.deltaTime;
+            if (attackInstantiateTime >= 2f)
+            {
+                FindObjectOfType<Player_Stats>().playerHealth -= 5;
+                attackInstantiateTime = 0;
+            }
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, destination, moveSpeed);
+        if (Vector3.Distance(transform.position, player.transform.position) > 30) //daca e prea departe renunta la atac
+            attackPhase = false;
+        
     }
 
 
