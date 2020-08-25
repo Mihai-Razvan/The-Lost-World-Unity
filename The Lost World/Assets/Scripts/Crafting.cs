@@ -9,9 +9,9 @@ public class Crafting : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
     [SerializeField]
     private Sprite Object_Sprite;
     [SerializeField]
-    private int[] itemCode;     //codu la itemele de trebuie olosite ca sa cratezi pe asta
+    public int[] itemCode;     //codu la itemele de trebuie olosite ca sa cratezi pe asta
     [SerializeField]
-    private int[] itemQuantity;           //cantitatea la itemele de trebuie olosite ca sa cratezi pe asta
+    public int[] itemQuantity;           //cantitatea la itemele de trebuie olosite ca sa cratezi pe asta
     private float timeBetweenClicks;           //ca da crat la double click
     private bool alreadyFirstClick;
     private int thisItemQuantity;
@@ -121,10 +121,12 @@ public class Crafting : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
     public void OnPointerEnter(PointerEventData eventData)
     {
         FindObjectOfType<Inventory>().itemCodeHovered = Item_Code_Has_To_Craft;
+        FindObjectOfType<Inventory>().craftingSlotHovered = this.gameObject;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         FindObjectOfType<Inventory>().itemCodeHovered = 0;
+        FindObjectOfType<Inventory>().craftingSlotHovered = null;
     }
 }

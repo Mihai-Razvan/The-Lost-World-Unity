@@ -9,7 +9,7 @@ public class Show_Item_Inventory : MonoBehaviour
     
     void Start()
     {
-        
+        transform.Find("Item_Image").gameObject.SetActive(false);
     }
 
     

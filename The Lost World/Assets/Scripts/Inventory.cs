@@ -37,6 +37,7 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     [SerializeField]
     public int itemCodeHovered;
+    public GameObject craftingSlotHovered;
     // items panels //
     [SerializeField]
     public GameObject Item_004_Inventory_Panel;
