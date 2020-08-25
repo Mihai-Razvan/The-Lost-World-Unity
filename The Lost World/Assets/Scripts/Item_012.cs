@@ -53,8 +53,20 @@ public class Item_012 : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 5f, hitableMask))
             {
-                 if (hit.collider.tag == "Bee")
-                    hit.collider.transform.GetComponentInParent<Bee>().health -= damage;
+                if (hit.collider.tag == "Bee")
+                {
+                    if (hit.collider.transform.GetComponentInParent<Bee>().health > 0)      //is not dead
+                    {
+                        hit.collider.GetComponent<Bee>().health -= damage;
+                        hit.collider.GetComponent<Bee>().attackPhase = true;
+                    }
+                    else
+                    {
+                        hit.collider.GetComponent<Bee>().hitWhenDead = true;
+                        FindObjectOfType<Inventory>().quantityToAdd = (int)Random.Range(1, 3);
+                        FindObjectOfType<Inventory>().itemCodeToAdd = 13;
+                    }
+                }
             }
 
             attackedThisRound = true;

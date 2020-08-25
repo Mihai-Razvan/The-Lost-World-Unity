@@ -64,7 +64,7 @@ public class Pickup_Item : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(player.transform.position, 500f, animalMask);
         for (int i = 0; i < colliders.Length; i++)
             if(colliders[i].tag == "Bee")
-              colliders[i].gameObject.transform.parent.GetComponent<Bee>().attackPhase = true;
+                colliders[i].gameObject.GetComponent<Bee>().attackPhase = true;
 
     }
 }

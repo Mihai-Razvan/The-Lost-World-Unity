@@ -19,8 +19,15 @@ public class Bee : MonoBehaviour
     private LayerMask groundLayerMask;        //daca e prea jos sa urce da aici intra orice ar putea fi sub adica si player si cladiri
 
     public int health = 10;
-    
-      
+    [SerializeField]
+    private bool isDead;
+    [SerializeField]
+    private bool grounded;
+    [SerializeField]
+    public bool hitWhenDead;
+    private float timeSinceHitWhenDead;
+
+
     void Start()
     {
         player = FindObjectOfType<PlayerMovement>().player;
@@ -28,25 +35,43 @@ public class Bee : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, -transform.up, out hit, islandMask))     //se pot spawna la un y prea sus (prea jos nu pot ca e facut in animal spawn sa fie deasupra insulei)
             transform.position = new Vector3(transform.position.x, hit.collider.transform.position.y + Random.Range(7, 23), transform.position.z);
-            
+
         destination = Random.insideUnitSphere * 1 + new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
     }
 
-    
+
     void Update()
     {
         if (health > 0)
         {
-            if (transform.position == destination && attackPhase == false)
-                Destination();
-            else if (attackPhase == true)
-                Attack();
+            if (attackPhase == false)
+            {
+                if (transform.position == destination)
+                    Destination();
 
-            Movement();
+                Movement();
+            }
+            else
+            {
+                Attack();
+                if (Vector3.Distance(transform.position, player.transform.position) > 3)    //sa nu se puna exact in pozitia playerului
+                    Movement();
+            }
         }
         else
+        {
             Die();
+
+            if (hitWhenDead == true)
+            {
+                GetComponent<BoxCollider>().enabled = false;
+                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                timeSinceHitWhenDead += Time.deltaTime;
+                if (timeSinceHitWhenDead > 5f)
+                    Destroy(this.gameObject);
+            }
+        }
 
         Despawn();   //daca sunt departe de player
     }
@@ -55,16 +80,16 @@ public class Bee : MonoBehaviour
 
 
 
-     void Movement()
-     {       
-         Vector3 move = destination - transform.position;
+    void Movement()
+    {
+        Vector3 move = destination - transform.position;
 
-         transform.rotation = Quaternion.LookRotation(move);
+        transform.rotation = Quaternion.LookRotation(move);
 
         float y;
 
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, -transform.up, out hit, 3f, groundLayerMask))
+        if (Physics.Raycast(transform.position, -transform.up, out hit, 0.4f, groundLayerMask))
             y = hit.point.y + 5;
         else
             y = destination.y;
@@ -96,9 +121,9 @@ public class Bee : MonoBehaviour
 
     void Attack()
     {
-        destination = player.transform.position + player.transform.forward * 0.01f;
-        
-        if(Vector3.Distance(transform.position, player.transform.position) <= 3)
+        destination = player.transform.position;
+
+        if (Vector3.Distance(transform.position, player.transform.position) <= 2.5)
         {
             attackInstantiateTime += Time.deltaTime;
             if (attackInstantiateTime >= 2f)
@@ -107,9 +132,15 @@ public class Bee : MonoBehaviour
                 attackInstantiateTime = 0;
             }
         }
+        else
+            attackInstantiateTime = 0;
+        
 
-        if (Vector3.Distance(transform.position, player.transform.position) > 30) //daca e prea departe renunta la atac
+        if (Vector3.Distance(transform.position, player.transform.position) > 300) //daca e prea departe renunta la atac
+        {
             attackPhase = false;
+            Destination();
+        }
         
     }
 
@@ -117,8 +148,12 @@ public class Bee : MonoBehaviour
 
     void Die()
     {
-        transform.GetChild(0).GetComponent<Rigidbody>().useGravity = true;
-        transform.GetChild(0).GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        isDead = true;
+
+        if(grounded == false)
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+
+        GetComponent<Rigidbody>().useGravity = true;
         Destroy(GetComponent<Animator>());
     }
 
@@ -126,5 +161,11 @@ public class Bee : MonoBehaviour
     private void OnCollisionEnter(Collision collision)   //daca se loveste de cv schimba destinatia
     {
         Destination();
+
+        if(isDead == true)
+        {
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            grounded = true;
+        }
     }
 }
