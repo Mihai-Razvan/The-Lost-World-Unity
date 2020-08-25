@@ -35,6 +35,8 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     [SerializeField]
     public int SelectedItemCode;
 
+    [SerializeField]
+    public int itemCodeHovered;
     // items panels //
     [SerializeField]
     public GameObject Item_004_Inventory_Panel;

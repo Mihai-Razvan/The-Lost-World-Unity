@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine.EventSystems;
 
 
-public class Inventory_slots : MonoBehaviour, IPointerDownHandler, IDragHandler, IDropHandler
+public class Inventory_slots : MonoBehaviour, IPointerDownHandler, IDragHandler, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public int itemCode;               //codu itemului din  slot
     [SerializeField]
@@ -94,5 +94,16 @@ public class Inventory_slots : MonoBehaviour, IPointerDownHandler, IDragHandler,
         }
     }
 
+
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        FindObjectOfType<Inventory>().itemCodeHovered = itemCode;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        FindObjectOfType<Inventory>().itemCodeHovered = 0;
+    }
 
 }

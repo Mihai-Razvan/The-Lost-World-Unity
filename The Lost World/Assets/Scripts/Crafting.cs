@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Crafting : MonoBehaviour, IPointerDownHandler
+public class Crafting : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField]
     private Sprite Object_Sprite;
@@ -115,5 +115,16 @@ public class Crafting : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         ItemsToCraft();
+    }
+
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        FindObjectOfType<Inventory>().itemCodeHovered = Item_Code_Has_To_Craft;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        FindObjectOfType<Inventory>().itemCodeHovered = 0;
     }
 }
