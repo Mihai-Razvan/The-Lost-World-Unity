@@ -11,6 +11,8 @@ public class Item_004_Inventory_Slots : MonoBehaviour, IPointerDownHandler, IDra
     [SerializeField]
     public int Slot_Number;          //numaru slotului in inventar
     public int itemQuantity;
+
+    public int asda;
     void Start()
     {
         transform.Find("Item_Image").gameObject.SetActive(false);
@@ -69,22 +71,70 @@ public class Item_004_Inventory_Slots : MonoBehaviour, IPointerDownHandler, IDra
         {
             if (FindObjectOfType<Inventory>().Initial_Slot_Gameobject.tag == "Furnace_Inventory_Slot")
             {
-                FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Code[FindObjectOfType<Inventory>().InitialSlotNumberDrag] = itemCode;
-                FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Quantity[FindObjectOfType<Inventory>().InitialSlotNumberDrag] = itemQuantity;
+                if (FindObjectOfType<Inventory>().InitialSlotItemCodeDrag != itemCode || (FindObjectOfType<Inventory>().InitialSlotItemCodeDrag == itemCode && (FindObjectOfType<Inventory>().InitialSlotQuantityDrag == FindObjectOfType<List_Of_Items>().Item_Stack_Number[itemCode] || itemQuantity == FindObjectOfType<List_Of_Items>().Item_Stack_Number[itemCode])))  //swapu normal
+                {
+                    FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Code[FindObjectOfType<Inventory>().InitialSlotNumberDrag] = itemCode;
+                    FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Quantity[FindObjectOfType<Inventory>().InitialSlotNumberDrag] = itemQuantity;
+
+                    FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Code[Slot_Number] = FindObjectOfType<Inventory>().InitialSlotItemCodeDrag;
+                    FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Quantity[Slot_Number] = FindObjectOfType<Inventory>().InitialSlotQuantityDrag;
+                }
+                else     //daca sunt aceleasi iteme aduna la slotu pe care lasi ce pui si daca depaseste restu ramana in al vechi
+                {
+                    if (itemQuantity + FindObjectOfType<Inventory>().InitialSlotQuantityDrag <= FindObjectOfType<List_Of_Items>().Item_Stack_Number[itemCode])
+                    {
+                   
+                        FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Quantity[Slot_Number] += FindObjectOfType<Inventory>().InitialSlotQuantityDrag;
+                        FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Code[FindObjectOfType<Inventory>().InitialSlotNumberDrag] = 0;
+                        FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Quantity[FindObjectOfType<Inventory>().InitialSlotNumberDrag] = 0;
+                    }
+                    else
+                    {
+                        FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Quantity[FindObjectOfType<Inventory>().InitialSlotNumberDrag] -= FindObjectOfType<List_Of_Items>().Item_Stack_Number[itemCode] - itemQuantity; //scade cat se pune in asta de ai dat drop
+                        FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Quantity[Slot_Number] = FindObjectOfType<List_Of_Items>().Item_Stack_Number[itemCode];
+                    }
+
+                }
             }
             else if (FindObjectOfType<Inventory>().Initial_Slot_Gameobject.tag == "Inventory_Slot")
             {
                 FindObjectOfType<Inventory>().Slot_Item_Code[FindObjectOfType<Inventory>().InitialSlotNumberDrag] = itemCode;
                 FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Inventory>().InitialSlotNumberDrag] = itemQuantity;
-            }
 
-            FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Code[Slot_Number] = FindObjectOfType<Inventory>().InitialSlotItemCodeDrag;
-            FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Quantity[Slot_Number] = FindObjectOfType<Inventory>().InitialSlotQuantityDrag;
+
+
+
+                if (FindObjectOfType<Inventory>().InitialSlotItemCodeDrag != itemCode || (FindObjectOfType<Inventory>().InitialSlotItemCodeDrag == itemCode && (FindObjectOfType<Inventory>().InitialSlotQuantityDrag == FindObjectOfType<List_Of_Items>().Item_Stack_Number[itemCode] || itemQuantity == FindObjectOfType<List_Of_Items>().Item_Stack_Number[itemCode])))  //swapu normal
+                {
+                    FindObjectOfType<Inventory>().Slot_Item_Code[FindObjectOfType<Inventory>().InitialSlotNumberDrag] = itemCode;
+                    FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Inventory>().InitialSlotNumberDrag] = itemQuantity;
+
+                    FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Code[Slot_Number] = FindObjectOfType<Inventory>().InitialSlotItemCodeDrag;
+                    FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Quantity[Slot_Number] = FindObjectOfType<Inventory>().InitialSlotQuantityDrag;
+                }
+                else     //daca sunt aceleasi iteme aduna la slotu pe care lasi ce pui si daca depaseste restu ramana in al vechi
+                {
+                    if (itemQuantity + FindObjectOfType<Inventory>().InitialSlotQuantityDrag <= FindObjectOfType<List_Of_Items>().Item_Stack_Number[itemCode])
+                    {
+                        FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Quantity[Slot_Number] += FindObjectOfType<Inventory>().InitialSlotQuantityDrag;
+                        FindObjectOfType<Inventory>().Slot_Item_Code[FindObjectOfType<Inventory>().InitialSlotNumberDrag] = 0;
+                        FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Inventory>().InitialSlotNumberDrag] = 0;
+                    }
+                    else
+                    {
+                        FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Inventory>().InitialSlotNumberDrag] -= FindObjectOfType<List_Of_Items>().Item_Stack_Number[itemCode] - itemQuantity; //scade cat se pune in asta de ai dat drop
+                        FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Quantity[Slot_Number] = FindObjectOfType<List_Of_Items>().Item_Stack_Number[itemCode];
+                    }
+
+                }
+            }
 
             FindObjectOfType<Inventory>().InitialSlotNumberDrag = 0;
             FindObjectOfType<Inventory>().InitialSlotItemCodeDrag = 0;
             FindObjectOfType<Inventory>().InitialSlotQuantityDrag = 0;
         }
+
+
     }
 
 
