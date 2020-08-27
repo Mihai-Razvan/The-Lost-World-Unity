@@ -1006,6 +1006,7 @@ MonoBehaviour:
   itemCodeToAdd: 0
   SelectedItemBarSlot: 0
   SelectedItemCode: 0
+  ImageOnMouse: {fileID: 1980295876}
   itemCodeHovered: 0
   craftingSlotHovered: {fileID: 0}
   Item_004_Inventory_Panel: {fileID: 1021373043}
@@ -1363,6 +1364,7 @@ MonoBehaviour:
   itemCode: 0
   Slot_Number: 11
   itemQuantity: 0
+  asda: 0
 --- !u!114 &118650655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1932,6 +1934,7 @@ MonoBehaviour:
   itemCode: 0
   Slot_Number: 20
   itemQuantity: 0
+  asda: 0
 --- !u!114 &180848452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2877,6 +2880,7 @@ MonoBehaviour:
   itemCode: 0
   Slot_Number: 4
   itemQuantity: 0
+  asda: 0
 --- !u!114 &322994998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2969,6 +2973,7 @@ MonoBehaviour:
   itemCode: 0
   Slot_Number: 9
   itemQuantity: 0
+  asda: 0
 --- !u!114 &331766343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3512,6 +3517,7 @@ MonoBehaviour:
   itemCode: 0
   Slot_Number: 6
   itemQuantity: 0
+  asda: 0
 --- !u!114 &392051904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4797,6 +4803,7 @@ MonoBehaviour:
   itemCode: 0
   Slot_Number: 15
   itemQuantity: 0
+  asda: 0
 --- !u!114 &491217284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5193,6 +5200,7 @@ MonoBehaviour:
   itemCode: 0
   Slot_Number: 3
   itemQuantity: 0
+  asda: 0
 --- !u!114 &625265728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5744,6 +5752,7 @@ MonoBehaviour:
   itemCode: 0
   Slot_Number: 16
   itemQuantity: 0
+  asda: 0
 --- !u!114 &693108049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6159,7 +6168,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 47a45b38eedc57e428b1c79c17d321fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d9c1e705e412d9d4089f4f24ce4e6ecd, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -8219,6 +8228,7 @@ MonoBehaviour:
   itemCode: 0
   Slot_Number: 1
   itemQuantity: 0
+  asda: 0
 --- !u!114 &961695782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9864,6 +9874,7 @@ MonoBehaviour:
   itemCode: 0
   Slot_Number: 13
   itemQuantity: 0
+  asda: 0
 --- !u!114 &1071853523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10112,6 +10123,7 @@ MonoBehaviour:
   itemCode: 0
   Slot_Number: 17
   itemQuantity: 0
+  asda: 0
 --- !u!114 &1091930239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10278,6 +10290,7 @@ MonoBehaviour:
   itemCode: 0
   Slot_Number: 2
   itemQuantity: 0
+  asda: 0
 --- !u!114 &1101019036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11134,6 +11147,7 @@ RectTransform:
   - {fileID: 1857702317}
   - {fileID: 954073400}
   - {fileID: 1021373044}
+  - {fileID: 1980295875}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11282,6 +11296,7 @@ MonoBehaviour:
   itemCode: 0
   Slot_Number: 14
   itemQuantity: 0
+  asda: 0
 --- !u!114 &1232513775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12057,6 +12072,7 @@ MonoBehaviour:
   itemCode: 0
   Slot_Number: 8
   itemQuantity: 0
+  asda: 0
 --- !u!114 &1320090380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12388,6 +12404,7 @@ MonoBehaviour:
   itemCode: 0
   Slot_Number: 7
   itemQuantity: 0
+  asda: 0
 --- !u!114 &1352898830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13119,6 +13136,7 @@ MonoBehaviour:
   itemCode: 0
   Slot_Number: 12
   itemQuantity: 0
+  asda: 0
 --- !u!114 &1412697296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14565,6 +14583,7 @@ MonoBehaviour:
   itemCode: 0
   Slot_Number: 18
   itemQuantity: 0
+  asda: 0
 --- !u!114 &1639158012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14875,6 +14894,7 @@ MonoBehaviour:
   itemCode: 0
   Slot_Number: 19
   itemQuantity: 0
+  asda: 0
 --- !u!114 &1661193944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16055,6 +16075,7 @@ MonoBehaviour:
   itemCode: 0
   Slot_Number: 5
   itemQuantity: 0
+  asda: 0
 --- !u!114 &1743001696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17897,6 +17918,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923801590}
   m_CullTransparentMesh: 0
+--- !u!1 &1980295874
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1980295875}
+  - component: {fileID: 1980295877}
+  - component: {fileID: 1980295876}
+  m_Layer: 5
+  m_Name: ImageOnMouse
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1980295875
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980295874}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1185030471}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 78, y: 160}
+  m_SizeDelta: {x: 70, y: 70}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1980295876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980295874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1980295877
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980295874}
+  m_CullTransparentMesh: 0
 --- !u!1 &1997144568
 GameObject:
   m_ObjectHideFlags: 0
@@ -18562,6 +18657,7 @@ MonoBehaviour:
   itemCode: 0
   Slot_Number: 10
   itemQuantity: 0
+  asda: 0
 --- !u!114 &2131460978
 MonoBehaviour:
   m_ObjectHideFlags: 0

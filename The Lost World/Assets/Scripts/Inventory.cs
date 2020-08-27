@@ -34,7 +34,8 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public int SelectedItemBarSlot;             // slotu de ai in mana
     [SerializeField]
     public int SelectedItemCode;
-
+    [SerializeField]
+    private Image ImageOnMouse;                //imaginea de e la poz mouseului cand muti un item dintr un slot in altu
     [SerializeField]
     public int itemCodeHovered;
     public GameObject craftingSlotHovered;
@@ -43,12 +44,16 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public GameObject Item_004_Inventory_Panel;
     /// 
 
+
+
     public bool ok;  // pt teste
     void Start()
     {
         Item_004_Inventory_Panel.SetActive(false);
         Inventory_Crafting_Panel.SetActive(false);
         Crafting_Panel.SetActive(false);
+
+        ImageOnMouse.gameObject.SetActive(false);
     }
 
     
@@ -69,7 +74,17 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             FindObjectOfType<Handing_Item>().handing_placeable = false;
             FindObjectOfType<Handing_Item>().SelectedItemBarSlot = -1;
             FindObjectOfType<Handing_Item>().SelectedItemCode = -1;
+
+            if (InitialSlotItemCodeDrag > 0)
+            {
+                ImageOnMouse.gameObject.SetActive(true);
+                ImageOnMouse.transform.position = Input.mousePosition;
+                ImageOnMouse.GetComponent<Image>().sprite = FindObjectOfType<List_Of_Items>().Inventory_Sprite[InitialSlotItemCodeDrag];
+            }
+            else
+                ImageOnMouse.gameObject.SetActive(false); ;
         }
+        
 
        /* for (int i = 16; i <= 24; i++)
             if (Slot_Item_Quantity[i] == 0)

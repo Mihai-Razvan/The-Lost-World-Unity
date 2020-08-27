@@ -38,14 +38,27 @@ public class Player_Stats : MonoBehaviour
                 playerPoison -= poisonDecrease * Time.deltaTime;                                             //daca ai mancare scade otrava
 
             if (playerHealth < 100)
-                playerHealth += playerFood * 1.5f * Time.deltaTime;                                        //daca ai mancare creste viata
+                playerHealth += playerFood * 0.02f * Time.deltaTime;                                        //daca ai mancare creste viata
 
             playerFood -= (foodDecrease + foodDecrease * (playerPoison / 25)) * Time.deltaTime;         //daca ai otrava cu cat ai mai multa cu atat scade mancarea mai repede daca nu ai scade normal
         }
         else
             playerHealth -= healthDecrease * Time.deltaTime;
+
         playerHealth -= (playerPoison / 100) * Time.deltaTime;                                      //daca ai otrava scade viata;
 
+        if (playerHealth > 100)
+            playerHealth = 100;
+
+        if (playerFood > 100)
+            playerFood = 100;
+        else if (playerFood < 0)
+            playerFood = 0;
+
+        if (playerPoison > 100)
+            playerPoison = 100;
+        else if (playerPoison < 0)
+            playerPoison = 0;
 
     }
 }
