@@ -123,12 +123,15 @@ public class Bee : MonoBehaviour
     {
         destination = player.transform.position;
 
-        if (Vector3.Distance(transform.position, player.transform.position) <= 2.5)
+        if (Vector3.Distance(transform.position, player.transform.position) <= 4)
         {
             attackInstantiateTime += Time.deltaTime;
             if (attackInstantiateTime >= 2f)
             {
                 FindObjectOfType<Player_Stats>().playerHealth -= 5;
+                FindObjectOfType<Player_Stats>().playerPoison += 5;
+                if (FindObjectOfType<Player_Stats>().playerPoison > 100)
+                    FindObjectOfType<Player_Stats>().playerPoison = 100;
                 attackInstantiateTime = 0;
             }
         }
@@ -162,7 +165,7 @@ public class Bee : MonoBehaviour
     {
         Destination();
 
-        if(isDead == true)
+        if(isDead == true && (collision.collider.gameObject.layer == 9 || collision.collider.gameObject.layer == 11 || collision.collider.gameObject.layer == 13 || collision.collider.gameObject.layer == 15 || collision.collider.gameObject.layer == 17))
         {
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             grounded = true;

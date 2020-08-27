@@ -6,8 +6,8 @@ public class Spawn_Around_Player : MonoBehaviour
 {
     /// ISLANDS                                   
 
-    private float IslandSpawnsphereRadius = 1000f;       //750     //sfera in care se spawneza insulele
-    private float IslanSphereRadius = 700f;   //300    //sfera unei insule cand se alege punctu de spawn verifica sa nu fie alta insula in sfera aia
+    private float IslandSpawnsphereRadius = 1000f;       //1000    //sfera in care se spawneza insulele
+    private float IslanSphereRadius = 700f;   //700    //sfera unei insule cand se alege punctu de spawn verifica sa nu fie alta insula in sfera aia
     private int randomIslandNumber;
     private GameObject spawnedIsland;
     [SerializeField]
@@ -40,7 +40,7 @@ public class Spawn_Around_Player : MonoBehaviour
     [SerializeField]
     private LayerMask animalMask;
     private float animalSphereRadius = 500;           //in asta verifica cate animale sunt
-    private int maxAnimalNumber = 10;
+    private int maxAnimalNumber = 10;       //10
     private Vector3 spawnPoint;
     private int animalRandomNumber;     //ce animal sa spawneze
     [SerializeField]
@@ -69,7 +69,8 @@ public class Spawn_Around_Player : MonoBehaviour
         for (int i = 1; i <= 50; i++)         //spawneaza nori la inceput 
         {
             IslandSpawn();
-            AnimalSpawn();
+            for (int j = 1; j <= 5; j++)
+                AnimalSpawn();
             CloudsSpawn();
         }
         

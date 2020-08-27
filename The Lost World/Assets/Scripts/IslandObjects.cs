@@ -86,7 +86,7 @@ public class IslandObjects : MonoBehaviour
 
         if (ObjectdHaveSpawned == false)  
         {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, 450f, playerMask);
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 450f, playerMask);       //450
             if (colliders.Length != 0)
             {
                 ObjectsSpawn();
@@ -284,7 +284,7 @@ public class IslandObjects : MonoBehaviour
 
     void IslandObjectsDeavtivateAtivate()
     {
-        Collider[] despawnObjectsCollider = Physics.OverlapSphere(transform.position, 600f, playerMask);
+        Collider[] despawnObjectsCollider = Physics.OverlapSphere(transform.position, 600f, playerMask);      //600
         if (despawnObjectsCollider.Length == 0) //deactivate objects
         {
             if (thingsOnIslandActive == true)
