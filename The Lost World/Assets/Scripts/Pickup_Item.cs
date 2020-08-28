@@ -32,7 +32,7 @@ public class Pickup_Item : MonoBehaviour
             if (colliders.Length > 0)
             {
                 Pickup_Button.SetActive(true);
-                Pickup_Button.transform.Find("Item_Name").GetComponent<TextMeshProUGUI>().text = "Pick '" + colliders[0].gameObject.tag + "'";
+                Pickup_Button.transform.Find("Item_Name").GetComponent<TextMeshProUGUI>().text = "Collect '" + colliders[0].gameObject.tag + "'";
 
                 if (Input.GetKeyDown(KeyCode.E))
                 {
