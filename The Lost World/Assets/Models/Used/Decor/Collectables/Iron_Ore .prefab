@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4868029925245412023}
   m_Layer: 12
   m_Name: 'Iron_Ore '
-  m_TagString: iron_ore
+  m_TagString: Iron ore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,7 +106,7 @@ PrefabInstance:
     - target: {fileID: 7138555997840041944, guid: f02a4c3f3133264478ca85d6249db1e5,
         type: 3}
       propertyPath: m_TagString
-      value: iron_ore
+      value: Iron ore
       objectReference: {fileID: 0}
     - target: {fileID: 8876006450899407620, guid: f02a4c3f3133264478ca85d6249db1e5,
         type: 3}

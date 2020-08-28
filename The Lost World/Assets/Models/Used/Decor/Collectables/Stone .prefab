@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 2422888887451832036}
   m_Layer: 12
   m_Name: 'Stone '
-  m_TagString: stone
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,6 +109,11 @@ PrefabInstance:
     - target: {fileID: 7244641702284421792, guid: 156edd2ecea1ace40ab85920d11d59ae,
         type: 3}
       propertyPath: m_Name
+      value: Stone
+      objectReference: {fileID: 0}
+    - target: {fileID: 7244641702284421792, guid: 156edd2ecea1ace40ab85920d11d59ae,
+        type: 3}
+      propertyPath: m_TagString
       value: Stone
       objectReference: {fileID: 0}
     - target: {fileID: 8986639702102040188, guid: 156edd2ecea1ace40ab85920d11d59ae,

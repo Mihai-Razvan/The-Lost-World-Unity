@@ -16,14 +16,23 @@ public class Inventory_slots : MonoBehaviour, IPointerDownHandler, IDragHandler,
     void Start()
     {
         transform.Find("Item_Image").gameObject.SetActive(false);
+
+        if (Slot_Number > 15)
+            transform.Find("Highlight").gameObject.SetActive(false);
     }
 
 
     void Update()
     {
+        
+        if(FindObjectOfType<Handing_Item>().SelectedItemBarSlot == Slot_Number - 15 && Slot_Number > 15)
+            transform.Find("Highlight").gameObject.SetActive(true);
+        else
+            transform.Find("Highlight").gameObject.SetActive(false);
+        
         itemQuantity = FindObjectOfType<Inventory>().Slot_Item_Quantity[Slot_Number];
         itemCode = FindObjectOfType<Inventory>().Slot_Item_Code[Slot_Number];
-
+        
 
 
         if (itemCode != 0 && itemQuantity != 0)

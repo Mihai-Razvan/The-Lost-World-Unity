@@ -130,43 +130,47 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void AddToInventory()
     {
-            for (int i = 1; i <= 24 && quantityToAdd != 0; i++)
-                if (Slot_Item_Code[i] == itemCodeToAdd)
+        if (quantityToAdd == 0)
+            itemCodeToAdd = 0;
+
+        for (int i = 1; i <= 24 && quantityToAdd != 0; i++)
+            if (Slot_Item_Code[i] == itemCodeToAdd)
+            {
+                if (Slot_Item_Quantity[i] + quantityToAdd <= FindObjectOfType<List_Of_Items>().Item_Stack_Number[itemCodeToAdd])
                 {
-                    if (Slot_Item_Quantity[i] + quantityToAdd <= FindObjectOfType<List_Of_Items>().Item_Stack_Number[itemCodeToAdd])
+                    Slot_Item_Quantity[i] += quantityToAdd;
+                    quantityToAdd = 0;
+                }
+                else
+                {
+                    quantityToAdd -= FindObjectOfType<List_Of_Items>().Item_Stack_Number[itemCodeToAdd] - Slot_Item_Quantity[i];
+                    Slot_Item_Quantity[i] = FindObjectOfType<List_Of_Items>().Item_Stack_Number[itemCodeToAdd];
+                }
+
+            }
+
+
+        if (quantityToAdd != 0)                                                                                      //s-a adaugat  in  sloturile unde eradeja  acum cauta un slot   gol
+            for (int i = 1; i <= 24 && quantityToAdd != 0; i++)
+            {
+                if (Slot_Item_Code[i] == 0)                                                                          //SLOTU E GOL
+                {
+                    Slot_Item_Code[i] = itemCodeToAdd;
+
+                    if (quantityToAdd <= FindObjectOfType<List_Of_Items>().Item_Stack_Number[itemCodeToAdd])
                     {
-                        Slot_Item_Quantity[i] += quantityToAdd;
+                        Slot_Item_Quantity[i] = quantityToAdd;
                         quantityToAdd = 0;
                     }
                     else
                     {
-                        quantityToAdd -= FindObjectOfType<List_Of_Items>().Item_Stack_Number[itemCodeToAdd] - Slot_Item_Quantity[i];
                         Slot_Item_Quantity[i] = FindObjectOfType<List_Of_Items>().Item_Stack_Number[itemCodeToAdd];
-                    }
-
-                }
-                
-
-            if (quantityToAdd != 0)                                                                                      //s-a adaugat  in  sloturile unde eradeja  acum cauta un slot   gol
-                for (int i = 1; i <= 24 && quantityToAdd != 0; i++)
-                {
-                    if (Slot_Item_Code[i] == 0)                                                                          //SLOTU E GOL
-                    {
-                        Slot_Item_Code[i] = itemCodeToAdd;
-                        
-                        if (quantityToAdd <= FindObjectOfType<List_Of_Items>().Item_Stack_Number[itemCodeToAdd])
-                        {   
-                            Slot_Item_Quantity[i] = quantityToAdd;
-                            quantityToAdd = 0;
-                        }
-                        else
-                        {
-                            Slot_Item_Quantity[i] = FindObjectOfType<List_Of_Items>().Item_Stack_Number[itemCodeToAdd];
-                            quantityToAdd -= Slot_Item_Quantity[i];
-                        }
+                        quantityToAdd -= Slot_Item_Quantity[i];
                     }
                 }
-        
+            }
+
+
     }
 
     public void ChangeToCraftingButton()

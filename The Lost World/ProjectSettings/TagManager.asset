@@ -9,16 +9,15 @@ TagManager:
   - Inventory_Slot
   - Furnace_Inventory_Slot
   - Furnace
-  - stone
   - Building
   - Relief
   - Snap_Floor_Collider
   - MiniIsland
-  - branch
-  - iron_ore
-  - apple
-  - Branch
   - Bee
+  - Apple
+  - Wood
+  - Stone
+  - Iron ore
   layers:
   - Default
   - TransparentFX

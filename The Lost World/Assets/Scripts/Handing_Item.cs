@@ -32,7 +32,7 @@ public class Handing_Item : MonoBehaviour
 
     void Start()
     {
-
+        
     }
 
 
@@ -64,13 +64,15 @@ public class Handing_Item : MonoBehaviour
             }
 
             SelectedItemBarSlot = 1;
+            if (FindObjectOfType<Inventory>().Slot_Item_Quantity[16] <= 0)
+                FindObjectOfType<Inventory>().Slot_Item_Code[16] = -1;
+
+            SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[16];
             handing_placeable = false;
             handing_Tool = false;
             tool_In_Hands.SetActive(false);
 
-            if (FindObjectOfType<Inventory>().Slot_Item_Quantity[16] <= 0)
-                FindObjectOfType<Inventory>().Slot_Item_Code[16] = -1;
-            SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[16];
+            
 
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -82,13 +84,15 @@ public class Handing_Item : MonoBehaviour
             }
 
             SelectedItemBarSlot = 2;
+            if (FindObjectOfType<Inventory>().Slot_Item_Quantity[17] <= 0)
+                FindObjectOfType<Inventory>().Slot_Item_Code[17] = -1;
+
+            SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[17];
             handing_placeable = false;
             handing_Tool = false;
             tool_In_Hands.SetActive(false);
 
-            if (FindObjectOfType<Inventory>().Slot_Item_Quantity[17] <= 0)
-                FindObjectOfType<Inventory>().Slot_Item_Code[17] = -1;
-            SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[17];
+           
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
@@ -99,13 +103,15 @@ public class Handing_Item : MonoBehaviour
             }
 
             SelectedItemBarSlot = 3;
+            if (FindObjectOfType<Inventory>().Slot_Item_Quantity[18] <= 0)
+                FindObjectOfType<Inventory>().Slot_Item_Code[18] = -1;
+
+            SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[18];
             handing_placeable = false;
             handing_Tool = false;
             tool_In_Hands.SetActive(false);
 
-            if (FindObjectOfType<Inventory>().Slot_Item_Quantity[18] <= 0)
-                FindObjectOfType<Inventory>().Slot_Item_Code[18] = -1;
-            SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[18];
+            
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
@@ -116,13 +122,15 @@ public class Handing_Item : MonoBehaviour
             }
 
             SelectedItemBarSlot = 4;
+            if (FindObjectOfType<Inventory>().Slot_Item_Quantity[19] <= 0)
+                FindObjectOfType<Inventory>().Slot_Item_Code[19] = -1;
+
+            SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[19];
             handing_placeable = false;
             handing_Tool = false;
             tool_In_Hands.SetActive(false);
 
-            if (FindObjectOfType<Inventory>().Slot_Item_Quantity[19] <= 0)
-                FindObjectOfType<Inventory>().Slot_Item_Code[19] = -1;
-            SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[19];
+            
         }
         else if (Input.GetKeyDown(KeyCode.Alpha5))
         {
@@ -133,13 +141,15 @@ public class Handing_Item : MonoBehaviour
             }
 
             SelectedItemBarSlot = 5;
+            if (FindObjectOfType<Inventory>().Slot_Item_Quantity[20] <= 0)
+                FindObjectOfType<Inventory>().Slot_Item_Code[20] = -1;
+
+            SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[20];
             handing_placeable = false;
             handing_Tool = false;
             tool_In_Hands.SetActive(false);
 
-            if (FindObjectOfType<Inventory>().Slot_Item_Quantity[20] <= 0)
-                FindObjectOfType<Inventory>().Slot_Item_Code[20] = -1;
-            SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[20];
+            
         }
         else if (Input.GetKeyDown(KeyCode.Alpha6))
         {
@@ -150,13 +160,15 @@ public class Handing_Item : MonoBehaviour
             }
 
             SelectedItemBarSlot = 6;
+            if (FindObjectOfType<Inventory>().Slot_Item_Quantity[21] <= 0)
+                FindObjectOfType<Inventory>().Slot_Item_Code[21] = -1;
+
+            SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[21];
             handing_placeable = false;
             handing_Tool = false;
             tool_In_Hands.SetActive(false);
 
-            if (FindObjectOfType<Inventory>().Slot_Item_Quantity[21] <= 0)
-                FindObjectOfType<Inventory>().Slot_Item_Code[21] = -1;
-            SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[21];
+            
         }
         else if (Input.GetKeyDown(KeyCode.Alpha7))
         {
@@ -167,13 +179,15 @@ public class Handing_Item : MonoBehaviour
             }
 
             SelectedItemBarSlot = 7;
+            if (FindObjectOfType<Inventory>().Slot_Item_Quantity[22] <= 0)
+                FindObjectOfType<Inventory>().Slot_Item_Code[22] = -1;
+
+            SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[2];
             handing_placeable = false;
             handing_Tool = false;
             tool_In_Hands.SetActive(false);
 
-            if (FindObjectOfType<Inventory>().Slot_Item_Quantity[22] <= 0)
-                FindObjectOfType<Inventory>().Slot_Item_Code[22] = -1;
-            SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[2];
+            
         }
         else if (Input.GetKeyDown(KeyCode.Alpha8))
         {
@@ -183,14 +197,16 @@ public class Handing_Item : MonoBehaviour
                 Destroy(FindObjectOfType<Place_Prefab>().Prefab_In_Hand.gameObject);
             }
 
-                SelectedItemBarSlot = 8;
+            SelectedItemBarSlot = 8;
+            if (FindObjectOfType<Inventory>().Slot_Item_Quantity[23] <= 0)
+                FindObjectOfType<Inventory>().Slot_Item_Code[23] = -1;
+
+            SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[23];
             handing_placeable = false;
             handing_Tool = false;
             tool_In_Hands.SetActive(false);
 
-            if (FindObjectOfType<Inventory>().Slot_Item_Quantity[23] <= 0)
-                FindObjectOfType<Inventory>().Slot_Item_Code[23] = -1;
-            SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[23];
+           
         }
         else if (Input.GetKeyDown(KeyCode.Alpha9))
         {
@@ -201,13 +217,15 @@ public class Handing_Item : MonoBehaviour
             }
 
             SelectedItemBarSlot = 9;
+            if (FindObjectOfType<Inventory>().Slot_Item_Quantity[24] <= 0)
+                FindObjectOfType<Inventory>().Slot_Item_Code[24] = -1;
+
+            SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[24];
             handing_placeable = false;
             handing_Tool = false;
             tool_In_Hands.SetActive(false);
 
-            if (FindObjectOfType<Inventory>().Slot_Item_Quantity[24] <= 0)
-                FindObjectOfType<Inventory>().Slot_Item_Code[24] = -1;
-            SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[24];
+            
         }
         else if (Input.GetKeyDown(KeyCode.X))    // daca ai ceva in mana sa nu mai ai
         {
@@ -224,10 +242,7 @@ public class Handing_Item : MonoBehaviour
             tool_In_Hands.SetActive(false);
         }
 
-        
-        if (FindObjectOfType<Inventory>().Slot_Item_Quantity[SelectedItemBarSlot + 15] <= 0)
-            FindObjectOfType<Inventory>().Slot_Item_Code[SelectedItemBarSlot + 15] = -1;
-        SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[SelectedItemBarSlot + 15];
+      
     }
 
 }

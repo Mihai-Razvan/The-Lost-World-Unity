@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Pickup_Item : MonoBehaviour
 {
@@ -14,48 +15,58 @@ public class Pickup_Item : MonoBehaviour
     private LayerMask animalMask;
     [SerializeField]
     private GameObject player;
+    [SerializeField]
+    private GameObject Pickup_Button;   //E-u ala de apare pe ecran sa stie playeru pe ce sa apese
     void Start()
     {
-        
+        Pickup_Button.SetActive(false);
     }
 
    
     void Update()
     {
-        
-        if (Input.GetKeyDown(KeyCode.E))
-        {   
-            //fac cu capsule in loc de ray ca nush dc nu merge cu ray
-            Collider[] colliders = Physics.OverlapCapsule(Camera.main.transform.position, Camera.main.transform.position + Camera.main.transform.forward * DetectionCapsuleLength, DetectionCapsuleRadius, CollectablesMask);                 
+        //fac cu capsule in loc de ray ca nush dc nu merge cu ray 
+        if (FindObjectOfType<Place_Building>().Building_In_Hand == null && FindObjectOfType<Place_Prefab>().Prefab_In_Hand == null)     //sa nu poti aduna cand pui cladiri
+        {
+            Collider[] colliders = Physics.OverlapCapsule(Camera.main.transform.position, Camera.main.transform.position + Camera.main.transform.forward * DetectionCapsuleLength, DetectionCapsuleRadius, CollectablesMask);
             if (colliders.Length > 0)
             {
-                FindObjectOfType<Inventory>().quantityToAdd = 1;
+                Pickup_Button.SetActive(true);
+                Pickup_Button.transform.Find("Item_Name").GetComponent<TextMeshProUGUI>().text = "Pick '" + colliders[0].gameObject.tag + "'";
 
-                if (colliders[0].gameObject.tag == "branch")
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    FindObjectOfType<Inventory>().itemCodeToAdd = 1;
-                    Destroy(colliders[0].transform.parent.gameObject);
+                    FindObjectOfType<Inventory>().quantityToAdd = 1;
+
+                    if (colliders[0].gameObject.tag == "Wood")
+                    {
+                        FindObjectOfType<Inventory>().itemCodeToAdd = 1;
+                        Destroy(colliders[0].transform.parent.gameObject);
+                    }
+                    else if (colliders[0].gameObject.tag == "Iron ore")
+                    {
+                        FindObjectOfType<Inventory>().itemCodeToAdd = 3;
+                        Destroy(colliders[0].transform.parent.gameObject);
+                    }
+                    else if (colliders[0].gameObject.tag == "Stone")
+                    {
+                        FindObjectOfType<Inventory>().itemCodeToAdd = 5;
+                        Destroy(colliders[0].transform.parent.gameObject);    //distruge si punctu la care e atasat
+                    }
+                    else if (colliders[0].gameObject.tag == "Apple")
+                    {
+                        FindObjectOfType<Inventory>().itemCodeToAdd = 11;
+                        Destroy(colliders[0].gameObject);    //maru nu are pct ca nu trebuie si optimizare
+                        BeeAttract();
+                    }
+
                 }
-                else if (colliders[0].gameObject.tag == "iron_ore")
-                {
-                    FindObjectOfType<Inventory>().itemCodeToAdd = 3;
-                    Destroy(colliders[0].transform.parent.gameObject);
-                }
-                else if (colliders[0].gameObject.tag == "stone")
-                {
-                    FindObjectOfType<Inventory>().itemCodeToAdd = 5;
-                    Destroy(colliders[0].transform.parent.gameObject);    //distruge si punctu la care e atasat
-                }
-                else if (colliders[0].gameObject.tag == "apple")
-                {
-                    FindObjectOfType<Inventory>().itemCodeToAdd = 11;
-                    Destroy(colliders[0].gameObject);    //maru nu are pct ca nu trebuie si optimizare
-                    BeeAttract();
-                }
-                   
             }
-
+            else
+                Pickup_Button.SetActive(false);
         }
+        else
+            Pickup_Button.SetActive(false);
     }
 
 
