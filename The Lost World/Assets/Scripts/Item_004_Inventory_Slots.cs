@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class Item_004_Inventory_Slots : MonoBehaviour, IPointerDownHandler, IDragHandler, IDropHandler
+public class Item_004_Inventory_Slots : MonoBehaviour, IPointerDownHandler, IDragHandler, IDropHandler, IPointerEnterHandler
 {
     public int itemCode;               //codu itemului din  slot
     [SerializeField]
@@ -38,6 +38,7 @@ public class Item_004_Inventory_Slots : MonoBehaviour, IPointerDownHandler, IDra
             transform.Find("Quantity").gameObject.SetActive(false);
         }
     }
+
 
 
 
@@ -135,6 +136,12 @@ public class Item_004_Inventory_Slots : MonoBehaviour, IPointerDownHandler, IDra
         }
 
 
+    }
+
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        FindObjectOfType<Inventory>().itemCodeHovered = itemCode;
     }
 
 

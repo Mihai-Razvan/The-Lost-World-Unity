@@ -27,9 +27,10 @@ public class Inventory_slots : MonoBehaviour, IPointerDownHandler, IDragHandler,
         
         if(FindObjectOfType<Handing_Item>().SelectedItemBarSlot == Slot_Number - 15 && Slot_Number > 15)
             transform.Find("Highlight").gameObject.SetActive(true);
-        else
+        else if(Slot_Number > 15)
             transform.Find("Highlight").gameObject.SetActive(false);
         
+
         itemQuantity = FindObjectOfType<Inventory>().Slot_Item_Quantity[Slot_Number];
         itemCode = FindObjectOfType<Inventory>().Slot_Item_Code[Slot_Number];
         

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 
 public class Handing_Item : MonoBehaviour
@@ -16,6 +17,7 @@ public class Handing_Item : MonoBehaviour
     [SerializeField]
     public GameObject Building_Spawn_Position;
     public RaycastHit hit;
+    
   
 
     //pt scriptu  ColorPlacingChange 
@@ -38,8 +40,17 @@ public class Handing_Item : MonoBehaviour
 
     void Update()
     {
-        SelectItemSlot();
-        UseTool();
+        if (FindObjectOfType<Inventory>().inventory_craftingIsActive == false)
+        {
+            SelectItemSlot();
+            UseTool();
+            Eat();
+        }
+
+        if (handing_placeable == true || handing_Tool == true)
+            FindObjectOfType<Buttons>().RemoveButton.gameObject.SetActive(true);
+        else
+            FindObjectOfType<Buttons>().RemoveButton.gameObject.SetActive(false);
     }
 
 
@@ -48,8 +59,27 @@ public class Handing_Item : MonoBehaviour
         if (SelectedItemCode == 12)    //spear
         {
             Item_012.SetActive(true);
+
             tool_In_Hands = Item_012;
         }       
+    }
+
+
+    void Eat()
+    {
+        if (SelectedItemCode == 11)   //apple
+        {
+            FindObjectOfType<Buttons>().EatButton.SetActive(true);
+            FindObjectOfType<Buttons>().EatButton.transform.Find("Food_Name").GetComponent<TextMeshProUGUI>().text = "Eat 'Apple'";
+        }
+        else if (SelectedItemCode == 13)  //honeycomb
+        {
+            FindObjectOfType<Buttons>().EatButton.SetActive(true);
+            FindObjectOfType<Buttons>().EatButton.transform.Find("Food_Name").GetComponent<TextMeshProUGUI>().text = "Eat 'Honeycomb'";
+        }
+        else
+
+            FindObjectOfType<Buttons>().EatButton.SetActive(false);
     }
 
 

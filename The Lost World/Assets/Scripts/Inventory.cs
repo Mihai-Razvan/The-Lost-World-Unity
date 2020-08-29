@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler
+public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField]
     private GameObject player;
@@ -82,7 +82,15 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
                 ImageOnMouse.GetComponent<Image>().sprite = FindObjectOfType<List_Of_Items>().Inventory_Sprite[InitialSlotItemCodeDrag];
             }
             else
-                ImageOnMouse.gameObject.SetActive(false); ;
+                ImageOnMouse.gameObject.SetActive(false);
+
+            if (Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                InitialSlotNumberDrag = -1;
+                InitialSlotItemCodeDrag = -1;
+                InitialSlotQuantityDrag = -1;
+                Initial_Slot_Gameobject = null;
+            }
         }
         
 
@@ -225,5 +233,12 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         eventData.pointerPress.GetComponent<Inventory_slots>().itemCode = InitialSlotItemCodeDrag;
         eventData.pointerPress.GetComponent<Inventory_slots>().itemQuantity = InitialSlotQuantityDrag;
     }
+
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        
+    }
+    
 
 }

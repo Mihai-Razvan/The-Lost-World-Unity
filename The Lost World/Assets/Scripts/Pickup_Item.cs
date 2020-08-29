@@ -15,11 +15,10 @@ public class Pickup_Item : MonoBehaviour
     private LayerMask animalMask;
     [SerializeField]
     private GameObject player;
-    [SerializeField]
-    private GameObject Pickup_Button;   //E-u ala de apare pe ecran sa stie playeru pe ce sa apese
+   
     void Start()
     {
-        Pickup_Button.SetActive(false);
+        
     }
 
    
@@ -31,8 +30,8 @@ public class Pickup_Item : MonoBehaviour
             Collider[] colliders = Physics.OverlapCapsule(Camera.main.transform.position, Camera.main.transform.position + Camera.main.transform.forward * DetectionCapsuleLength, DetectionCapsuleRadius, CollectablesMask);
             if (colliders.Length > 0)
             {
-                Pickup_Button.SetActive(true);
-                Pickup_Button.transform.Find("Item_Name").GetComponent<TextMeshProUGUI>().text = "Collect '" + colliders[0].gameObject.tag + "'";
+                FindObjectOfType<Buttons>().Pickup_Button.SetActive(true);
+                FindObjectOfType<Buttons>().Pickup_Button.transform.Find("Item_Name").GetComponent<TextMeshProUGUI>().text = "Collect '" + colliders[0].gameObject.tag + "'";
 
                 if (Input.GetKeyDown(KeyCode.E))
                 {
@@ -63,10 +62,10 @@ public class Pickup_Item : MonoBehaviour
                 }
             }
             else
-                Pickup_Button.SetActive(false);
+                FindObjectOfType<Buttons>().Pickup_Button.SetActive(false);
         }
         else
-            Pickup_Button.SetActive(false);
+            FindObjectOfType<Buttons>().Pickup_Button.SetActive(false);
     }
 
 
