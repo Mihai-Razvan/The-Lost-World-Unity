@@ -18,6 +18,8 @@ TagManager:
   - Wood
   - Stone
   - Iron ore
+  - Bridge
+  - Snap_Bridge_Collider
   layers:
   - Default
   - TransparentFX
@@ -37,7 +39,7 @@ TagManager:
   - Floor
   - Animal
   - Mini-Island
-  - 
+  - Other-Prefab
   - 
   - 
   - 

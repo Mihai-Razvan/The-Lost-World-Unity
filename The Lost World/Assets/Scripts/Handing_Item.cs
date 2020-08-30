@@ -212,7 +212,7 @@ public class Handing_Item : MonoBehaviour
             if (FindObjectOfType<Inventory>().Slot_Item_Quantity[22] <= 0)
                 FindObjectOfType<Inventory>().Slot_Item_Code[22] = -1;
 
-            SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[2];
+            SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[22];
             handing_placeable = false;
             handing_Tool = false;
             tool_In_Hands.SetActive(false);

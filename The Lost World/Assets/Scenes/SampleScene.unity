@@ -1000,8 +1000,8 @@ MonoBehaviour:
   InitialSlotNumberDrag: 0
   InitialSlotItemCodeDrag: 0
   InitialSlotQuantityDrag: 0
-  Slot_Item_Code: 070000000100000003000000050000000600000006000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000008000000090000000d000000000000000000000000000000000000000000000000000000
-  Slot_Item_Quantity: 3200000032000000320000003200000032000000030000000000000000000000000000000000000000000000000000000000000000000000000000000000000032000000320000003200000032000000000000000000000000000000000000000000000000000000
+  Slot_Item_Code: 070000000100000003000000050000000600000006000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000008000000090000000d0000000e0000000e0000000e0000000e0000000e00000000000000
+  Slot_Item_Quantity: 3200000032000000320000003200000032000000030000000000000000000000000000000000000000000000000000000000000000000000000000000000000032000000320000003200000032000000320000003200000032000000320000003200000000000000
   quantityToAdd: 0
   itemCodeToAdd: 0
   SelectedItemBarSlot: 0
@@ -1053,7 +1053,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a4b8fef6cac06314991794fd97f74264, type: 3}
   - {fileID: 21300000, guid: f7fb0cf08ce5b6048bb2031040db2930, type: 3}
   - {fileID: 21300000, guid: cf8e15ea1ad0f864ebfb44add34065b4, type: 3}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: fd44bed833ee45b409dcd4c575bc3578, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -1074,7 +1074,7 @@ MonoBehaviour:
   - Apple
   - Spear
   - Honeycomb
-  - 
+  - Bridge
   - 
   - 
   - 
@@ -1141,7 +1141,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 101224776}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.29, y: 2.51, z: 5.78}
+  m_LocalPosition: {x: 0.29, y: 2.5, z: 5.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 446034142}
@@ -9739,17 +9739,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a83943162b74f64286edf5c9d367c64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item_008: {fileID: 3722863607514799801, guid: 06ea0a08a070202498d81c1766bacec8,
-    type: 3}
+  playerPos: {fileID: 446034142}
+  other_Preab_Mask:
+    serializedVersion: 2
+    m_Bits: 262144
   Prefab_In_Hand: {fileID: 0}
   Building_Spawn_Position: {fileID: 101224776}
   Floor_placeable_Surface_Mask:
     serializedVersion: 2
     m_Bits: 5632
-  Floor_Mask:
+  Bridge_placeable_Surface_Mask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 5632
   isSnapped: 0
+  Item_008: {fileID: 3722863607514799801, guid: 06ea0a08a070202498d81c1766bacec8,
+    type: 3}
+  Item_014: {fileID: 130516188139543142, guid: 51dccf8af49f070458bfa9fdfd5ab5f4, type: 3}
 --- !u!114 &1019792459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19655,6 +19660,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
         type: 3}
+      propertyPath: itemCode.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
+        type: 3}
+      propertyPath: itemQuantity.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
+        type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -19664,6 +19679,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: fd44bed833ee45b409dcd4c575bc3578,
         type: 3}
+    - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
+        type: 3}
+      propertyPath: Item_Code_Has_To_Craft
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
+        type: 3}
+      propertyPath: itemCode.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
+        type: 3}
+      propertyPath: itemCode.Array.data[2]
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3da4af9806bc6f479944953db00a2f0, type: 3}
 --- !u!224 &2021076566 stripped
