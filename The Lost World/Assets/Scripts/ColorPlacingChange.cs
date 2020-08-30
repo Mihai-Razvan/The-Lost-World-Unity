@@ -17,6 +17,7 @@ public class ColorPlacingChange : MonoBehaviour
     private int numberOfMaterials;
     public bool placeable;
 
+   
     void Update()
     {
         
@@ -34,25 +35,33 @@ public class ColorPlacingChange : MonoBehaviour
 
         if (numberOfCollidingObjects == 0)
         {
-            /*
+
             if (gameObject.tag != "Bridge")     //ca la bridge sa fie rosu si daca e in aer si nu e snapped 
             {
                 placeable = true;
                 gameObject.GetComponent<Renderer>().materials = OkmaterialsArray;
             }
-            else if (Physics.Raycast(FindObjectOfType<Place_Prefab>().playerPos.position, -transform.up, 10f, FindObjectOfType<Place_Prefab>().Bridge_placeable_Surface_Mask) == true || FindObjectOfType<Place_Prefab>().isSnapped == true) //e in aer si nu e prin de alt bridge
+            else if (FindObjectOfType<PlayerMovement>().isGrounded == true)         //e pe pod si se intampla chestii
             {
-                placeable = true;
-                gameObject.GetComponent<Renderer>().materials = OkmaterialsArray;
+                if (Physics.CheckSphere(FindObjectOfType<PlayerMovement>().groundCheck.position, 0.4f, FindObjectOfType<Place_Prefab>().bridgeMask) && FindObjectOfType<Place_Prefab>().isSnapped == true)      //daca e pe pod sa fie si snapped sa nu poti pune pe langa pod
+                {
+                    placeable = true;
+                    gameObject.GetComponent<Renderer>().materials = OkmaterialsArray;
+                }
+                else if (Physics.CheckSphere(FindObjectOfType<PlayerMovement>().groundCheck.position, 0.4f, FindObjectOfType<Place_Prefab>().groundedBUTnotbridgeMak))
+                {
+                    placeable = true;
+                    gameObject.GetComponent<Renderer>().materials = OkmaterialsArray;
+                }
+                else
+                {
+                    gameObject.GetComponent<Renderer>().materials = CollidingmaterialsArray;
+                    placeable = false;
+                }
             }
-            else
-            {
-                gameObject.GetComponent<Renderer>().materials = CollidingmaterialsArray;
-                placeable = false;     //e pod si nu se respecta cond 2 adica e in aer da e snap sau nu e in aer
-            }
-            */
-            placeable = true;
-            gameObject.GetComponent<Renderer>().materials = OkmaterialsArray;
+            
+          //  placeable = true;
+          //  gameObject.GetComponent<Renderer>().materials = OkmaterialsArray;
         }
         else
         {
@@ -86,7 +95,7 @@ public class ColorPlacingChange : MonoBehaviour
     }  
 
     void OnCollisionExit(Collision collision)
-    {
+    { 
         if (gameObject.layer == 13)
         {
             if (collision.collider.gameObject.layer == 11 || collision.collider.gameObject.layer == 13 || collision.collider.gameObject.layer == 18)

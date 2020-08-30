@@ -14,7 +14,8 @@ public class Special_Item : MonoBehaviour
     private float acceleration;
     private bool isLanded;
     public bool useJetpack;     //sa nu poti merge normal daca folosesti jetpacku pt ca se aduna vitezele si se poate exploata
-    
+    [SerializeField]
+    private LayerMask islandMask;
 
     void Start()
     {
@@ -30,7 +31,7 @@ public class Special_Item : MonoBehaviour
 
     void Jetpack()
     {
-        isLanded = Physics.Raycast(FindObjectOfType<PlayerMovement>().player.transform.position, -transform.up, 5, FindObjectOfType<PlayerMovement>().GroundMask);  // are ceva sub
+        isLanded = Physics.Raycast(FindObjectOfType<PlayerMovement>().player.transform.position, -transform.up, 5, islandMask);  // are ceva sub
 
         if (Input.GetKey(KeyCode.Space) && FindObjectOfType<PlayerMovement>().MovementFrozen == false)
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Snap_Bridge : MonoBehaviour
 {
-    // Start is called before the first frame update
+                                                               ///scriptu asta se atrinuie la bridge pt snap si e numai cand plasezi cand o lasi dispare scriptu ///
     void Start()
     {
         

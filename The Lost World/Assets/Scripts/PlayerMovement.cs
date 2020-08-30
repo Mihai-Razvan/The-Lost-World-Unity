@@ -15,13 +15,14 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 velocity;
     float gravity = -20f;
     [SerializeField]
-    Transform groundCheck;
+    public Transform groundCheck;
     [SerializeField]
     float sphereRadius = 0.4f;
     [SerializeField]
     public bool isGrounded;
     [SerializeField]
     public LayerMask GroundMask;
+    [SerializeField]
     public bool MovementFrozen;  //daca e deschis vreun inventar sau ceva
     
 
