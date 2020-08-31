@@ -43,7 +43,7 @@ public class ColorPlacingChange : MonoBehaviour
             }
             else if (FindObjectOfType<PlayerMovement>().isGrounded == true)         //e pe pod si se intampla chestii
             {
-                if (Physics.CheckSphere(FindObjectOfType<PlayerMovement>().groundCheck.position, 0.4f, FindObjectOfType<Place_Prefab>().bridgeMask) && FindObjectOfType<Place_Prefab>().isSnapped == true)      //daca e pe pod sa fie si snapped sa nu poti pune pe langa pod
+                if (Physics.CheckSphere(FindObjectOfType<PlayerMovement>().groundCheck.position, 0.4f, FindObjectOfType<Place_Prefab>().Floating_Prefabs_Mask) && FindObjectOfType<Place_Prefab>().isSnapped == true)      //daca e pe pod sa fie si snapped sa nu poti pune pe langa pod
                 {
                     placeable = true;
                     gameObject.GetComponent<Renderer>().materials = OkmaterialsArray;

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8038305803722507877}
   - component: {fileID: 5217767355224404655}
   m_Layer: 0
-  m_Name: Bridge_Stairs
+  m_Name: Ramp Wooden
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

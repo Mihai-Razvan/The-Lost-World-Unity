@@ -156,7 +156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2446378242579983962}
   m_Layer: 18
-  m_Name: 'Bridge_Stairs '
+  m_Name: Ramp_Wooden
   m_TagString: Floating_Prefabs
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
