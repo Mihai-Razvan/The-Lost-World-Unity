@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3688861275136479240}
   m_Layer: 18
   m_Name: Bridge
-  m_TagString: Bridge
+  m_TagString: Floating_Prefabs
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 5291580948628491299}
   m_Layer: 0
   m_Name: Snap_Bridge_Colliders
-  m_TagString: Snap_Bridge_Collider
+  m_TagString: Snap_B_S_F_Collider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.55, z: 0.5}
+  m_Size: {x: 0.55, y: 0.55, z: 0.55}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &6827207693125321835
 Rigidbody:
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 1010854859306094805}
   m_Layer: 0
   m_Name: 'Snap_Bridge_Colliders '
-  m_TagString: Snap_Bridge_Collider
+  m_TagString: Snap_B_S_F_Collider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -174,7 +174,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.55, z: 0.5}
+  m_Size: {x: 0.55, y: 0.55, z: 0.55}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &6579728839273991610
 PrefabInstance:
@@ -247,6 +247,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 797753189956979390, guid: d2495bed2ec6962428f86d81b12c81f1,
+        type: 3}
+      propertyPath: m_TagString
+      value: Floating_Prefabs
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2495bed2ec6962428f86d81b12c81f1, type: 3}

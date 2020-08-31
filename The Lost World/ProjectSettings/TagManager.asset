@@ -18,8 +18,10 @@ TagManager:
   - Wood
   - Stone
   - Iron ore
-  - Bridge
+  - Snap_B_S_F_Collider
   - Snap_Bridge_Collider
+  - Floating_Prefabs
+  - Bridge
   layers:
   - Default
   - TransparentFX

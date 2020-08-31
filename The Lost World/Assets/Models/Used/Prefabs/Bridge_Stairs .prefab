@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 2446378242579983962}
   m_Layer: 18
   m_Name: 'Bridge_Stairs '
-  m_TagString: Bridge
+  m_TagString: Floating_Prefabs
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 7552281910115590788}
   m_Layer: 0
   m_Name: Snap_Bridge_Collider
-  m_TagString: Snap_Bridge_Collider
+  m_TagString: Snap_B_S_F_Collider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -242,7 +242,7 @@ PrefabInstance:
     - target: {fileID: 6010554753449726842, guid: 71070ae83d283f84b8305e5ee604c06d,
         type: 3}
       propertyPath: m_TagString
-      value: Bridge
+      value: Floating_Prefabs
       objectReference: {fileID: 0}
     - target: {fileID: 6350663848283359680, guid: 71070ae83d283f84b8305e5ee604c06d,
         type: 3}
