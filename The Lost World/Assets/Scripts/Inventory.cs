@@ -65,6 +65,7 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
         if (inventory_craftingIsActive == true)
         {
+            Cursor.visible = true;
             for (int i = 0; i <= 15; i++)
                 if (Slot_Item_Quantity[i] == 0)
                     Slot_Item_Code[i] = 0;
@@ -92,6 +93,8 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
                 Initial_Slot_Gameobject = null;
             }
         }
+        else
+            Cursor.visible = false;
         
 
        /* for (int i = 16; i <= 24; i++)
@@ -101,7 +104,7 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         
 
         Center_Dot.SetActive(!inventory_craftingIsActive);
-        Cursor.visible = inventory_craftingIsActive;
+       // Cursor.visible = inventory_craftingIsActive;
     }
     
 

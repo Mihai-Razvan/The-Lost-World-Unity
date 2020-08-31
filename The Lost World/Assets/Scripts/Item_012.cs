@@ -23,7 +23,7 @@ public class Item_012 : MonoBehaviour
     void Update()
     {
         AnimationTrigger();
-        if (attackedThisRound == false)
+        if (attackedThisRound == false && FindObjectOfType<Inventory>().inventory_craftingIsActive == false)
         {
             Attack();
         }
@@ -32,7 +32,7 @@ public class Item_012 : MonoBehaviour
 
     void AnimationTrigger()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && animator.GetBool("playAnimation") == false)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && animator.GetBool("playAnimation") == false && FindObjectOfType<Inventory>().inventory_craftingIsActive == false)
         {
             animator.SetBool("playAnimation", true);
             animationCooldown = 0;

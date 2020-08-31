@@ -6,7 +6,7 @@ public class Special_Item : MonoBehaviour
 {
     /// Jetpack ///
     [SerializeField]
-    private float flySpeed = 10;              //cu cat zboara
+    private float flySpeed = 100;              //cu cat zboara
     [SerializeField]
     private int MaximumjetpackMoveSpeed = 1000;     //viteza maxima //100 normal
     private int MinimumjetpackMoveSpeed;
@@ -19,7 +19,7 @@ public class Special_Item : MonoBehaviour
 
     void Start()
     {
-        MinimumjetpackMoveSpeed = FindObjectOfType<PlayerMovement>().moveSpeed;  // viteza minima de zbor e viteza normala de mers   
+        MinimumjetpackMoveSpeed = 100;//1 FindObjectOfType<PlayerMovement>().moveSpeed;  // viteza minima de zbor e viteza normala de mers   
     }
 
     
@@ -40,7 +40,7 @@ public class Special_Item : MonoBehaviour
             if (isLanded == false) //sa nu abuzeze sa mearga pe insula mai repede cu jetu
             {
                 if (flySpeed <= MaximumjetpackMoveSpeed)
-                    flySpeed += acceleration * 5 *Time.deltaTime;     //scoate * 5 e pt teste
+                    flySpeed += acceleration * 50 *Time.deltaTime;     //scoate * 5 e pt teste
             }
             else if (flySpeed > MinimumjetpackMoveSpeed)
                 flySpeed -= acceleration * 5 * Time.deltaTime;

@@ -10,6 +10,7 @@ public class Place_Prefab : MonoBehaviour
     private LayerMask other_Preab_Mask;       // numa bridge ca sa vada daca playeru e pe bridge
 
     public GameObject Prefab_In_Hand;
+    public bool Has_Prefab_In_Hand;
     [SerializeField]
     public GameObject Building_Spawn_Position;
     [SerializeField]
@@ -34,6 +35,8 @@ public class Place_Prefab : MonoBehaviour
     private GameObject Item_008;    //wooden floor 
     [SerializeField]
     private GameObject Item_014;
+    [SerializeField]
+    private GameObject Item_015;    //stairs
 
     [SerializeField]
     private bool asdadad;
@@ -52,7 +55,7 @@ public class Place_Prefab : MonoBehaviour
 
                    
 
-        if (FindObjectOfType<Handing_Item>().handing_placeable == true)  //aici il muta
+        if (Has_Prefab_In_Hand == true)  //aici il muta
         {
             SnapDetach();     // e snapeed si te departezi sa nu mai ffie snapped si sa fie din nou dupa tine
 
@@ -68,7 +71,7 @@ public class Place_Prefab : MonoBehaviour
                 else if (FindObjectOfType<Handing_Item>().SelectedItemCode == 14)     //bridge
                 {
                     RaycastHit hit2;
-                    asdadad = Physics.Raycast(playerPos.position, -transform.up, out hit2, 5f, other_Preab_Mask);
+                    
                     if (Physics.Raycast(playerPos.position, -transform.up, out hit2, 5f, other_Preab_Mask))            //e pe pod ; situatia asta e daca e in aer merge si fara da ar trebui ca prima buc din pod sa fie la marginea insulei si daca vrei sa faci design nu prea merge
                     {
                         if(hit2.collider.tag == "Bridge")
@@ -76,8 +79,20 @@ public class Place_Prefab : MonoBehaviour
                     }
                     else if (Physics.Raycast(Building_Spawn_Position.transform.position, -transform.up, out hit, 10f, Bridge_placeable_Surface_Mask))
                         Prefab_In_Hand.transform.position = new Vector3(Prefab_In_Hand.transform.position.x, hit.point.y, Prefab_In_Hand.transform.position.z);
-                  //  else //insemna ca e in aer si fiind pod sa se poata prinde de alt pod
-                  //      Prefab_In_Hand.transform.position = new Vector3(Prefab_In_Hand.transform.position.x, Building_Spawn_Position.transform.position.y - 4f, Prefab_In_Hand.transform.position.z);
+              
+                }
+                else if (FindObjectOfType<Handing_Item>().SelectedItemCode == 15)     //stairs
+                {
+                    RaycastHit hit2;
+                    asdadad = Physics.Raycast(playerPos.position, -transform.up, out hit2, 5f, other_Preab_Mask);
+                    if (Physics.Raycast(playerPos.position, -transform.up, out hit2, 5f, other_Preab_Mask))            //e pe pod ; situatia asta e daca e in aer merge si fara da ar trebui ca prima buc din pod sa fie la marginea insulei si daca vrei sa faci design nu prea merge
+                    {
+                        if (hit2.collider.tag == "Bridge")
+                            Prefab_In_Hand.transform.position = new Vector3(Prefab_In_Hand.transform.position.x, Building_Spawn_Position.transform.position.y - 4f, Prefab_In_Hand.transform.position.z);
+                    }
+                    else if (Physics.Raycast(Building_Spawn_Position.transform.position, -transform.up, out hit, 10f, Bridge_placeable_Surface_Mask))
+                        Prefab_In_Hand.transform.position = new Vector3(Prefab_In_Hand.transform.position.x, hit.point.y, Prefab_In_Hand.transform.position.z);
+                    
                 }
             }
 
@@ -99,6 +114,7 @@ public class Place_Prefab : MonoBehaviour
             if (Physics.Raycast(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform.position, -transform.up, out hit, 10f, Floor_placeable_Surface_Mask))
             {
                 FindObjectOfType<Handing_Item>().handing_placeable = true;
+                Has_Prefab_In_Hand = true;
                 Prefab_In_Hand = Instantiate(Item_008, hit.point, Quaternion.Euler(Building_Spawn_Position.transform.rotation.x, Building_Spawn_Position.transform.rotation.y, Building_Spawn_Position.transform.rotation.z));
                 Prefab_In_Hand.transform.GetChild(0).gameObject.AddComponent<ColorPlacingChange>();
             }
@@ -111,19 +127,47 @@ public class Place_Prefab : MonoBehaviour
         else if (FindObjectOfType<Handing_Item>().SelectedItemCode == 14) // place bridge
         {
             RaycastHit hit;
-            if (Physics.Raycast(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform.position, -transform.up, out hit, 10f, Bridge_placeable_Surface_Mask))
+            if (Physics.Raycast(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform.position, -transform.up, out hit, 1f, Bridge_placeable_Surface_Mask))
             {
                 FindObjectOfType<Handing_Item>().handing_placeable = true;
+                Has_Prefab_In_Hand = true;
                 Prefab_In_Hand = Instantiate(Item_014, hit.point, Quaternion.Euler(Building_Spawn_Position.transform.rotation.x, Building_Spawn_Position.transform.rotation.y, Building_Spawn_Position.transform.rotation.z));
                 Prefab_In_Hand.transform.GetChild(0).gameObject.AddComponent<ColorPlacingChange>();
             }
             else         // nu gaseste cv sub inseamna ca nu e pe insulea da sa poata ace snap cu alt pod in aer
             {
                 FindObjectOfType<Handing_Item>().handing_placeable = true;
+                Has_Prefab_In_Hand = true;
                 Vector3 pos = new Vector3(Building_Spawn_Position.transform.position.x, Building_Spawn_Position.transform.position.y - 4f, Building_Spawn_Position.transform.position.z);
                 Prefab_In_Hand = Instantiate(Item_014, pos, Quaternion.Euler(Building_Spawn_Position.transform.rotation.x, Building_Spawn_Position.transform.rotation.y, Building_Spawn_Position.transform.rotation.z));
                 Prefab_In_Hand.transform.GetChild(0).gameObject.AddComponent<ColorPlacingChange>();
             }
+
+
+            Prefab_In_Hand.transform.SetParent(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform);
+            Prefab_In_Hand.transform.localRotation = Quaternion.identity;
+            Prefab_In_Hand.transform.GetChild(0).gameObject.AddComponent<Snap_Bridge>();
+
+        }
+        else if (FindObjectOfType<Handing_Item>().SelectedItemCode == 15) // place stairs
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform.position, -transform.up, out hit, 1f, Bridge_placeable_Surface_Mask))
+            {
+                FindObjectOfType<Handing_Item>().handing_placeable = true;
+                Has_Prefab_In_Hand = true;
+                Prefab_In_Hand = Instantiate(Item_015, hit.point, Quaternion.Euler(Building_Spawn_Position.transform.rotation.x, Building_Spawn_Position.transform.rotation.y, Building_Spawn_Position.transform.rotation.z));
+                Prefab_In_Hand.transform.GetChild(0).gameObject.AddComponent<ColorPlacingChange>();
+            }
+            else         // nu gaseste cv sub inseamna ca nu e pe insulea da sa poata ace snap cu alt pod in aer
+            {
+                FindObjectOfType<Handing_Item>().handing_placeable = true;
+                Has_Prefab_In_Hand = true;
+                Vector3 pos = new Vector3(Building_Spawn_Position.transform.position.x, Building_Spawn_Position.transform.position.y - 4f, Building_Spawn_Position.transform.position.z);
+                Prefab_In_Hand = Instantiate(Item_015, pos, Quaternion.Euler(Building_Spawn_Position.transform.rotation.x, Building_Spawn_Position.transform.rotation.y, Building_Spawn_Position.transform.rotation.z));
+                Prefab_In_Hand.transform.GetChild(0).gameObject.AddComponent<ColorPlacingChange>();
+            }
+
 
             Prefab_In_Hand.transform.SetParent(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform);
             Prefab_In_Hand.transform.localRotation = Quaternion.identity;
@@ -136,6 +180,7 @@ public class Place_Prefab : MonoBehaviour
     void PlacePrefab()   // ui ai handing si apesi sa ramana pe pozitie
     {
         FindObjectOfType<Handing_Item>().handing_placeable = false;
+        Has_Prefab_In_Hand = false;
 
         if (FindObjectOfType<Handing_Item>().SelectedItemCode == 8)  //wooden floor
             Instantiate(Item_008, Prefab_In_Hand.transform.position, Quaternion.Euler(Prefab_In_Hand.transform.rotation.x, Prefab_In_Hand.transform.eulerAngles.y, Prefab_In_Hand.transform.rotation.z));
@@ -144,8 +189,13 @@ public class Place_Prefab : MonoBehaviour
             if((Physics.Raycast(Building_Spawn_Position.transform.position, -transform.up, 10f, Bridge_placeable_Surface_Mask)) == true || isSnapped == true)       //ori e pe cv insula ori daca nu sa ie snapped de alt pod ca sa nu poti pune in aer
                Instantiate(Item_014, Prefab_In_Hand.transform.position, Quaternion.Euler(Prefab_In_Hand.transform.rotation.x, Prefab_In_Hand.transform.eulerAngles.y, Prefab_In_Hand.transform.rotation.z));
         }
+        else if (FindObjectOfType<Handing_Item>().SelectedItemCode == 15)  //stairs
+        {
+            if ((Physics.Raycast(Building_Spawn_Position.transform.position, -transform.up, 10f, Bridge_placeable_Surface_Mask)) == true || isSnapped == true)       //ori e pe cv insula ori daca nu sa ie snapped de alt pod ca sa nu poti pune in aer
+                Instantiate(Item_015, Prefab_In_Hand.transform.position, Quaternion.Euler(Prefab_In_Hand.transform.rotation.x, Prefab_In_Hand.transform.eulerAngles.y, Prefab_In_Hand.transform.rotation.z));
+        }
 
-
+        isSnapped = false;
 
         Destroy(Prefab_In_Hand.gameObject);
 
@@ -181,8 +231,18 @@ public class Place_Prefab : MonoBehaviour
                 else
                     Prefab_In_Hand.transform.position = new Vector3(Building_Spawn_Position.transform.position.x, Building_Spawn_Position.transform.position.y - 4f, Building_Spawn_Position.transform.position.z);
             }
+            else if (FindObjectOfType<Handing_Item>().SelectedItemCode == 15)
+            {
+                RaycastHit hit;
+                if (Physics.Raycast(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform.position, -transform.up, out hit, 10f, Bridge_placeable_Surface_Mask))
+                {
+                    Prefab_In_Hand.transform.position = hit.point;
+                }
+                else
+                    Prefab_In_Hand.transform.position = new Vector3(Building_Spawn_Position.transform.position.x, Building_Spawn_Position.transform.position.y - 4f, Building_Spawn_Position.transform.position.z);
+            }
 
-           Prefab_In_Hand.transform.SetParent(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform);
+            Prefab_In_Hand.transform.SetParent(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform);
            Prefab_In_Hand.transform.localRotation = Quaternion.identity;
             
             

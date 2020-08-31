@@ -69,8 +69,7 @@ public class Spawn_Around_Player : MonoBehaviour
         for (int i = 1; i <= 50; i++)         //spawneaza nori la inceput 
         {
             IslandSpawn();
-            for (int j = 1; j <= 5; j++)
-                AnimalSpawn();
+            AnimalSpawn();
             CloudsSpawn();
         }
         

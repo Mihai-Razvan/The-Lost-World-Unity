@@ -32,7 +32,7 @@ public class MouseLook : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+       //   Cursor.visible = false;
     }
 
     
@@ -40,7 +40,7 @@ public class MouseLook : MonoBehaviour
     {
         if (FindObjectOfType<PlayerMovement>().MovementFrozen == false)                              //sa nu se miste camera sa si pickup cand esti in inventar
         {
-            Cursor.lockState = CursorLockMode.Locked;
+           // Cursor.lockState = CursorLockMode.Locked;
             mouseX = Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
             mouseY = Input.GetAxis("Mouse Y") * rotationSpeed * Time.deltaTime;
 

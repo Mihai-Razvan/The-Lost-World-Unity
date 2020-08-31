@@ -59,7 +59,7 @@ public class Handing_Item : MonoBehaviour
         if (SelectedItemCode == 12)    //spear
         {
             Item_012.SetActive(true);
-
+            handing_Tool = true;
             tool_In_Hands = Item_012;
         }       
     }
@@ -71,11 +71,34 @@ public class Handing_Item : MonoBehaviour
         {
             FindObjectOfType<Buttons>().EatButton.SetActive(true);
             FindObjectOfType<Buttons>().EatButton.transform.Find("Food_Name").GetComponent<TextMeshProUGUI>().text = "Eat 'Apple'";
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                FindObjectOfType<Player_Stats>().playerFood += 10;
+                FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15]--;   
+
+                if (FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] == 0)
+                {
+                    FindObjectOfType<Inventory>().Slot_Item_Code[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] = 0;
+                    FindObjectOfType<Handing_Item>().SelectedItemCode = 0;
+                }
+            }
         }
         else if (SelectedItemCode == 13)  //honeycomb
         {
             FindObjectOfType<Buttons>().EatButton.SetActive(true);
             FindObjectOfType<Buttons>().EatButton.transform.Find("Food_Name").GetComponent<TextMeshProUGUI>().text = "Eat 'Honeycomb'";
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                FindObjectOfType<Player_Stats>().playerFood += 5;
+                FindObjectOfType<Player_Stats>().playerPoison -= 5;
+
+                FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15]--;
+                if (FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] == 0)
+                {
+                    FindObjectOfType<Inventory>().Slot_Item_Code[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] = 0;
+                    FindObjectOfType<Handing_Item>().SelectedItemCode = 0;
+                }
+            }
         }
         else
 
@@ -87,175 +110,222 @@ public class Handing_Item : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if (handing_placeable == true)               //daca nu scriu asta apare un bug de incurca unityu
-            {
+            if (FindObjectOfType<Place_Building>().Has_Building_In_Hand == true)               //daca nu scriu asta apare un bug de incurca unityu            
                 Destroy(FindObjectOfType<Place_Building>().Building_In_Hand.gameObject);  //daca ai o cladire in mana si schimbi pe alt slot sau tot pe ala pe care esti sa nu mai ai cladirea in mana
+            else if (FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand == true)
                 Destroy(FindObjectOfType<Place_Prefab>().Prefab_In_Hand.gameObject);
-            }
-
+            
             SelectedItemBarSlot = 1;
             if (FindObjectOfType<Inventory>().Slot_Item_Quantity[16] <= 0)
                 FindObjectOfType<Inventory>().Slot_Item_Code[16] = -1;
 
             SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[16];
-            handing_placeable = false;
-            handing_Tool = false;
-            tool_In_Hands.SetActive(false);
 
-            
+            handing_placeable = false;
+            FindObjectOfType<Place_Building>().Has_Building_In_Hand = false;
+            FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand = false;
+
+            if (handing_Tool == true)
+            {
+                tool_In_Hands.SetActive(false);
+                handing_Tool = false;
+            }      
 
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            if (handing_placeable == true)               
-            {
-                Destroy(FindObjectOfType<Place_Building>().Building_In_Hand.gameObject); 
+            if (FindObjectOfType<Place_Building>().Has_Building_In_Hand == true)               //daca nu scriu asta apare un bug de incurca unityu            
+                Destroy(FindObjectOfType<Place_Building>().Building_In_Hand.gameObject);  //daca ai o cladire in mana si schimbi pe alt slot sau tot pe ala pe care esti sa nu mai ai cladirea in mana
+            else if (FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand == true)
                 Destroy(FindObjectOfType<Place_Prefab>().Prefab_In_Hand.gameObject);
-            }
 
             SelectedItemBarSlot = 2;
             if (FindObjectOfType<Inventory>().Slot_Item_Quantity[17] <= 0)
                 FindObjectOfType<Inventory>().Slot_Item_Code[17] = -1;
 
             SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[17];
-            handing_placeable = false;
-            handing_Tool = false;
-            tool_In_Hands.SetActive(false);
 
-           
+            handing_placeable = false;
+            FindObjectOfType<Place_Building>().Has_Building_In_Hand = false;
+            FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand = false;
+
+            if (handing_Tool == true)
+            {
+                tool_In_Hands.SetActive(false);
+                handing_Tool = false;
+            }
+
+
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            if (handing_placeable == true)
-            {
-                Destroy(FindObjectOfType<Place_Building>().Building_In_Hand.gameObject);
+            if (FindObjectOfType<Place_Building>().Has_Building_In_Hand == true)               //daca nu scriu asta apare un bug de incurca unityu            
+                Destroy(FindObjectOfType<Place_Building>().Building_In_Hand.gameObject);  //daca ai o cladire in mana si schimbi pe alt slot sau tot pe ala pe care esti sa nu mai ai cladirea in mana
+            else if (FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand == true)
                 Destroy(FindObjectOfType<Place_Prefab>().Prefab_In_Hand.gameObject);
-            }
 
             SelectedItemBarSlot = 3;
             if (FindObjectOfType<Inventory>().Slot_Item_Quantity[18] <= 0)
                 FindObjectOfType<Inventory>().Slot_Item_Code[18] = -1;
 
             SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[18];
-            handing_placeable = false;
-            handing_Tool = false;
-            tool_In_Hands.SetActive(false);
 
-            
+            handing_placeable = false;
+            FindObjectOfType<Place_Building>().Has_Building_In_Hand = false;
+            FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand = false;
+
+            if (handing_Tool == true)
+            {
+                tool_In_Hands.SetActive(false);
+                handing_Tool = false;
+            }
+
+
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            if (handing_placeable == true)
-            {
-                Destroy(FindObjectOfType<Place_Building>().Building_In_Hand.gameObject);
+            if (FindObjectOfType<Place_Building>().Has_Building_In_Hand == true)               //daca nu scriu asta apare un bug de incurca unityu            
+                Destroy(FindObjectOfType<Place_Building>().Building_In_Hand.gameObject);  //daca ai o cladire in mana si schimbi pe alt slot sau tot pe ala pe care esti sa nu mai ai cladirea in mana
+            else if (FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand == true)
                 Destroy(FindObjectOfType<Place_Prefab>().Prefab_In_Hand.gameObject);
-            }
 
             SelectedItemBarSlot = 4;
             if (FindObjectOfType<Inventory>().Slot_Item_Quantity[19] <= 0)
                 FindObjectOfType<Inventory>().Slot_Item_Code[19] = -1;
 
             SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[19];
-            handing_placeable = false;
-            handing_Tool = false;
-            tool_In_Hands.SetActive(false);
 
-            
+            handing_placeable = false;
+            FindObjectOfType<Place_Building>().Has_Building_In_Hand = false;
+            FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand = false;
+
+            if (handing_Tool == true)
+            {
+                tool_In_Hands.SetActive(false);
+                handing_Tool = false;
+            }
+
         }
         else if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            if (handing_placeable == true)
-            {
-                Destroy(FindObjectOfType<Place_Building>().Building_In_Hand.gameObject);
+            if (FindObjectOfType<Place_Building>().Has_Building_In_Hand == true)               //daca nu scriu asta apare un bug de incurca unityu            
+                Destroy(FindObjectOfType<Place_Building>().Building_In_Hand.gameObject);  //daca ai o cladire in mana si schimbi pe alt slot sau tot pe ala pe care esti sa nu mai ai cladirea in mana
+            else if (FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand == true)
                 Destroy(FindObjectOfType<Place_Prefab>().Prefab_In_Hand.gameObject);
-            }
 
             SelectedItemBarSlot = 5;
             if (FindObjectOfType<Inventory>().Slot_Item_Quantity[20] <= 0)
                 FindObjectOfType<Inventory>().Slot_Item_Code[20] = -1;
 
             SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[20];
-            handing_placeable = false;
-            handing_Tool = false;
-            tool_In_Hands.SetActive(false);
 
-            
+            handing_placeable = false;
+            FindObjectOfType<Place_Building>().Has_Building_In_Hand = false;
+            FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand = false;
+
+            if (handing_Tool == true)
+            {
+                tool_In_Hands.SetActive(false);
+                handing_Tool = false;
+            }
+
+
         }
         else if (Input.GetKeyDown(KeyCode.Alpha6))
         {
-            if (handing_placeable == true)
-            {
-                Destroy(FindObjectOfType<Place_Building>().Building_In_Hand.gameObject);
+            if (FindObjectOfType<Place_Building>().Has_Building_In_Hand == true)               //daca nu scriu asta apare un bug de incurca unityu            
+                Destroy(FindObjectOfType<Place_Building>().Building_In_Hand.gameObject);  //daca ai o cladire in mana si schimbi pe alt slot sau tot pe ala pe care esti sa nu mai ai cladirea in mana
+            else if (FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand == true)
                 Destroy(FindObjectOfType<Place_Prefab>().Prefab_In_Hand.gameObject);
-            }
 
             SelectedItemBarSlot = 6;
             if (FindObjectOfType<Inventory>().Slot_Item_Quantity[21] <= 0)
                 FindObjectOfType<Inventory>().Slot_Item_Code[21] = -1;
 
             SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[21];
-            handing_placeable = false;
-            handing_Tool = false;
-            tool_In_Hands.SetActive(false);
 
-            
+            handing_placeable = false;
+            FindObjectOfType<Place_Building>().Has_Building_In_Hand = false;
+            FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand = false;
+
+            if (handing_Tool == true)
+            {
+                tool_In_Hands.SetActive(false);
+                handing_Tool = false;
+            }
+
         }
         else if (Input.GetKeyDown(KeyCode.Alpha7))
         {
-            if (handing_placeable == true)
-            {
-                Destroy(FindObjectOfType<Place_Building>().Building_In_Hand.gameObject);
+            if (FindObjectOfType<Place_Building>().Has_Building_In_Hand == true)               //daca nu scriu asta apare un bug de incurca unityu            
+                Destroy(FindObjectOfType<Place_Building>().Building_In_Hand.gameObject);  //daca ai o cladire in mana si schimbi pe alt slot sau tot pe ala pe care esti sa nu mai ai cladirea in mana
+            else if (FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand == true)
                 Destroy(FindObjectOfType<Place_Prefab>().Prefab_In_Hand.gameObject);
-            }
 
             SelectedItemBarSlot = 7;
             if (FindObjectOfType<Inventory>().Slot_Item_Quantity[22] <= 0)
                 FindObjectOfType<Inventory>().Slot_Item_Code[22] = -1;
 
             SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[22];
-            handing_placeable = false;
-            handing_Tool = false;
-            tool_In_Hands.SetActive(false);
 
-            
+            handing_placeable = false;
+            FindObjectOfType<Place_Building>().Has_Building_In_Hand = false;
+            FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand = false;
+
+            if (handing_Tool == true)
+            {
+                tool_In_Hands.SetActive(false);
+                handing_Tool = false;
+            }
+
         }
         else if (Input.GetKeyDown(KeyCode.Alpha8))
         {
-            if (handing_placeable == true)
-            {
-                Destroy(FindObjectOfType<Place_Building>().Building_In_Hand.gameObject);
+            if (FindObjectOfType<Place_Building>().Has_Building_In_Hand == true)               //daca nu scriu asta apare un bug de incurca unityu            
+                Destroy(FindObjectOfType<Place_Building>().Building_In_Hand.gameObject);  //daca ai o cladire in mana si schimbi pe alt slot sau tot pe ala pe care esti sa nu mai ai cladirea in mana
+            else if (FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand == true)
                 Destroy(FindObjectOfType<Place_Prefab>().Prefab_In_Hand.gameObject);
-            }
 
             SelectedItemBarSlot = 8;
             if (FindObjectOfType<Inventory>().Slot_Item_Quantity[23] <= 0)
                 FindObjectOfType<Inventory>().Slot_Item_Code[23] = -1;
 
             SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[23];
-            handing_placeable = false;
-            handing_Tool = false;
-            tool_In_Hands.SetActive(false);
 
-           
+            handing_placeable = false;
+            FindObjectOfType<Place_Building>().Has_Building_In_Hand = false;
+            FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand = false;
+
+            if (handing_Tool == true)
+            {
+                tool_In_Hands.SetActive(false);
+                handing_Tool = false;
+            }
+
         }
         else if (Input.GetKeyDown(KeyCode.Alpha9))
         {
-            if (handing_placeable == true)
-            {
-                Destroy(FindObjectOfType<Place_Building>().Building_In_Hand.gameObject);
+            if (FindObjectOfType<Place_Building>().Has_Building_In_Hand == true)               //daca nu scriu asta apare un bug de incurca unityu            
+                Destroy(FindObjectOfType<Place_Building>().Building_In_Hand.gameObject);  //daca ai o cladire in mana si schimbi pe alt slot sau tot pe ala pe care esti sa nu mai ai cladirea in mana
+            else if (FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand == true)
                 Destroy(FindObjectOfType<Place_Prefab>().Prefab_In_Hand.gameObject);
-            }
 
             SelectedItemBarSlot = 9;
             if (FindObjectOfType<Inventory>().Slot_Item_Quantity[24] <= 0)
                 FindObjectOfType<Inventory>().Slot_Item_Code[24] = -1;
 
             SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[24];
-            handing_placeable = false;
-            handing_Tool = false;
-            tool_In_Hands.SetActive(false);
 
-            
+            handing_placeable = false;
+            FindObjectOfType<Place_Building>().Has_Building_In_Hand = false;
+            FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand = false;
+
+            if (handing_Tool == true)
+            {
+                tool_In_Hands.SetActive(false);
+                handing_Tool = false;
+            }
+
         }
         else if (Input.GetKeyDown(KeyCode.X))    // daca ai ceva in mana sa nu mai ai
         {
@@ -267,9 +337,17 @@ public class Handing_Item : MonoBehaviour
 
             SelectedItemCode = -1;
             SelectedItemBarSlot = -1;
+
             handing_placeable = false;
-            handing_Tool = false;
-            tool_In_Hands.SetActive(false);
+            FindObjectOfType<Place_Building>().Has_Building_In_Hand = false;
+            FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand = false;
+
+            if (handing_Tool == true)
+            {
+                tool_In_Hands.SetActive(false);
+                handing_Tool = false;
+            }
+
         }
 
       

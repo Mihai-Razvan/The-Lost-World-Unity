@@ -21,9 +21,9 @@ public class Item_004 : MonoBehaviour
     private float Transforming_Time_Left;
     private int produced_item_code;
 
-    private int woodFuel = 10000;      //cat fuel da wood
+    private int woodFuel = 30;      //cat fuel da wood
 
-    private int iron_ore_transform_time= 5;
+    private int iron_ore_transform_time= 15;
     
 
     public 
@@ -40,6 +40,9 @@ public class Item_004 : MonoBehaviour
         TransformItems();
         Animations();
         fuel -= Time.deltaTime;
+        if (fuel < 0)
+            fuel = 0;
+
         Transforming_Time_Left -= Time.deltaTime;
 
         /*
