@@ -36,7 +36,7 @@ public class ColorPlacingChange : MonoBehaviour
         if (numberOfCollidingObjects == 0)
         {
 
-            if (gameObject.tag != "Floating_Prefabs")     //ca la bridge sa fie rosu si daca e in aer si nu e snapped 
+            if (gameObject.tag != "Floating_Prefabs" || gameObject.tag == "Platfform")     //ca la bridge sa fie rosu si daca e in aer si nu e snapped 
             {
                 placeable = true;
                 gameObject.GetComponent<Renderer>().materials = OkmaterialsArray;
@@ -79,17 +79,22 @@ public class ColorPlacingChange : MonoBehaviour
     {
         if (gameObject.layer == 13)      // inseamna ca e building si nu e prob daca se loveste de floor ca se pune pe floor
         {
-            if (collision.collider.gameObject.layer == 11 || collision.collider.gameObject.layer == 13 || collision.collider.gameObject.layer == 18)
+            if (collision.collider.gameObject.layer == 11 || collision.collider.gameObject.layer == 13 || (collision.collider.gameObject.layer == 18 && collision.collider.tag != "Platform") || collision.collider.gameObject.layer == 19)
                 numberOfCollidingObjects++;
         }
         else if (gameObject.layer == 15)   // e floor si la asta se pune si flooru ca nu se poate lovi de el sau pune peste
         {
-            if (collision.collider.gameObject.layer == 11 || collision.collider.gameObject.layer == 13 || collision.collider.gameObject.layer == 15 || collision.collider.gameObject.layer == 18)
+            if (collision.collider.gameObject.layer == 11 || collision.collider.gameObject.layer == 13 || collision.collider.gameObject.layer == 15 || collision.collider.gameObject.layer == 18 || collision.collider.gameObject.layer == 19)
                 numberOfCollidingObjects++;
         }
         else if (gameObject.layer == 18)      // inseamna ca e other prefab si nu se e ca floru sa se poata pune buildinguri pe el da nici ca building sa poata fi pu pe ffloruri
         {
-            if (collision.collider.gameObject.layer == 11 || collision.collider.gameObject.layer == 13 || collision.collider.gameObject.layer == 15 || collision.collider.gameObject.layer == 18)
+            if (collision.collider.gameObject.layer == 11 || collision.collider.gameObject.layer == 13 || collision.collider.gameObject.layer == 15 || collision.collider.gameObject.layer == 18 || collision.collider.gameObject.layer == 19)
+                numberOfCollidingObjects++;
+        }
+        if (gameObject.layer == 19)      // inseamna ca e prefab de poate fi pus pe alt prefab gen floor
+        {
+            if (collision.collider.gameObject.layer == 11 || collision.collider.gameObject.layer == 13 || (collision.collider.gameObject.layer == 18 && collision.collider.tag != "Platform") || collision.collider.gameObject.layer == 19)
                 numberOfCollidingObjects++;
         }
     }  
@@ -98,7 +103,7 @@ public class ColorPlacingChange : MonoBehaviour
     { 
         if (gameObject.layer == 13)
         {
-            if (collision.collider.gameObject.layer == 11 || collision.collider.gameObject.layer == 13 || collision.collider.gameObject.layer == 18)
+            if (collision.collider.gameObject.layer == 11 || collision.collider.gameObject.layer == 13 || (collision.collider.gameObject.layer == 18 && collision.collider.tag != "Platform"))
                 numberOfCollidingObjects--;
         }
         else if (gameObject.layer == 15)   
@@ -109,6 +114,11 @@ public class ColorPlacingChange : MonoBehaviour
         else if (gameObject.layer == 18)      
         {
             if (collision.collider.gameObject.layer == 11 || collision.collider.gameObject.layer == 13 || collision.collider.gameObject.layer == 15 || collision.collider.gameObject.layer == 18)
+                numberOfCollidingObjects--;
+        }
+        if (gameObject.layer == 19)      // inseamna ca e prefab de poate fi pus pe alt prefab gen floor
+        {
+            if (collision.collider.gameObject.layer == 11 || collision.collider.gameObject.layer == 13 || (collision.collider.gameObject.layer == 18 && collision.collider.tag != "Platform") || collision.collider.gameObject.layer == 19)
                 numberOfCollidingObjects--;
         }
     }

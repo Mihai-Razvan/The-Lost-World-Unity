@@ -17,6 +17,8 @@ public class Place_Prefab : MonoBehaviour
     private LayerMask Floor_placeable_Surface_Mask;      //pt pe care poate ffi pusa floor asta nu poate ffi pusa pe alt floor ; masca asta inseamna layerele pe care POATE FI PUS LORU ADICA SA NU AIBA COLIZIUNE CU ASTEA
     [SerializeField]
     public LayerMask Bridge_placeable_Surface_Mask;     //e ca la floor
+    [SerializeField]
+    private LayerMask Wall_Placeable_Surface_Mask;
   
     //[SerializeField]
     //private LayerMask Floor_Mask;      //ala cu layeru de floor ca sa poate ffface snap apte fflooruri sau walluri
@@ -27,7 +29,7 @@ public class Place_Prefab : MonoBehaviour
     //pt colorplacing la bridge ca nu pot atribui pe script
     public LayerMask Floating_Prefabs_Mask;     
     [SerializeField]
-    public LayerMask groundedBUTnotbridgeMak;   //layerurile pe care daca sta e grounded CU EXCEPTIA podului adica layerul OTHER PREFAB
+    public LayerMask groundedBUTnotbridgeMak;   //layerurile pe care daca sta e grounded CU EXCEPTIA podului adica layerul B_S_F
     //
 
 
@@ -39,6 +41,8 @@ public class Place_Prefab : MonoBehaviour
     private GameObject Item_015;    //ramp
     [SerializeField]
     private GameObject Item_016;    //platform
+    [SerializeField]
+    private GameObject Item_017;    //wall wooden
 
     [SerializeField]
     private bool asdadad;
@@ -101,6 +105,11 @@ public class Place_Prefab : MonoBehaviour
                     else if (Physics.Raycast(Building_Spawn_Position.transform.position, -transform.up, out hit, 10f, Bridge_placeable_Surface_Mask))
                         Prefab_In_Hand.transform.position = new Vector3(Prefab_In_Hand.transform.position.x, hit.point.y, Prefab_In_Hand.transform.position.z);
 
+                }
+                if (FindObjectOfType<Handing_Item>().SelectedItemCode == 17)     //wall wooden
+                {
+                    if (Physics.Raycast(Building_Spawn_Position.transform.position, -transform.up, out hit, 10f, Wall_Placeable_Surface_Mask))
+                        Prefab_In_Hand.transform.position = new Vector3(Prefab_In_Hand.transform.position.x, hit.point.y, Prefab_In_Hand.transform.position.z);
                 }
             }
 
@@ -207,6 +216,22 @@ public class Place_Prefab : MonoBehaviour
             Prefab_In_Hand.transform.GetChild(0).gameObject.AddComponent<Snap_B_S_F>();
 
         }
+        if (FindObjectOfType<Handing_Item>().SelectedItemCode == 17) // place wooden_wall
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform.position, -transform.up, out hit, 10f, Wall_Placeable_Surface_Mask))
+            {
+                FindObjectOfType<Handing_Item>().handing_placeable = true;
+                Has_Prefab_In_Hand = true;
+                Prefab_In_Hand = Instantiate(Item_017, hit.point, Quaternion.Euler(Building_Spawn_Position.transform.rotation.x, Building_Spawn_Position.transform.rotation.y, Building_Spawn_Position.transform.rotation.z));
+                Prefab_In_Hand.transform.GetChild(0).gameObject.AddComponent<ColorPlacingChange>();
+            }
+
+            Prefab_In_Hand.transform.SetParent(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform);
+            Prefab_In_Hand.transform.localRotation = Quaternion.identity;
+            Prefab_In_Hand.transform.GetChild(0).gameObject.AddComponent<Snap_Wall>();
+
+        }
     }
 
 
@@ -232,6 +257,8 @@ public class Place_Prefab : MonoBehaviour
             if ((Physics.Raycast(Building_Spawn_Position.transform.position, -transform.up, 10f, Bridge_placeable_Surface_Mask)) == true || isSnapped == true)       //ori e pe cv insula ori daca nu sa ie snapped de alt pod ca sa nu poti pune in aer
                 Instantiate(Item_016, Prefab_In_Hand.transform.position, Quaternion.Euler(Prefab_In_Hand.transform.rotation.x, Prefab_In_Hand.transform.eulerAngles.y, Prefab_In_Hand.transform.rotation.z));
         }
+        if (FindObjectOfType<Handing_Item>().SelectedItemCode == 17)  //wooden wall
+            Instantiate(Item_017, Prefab_In_Hand.transform.position, Quaternion.Euler(Prefab_In_Hand.transform.rotation.x, Prefab_In_Hand.transform.eulerAngles.y, Prefab_In_Hand.transform.rotation.z));
 
         isSnapped = false;
 
@@ -289,8 +316,16 @@ public class Place_Prefab : MonoBehaviour
                 else
                     Prefab_In_Hand.transform.position = new Vector3(Building_Spawn_Position.transform.position.x, Building_Spawn_Position.transform.position.y - 4f, Building_Spawn_Position.transform.position.z);
             }
+            else if (FindObjectOfType<Handing_Item>().SelectedItemCode == 17)
+            {
+                RaycastHit hit;
+                if (Physics.Raycast(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform.position, -transform.up, out hit, 10f, Wall_Placeable_Surface_Mask))
+                {
+                    Prefab_In_Hand.transform.position = hit.point;
+                }
+            }
 
-            Prefab_In_Hand.transform.SetParent(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform);
+           Prefab_In_Hand.transform.SetParent(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform);
            Prefab_In_Hand.transform.localRotation = Quaternion.identity;
             
             

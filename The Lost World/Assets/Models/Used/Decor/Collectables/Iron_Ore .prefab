@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Iron ore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4868029925245412023
 Transform:
@@ -107,6 +107,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Iron ore
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138555997840041944, guid: f02a4c3f3133264478ca85d6249db1e5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8876006450899407620, guid: f02a4c3f3133264478ca85d6249db1e5,
         type: 3}

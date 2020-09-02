@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1996814823436056680
 Transform:
@@ -51,7 +51,7 @@ GameObject:
   m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1417962085677782948
 Transform:
@@ -124,7 +124,7 @@ SphereCollider:
   m_GameObject: {fileID: 5203726078347367575}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.018327165
   m_Center: {x: -0.0045305914, y: -0.0031009507, z: 0.011453007}

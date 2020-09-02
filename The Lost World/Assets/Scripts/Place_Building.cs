@@ -38,9 +38,9 @@ public class Place_Building : MonoBehaviour
         {
             RaycastHit hit;
 
-            if (Physics.Raycast(Building_Spawn_Position.transform.position, -transform.up, out hit, 10f, Building_placeable_Surface_Mask))
+            if (Physics.Raycast(Building_Spawn_Position.transform.position, -transform.up, out hit, 10f, Building_placeable_Surface_Mask))                        
                 Building_In_Hand.transform.position = new Vector3(Building_In_Hand.transform.position.x, hit.point.y, Building_In_Hand.transform.position.z);
-
+           
             if (Input.GetKeyDown(KeyCode.Mouse0) && Building_In_Hand.transform.GetChild(0).GetComponent<ColorPlacingChange>().placeable == true)
             {
                 PlaceBuilding();

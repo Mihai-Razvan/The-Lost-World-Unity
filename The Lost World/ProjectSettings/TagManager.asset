@@ -22,6 +22,10 @@ TagManager:
   - Snap_Bridge_Collider
   - Floating_Prefabs
   - Bridge
+  - Platform
+  - Wall
+  - Snap_Wall_Collider
+  - Snap_Box_Collider
   layers:
   - Default
   - TransparentFX
@@ -42,7 +46,7 @@ TagManager:
   - Animal
   - Mini-Island
   - Floating_Prefabs
-  - 
+  - Prefab_Placeable_On_Prefab
   - 
   - 
   - 
