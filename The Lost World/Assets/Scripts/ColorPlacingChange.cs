@@ -36,7 +36,7 @@ public class ColorPlacingChange : MonoBehaviour
         if (numberOfCollidingObjects == 0)
         {
 
-            if (gameObject.tag != "Floating_Prefabs" || gameObject.tag == "Platfform")     //ca la bridge sa fie rosu si daca e in aer si nu e snapped 
+            if (gameObject.tag != "Floating_Prefabs" || gameObject.tag == "Platform")     //ca la bridge sa fie rosu si daca e in aer si nu e snapped 
             {
                 placeable = true;
                 gameObject.GetComponent<Renderer>().materials = OkmaterialsArray;

@@ -59,6 +59,9 @@ public class IslandObjects : MonoBehaviour
     private GameObject collectables_2;                   //iron_ore
     [SerializeField]
     private GameObject collectables_3;                   //stone
+    [SerializeField]
+    private GameObject collectables_4;                   //log
+
 
     private GameObject lastSpawned;
 
@@ -164,6 +167,8 @@ public class IslandObjects : MonoBehaviour
 
     void ObjectsSpawn()
     {
+        spawnedObjectsNumber = 0;
+        notSpawnedConsecutively = 0;
         numberOfObjects = Random.Range(80, 120);       //15,30
         while (spawnedObjectsNumber < numberOfObjects && notSpawnedConsecutively < 50)
         {
@@ -244,6 +249,8 @@ public class IslandObjects : MonoBehaviour
 
     void CollectablesSpawn()
     {
+        spawnedAlready = 0;
+        notSpawnedConsecutively = 0;
         numberOfCollectables = Random.Range(50, 80);     //20,30
         while(spawnedAlready < numberOfCollectables && notSpawnedConsecutively < 20)
         {
@@ -253,7 +260,7 @@ public class IslandObjects : MonoBehaviour
             Collider[] colliders = Physics.OverlapSphere(hit.point, 3, collectablesMask);
             if (colliders.Length == 0)
             {
-                objectRandomNumber = Random.Range(1, 4);
+                objectRandomNumber = Random.Range(1, 5);
 
                 if (objectRandomNumber == 1)
                 {
@@ -270,7 +277,12 @@ public class IslandObjects : MonoBehaviour
                     lastSpawned = Instantiate(collectables_3, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
                     lastSpawned.transform.SetParent(hit.collider.transform);
                 }
-              
+                else if (objectRandomNumber == 4)
+                {
+                    lastSpawned = Instantiate(collectables_4, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+                    lastSpawned.transform.SetParent(hit.collider.transform);
+                }
+
 
                 notSpawnedConsecutively = 0;
                 spawnedAlready++;
@@ -292,10 +304,11 @@ public class IslandObjects : MonoBehaviour
                 thingsOnIslandActive = false;
 
                 for (int i = 0; i < island.transform.childCount; i++)
-                    island.transform.GetChild(i).gameObject.SetActive(false);
+                    // island.transform.GetChild(i).gameObject.SetActive(false);
+                    Destroy(island.transform.GetChild(i).gameObject);
 
 
-                  for (int j = 1; j < transform.childCount; j++)     //despawneaza miniislandurile care sunt puse la punctu pe care e pusa insula insulei
+                for (int j = 1; j < transform.childCount; j++)     //despawneaza miniislandurile care sunt puse la punctu pe care e pusa insula insulei
                   Destroy(transform.GetChild(j).gameObject);
             }
         }
@@ -303,8 +316,11 @@ public class IslandObjects : MonoBehaviour
         {
             thingsOnIslandActive = true;
 
-            for (int i = 0; i < island.transform.childCount; i++)
-                island.transform.GetChild(i).gameObject.SetActive(true);
+           // for (int i = 0; i < island.transform.childCount; i++)
+                //island.transform.GetChild(i).gameObject.SetActive(true);
+
+            ObjectsSpawn();
+            CollectablesSpawn();
         }
     }
 
@@ -324,7 +340,8 @@ public class IslandObjects : MonoBehaviour
         {
             if(islandActivated == true)
                 for (int i = 0; i < transform.childCount; i++)
-                    transform.GetChild(i).gameObject.SetActive(false);
+                  transform.GetChild(i).gameObject.SetActive(false);
+                  
         }
         else if (islandActivated == false )
             for (int i = 0; i < transform.childCount; i++)

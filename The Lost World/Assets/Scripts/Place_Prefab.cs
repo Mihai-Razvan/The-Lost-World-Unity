@@ -232,6 +232,12 @@ public class Place_Prefab : MonoBehaviour
             Prefab_In_Hand.transform.GetChild(0).gameObject.AddComponent<Snap_Wall>();
 
         }
+
+        if(Has_Prefab_In_Hand == true)
+        {
+            Prefab_In_Hand.transform.GetChild(0).gameObject.AddComponent<Rigidbody>();
+            Prefab_In_Hand.transform.GetChild(0).gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        }
     }
 
 

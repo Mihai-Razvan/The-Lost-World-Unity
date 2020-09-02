@@ -45,7 +45,6 @@ GameObject:
   - component: {fileID: 2642085577923112353}
   - component: {fileID: 5732559932396709618}
   - component: {fileID: 4375955677948910532}
-  - component: {fileID: 6070824001762966349}
   m_Layer: 11
   m_Name: forest_tree_1
   m_TagString: Tree
@@ -155,19 +154,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 225
---- !u!54 &6070824001762966349
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5203726078347367575}
-  serializedVersion: 2
-  m_Mass: 0.0000001
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0

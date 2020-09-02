@@ -58,6 +58,11 @@ public class Pickup_Item : MonoBehaviour
                         Destroy(colliders[0].gameObject);    //maru nu are pct ca nu trebuie si optimizare
                         BeeAttract();
                     }
+                    else if (colliders[0].gameObject.tag == "Log")
+                    {
+                        FindObjectOfType<Inventory>().itemCodeToAdd = 18;
+                        Destroy(colliders[0].transform.parent.gameObject);    
+                    }
 
                 }
             }

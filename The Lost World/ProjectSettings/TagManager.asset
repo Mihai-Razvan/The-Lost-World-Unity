@@ -26,6 +26,7 @@ TagManager:
   - Wall
   - Snap_Wall_Collider
   - Snap_Box_Collider
+  - Log
   layers:
   - Default
   - TransparentFX
