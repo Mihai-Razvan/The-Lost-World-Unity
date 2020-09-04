@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5937052206471207730}
   m_Layer: 10
   m_Name: relief_forest_1
-  m_TagString: Untagged
+  m_TagString: Relief
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,6 +38,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5937052206471207730}
     m_Modifications:
+    - target: {fileID: 1109752897454310476, guid: 47b2cd7ae984a4b4ea99c3639fac187a,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682785425978798224, guid: 47b2cd7ae984a4b4ea99c3639fac187a,
+        type: 3}
+      propertyPath: m_Name
+      value: forest_relief_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682785425978798224, guid: 47b2cd7ae984a4b4ea99c3639fac187a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682785425978798224, guid: 47b2cd7ae984a4b4ea99c3639fac187a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Relief
+      objectReference: {fileID: 0}
     - target: {fileID: 2378232334500315779, guid: 47b2cd7ae984a4b4ea99c3639fac187a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -102,26 +122,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 3999.9998
-      objectReference: {fileID: 0}
-    - target: {fileID: 1682785425978798224, guid: 47b2cd7ae984a4b4ea99c3639fac187a,
-        type: 3}
-      propertyPath: m_Name
-      value: forest_relief_1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1682785425978798224, guid: 47b2cd7ae984a4b4ea99c3639fac187a,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1682785425978798224, guid: 47b2cd7ae984a4b4ea99c3639fac187a,
-        type: 3}
-      propertyPath: m_TagString
-      value: Relief
-      objectReference: {fileID: 0}
-    - target: {fileID: 1109752897454310476, guid: 47b2cd7ae984a4b4ea99c3639fac187a,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47b2cd7ae984a4b4ea99c3639fac187a, type: 3}

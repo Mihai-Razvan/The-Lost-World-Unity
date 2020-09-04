@@ -15,7 +15,6 @@ TagManager:
   - MiniIsland
   - Bee
   - Apple
-  - Wood
   - Stone
   - Iron ore
   - Snap_B_S_F_Collider
@@ -27,6 +26,8 @@ TagManager:
   - Snap_Wall_Collider
   - Snap_Box_Collider
   - Log
+  - Stick
+  - Wood
   layers:
   - Default
   - TransparentFX

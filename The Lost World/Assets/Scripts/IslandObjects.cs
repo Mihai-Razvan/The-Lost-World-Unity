@@ -8,7 +8,7 @@ public class IslandObjects : MonoBehaviour
     private LayerMask playerMask;
     private bool CollesctablesHaveSpawned;
     private bool ObjectdHaveSpawned;
-    [SerializeField]
+    private bool ReliefHasSpawned;
     private GameObject island;
     [SerializeField]
     public float SpawnHeight;         // se adunna la pozitia insulei si acolo spawneaza obiectele si de acolo face uin ray in jos 
@@ -16,13 +16,17 @@ public class IslandObjects : MonoBehaviour
     private int maxRange = 250; 
     private int minRangeRelief = -120;   // e mai mic ca iese de pe insula
     private int maxRangeRelief = 120;
+    private int minRangeBigRelief = -80;   
+    private int maxRangeBigRelief = 80;
     private float randomReliefScale;
 
     private int numberOfObjects;
+    private int numberOfBigRelief;
     private int numberOfRelief;
     private int numberOfCollectables;
     private int spawnedObjectsNumber;
-    private int spawnedReliefNumeber;
+    private int spawnedReliefNumber;
+    private int spawnedBigReliefNumber;
     private int objectRandomNumber;
     private int notSpawnedConsecutively;
     private int spawnedAlready;
@@ -33,7 +37,7 @@ public class IslandObjects : MonoBehaviour
     [SerializeField]
     private LayerMask collectablesMask;
     [SerializeField]
-    private LayerMask islandMask;
+    private LayerMask Spawn_Surface_Mask;    //PE CARE se pot spawna objecturile si collectable
     [SerializeField]
     private GameObject object_1;
     [SerializeField]
@@ -44,6 +48,8 @@ public class IslandObjects : MonoBehaviour
     private GameObject object_4;
     [SerializeField]
     private GameObject object_5;
+    [SerializeField]
+    private GameObject big_relief_1;
     [SerializeField]
     private GameObject relief_1;
     [SerializeField]
@@ -69,14 +75,19 @@ public class IslandObjects : MonoBehaviour
     [SerializeField]
     private bool islandActivated = true;
 
-    void Start()
-    {
-        ReliefSpawn();  
-    }
+    
 
     
     void Update()
     {
+        if(ReliefHasSpawned == false)
+        {
+            island = transform.GetChild(0).gameObject;
+            ReliefHasSpawned = true;
+            BigReliefSpawn();
+            ReliefSpawn();
+        }
+
         if(CollesctablesHaveSpawned == false)       //spawneaza cand e playeru aproape de is
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, 200f, playerMask);
@@ -105,14 +116,41 @@ public class IslandObjects : MonoBehaviour
     }
 
 
+    void BigReliefSpawn()
+    {
+        numberOfBigRelief = Random.Range(10, 40);
+        while (spawnedBigReliefNumber < numberOfBigRelief)
+        {
+
+            RaycastHit hit;
+            Physics.Raycast(new Vector3(transform.position.x + Random.Range(minRangeBigRelief, maxRangeBigRelief), transform.position.y + SpawnHeight, transform.position.z + Random.Range(minRangeBigRelief, maxRangeBigRelief)), Vector3.down, out hit, 100, Spawn_Surface_Mask);
+
+            objectRandomNumber = Random.Range(1, 4);
+            if (objectRandomNumber == 1)
+            {
+                Collider[] colliders = Physics.OverlapSphere(hit.point, 300, reliefMask);
+                if (colliders.Length == 0)
+                {
+                    randomReliefScale = Random.Range(1, 3);
+                    GameObject relief = Instantiate(big_relief_1, hit.point, Quaternion.Euler(0, Random.Range(0, 360), 0));
+                 //   relief.transform.localScale = new Vector3(randomReliefScale, randomReliefScale, randomReliefScale);
+                    relief.transform.SetParent(hit.collider.transform);         //relief ca e lastspawned
+                }
+            }
+            
+            spawnedBigReliefNumber++;
+        }
+    }
+
+
     void ReliefSpawn()
     {
         numberOfRelief = Random.Range(8, 13);
-        while (spawnedReliefNumeber < numberOfRelief)
+        while (spawnedReliefNumber < numberOfRelief)
         {
            
             RaycastHit hit;
-            Physics.Raycast(new Vector3(transform.position.x + Random.Range(minRangeRelief, maxRangeRelief), transform.position.y + SpawnHeight, transform.position.z + Random.Range(minRangeRelief, maxRangeRelief)), Vector3.down, out hit, 100, islandMask);
+            Physics.Raycast(new Vector3(transform.position.x + Random.Range(minRangeRelief, maxRangeRelief), transform.position.y + SpawnHeight, transform.position.z + Random.Range(minRangeRelief, maxRangeRelief)), Vector3.down, out hit, 100, Spawn_Surface_Mask);
 
             objectRandomNumber = Random.Range(1, 4);
             if (objectRandomNumber == 1)
@@ -160,7 +198,7 @@ public class IslandObjects : MonoBehaviour
                 }
             }
 
-            spawnedReliefNumeber++;
+            spawnedReliefNumber++;
         }
     }
 
@@ -173,8 +211,9 @@ public class IslandObjects : MonoBehaviour
         while (spawnedObjectsNumber < numberOfObjects && notSpawnedConsecutively < 50)
         {
             RaycastHit hit;
-            Physics.Raycast(new Vector3(transform.position.x + Random.Range(minRange, maxRange), transform.position.y + SpawnHeight, transform.position.z + Random.Range(minRange, maxRange)), Vector3.down, out hit, 100, islandMask);
-          
+            Physics.Raycast(new Vector3(transform.position.x + Random.Range(minRange, maxRange), transform.position.y + SpawnHeight, transform.position.z + Random.Range(minRange, maxRange)), Vector3.down, out hit, 100, Spawn_Surface_Mask);
+            if (hit.normal.x > -40 && hit.normal.x < 40 && hit.normal.z > -40 && hit.normal.z < 40)
+            {
                 objectRandomNumber = Random.Range(1, 5);
                 if (objectRandomNumber == 1)
                 {
@@ -182,7 +221,7 @@ public class IslandObjects : MonoBehaviour
                     if (colliders.Length == 0)
                     {
                         lastSpawned = Instantiate(object_1, hit.point, Quaternion.identity);
-                        lastSpawned.transform.SetParent(hit.collider.transform);
+                        lastSpawned.transform.SetParent(island.transform);
                         notSpawnedConsecutively = 0;
                         spawnedObjectsNumber++;
                     }
@@ -195,7 +234,7 @@ public class IslandObjects : MonoBehaviour
                     if (colliders.Length == 0)
                     {
                         lastSpawned = Instantiate(object_2, hit.point, Quaternion.identity);
-                        lastSpawned.transform.SetParent(hit.collider.transform);
+                        lastSpawned.transform.SetParent(island.transform);
                         notSpawnedConsecutively = 0;
                         spawnedObjectsNumber++;
                     }
@@ -208,7 +247,7 @@ public class IslandObjects : MonoBehaviour
                     if (colliders.Length == 0)
                     {
                         lastSpawned = Instantiate(object_3, hit.point, Quaternion.identity);
-                        lastSpawned.transform.SetParent(hit.collider.transform);
+                        lastSpawned.transform.SetParent(island.transform);
                         notSpawnedConsecutively = 0;
                         spawnedObjectsNumber++;
                     }
@@ -221,10 +260,10 @@ public class IslandObjects : MonoBehaviour
                     if (colliders.Length == 0)
                     {
                         lastSpawned = Instantiate(object_4, hit.point, Quaternion.identity);
-                        lastSpawned.transform.SetParent(hit.collider.transform);
+                        lastSpawned.transform.SetParent(island.transform);
                         notSpawnedConsecutively = 0;
                         spawnedObjectsNumber++;
-                }
+                    }
                     else
                         notSpawnedConsecutively++;
                 }
@@ -234,14 +273,14 @@ public class IslandObjects : MonoBehaviour
                     if (colliders.Length == 0)
                     {
                         lastSpawned = Instantiate(object_5, hit.point, Quaternion.identity);
-                        lastSpawned.transform.SetParent(hit.collider.transform);
+                        lastSpawned.transform.SetParent(island.transform);
                         notSpawnedConsecutively = 0;
                         spawnedObjectsNumber++;
                     }
                     else
                         notSpawnedConsecutively++;
-                }              
-            
+                }
+            }
         }
     }
     
@@ -255,40 +294,42 @@ public class IslandObjects : MonoBehaviour
         while(spawnedAlready < numberOfCollectables && notSpawnedConsecutively < 20)
         {
             RaycastHit hit;
-            Physics.Raycast(new Vector3(transform.position.x + Random.Range(minRange, maxRange), transform.position.y + SpawnHeight, transform.position.z + Random.Range(minRange, maxRange)), Vector3.down, out hit, 100, islandMask);
-
-            Collider[] colliders = Physics.OverlapSphere(hit.point, 3, collectablesMask);
-            if (colliders.Length == 0)
+            Physics.Raycast(new Vector3(transform.position.x + Random.Range(minRange, maxRange), transform.position.y + SpawnHeight, transform.position.z + Random.Range(minRange, maxRange)), Vector3.down, out hit, 100, Spawn_Surface_Mask);
+            if (hit.normal.x > -40 && hit.normal.x < 40 && hit.normal.z > -40 && hit.normal.z < 40)
             {
-                objectRandomNumber = Random.Range(1, 5);
+                Collider[] colliders = Physics.OverlapSphere(hit.point, 3, collectablesMask);
+                if (colliders.Length == 0)
+                {
+                    objectRandomNumber = (int)Random.Range(1, 5);
 
-                if (objectRandomNumber == 1)
-                {
-                    lastSpawned = Instantiate(collectables_1, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
-                    lastSpawned.transform.SetParent(hit.collider.transform);
-                }
-                else if (objectRandomNumber == 2)
-                {
-                    lastSpawned = Instantiate(collectables_2, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
-                    lastSpawned.transform.SetParent(hit.collider.transform);
-                }
-                else if (objectRandomNumber == 3)
-                {
-                    lastSpawned = Instantiate(collectables_3, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
-                    lastSpawned.transform.SetParent(hit.collider.transform);
-                }
-                else if (objectRandomNumber == 4)
-                {
-                    lastSpawned = Instantiate(collectables_4, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
-                    lastSpawned.transform.SetParent(hit.collider.transform);
-                }
+                    if (objectRandomNumber == 1)
+                    {
+                        lastSpawned = Instantiate(collectables_1, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+                        lastSpawned.transform.SetParent(hit.collider.transform);
+                    }
+                    else if (objectRandomNumber == 2)
+                    {
+                        lastSpawned = Instantiate(collectables_2, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+                        lastSpawned.transform.SetParent(hit.collider.transform);
+                    }
+                    else if (objectRandomNumber == 3)
+                    {
+                        lastSpawned = Instantiate(collectables_3, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+                        lastSpawned.transform.SetParent(hit.collider.transform);
+                    }
+                    else if (objectRandomNumber == 4)
+                    {
+                        lastSpawned = Instantiate(collectables_4, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+                        lastSpawned.transform.SetParent(hit.collider.transform);
+                    }
 
 
-                notSpawnedConsecutively = 0;
-                spawnedAlready++;
+                    notSpawnedConsecutively = 0;
+                    spawnedAlready++;
+                }
+                else
+                    notSpawnedConsecutively++;
             }
-            else
-                notSpawnedConsecutively++;
             
         }
     }
@@ -305,7 +346,8 @@ public class IslandObjects : MonoBehaviour
 
                 for (int i = 0; i < island.transform.childCount; i++)
                     // island.transform.GetChild(i).gameObject.SetActive(false);
-                    Destroy(island.transform.GetChild(i).gameObject);
+                    if(island.transform.GetChild(i).gameObject.tag != "Relief")
+                        Destroy(island.transform.GetChild(i).gameObject);
 
 
                 for (int j = 1; j < transform.childCount; j++)     //despawneaza miniislandurile care sunt puse la punctu pe care e pusa insula insulei

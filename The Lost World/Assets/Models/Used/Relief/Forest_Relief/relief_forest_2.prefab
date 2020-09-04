@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6459464465217470340}
   m_Layer: 10
   m_Name: relief_forest_2
-  m_TagString: Untagged
+  m_TagString: Relief
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,6 +38,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6459464465217470340}
     m_Modifications:
+    - target: {fileID: 5319874804740369188, guid: 56fa4c920f1aff04a8e71733bc1c83e5,
+        type: 3}
+      propertyPath: m_Name
+      value: forest_relief_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5319874804740369188, guid: 56fa4c920f1aff04a8e71733bc1c83e5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5319874804740369188, guid: 56fa4c920f1aff04a8e71733bc1c83e5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Relief
+      objectReference: {fileID: 0}
+    - target: {fileID: 5903986007628029944, guid: 56fa4c920f1aff04a8e71733bc1c83e5,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9189775540441012535, guid: 56fa4c920f1aff04a8e71733bc1c83e5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -91,26 +111,6 @@ PrefabInstance:
     - target: {fileID: 9189775540441012535, guid: 56fa4c920f1aff04a8e71733bc1c83e5,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5319874804740369188, guid: 56fa4c920f1aff04a8e71733bc1c83e5,
-        type: 3}
-      propertyPath: m_Name
-      value: forest_relief_2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5319874804740369188, guid: 56fa4c920f1aff04a8e71733bc1c83e5,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5319874804740369188, guid: 56fa4c920f1aff04a8e71733bc1c83e5,
-        type: 3}
-      propertyPath: m_TagString
-      value: Relief
-      objectReference: {fileID: 0}
-    - target: {fileID: 5903986007628029944, guid: 56fa4c920f1aff04a8e71733bc1c83e5,
-        type: 3}
-      propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

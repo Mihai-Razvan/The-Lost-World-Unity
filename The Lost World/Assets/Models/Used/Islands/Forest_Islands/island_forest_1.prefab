@@ -54,13 +54,13 @@ MonoBehaviour:
     m_Bits: 1024
   objectsMask:
     serializedVersion: 2
-    m_Bits: 3072
+    m_Bits: 2048
   collectablesMask:
     serializedVersion: 2
     m_Bits: 6144
-  islandMask:
+  Spawn_Surface_Mask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1536
   object_1: {fileID: 2863954524105197386, guid: a916447eec8264843969d70f2ed02827,
     type: 3}
   object_2: {fileID: 8888187091359451810, guid: 98a65941bd71d77439533f8159e3a252,
@@ -70,6 +70,8 @@ MonoBehaviour:
   object_4: {fileID: 2385391852632288823, guid: a6a3271d02c8aaa44b910b0d3c062501,
     type: 3}
   object_5: {fileID: 8446174781082619138, guid: e12d90c7ada11844d87cf5c64a6057c0,
+    type: 3}
+  big_relief_1: {fileID: 6050730356366374503, guid: daf6c1d2a5f19414c8d1c91433d1e485,
     type: 3}
   relief_1: {fileID: 4371466148000117282, guid: b631841664a04674ba256dace3c4ad7d,
     type: 3}

@@ -37,7 +37,7 @@ public class Pickup_Item : MonoBehaviour
                 {
                     FindObjectOfType<Inventory>().quantityToAdd = 1;
 
-                    if (colliders[0].gameObject.tag == "Wood")
+                    if (colliders[0].gameObject.tag == "Stick")
                     {
                         FindObjectOfType<Inventory>().itemCodeToAdd = 1;
                         Destroy(colliders[0].transform.parent.gameObject);
