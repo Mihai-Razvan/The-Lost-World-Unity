@@ -28,6 +28,7 @@ TagManager:
   - Log
   - Stick
   - Wood
+  - Cave Base
   layers:
   - Default
   - TransparentFX

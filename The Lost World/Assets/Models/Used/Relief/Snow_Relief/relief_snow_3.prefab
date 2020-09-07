@@ -1,0 +1,138 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4641314443786227747
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5500700774503156434}
+  m_Layer: 10
+  m_Name: relief_snow_3
+  m_TagString: Relief
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5500700774503156434
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4641314443786227747}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2063.2285, y: -472.25705, z: 218.80225}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7512420849771655596}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &2388132952938901053
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7136703859880160022}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 9136235025868731430, guid: 471afa1efd193e44e8a361de55fe0cdb, type: 3}
+--- !u!1001 &8754363780970745403
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5500700774503156434}
+    m_Modifications:
+    - target: {fileID: 1242084803385114519, guid: 1522eed9909cc9b4685db605dfaf07b0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242084803385114519, guid: 1522eed9909cc9b4685db605dfaf07b0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242084803385114519, guid: 1522eed9909cc9b4685db605dfaf07b0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242084803385114519, guid: 1522eed9909cc9b4685db605dfaf07b0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.6809862
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242084803385114519, guid: 1522eed9909cc9b4685db605dfaf07b0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.032995667
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242084803385114519, guid: 1522eed9909cc9b4685db605dfaf07b0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.03540421
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242084803385114519, guid: 1522eed9909cc9b4685db605dfaf07b0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7306953
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242084803385114519, guid: 1522eed9909cc9b4685db605dfaf07b0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242084803385114519, guid: 1522eed9909cc9b4685db605dfaf07b0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242084803385114519, guid: 1522eed9909cc9b4685db605dfaf07b0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242084803385114519, guid: 1522eed9909cc9b4685db605dfaf07b0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907016197151286573, guid: 1522eed9909cc9b4685db605dfaf07b0,
+        type: 3}
+      propertyPath: m_Name
+      value: snow_relief_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907016197151286573, guid: 1522eed9909cc9b4685db605dfaf07b0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907016197151286573, guid: 1522eed9909cc9b4685db605dfaf07b0,
+        type: 3}
+      propertyPath: m_TagString
+      value: Relief
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1522eed9909cc9b4685db605dfaf07b0, type: 3}
+--- !u!1 &7136703859880160022 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1907016197151286573, guid: 1522eed9909cc9b4685db605dfaf07b0,
+    type: 3}
+  m_PrefabInstance: {fileID: 8754363780970745403}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7512420849771655596 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1242084803385114519, guid: 1522eed9909cc9b4685db605dfaf07b0,
+    type: 3}
+  m_PrefabInstance: {fileID: 8754363780970745403}
+  m_PrefabAsset: {fileID: 0}

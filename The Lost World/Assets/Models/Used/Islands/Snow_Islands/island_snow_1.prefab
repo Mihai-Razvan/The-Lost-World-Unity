@@ -23,7 +23,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1938822434563726179}
-  - component: {fileID: 9211521447882543066}
+  - component: {fileID: -2154744025854465964}
   m_Layer: 9
   m_Name: island_snow_1
   m_TagString: Island
@@ -46,7 +46,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9211521447882543066
+--- !u!114 &-2154744025854465964
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,48 +55,50 @@ MonoBehaviour:
   m_GameObject: {fileID: 2391071011022119934}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86bc247be5ee1f24884ae38c407cdebc, type: 3}
+  m_Script: {fileID: 11500000, guid: f437aa8a78a5a1e4ba884092657297e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerMask:
     serializedVersion: 2
     m_Bits: 16384
-  island: {fileID: 1679264429335094142}
   SpawnHeight: 100
   reliefMask:
     serializedVersion: 2
     m_Bits: 1024
   objectsMask:
     serializedVersion: 2
-    m_Bits: 3072
+    m_Bits: 2048
   collectablesMask:
     serializedVersion: 2
     m_Bits: 6144
-  islandMask:
+  Spawn_Surface_Mask:
     serializedVersion: 2
-    m_Bits: 512
-  object_1: {fileID: 5214341029351543721, guid: 0b2b09d5d2a669d4eb23c28641853387,
-    type: 3}
-  object_2: {fileID: 8482008273134942007, guid: 998acdccaf42e31459c09dc5312f39d2,
-    type: 3}
-  object_3: {fileID: 1797973357672744321, guid: a922d4f172b7ae94caee3c751d4efd61,
-    type: 3}
-  object_4: {fileID: 1797973357672744321, guid: a922d4f172b7ae94caee3c751d4efd61,
-    type: 3}
-  object_5: {fileID: 5214341029351543721, guid: 0b2b09d5d2a669d4eb23c28641853387,
-    type: 3}
-  relief_1: {fileID: 1583842160909134065, guid: 74d954190c5075b45a5e58da78ee5a42,
-    type: 3}
-  relief_2: {fileID: 8041811660891862457, guid: f0243cc51194a744ab61b10ee88fcb44,
-    type: 3}
-  relief_3: {fileID: 7867936922172146617, guid: 57929c5247677e345bc8a171b5e3e0f7,
-    type: 3}
-  relief_4: {fileID: 8041811660891862457, guid: f0243cc51194a744ab61b10ee88fcb44,
-    type: 3}
-  collectables_1: {fileID: 7962113399035296089, guid: 843df2e22f731f542af7822494fad81e,
-    type: 3}
-  collectables_2: {fileID: 0}
-  collectables_3: {fileID: 0}
+    m_Bits: 1536
+  Big_relief:
+  - {fileID: 0}
+  - {fileID: 7874864453463901326, guid: 2b7a6bb3ce0664948a982a26f93e7e1e, type: 3}
+  - {fileID: 2815516808343109331, guid: 6c1dc6ab0e1287645836c61b2e9e0e7c, type: 3}
+  - {fileID: 889011840369441382, guid: 86fc07f2f7a4e024db29ad8f38eadd68, type: 3}
+  Relief:
+  - {fileID: 0}
+  - {fileID: 8098252802147531686, guid: d98c7e280352c174fa12bee8e5b834e2, type: 3}
+  - {fileID: 4159509437894987984, guid: 25306def31473df43a763d8ccbb11a3c, type: 3}
+  - {fileID: 4641314443786227747, guid: c861f30cb6ebfea4ab1e54de54bd05b3, type: 3}
+  - {fileID: 7075366747591728354, guid: 74c494a4458ffd348bc5ac31bb79d4e5, type: 3}
+  Objects:
+  - {fileID: 0}
+  - {fileID: 5214341029351543721, guid: 0b2b09d5d2a669d4eb23c28641853387, type: 3}
+  - {fileID: 8482008273134942007, guid: 998acdccaf42e31459c09dc5312f39d2, type: 3}
+  - {fileID: 1797973357672744321, guid: a922d4f172b7ae94caee3c751d4efd61, type: 3}
+  - {fileID: 1383106373550111545, guid: 7e2296a9aa54f664ca5863dd8df7e3eb, type: 3}
+  - {fileID: 2628952358736305667, guid: fb8a771ac03058142b73a244ff126347, type: 3}
+  Collectables:
+  - {fileID: 0}
+  - {fileID: 3184800941335152543, guid: 8a992e8479b0b644385672048a0017b6, type: 3}
+  - {fileID: 4642869297304928665, guid: 88736fbb81cc8624ab651317cbe06d83, type: 3}
+  - {fileID: 5186552759174715207, guid: 0f6208a86a3bdfb4d8ec6a5cbbcd77fa, type: 3}
+  - {fileID: 7138555997840041944, guid: f02a4c3f3133264478ca85d6249db1e5, type: 3}
+  islandActivated: 1
 --- !u!1001 &874362670953161247
 PrefabInstance:
   m_ObjectHideFlags: 0
