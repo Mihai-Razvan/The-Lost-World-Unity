@@ -80,7 +80,7 @@ public class IslandObjects_Forest : MonoBehaviour
 
         if (ObjectdHaveSpawned == false)  
         {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, 4500f, playerMask);       //450
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 450f, playerMask);       //450
             if (colliders.Length != 0)
             {
                 ObjectsSpawn();

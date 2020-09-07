@@ -94,10 +94,10 @@ MonoBehaviour:
   - {fileID: 2628952358736305667, guid: fb8a771ac03058142b73a244ff126347, type: 3}
   Collectables:
   - {fileID: 0}
-  - {fileID: 3184800941335152543, guid: 8a992e8479b0b644385672048a0017b6, type: 3}
+  - {fileID: 7962113399035296089, guid: 843df2e22f731f542af7822494fad81e, type: 3}
   - {fileID: 4642869297304928665, guid: 88736fbb81cc8624ab651317cbe06d83, type: 3}
   - {fileID: 5186552759174715207, guid: 0f6208a86a3bdfb4d8ec6a5cbbcd77fa, type: 3}
-  - {fileID: 7138555997840041944, guid: f02a4c3f3133264478ca85d6249db1e5, type: 3}
+  - {fileID: 7830436593261658875, guid: 4c650e0e95cb26146a7fcaa9fe36547e, type: 3}
   islandActivated: 1
 --- !u!1001 &874362670953161247
 PrefabInstance:

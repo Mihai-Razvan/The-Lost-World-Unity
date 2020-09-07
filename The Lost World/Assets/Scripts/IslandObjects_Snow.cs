@@ -16,8 +16,8 @@ public class IslandObjects_Snow : MonoBehaviour
     private int maxRange = 250;
     private int minRangeRelief = -120;   // e mai mic ca iese de pe insula
     private int maxRangeRelief = 120;
-    private int minRangeBigRelief = -80;
-    private int maxRangeBigRelief = 80;
+    private int minRangeBigRelief = -40;
+    private int maxRangeBigRelief = 40;
     private float randomReliefScale;
 
     private int numberOfObjects;
@@ -35,7 +35,7 @@ public class IslandObjects_Snow : MonoBehaviour
     [SerializeField]
     private LayerMask objectsMask;
     [SerializeField]
-    private LayerMask collectablesMask;
+    private LayerMask collectablesMask;      //cand faca sfera in juru obiectului inainte sa instantiate sa vada daca se colliding cu cv cu care nu are voie adik collectable sau tree
     [SerializeField]
     private LayerMask Spawn_Surface_Mask;    //PE CARE se pot spawna objecturile si collectable
 
@@ -73,13 +73,14 @@ public class IslandObjects_Snow : MonoBehaviour
             if (colliders.Length != 0)
             {
                 CollectablesSpawn();
+                CaveCollectablesSpawn();
                 CollesctablesHaveSpawned = true;
             }
         }
 
         if (ObjectdHaveSpawned == false)
         {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, 4500f, playerMask);       //450
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 450f, playerMask);       //450
             if (colliders.Length != 0)
             {
                 ObjectsSpawn();
@@ -126,10 +127,8 @@ public class IslandObjects_Snow : MonoBehaviour
                     GameObject relief = Instantiate(Big_relief[2], hit.point, Quaternion.Euler(0, yRotation, 0));     //cave base
                     relief.transform.SetParent(hit.collider.transform);
 
-                    CaveObjectsSpawn(relief);
-
-                    relief = Instantiate(Big_relief[3], hit.point, Quaternion.Euler(0, yRotation, 0));     //cave over
-                    relief.transform.SetParent(hit.collider.transform);         //relief ca e lastspawned
+                    GameObject relief2 = Instantiate(Big_relief[3], hit.point, Quaternion.Euler(0, yRotation, 0));     //cave over
+                    relief2.transform.SetParent(hit.collider.transform);
                 }              
             }       
             
@@ -387,50 +386,51 @@ public class IslandObjects_Snow : MonoBehaviour
     }
 
 
-    void CaveObjectsSpawn(GameObject relief)
+    void CaveCollectablesSpawn()
     {
         spawnedAlready = 0;
         notSpawnedConsecutively = 0;
         numberOfCollectables = Random.Range(20, 50);     //20,30
         while (spawnedAlready < numberOfCollectables && notSpawnedConsecutively < 20)
         {
-            RaycastHit hit;
-            Physics.Raycast(new Vector3(relief.transform.position.x + Random.Range(minRange, maxRange), relief.transform.position.y + SpawnHeight, relief.transform.position.z + Random.Range(minRange, maxRange)), Vector3.down, out hit, 100, Spawn_Surface_Mask);
-            if (hit.collider.tag == "Cave Base")
-            {
-                Collider[] colliders = Physics.OverlapSphere(hit.point, 3, collectablesMask);
-                if (colliders.Length == 0)
+            RaycastHit[] hit = Physics.RaycastAll(new Vector3(transform.position.x + Random.Range(minRange, maxRange), transform.position.y + SpawnHeight, transform.position.z + Random.Range(minRange, maxRange)), Vector3.down, 100, Spawn_Surface_Mask);
+
+            for(int i = 0; i < hit.Length; i ++)
+                if (hit[i].collider.tag == "Cave Base")
                 {
-                    objectRandomNumber = (int)Random.Range(1, 5);
+                    Collider[] colliders = Physics.OverlapSphere(hit[i].point, 3, collectablesMask);
+                    if (colliders.Length == 0)
+                    {
+                        objectRandomNumber = (int)Random.Range(1, 5);
 
-                    if (objectRandomNumber == 1)
-                    {
-                        lastSpawned = Instantiate(Collectables[1], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
-                        lastSpawned.transform.SetParent(hit.collider.transform);
-                    }
-                    else if (objectRandomNumber == 2)
-                    {
-                        lastSpawned = Instantiate(Collectables[2], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
-                        lastSpawned.transform.SetParent(hit.collider.transform);
-                    }
-                    else if (objectRandomNumber == 3)
-                    {
-                        lastSpawned = Instantiate(Collectables[3], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
-                        lastSpawned.transform.SetParent(hit.collider.transform);
-                    }
-                    else if (objectRandomNumber == 4)
-                    {
-                        lastSpawned = Instantiate(Collectables[4], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
-                        lastSpawned.transform.SetParent(hit.collider.transform);
-                    }
+                        if (objectRandomNumber == 1)
+                        {
+                            lastSpawned = Instantiate(Collectables[1], hit[i].point, Quaternion.FromToRotation(Vector3.up, hit[i].normal));
+                            lastSpawned.transform.SetParent(hit[i].collider.transform);
+                        }
+                        else if (objectRandomNumber == 2)
+                        {
+                            lastSpawned = Instantiate(Collectables[2], hit[i].point, Quaternion.FromToRotation(Vector3.up, hit[i].normal));
+                            lastSpawned.transform.SetParent(hit[i].collider.transform);
+                        }
+                        else if (objectRandomNumber == 3)
+                        {
+                            lastSpawned = Instantiate(Collectables[3], hit[i].point, Quaternion.FromToRotation(Vector3.up, hit[i].normal));
+                            lastSpawned.transform.SetParent(hit[i].collider.transform);
+                        }
+                        else if (objectRandomNumber == 4)
+                        {
+                            lastSpawned = Instantiate(Collectables[4], hit[i].point, Quaternion.FromToRotation(Vector3.up, hit[i].normal));
+                            lastSpawned.transform.SetParent(hit[i].collider.transform);
+                        }
 
 
-                    notSpawnedConsecutively = 0;
-                    spawnedAlready++;
+                        notSpawnedConsecutively = 0;
+                        spawnedAlready++;
+                    }
+                    else
+                        notSpawnedConsecutively++;
                 }
-                else
-                    notSpawnedConsecutively++;
-            }
 
         }
     }
