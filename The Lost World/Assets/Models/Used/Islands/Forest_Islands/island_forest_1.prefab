@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6885608610452281022
 Transform:
@@ -82,7 +82,17 @@ MonoBehaviour:
   - {fileID: 4642869297304928665, guid: 88736fbb81cc8624ab651317cbe06d83, type: 3}
   - {fileID: 5186552759174715207, guid: 0f6208a86a3bdfb4d8ec6a5cbbcd77fa, type: 3}
   - {fileID: 7830436593261658875, guid: 4c650e0e95cb26146a7fcaa9fe36547e, type: 3}
+  Mini_Forest_Island: {fileID: 6964081990431678984, guid: 006ec46504747d34fb4ec49e84521f1e,
+    type: 3}
   islandActivated: 1
+  islandMask:
+    serializedVersion: 2
+    m_Bits: 512
+  animalMask:
+    serializedVersion: 2
+    m_Bits: 65536
+  forest_animal_1: {fileID: 4406930104288571550, guid: 4301f74a0dfcc06489486a777d848b85,
+    type: 3}
 --- !u!1001 &6885608609901726655
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -178,7 +188,7 @@ PrefabInstance:
     - target: {fileID: 3692300206456438513, guid: e78e302339381cf4e8a4b99e1b144167,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e78e302339381cf4e8a4b99e1b144167, type: 3}

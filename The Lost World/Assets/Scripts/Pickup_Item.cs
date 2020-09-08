@@ -63,6 +63,11 @@ public class Pickup_Item : MonoBehaviour
                         FindObjectOfType<Inventory>().itemCodeToAdd = 18;
                         Destroy(colliders[0].transform.parent.gameObject);    
                     }
+                    else if (colliders[0].gameObject.tag == "Copper ore")
+                    {
+                        FindObjectOfType<Inventory>().itemCodeToAdd = 19;
+                        Destroy(colliders[0].transform.parent.gameObject);
+                    }
 
                 }
             }

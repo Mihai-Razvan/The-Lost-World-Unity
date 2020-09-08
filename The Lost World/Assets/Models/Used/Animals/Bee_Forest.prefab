@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 3667828162978305156}
   - component: {fileID: 7460633208365355676}
   m_Layer: 16
-  m_Name: 'Bee  '
+  m_Name: Bee_Forest
   m_TagString: Bee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

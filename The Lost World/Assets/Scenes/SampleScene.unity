@@ -1037,7 +1037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9aa0fc0562f7fd459e66089730b67a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item_Stack_Number: 00000000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000
+  Item_Stack_Number: 00000000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000
   Inventory_Sprite:
   - {fileID: 0}
   - {fileID: 21300000, guid: 20d31e0f68488b543ba564a928b249c5, type: 3}
@@ -1058,12 +1058,22 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c4bc0fb787fde7f46aa7237c0e95b2c8, type: 3}
   - {fileID: 21300000, guid: 12c00f4f9377e6f4d834077ea6e6c369, type: 3}
   - {fileID: 21300000, guid: 61faeec474084a7478d3c71e0bb60c99, type: 3}
+  - {fileID: 21300000, guid: a2b1416bc0a7f7c4fbba3e74bc216d7a, type: 3}
+  - {fileID: 21300000, guid: fd44bed833ee45b409dcd4c575bc3578, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   Item_Name:
   - 
   - Stick
   - Pickaxe
-  - Iron Ore
+  - Iron ore
   - Furnace
   - Stone
   - Iron Ingot
@@ -1079,7 +1089,7 @@ MonoBehaviour:
   - Platform
   - Wooden Wall
   - Log
-  - 
+  - Copper ore
   Item_Description:
   - 
   - Maybe the most important resource
@@ -4780,17 +4790,10 @@ MonoBehaviour:
   islandMask:
     serializedVersion: 2
     m_Bits: 512
-  animalMask:
-    serializedVersion: 2
-    m_Bits: 65536
-  animal_1: {fileID: 4406930104288571550, guid: 4301f74a0dfcc06489486a777d848b85,
-    type: 3}
   cloudMask:
     serializedVersion: 2
     m_Bits: 131072
   cloud: {fileID: 7989258041735985984, guid: e996eff700dfbef4394549202526a2f1, type: 3}
-  Mini_Forest_Island: {fileID: 6964081990431678984, guid: 006ec46504747d34fb4ec49e84521f1e,
-    type: 3}
 --- !u!114 &446034140
 MonoBehaviour:
   m_ObjectHideFlags: 0

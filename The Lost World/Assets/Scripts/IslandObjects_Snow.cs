@@ -12,8 +12,8 @@ public class IslandObjects_Snow : MonoBehaviour
     private GameObject island;
     [SerializeField]
     public float SpawnHeight;         // se adunna la pozitia insulei si acolo spawneaza obiectele si de acolo face uin ray in jos 
-    private int minRange = -250;     //de la centru insulei la ce x si z random sa se spawneze obiectele
-    private int maxRange = 250;
+    private int minRange = -300;     //de la centru insulei la ce x si z random sa se spawneze obiectele
+    private int maxRange = 300;
     private int minRangeRelief = -120;   // e mai mic ca iese de pe insula
     private int maxRangeRelief = 120;
     private int minRangeBigRelief = -40;
@@ -53,6 +53,25 @@ public class IslandObjects_Snow : MonoBehaviour
     private bool thingsOnIslandActive;
     [SerializeField]
     private bool islandActivated = true;
+    private bool IsCaveOnIsland;
+
+    [SerializeField]
+    private GameObject Mini_Snow_Island;
+
+
+
+    //animals
+
+    [SerializeField]
+    private LayerMask islandMask;
+    [SerializeField]
+    private LayerMask animalMask;
+    private float animalSphereRadius = 500;           //in asta verifica cate animale sunt
+    private int maxAnimalNumber = 10;       //10
+    private Vector3 spawnPoint;
+    private int animalRandomNumber;     //ce animal sa spawneze
+    [SerializeField]
+    private GameObject snow_animal_1;   //bee
 
 
 
@@ -65,6 +84,10 @@ public class IslandObjects_Snow : MonoBehaviour
             ReliefHasSpawned = true;
             BigReliefSpawn();
             ReliefSpawn();
+            SpawnMiniIsland();
+
+          //  for (int i = 1; i < 50; i++)
+             //   AnimalSpawn();
         }
 
         if (CollesctablesHaveSpawned == false)       //spawneaza cand e playeru aproape de is
@@ -73,7 +96,11 @@ public class IslandObjects_Snow : MonoBehaviour
             if (colliders.Length != 0)
             {
                 CollectablesSpawn();
-                CaveCollectablesSpawn();
+                if (IsCaveOnIsland)
+                {
+                    CaveCollectablesSpawn();
+                    CaveObjectSpawn();
+                }
                 CollesctablesHaveSpawned = true;
             }
         }
@@ -89,6 +116,7 @@ public class IslandObjects_Snow : MonoBehaviour
             }
         }
 
+        AnimalSpawn();
 
         DespawnIsland();
         InactiveIsland();
@@ -98,41 +126,48 @@ public class IslandObjects_Snow : MonoBehaviour
 
     void BigReliefSpawn()
     {
+        notSpawnedConsecutively = 0;
         numberOfBigRelief = Random.Range(10, 40);
-        while (spawnedBigReliefNumber < numberOfBigRelief)
+        while (spawnedBigReliefNumber < numberOfBigRelief && notSpawnedConsecutively < 20)
         {
 
             RaycastHit hit;
-            Physics.Raycast(new Vector3(transform.position.x + Random.Range(minRangeBigRelief, maxRangeBigRelief), transform.position.y + SpawnHeight, transform.position.z + Random.Range(minRangeBigRelief, maxRangeBigRelief)), Vector3.down, out hit, 100, Spawn_Surface_Mask);
-
-            objectRandomNumber = (int) Random.Range(1, 3);
-            if (objectRandomNumber == 1)
-            {
-                Collider[] colliders = Physics.OverlapSphere(hit.point, 300, reliefMask);
-                if (colliders.Length == 0)
-                {
-                    randomReliefScale = Random.Range(1, 3);
-                    GameObject relief = Instantiate(Big_relief[1], hit.point, Quaternion.Euler(0, Random.Range(0, 360), 0));
-                    //   relief.transform.localScale = new Vector3(randomReliefScale, randomReliefScale, randomReliefScale);
-                    relief.transform.SetParent(hit.collider.transform);         //relief ca e lastspawned
-                }
-            }
-            else       //MUNTELE CU CAVE
-            {       
-                Collider[] colliders = Physics.OverlapSphere(hit.point, 300, reliefMask);
-                if (colliders.Length == 0)
-                {
-                    float yRotation = Random.Range(0, 360);
-
-                    GameObject relief = Instantiate(Big_relief[2], hit.point, Quaternion.Euler(0, yRotation, 0));     //cave base
-                    relief.transform.SetParent(hit.collider.transform);
-
-                    GameObject relief2 = Instantiate(Big_relief[3], hit.point, Quaternion.Euler(0, yRotation, 0));     //cave over
-                    relief2.transform.SetParent(hit.collider.transform);
-                }              
-            }       
             
-            spawnedBigReliefNumber++;
+            if(Physics.Raycast(new Vector3(transform.position.x + Random.Range(minRangeBigRelief, maxRangeBigRelief), transform.position.y + SpawnHeight, transform.position.z + Random.Range(minRangeBigRelief, maxRangeBigRelief)), Vector3.down, out hit, 100, Spawn_Surface_Mask))
+            {
+                objectRandomNumber = (int)Random.Range(1, 3);
+                if (objectRandomNumber == 1)
+                {
+                    Collider[] colliders = Physics.OverlapSphere(hit.point, 300, reliefMask);
+                    if (colliders.Length == 0)
+                    {
+                        randomReliefScale = Random.Range(1, 3);
+                        GameObject relief = Instantiate(Big_relief[1], hit.point, Quaternion.Euler(0, Random.Range(0, 360), 0));
+                        //   relief.transform.localScale = new Vector3(randomReliefScale, randomReliefScale, randomReliefScale);
+                        relief.transform.SetParent(hit.collider.transform);         //relief ca e lastspawned
+                    }
+                }
+                else       //MUNTELE CU CAVE
+                {
+                    Collider[] colliders = Physics.OverlapSphere(hit.point, 300, reliefMask);
+                    if (colliders.Length == 0)
+                    {
+                        float yRotation = Random.Range(0, 360);
+
+                        GameObject relief = Instantiate(Big_relief[2], hit.point, Quaternion.Euler(0, yRotation, 0));     //cave base
+                        relief.transform.SetParent(hit.collider.transform);
+
+                        relief = Instantiate(Big_relief[3], hit.point, Quaternion.Euler(0, yRotation, 0));     //cave over
+                        relief.transform.SetParent(hit.collider.transform);
+
+                        IsCaveOnIsland = true;
+                    }
+                }
+
+                spawnedBigReliefNumber++;
+            }
+            else
+                notSpawnedConsecutively++;
         }
     }
 
@@ -401,7 +436,7 @@ public class IslandObjects_Snow : MonoBehaviour
                     Collider[] colliders = Physics.OverlapSphere(hit[i].point, 3, collectablesMask);
                     if (colliders.Length == 0)
                     {
-                        objectRandomNumber = (int)Random.Range(1, 5);
+                        objectRandomNumber = (int)Random.Range(1, 50);
 
                         if (objectRandomNumber == 1)
                         {
@@ -423,6 +458,11 @@ public class IslandObjects_Snow : MonoBehaviour
                             lastSpawned = Instantiate(Collectables[4], hit[i].point, Quaternion.FromToRotation(Vector3.up, hit[i].normal));
                             lastSpawned.transform.SetParent(hit[i].collider.transform);
                         }
+                        else 
+                        {
+                            lastSpawned = Instantiate(Collectables[5], hit[i].point, Quaternion.FromToRotation(Vector3.up, hit[i].normal));
+                            lastSpawned.transform.SetParent(hit[i].collider.transform);
+                        }
 
 
                         notSpawnedConsecutively = 0;
@@ -432,6 +472,110 @@ public class IslandObjects_Snow : MonoBehaviour
                         notSpawnedConsecutively++;
                 }
 
+        }
+    }
+
+
+    void CaveObjectSpawn()
+    {
+        spawnedAlready = 0;
+        notSpawnedConsecutively = 0;
+        numberOfObjects = Random.Range(10, 30);     //20,30
+        while (spawnedAlready < numberOfObjects && notSpawnedConsecutively < 20)
+        {
+            RaycastHit[] hit = Physics.RaycastAll(new Vector3(transform.position.x + Random.Range(minRange, maxRange), transform.position.y + SpawnHeight, transform.position.z + Random.Range(minRange, maxRange)), Vector3.down, 100, Spawn_Surface_Mask);
+
+            for (int i = 0; i < hit.Length; i++)
+                if (hit[i].collider.tag == "Cave Base")
+                {
+                    Collider[] colliders = Physics.OverlapSphere(hit[i].point, 3, collectablesMask);
+                    if (colliders.Length == 0)
+                    {
+                        objectRandomNumber = (int)Random.Range(1, 6);
+
+                        if (objectRandomNumber == 1)
+                        {
+                            lastSpawned = Instantiate(Objects[6], hit[i].point, Quaternion.FromToRotation(Vector3.up, hit[i].normal));
+                            lastSpawned.transform.SetParent(hit[i].collider.transform);
+                        }
+                        else if (objectRandomNumber == 2)
+                        {
+                            lastSpawned = Instantiate(Objects[7], hit[i].point, Quaternion.FromToRotation(Vector3.up, hit[i].normal));
+                            lastSpawned.transform.SetParent(hit[i].collider.transform);
+                        }
+                        else if (objectRandomNumber > 2) //turturii care pot fi pusi si pe tavan
+                        {
+                            RaycastHit hit2;
+                            Physics.Raycast(hit[i].point, transform.up, out hit2, 50, Spawn_Surface_Mask);
+
+                            if(hit2.collider.gameObject.tag == "Cave Over")
+                            {
+                                lastSpawned = Instantiate(Objects[8], hit2.point, Quaternion.Euler(180, 0, 0));
+                                lastSpawned.transform.SetParent(hit2.collider.transform);
+                            }
+                            
+                        }
+
+                        notSpawnedConsecutively = 0;
+                        spawnedAlready++;
+                    }
+                    else
+                        notSpawnedConsecutively++;
+                }
+
+        }
+    }
+
+    void SpawnMiniIsland()
+    {
+        for (int i = 1; i <= 18; i++)
+        {
+            float y = 15 * i;                //asta nu e random ca e ca sa nu se ciocneasca mini insulele
+            if ((int)Random.Range(1, 3) == 1)
+                y = -y;
+
+            float z = Random.Range(0, 200);
+
+            if ((int)Random.Range(1, 3) == 1)
+                z = -z;
+
+            float x = Random.Range(0, 200);
+
+            if ((int)Random.Range(1, 3) == 1)
+                x = -x;
+
+            if (Vector3.Distance(transform.position, new Vector3(transform.position.x + x, transform.position.y + y, transform.position.z + z)) > 220)  // sa nu spawneze in insula
+            {
+                GameObject spawnedMiniIsland = Instantiate(Mini_Snow_Island, new Vector3(transform.position.x + x, transform.position.y + y, transform.position.z + z), Quaternion.identity);
+                spawnedMiniIsland.transform.SetParent(this.gameObject.transform);
+            }
+        }
+    }
+
+
+    void AnimalSpawn()
+    {      //iau playeru de la inventory in loc sa il fac variabila aici ca insula fiind prefab nu merge sa dau drag din hierchy in inspector,pot numai prefaburi sa dau drag in inspector
+        RaycastHit hit;
+        if (Physics.Raycast(FindObjectOfType<Inventory>().player.transform.position, -transform.up, out hit, 20, islandMask))    //daca playeru e pe insula altfel nu spanweza animale
+        {
+            Collider[] colliders = Physics.OverlapSphere(FindObjectOfType<Inventory>().player.transform.position, animalSphereRadius, animalMask);
+            if (colliders.Length < maxAnimalNumber)      //verifica sa nu fie prea mult animale pe un radius in juru playerului(adik pe insula)
+            {
+                spawnPoint = Random.insideUnitSphere * animalSphereRadius + new Vector3(transform.position.x, transform.position.y + SpawnHeight, transform.position.z);
+
+                RaycastHit hit2;
+                if (Physics.Raycast(spawnPoint, -transform.up, out hit2, 50, islandMask))   // sa nu spawneze animale in afara insulei
+                {
+                    if (hit.collider.tag != "MiniIsland")                  //sa nu spawneze si pe miniislanduri ca alea tot Island au layeru si intra in islandMask
+                    {
+                        animalRandomNumber = Random.Range(1, 1);
+                        if (animalRandomNumber == 1)     //bee
+                            Instantiate(snow_animal_1, spawnPoint, Quaternion.identity);
+                    }
+
+                }
+
+            }
         }
     }
 }

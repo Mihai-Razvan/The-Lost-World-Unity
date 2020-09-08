@@ -29,6 +29,8 @@ TagManager:
   - Stick
   - Wood
   - Cave Base
+  - Cave Over
+  - Copper ore
   layers:
   - Default
   - TransparentFX

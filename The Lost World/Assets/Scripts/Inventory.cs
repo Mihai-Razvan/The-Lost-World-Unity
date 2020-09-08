@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField]
-    private GameObject player;
+    public GameObject player;
     public GameObject Inventory_Crafting_Panel;                       //ala de are si inventoriu si craftingu
     public GameObject Inventory_Panel;                                  // numa inventoryu
     public GameObject Crafting_Panel;                                   //numa craftingu

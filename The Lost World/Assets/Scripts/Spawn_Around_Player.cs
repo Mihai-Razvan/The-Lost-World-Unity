@@ -32,20 +32,12 @@ public class Spawn_Around_Player : MonoBehaviour
     GameObject island_forest_10;
     [SerializeField]
     GameObject island_snow_1;
-                                                                      
-    //CLOUDS                                                              
+                                                                                                                               
 
     [SerializeField]
     private LayerMask islandMask;
-    [SerializeField]
-    private LayerMask animalMask;
-    private float animalSphereRadius = 500;           //in asta verifica cate animale sunt
-    private int maxAnimalNumber = 10;       //10
     private Vector3 spawnPoint;
-    private int animalRandomNumber;     //ce animal sa spawneze
-    [SerializeField]
-    private GameObject animal_1;   //bee
-             
+
     ///CLOUDS
   
     [SerializeField]
@@ -54,22 +46,16 @@ public class Spawn_Around_Player : MonoBehaviour
     [SerializeField]
     private GameObject cloud;
 
-    ///MINI ISLANDS
 
-    private GameObject spawnedMiniIsland;
-    [SerializeField]
-    private GameObject Mini_Forest_Island;
 
 
     void Start()
     {
         spawnedIsland = Instantiate(island_forest_1, new Vector3(2315, 0 ,1000), Quaternion.identity);    //spawn island
-        SpawnMiniIsland();
 
         for (int i = 1; i <= 50; i++)         //spawneaza nori la inceput 
         {
             IslandSpawn();
-            AnimalSpawn();
             CloudsSpawn();
         }
         
@@ -79,7 +65,7 @@ public class Spawn_Around_Player : MonoBehaviour
     void Update()
     {
         IslandSpawn();
-        AnimalSpawn();
+     ;
         if((int) Random.Range(1, 1000) == 1)
            CloudsSpawn();
 
@@ -98,38 +84,10 @@ public class Spawn_Around_Player : MonoBehaviour
         {
             randomIslandNumber = Random.Range(1, 4) ;
             if (randomIslandNumber < 3)
-              spawnedIsland =  Instantiate(island_forest_1, spawnPosition, Quaternion.identity);
+              spawnedIsland = Instantiate(island_forest_1, spawnPosition, Quaternion.identity);
             else
               spawnedIsland = Instantiate(island_snow_1, spawnPosition, Quaternion.identity);
 
-            SpawnMiniIsland();
-        }
-    }
-
-
-    void AnimalSpawn()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, -transform.up, out hit, 20, islandMask))    //daca playeru e pe insula altfel nu spanweza animale
-        {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, animalSphereRadius, animalMask);
-            if (colliders.Length < maxAnimalNumber)      //verifica sa nu fie prea mult animale pe un radius in juru playerului(adik pe insula)
-            {
-                spawnPoint = Random.insideUnitSphere * animalSphereRadius + transform.position;
-
-                RaycastHit hit2;
-                if (Physics.Raycast(spawnPoint, -transform.up, out hit2 , 50, islandMask))   // sa nu spawneze animale in afara insulei
-                {
-                    if (hit.collider.tag != "MiniIsland")                  //sa nu spawneze si pe miniislanduri ca alea tot Island au layeru si intra in islandMask
-                    {
-                        animalRandomNumber = Random.Range(1, 1);
-                        if (animalRandomNumber == 1)     //bee
-                            Instantiate(animal_1, spawnPoint, Quaternion.identity);
-                    }
-
-                }
-
-            }
         }
     }
 
@@ -138,34 +96,6 @@ public class Spawn_Around_Player : MonoBehaviour
     {
         spawnPoint = Random.insideUnitSphere * cloudSphereRadius + transform.position;
         Instantiate(cloud, spawnPoint, Quaternion.Euler(0, Random.Range(-180, 180), 0));
-    }
-
-
-    void SpawnMiniIsland()
-    {
-        for (int i = 1; i <= 15; i++)
-        {
-            float y = 15 * i;                //asta nu e random ca e ca sa nu se ciocneasca mini insulele
-                if ((int)Random.Range(1, 3) == 1)
-                    y = -y;
-
-                float z = Random.Range(0, 200);
-
-                if ((int)Random.Range(1, 3) == 1)
-                    z = -z;
-
-                float x = Random.Range(0, 200);
-
-                if ((int)Random.Range(1, 3) == 1)
-                    x = -x;
-
-                if (Vector3.Distance(spawnedIsland.transform.position, new Vector3(spawnedIsland.transform.position.x + x, spawnedIsland.transform.position.y + y, spawnedIsland.transform.position.z + z)) > 250)  // sa nu spawneze in insula
-                {
-                    spawnedMiniIsland = Instantiate(Mini_Forest_Island, new Vector3(spawnedIsland.transform.position.x + x, spawnedIsland.transform.position.y + y, spawnedIsland.transform.position.z + z), Quaternion.identity);
-                    spawnedMiniIsland.transform.SetParent(spawnedIsland.transform);
-                }
-        }
- 
     }
 
    

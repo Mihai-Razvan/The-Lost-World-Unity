@@ -23,8 +23,8 @@ public class Item_004 : MonoBehaviour
 
     private int woodFuel = 30;      //cat fuel da wood
 
-    private int iron_ore_transform_time= 15;
-    
+    private int iron_ore_transform_time= 5;
+    private int copper_ore_transform_time = 5;
 
     public 
     void Start()
@@ -88,7 +88,6 @@ public class Item_004 : MonoBehaviour
         if (Transforming_Time_Left <= 0)
         {
             itemCodeToAdd = produced_item_code;    // s a terrminat timpu de producere si adauga itemu produs
-            quantityToAdd = 1;
             if(produced_item_code != 0)
             AddToInventory();
 
@@ -103,12 +102,25 @@ public class Item_004 : MonoBehaviour
                         if (Slot_Item_Quantity[i] == 0)
                             Slot_Item_Code[i] = 0;
                         Transforming_Time_Left = iron_ore_transform_time;
-                        produced_item_code = 6;
+                        produced_item_code = 6;  //iron ingot
+                        quantityToAdd = 1;
                     }
+                else if (Slot_Item_Code[i] == 19)  //copper_ore
+                    {
+
+                        Slot_Item_Quantity[i]--;
+                        if (Slot_Item_Quantity[i] == 0)
+                            Slot_Item_Code[i] = 0;
+                        Transforming_Time_Left = copper_ore_transform_time;
+                        produced_item_code = 20;   //copper ingot
+                        quantityToAdd = 1;
+                    }
+
 
 
                 if (Transforming_Time_Left <= 0)   //nu a gasit un stack incomplet cu ceva de transormat si cauta unu plin
                     for (int i = 1; i <= 20; i++)
+                    {
                         if (Slot_Item_Code[i] == 3)
                         {
                             Slot_Item_Quantity[i]--;
@@ -116,7 +128,18 @@ public class Item_004 : MonoBehaviour
                                 Slot_Item_Code[i] = 0;
                             Transforming_Time_Left = iron_ore_transform_time;
                             produced_item_code = 6;
+                            quantityToAdd = 1;
                         }
+                        else if (Slot_Item_Code[i] == 19)
+                        {
+                            Slot_Item_Quantity[i]--;
+                            if (Slot_Item_Quantity[i] == 0)
+                                Slot_Item_Code[i] = 0;
+                            Transforming_Time_Left = copper_ore_transform_time;
+                            produced_item_code = 20;
+                            quantityToAdd = 1;
+                        }
+                    }
             }
         }
         

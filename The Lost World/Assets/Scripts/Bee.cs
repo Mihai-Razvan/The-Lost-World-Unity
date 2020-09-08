@@ -113,7 +113,7 @@ public class Bee : MonoBehaviour
 
     void Despawn()      //cand e playeru departe
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 300, playerMask);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 500, playerMask);
         if (colliders.Length == 0)
             Destroy(this.gameObject);
     }

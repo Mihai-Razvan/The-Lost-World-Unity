@@ -92,13 +92,27 @@ MonoBehaviour:
   - {fileID: 1797973357672744321, guid: a922d4f172b7ae94caee3c751d4efd61, type: 3}
   - {fileID: 1383106373550111545, guid: 7e2296a9aa54f664ca5863dd8df7e3eb, type: 3}
   - {fileID: 2628952358736305667, guid: fb8a771ac03058142b73a244ff126347, type: 3}
+  - {fileID: 1875216262622012058, guid: 06f564fbff5f1114a99b789ef0804983, type: 3}
+  - {fileID: 247227649947084005, guid: 1de2d79d969785e4cae2b2553ff126ea, type: 3}
+  - {fileID: 1641797840428666393, guid: 22b2216bebb547140b67ed31f84fd047, type: 3}
   Collectables:
   - {fileID: 0}
   - {fileID: 7962113399035296089, guid: 843df2e22f731f542af7822494fad81e, type: 3}
   - {fileID: 4642869297304928665, guid: 88736fbb81cc8624ab651317cbe06d83, type: 3}
   - {fileID: 5186552759174715207, guid: 0f6208a86a3bdfb4d8ec6a5cbbcd77fa, type: 3}
   - {fileID: 7830436593261658875, guid: 4c650e0e95cb26146a7fcaa9fe36547e, type: 3}
+  - {fileID: 2877075445177184968, guid: 8f2fcc2f938f21741908c1659b3226f6, type: 3}
   islandActivated: 1
+  Mini_Snow_Island: {fileID: 4785332356287954717, guid: 198db9f29c1272b409b62657a41cdcc4,
+    type: 3}
+  islandMask:
+    serializedVersion: 2
+    m_Bits: 512
+  animalMask:
+    serializedVersion: 2
+    m_Bits: 65536
+  snow_animal_1: {fileID: 6940758417008733545, guid: e533279b02342c941aa48b033d5fbd75,
+    type: 3}
 --- !u!1001 &874362670953161247
 PrefabInstance:
   m_ObjectHideFlags: 0
