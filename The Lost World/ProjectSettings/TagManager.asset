@@ -31,6 +31,9 @@ TagManager:
   - Cave Base
   - Cave Over
   - Copper ore
+  - Silicon
+  - Crystal
+  - Rich iron ore
   layers:
   - Default
   - TransparentFX

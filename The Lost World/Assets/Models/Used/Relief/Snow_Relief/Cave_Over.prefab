@@ -48,6 +48,11 @@ PrefabInstance:
       propertyPath: m_ReceiveShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4993676391034932553, guid: 61cef24be586a4244a6b8308fcbf6e89,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4a2dfa687ee32e445899a3cde4d1e444, type: 2}
     - target: {fileID: 6126644700242490918, guid: 61cef24be586a4244a6b8308fcbf6e89,
         type: 3}
       propertyPath: m_LocalPosition.x

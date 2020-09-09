@@ -79,6 +79,7 @@ MonoBehaviour:
   - {fileID: 7874864453463901326, guid: 2b7a6bb3ce0664948a982a26f93e7e1e, type: 3}
   - {fileID: 2815516808343109331, guid: 6c1dc6ab0e1287645836c61b2e9e0e7c, type: 3}
   - {fileID: 889011840369441382, guid: 86fc07f2f7a4e024db29ad8f38eadd68, type: 3}
+  - {fileID: 3717482444916846279, guid: 2944e4b3f47d94f409893658ace616f5, type: 3}
   Relief:
   - {fileID: 0}
   - {fileID: 8098252802147531686, guid: d98c7e280352c174fa12bee8e5b834e2, type: 3}
@@ -102,6 +103,9 @@ MonoBehaviour:
   - {fileID: 5186552759174715207, guid: 0f6208a86a3bdfb4d8ec6a5cbbcd77fa, type: 3}
   - {fileID: 7830436593261658875, guid: 4c650e0e95cb26146a7fcaa9fe36547e, type: 3}
   - {fileID: 2877075445177184968, guid: 8f2fcc2f938f21741908c1659b3226f6, type: 3}
+  - {fileID: 4336798209637963580, guid: 688ed1e030e1e6441815b8d973298afd, type: 3}
+  - {fileID: 4563156725651044954, guid: 7263ccfcf7a2b4140b8b5305c8396fe2, type: 3}
+  - {fileID: 8836009711492379744, guid: 03a4798424451904994514dabe52c827, type: 3}
   islandActivated: 1
   Mini_Snow_Island: {fileID: 4785332356287954717, guid: 198db9f29c1272b409b62657a41cdcc4,
     type: 3}

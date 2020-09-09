@@ -12,8 +12,8 @@ public class IslandObjects_Forest : MonoBehaviour
     private GameObject island;
     [SerializeField]
     public float SpawnHeight;         // se adunna la pozitia insulei si acolo spawneaza obiectele si de acolo face uin ray in jos 
-    private int minRange = -300;     //de la centru insulei la ce x si z random sa se spawneze obiectele
-    private int maxRange = 300;
+    private int minRange = -350;     //de la centru insulei la ce x si z random sa se spawneze obiectele
+    private int maxRange = 350;
     private int minRangeRelief = -120;   // e mai mic ca iese de pe insula
     private int maxRangeRelief = 120;
     private int minRangeBigRelief = -80;
@@ -136,7 +136,7 @@ public class IslandObjects_Forest : MonoBehaviour
                     randomReliefScale = Random.Range(1, 3);
                     GameObject relief = Instantiate(Big_relief[1], hit.point, Quaternion.Euler(0, Random.Range(0, 360), 0));
                     //   relief.transform.localScale = new Vector3(randomReliefScale, randomReliefScale, randomReliefScale);
-                    relief.transform.SetParent(hit.collider.transform);         //relief ca e lastspawned
+                    relief.transform.SetParent(island.transform);         //relief ca e lastspawned
                 }
             }
 
@@ -163,7 +163,7 @@ public class IslandObjects_Forest : MonoBehaviour
                     randomReliefScale = Random.Range(1, 3);
                     GameObject relief = Instantiate(Relief[1], hit.point, Quaternion.identity);
                     relief.transform.localScale = new Vector3(randomReliefScale, randomReliefScale, randomReliefScale);
-                    relief.transform.SetParent(hit.collider.transform);         //relief ca e lastspawned
+                    relief.transform.SetParent(island.transform);         //relief ca e lastspawned
                 }
             }
             else if (objectRandomNumber == 2)
@@ -174,7 +174,7 @@ public class IslandObjects_Forest : MonoBehaviour
                     randomReliefScale = Random.Range(1, 3);
                     GameObject relief = Instantiate(Relief[2], hit.point, Quaternion.identity);
                     relief.transform.localScale = new Vector3(randomReliefScale, randomReliefScale, randomReliefScale);
-                    relief.transform.SetParent(hit.collider.transform);
+                    relief.transform.SetParent(island.transform);
                 }
             }
             else if (objectRandomNumber == 3)
@@ -185,7 +185,7 @@ public class IslandObjects_Forest : MonoBehaviour
                     randomReliefScale = Random.Range(1, 3);
                     GameObject relief = Instantiate(Relief[3], hit.point, Quaternion.identity);
                     relief.transform.localScale = new Vector3(randomReliefScale, randomReliefScale, randomReliefScale);
-                    relief.transform.SetParent(hit.collider.transform);
+                    relief.transform.SetParent(island.transform);
                 }
             }
             else if (objectRandomNumber == 4)
@@ -196,7 +196,7 @@ public class IslandObjects_Forest : MonoBehaviour
                     randomReliefScale = Random.Range(1, 3);
                     GameObject relief = Instantiate(Relief[4], hit.point, Quaternion.identity);
                     relief.transform.localScale = new Vector3(randomReliefScale, randomReliefScale, randomReliefScale);
-                    relief.transform.SetParent(hit.collider.transform);
+                    relief.transform.SetParent(island.transform);
                 }
             }
 
@@ -292,8 +292,8 @@ public class IslandObjects_Forest : MonoBehaviour
     {
         spawnedAlready = 0;
         notSpawnedConsecutively = 0;
-        numberOfCollectables = Random.Range(100, 200);     //20,30
-        while (spawnedAlready < numberOfCollectables && notSpawnedConsecutively < 20)
+        numberOfCollectables = Random.Range(80, 150);     //20,30
+        while (spawnedAlready < numberOfCollectables && notSpawnedConsecutively < 50)
         {
             RaycastHit hit;
             Physics.Raycast(new Vector3(transform.position.x + Random.Range(minRange, maxRange), transform.position.y + SpawnHeight, transform.position.z + Random.Range(minRange, maxRange)), Vector3.down, out hit, 100, Spawn_Surface_Mask);
@@ -307,22 +307,22 @@ public class IslandObjects_Forest : MonoBehaviour
                     if (objectRandomNumber == 1)
                     {
                         lastSpawned = Instantiate(Collectables[1], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
-                        lastSpawned.transform.SetParent(hit.collider.transform);
+                        lastSpawned.transform.SetParent(island.transform);
                     }
                     else if (objectRandomNumber == 2)
                     {
                         lastSpawned = Instantiate(Collectables[2], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
-                        lastSpawned.transform.SetParent(hit.collider.transform);
+                        lastSpawned.transform.SetParent(island.transform);
                     }
                     else if (objectRandomNumber == 3)
                     {
                         lastSpawned = Instantiate(Collectables[3], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
-                        lastSpawned.transform.SetParent(hit.collider.transform);
+                        lastSpawned.transform.SetParent(island.transform);
                     }
                     else if (objectRandomNumber == 4)
                     {
                         lastSpawned = Instantiate(Collectables[4], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
-                        lastSpawned.transform.SetParent(hit.collider.transform);
+                        lastSpawned.transform.SetParent(island.transform);
                     }
 
 
@@ -372,7 +372,7 @@ public class IslandObjects_Forest : MonoBehaviour
 
     void DespawnIsland()     //daca e la sit mare dispare de tot CU TOT CU PUNCT
     {
-        Collider[] despawnIslandCollider = Physics.OverlapSphere(transform.position, 10000f, playerMask);
+        Collider[] despawnIslandCollider = Physics.OverlapSphere(transform.position, 5000f, playerMask);
         if (despawnIslandCollider.Length == 0)
             Destroy(gameObject);
     }
@@ -384,12 +384,23 @@ public class IslandObjects_Forest : MonoBehaviour
         {
             if (islandActivated == true)
                 for (int i = 0; i < transform.childCount; i++)
-                    transform.GetChild(i).gameObject.SetActive(false);
+                {
+                    if (transform.GetChild(i).tag == "MiniIsland")
+                        Destroy(transform.GetChild(i).gameObject);
+                    else
+                        transform.GetChild(i).gameObject.SetActive(false);
+                }
 
+            islandActivated = false;
         }
         else if (islandActivated == false)
+        {
             for (int i = 0; i < transform.childCount; i++)
                 transform.GetChild(i).gameObject.SetActive(true);
+
+            SpawnMiniIsland();
+            islandActivated = true;
+        }
 
     }
 

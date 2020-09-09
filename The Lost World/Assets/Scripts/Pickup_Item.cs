@@ -68,6 +68,21 @@ public class Pickup_Item : MonoBehaviour
                         FindObjectOfType<Inventory>().itemCodeToAdd = 19;
                         Destroy(colliders[0].transform.parent.gameObject);
                     }
+                    else if (colliders[0].gameObject.tag == "Silicon")
+                    {
+                        FindObjectOfType<Inventory>().itemCodeToAdd = 21;
+                        Destroy(colliders[0].transform.parent.gameObject);
+                    }
+                    else if (colliders[0].gameObject.tag == "Crystal")
+                    {
+                        FindObjectOfType<Inventory>().itemCodeToAdd = 22;
+                        Destroy(colliders[0].transform.parent.gameObject);
+                    }
+                    else if (colliders[0].gameObject.tag == "Rich iron ore")
+                    {
+                        FindObjectOfType<Inventory>().itemCodeToAdd = 23;
+                        Destroy(colliders[0].transform.parent.gameObject);
+                    }
 
                 }
             }
