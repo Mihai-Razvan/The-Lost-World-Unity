@@ -34,6 +34,8 @@ TagManager:
   - Silicon
   - Crystal
   - Rich iron ore
+  - Ice Peak
+  - Cave Decoration
   layers:
   - Default
   - TransparentFX

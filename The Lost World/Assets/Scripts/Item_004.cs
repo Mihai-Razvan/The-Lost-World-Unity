@@ -22,8 +22,10 @@ public class Item_004 : MonoBehaviour
     private int produced_item_code;
 
     private int woodFuel = 30;      //cat fuel da wood
+    private int logFuel = 100;
 
     private int iron_ore_transform_time= 5;
+    private int rich_ore_transform_time = 5;
     private int copper_ore_transform_time = 5;
 
     public 
@@ -67,6 +69,13 @@ public class Item_004 : MonoBehaviour
                     if (Slot_Item_Quantity[i] == 0)
                         Slot_Item_Code[i] = 0;
                 }
+                else if (Slot_Item_Code[i] == 18 && Slot_Item_Quantity[i] < FindObjectOfType<List_Of_Items>().Item_Stack_Number[i])  //log
+                {
+                    fuel = logFuel;
+                    Slot_Item_Quantity[i]--;
+                    if (Slot_Item_Quantity[i] == 0)
+                        Slot_Item_Code[i] = 0;
+                }
 
 
             if (fuel <= 0)  // nu a gasit un stack necomplet
@@ -74,6 +83,13 @@ public class Item_004 : MonoBehaviour
                     if (Slot_Item_Code[i] == 1)
                     {
                         fuel = woodFuel;
+                        Slot_Item_Quantity[i]--;
+                        if (Slot_Item_Quantity[i] == 0)
+                            Slot_Item_Code[i] = 0;
+                    }
+                    else if (Slot_Item_Code[i] == 18)
+                    {
+                        fuel = logFuel;
                         Slot_Item_Quantity[i]--;
                         if (Slot_Item_Quantity[i] == 0)
                             Slot_Item_Code[i] = 0;
@@ -105,7 +121,7 @@ public class Item_004 : MonoBehaviour
                         produced_item_code = 6;  //iron ingot
                         quantityToAdd = 1;
                     }
-                else if (Slot_Item_Code[i] == 19)  //copper_ore
+                    else if (Slot_Item_Code[i] == 19)  //copper_ore
                     {
 
                         Slot_Item_Quantity[i]--;
@@ -114,6 +130,16 @@ public class Item_004 : MonoBehaviour
                         Transforming_Time_Left = copper_ore_transform_time;
                         produced_item_code = 20;   //copper ingot
                         quantityToAdd = 1;
+                    }
+                    else if (Slot_Item_Code[i] == 23)  //rich iron ore
+                    {
+
+                        Slot_Item_Quantity[i]--;
+                        if (Slot_Item_Quantity[i] == 0)
+                            Slot_Item_Code[i] = 0;
+                        Transforming_Time_Left = rich_ore_transform_time;
+                        produced_item_code = 6;   //iron ingot
+                        quantityToAdd = 2;
                     }
 
 
@@ -138,6 +164,15 @@ public class Item_004 : MonoBehaviour
                             Transforming_Time_Left = copper_ore_transform_time;
                             produced_item_code = 20;
                             quantityToAdd = 1;
+                        }
+                        else if (Slot_Item_Code[i] == 23)
+                        {
+                            Slot_Item_Quantity[i]--;
+                            if (Slot_Item_Quantity[i] == 0)
+                                Slot_Item_Code[i] = 0;
+                            Transforming_Time_Left = rich_ore_transform_time;
+                            produced_item_code = 6;
+                            quantityToAdd = 2;
                         }
                     }
             }

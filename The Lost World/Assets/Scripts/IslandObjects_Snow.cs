@@ -51,6 +51,7 @@ public class IslandObjects_Snow : MonoBehaviour
     private GameObject lastSpawned;
 
     private bool thingsOnIslandActive;
+    
     [SerializeField]
     private bool islandActivated = true;
     private bool IsCaveOnIsland;
@@ -113,6 +114,7 @@ public class IslandObjects_Snow : MonoBehaviour
                 ObjectsSpawn();
                 ObjectdHaveSpawned = true;
                 thingsOnIslandActive = true;
+  
             }
         }
 
@@ -373,7 +375,7 @@ public class IslandObjects_Snow : MonoBehaviour
                 thingsOnIslandActive = false;
 
                 for (int i = 0; i < island.transform.childCount; i++)               
-                    if (island.transform.GetChild(i).gameObject.tag != "Relief" && island.transform.GetChild(i).gameObject.tag != "Ice Peak")
+                    if (island.transform.GetChild(i).gameObject.tag != "Relief" && island.transform.GetChild(i).gameObject.tag != "Ice Peak" && island.transform.GetChild(i).gameObject.tag != "Cave Decorations")
                         Destroy(island.transform.GetChild(i).gameObject);
     
 
@@ -438,7 +440,7 @@ public class IslandObjects_Snow : MonoBehaviour
     {
         spawnedAlready = 0;
         notSpawnedConsecutively = 0;
-        numberOfCollectables = Random.Range(20, 50);     //20,30
+        numberOfCollectables = Random.Range(10, 20);     //20,30
         while (spawnedAlready < numberOfCollectables && notSpawnedConsecutively < 150)
         {
             RaycastHit[] hit = Physics.RaycastAll(new Vector3(transform.position.x + Random.Range(-200, 200), transform.position.y + SpawnHeight + 100, transform.position.z + Random.Range(-200, 200)), Vector3.down, 300, Spawn_Surface_Mask);
@@ -491,7 +493,7 @@ public class IslandObjects_Snow : MonoBehaviour
     {
         spawnedAlready = 0;
         notSpawnedConsecutively = 0;
-        numberOfObjects = Random.Range(20, 50);     //20,30
+        numberOfObjects = Random.Range(10, 20);     //20,30
         while (spawnedAlready < numberOfObjects && notSpawnedConsecutively < 150)
         {
             RaycastHit[] hit = Physics.RaycastAll(new Vector3(transform.position.x + Random.Range(-200, 200), transform.position.y + SpawnHeight + 100, transform.position.z + Random.Range(-200, 200)), Vector3.down, 300, Spawn_Surface_Mask);
@@ -500,7 +502,7 @@ public class IslandObjects_Snow : MonoBehaviour
                 if (hit[i].collider.tag == "Cave Base")
                 {
                     
-                        objectRandomNumber = (int)Random.Range(1, 6);
+                        objectRandomNumber = (int)Random.Range(1, 10);
 
                         if (objectRandomNumber == 1)
                         {

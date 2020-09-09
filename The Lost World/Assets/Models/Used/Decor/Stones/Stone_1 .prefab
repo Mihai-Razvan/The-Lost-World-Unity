@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6211113082258487289}
   m_Layer: 0
   m_Name: 'Stone_1 '
-  m_TagString: Untagged
+  m_TagString: Cave Decoration
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,6 +112,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: stone_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4341687193762407924, guid: 6df358b769a49224ea3e239eabd25add,
+        type: 3}
+      propertyPath: m_TagString
+      value: Cave Decoration
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6df358b769a49224ea3e239eabd25add, type: 3}
