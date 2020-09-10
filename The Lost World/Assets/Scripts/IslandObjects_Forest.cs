@@ -101,7 +101,7 @@ public class IslandObjects_Forest : MonoBehaviour
 
         if (ObjectdHaveSpawned == false)
         {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, 700f, playerMask);       //450
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 700f, playerMask);       //700
             if (colliders.Length != 0)
             {
                 ObjectsSpawn();
@@ -339,7 +339,7 @@ public class IslandObjects_Forest : MonoBehaviour
 
     void IslandObjectsDeavtivateAtivate()
     {
-        Collider[] despawnObjectsCollider = Physics.OverlapSphere(transform.position, 500f, playerMask);      //600
+        Collider[] despawnObjectsCollider = Physics.OverlapSphere(transform.position, 600f, playerMask);      //600
         if (despawnObjectsCollider.Length == 0) //deactivate objects
         {
             if (thingsOnIslandActive == true)
@@ -372,14 +372,14 @@ public class IslandObjects_Forest : MonoBehaviour
 
     void DespawnIsland()     //daca e la sit mare dispare de tot CU TOT CU PUNCT
     {
-        Collider[] despawnIslandCollider = Physics.OverlapSphere(transform.position, 5000f, playerMask);
+        Collider[] despawnIslandCollider = Physics.OverlapSphere(transform.position, 5000f, playerMask);  //5000
         if (despawnIslandCollider.Length == 0)
             Destroy(gameObject);
     }
 
     void InactiveIsland()   //daca e la dist medie dezactiveaza is NU PUNCTUL
     {
-        Collider[] despawnIslandCollider = Physics.OverlapSphere(transform.position, 1500f, playerMask);
+        Collider[] despawnIslandCollider = Physics.OverlapSphere(transform.position, 1500f, playerMask);  //1500
         if (despawnIslandCollider.Length == 0)
         {
             if (islandActivated == true)

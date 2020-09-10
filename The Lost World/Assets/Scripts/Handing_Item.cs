@@ -31,10 +31,17 @@ public class Handing_Item : MonoBehaviour
 
     [SerializeField]
     private GameObject Item_012;    //spear
+    [SerializeField]
+    private GameObject Item_025;    //GPS
+
+
+    [SerializeField]
+    private GameObject Item_25_Text_Panel;    //panelu de la gps de are x,y,z coord
 
     void Start()
     {
-        
+        Item_012.SetActive(false);
+        Item_025.SetActive(false);
     }
 
 
@@ -61,7 +68,16 @@ public class Handing_Item : MonoBehaviour
             Item_012.SetActive(true);
             handing_Tool = true;
             tool_In_Hands = Item_012;
-        }       
+        }
+        else if (SelectedItemCode == 25)    //GPS
+        {
+            Item_025.SetActive(true);
+            handing_Tool = true;
+            tool_In_Hands = Item_025;
+        }
+
+        Item_25_Text_Panel.SetActive(Item_025.activeSelf);
+
     }
 
 

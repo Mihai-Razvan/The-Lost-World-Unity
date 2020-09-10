@@ -87,10 +87,22 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
             if (Input.GetKeyUp(KeyCode.Mouse0))
             {
+                if (Initial_Slot_Gameobject.tag == "Inventory_Slot")            //drop la iteme din inventory
+                {
+                    Slot_Item_Code[InitialSlotNumberDrag] = 0;
+                    Slot_Item_Quantity[InitialSlotNumberDrag] = 0;
+                }
+                else if (Initial_Slot_Gameobject.tag == "Furnace_Inventory_Slot")
+                {
+                    FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Code[InitialSlotNumberDrag] = 0;
+                    FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Quantity[InitialSlotNumberDrag] = 0;
+                }
+
                 InitialSlotNumberDrag = -1;
                 InitialSlotItemCodeDrag = -1;
                 InitialSlotQuantityDrag = -1;
                 Initial_Slot_Gameobject = null;
+
             }
         }
         else
@@ -242,6 +254,7 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         
     }
+
     
 
 }

@@ -7,7 +7,7 @@ public class Spawn_Around_Player : MonoBehaviour
     /// ISLANDS                                   
 
     private float IslandSpawnsphereRadius = 1000f;       //1000    //sfera in care se spawneza insulele
-    private float IslanSphereRadius = 500f;   //700    //sfera unei insule cand se alege punctu de spawn verifica sa nu fie alta insula in sfera aia
+    private float IslanSphereRadius = 700f;   //700    //sfera unei insule cand se alege punctu de spawn verifica sa nu fie alta insula in sfera aia
     private int randomIslandNumber;
     private GameObject spawnedIsland;
     [SerializeField]
@@ -53,7 +53,7 @@ public class Spawn_Around_Player : MonoBehaviour
     {
         spawnedIsland = Instantiate(island_forest_1, new Vector3(2315, 0 ,1000), Quaternion.identity);    //spawn island
 
-        for (int i = 1; i <= 50; i++)         //spawneaza nori la inceput 
+        for (int i = 1; i <= 200; i++)         //spawneaza nori la inceput 
         {
             IslandSpawn();
             CloudsSpawn();
@@ -66,7 +66,7 @@ public class Spawn_Around_Player : MonoBehaviour
     {
         IslandSpawn();
      ;
-        if((int) Random.Range(1, 1000) == 1)
+        if((int) Random.Range(1, 50) == 1)
            CloudsSpawn();
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, 1000f, islandMask);      //activeaza insulele din apropiere; dezactivarea insulelor se face din scriptu lor
