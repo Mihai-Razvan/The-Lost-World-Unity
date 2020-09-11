@@ -161,11 +161,32 @@ public class Bee : MonoBehaviour
     }
 
 
+
+    void CollidingDestination()      //cand se loveste de cv schimba destinatia da spre deosebire de destination() normal aici sfere e in spate nu in juru albinei ca albina e mijl sfferei
+    {
+        destination = Random.insideUnitSphere * sphereRadius + (transform.position - transform.forward * 10);
+
+        RaycastHit hit;
+        if (Physics.Raycast(destination, -transform.up, out hit, 100, islandMask))
+        {
+            destination.y = hit.collider.transform.position.y + Random.Range(7, 23);   //alege y
+        }
+        else
+            Destination();      //daca destinatia e inafara insulei alege alta dest          
+    }
+
+
+
     private void OnCollisionEnter(Collision collision)   //daca se loveste de cv schimba destinatia
     {
-        Destination();
+        //Destination();
 
-        if(isDead == true && (collision.collider.gameObject.layer == 9 || collision.collider.gameObject.layer == 11 || collision.collider.gameObject.layer == 13 || collision.collider.gameObject.layer == 15 || collision.collider.gameObject.layer == 17))
+        if (isDead == false)
+        {
+            attackPhase = false;
+            CollidingDestination();
+        }
+        else if(isDead == true && (collision.collider.gameObject.layer == 9 || collision.collider.gameObject.layer == 11 || collision.collider.gameObject.layer == 13 || collision.collider.gameObject.layer == 15 || collision.collider.gameObject.layer == 17))
         {
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             grounded = true;

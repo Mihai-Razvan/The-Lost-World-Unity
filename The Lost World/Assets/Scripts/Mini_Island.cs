@@ -7,7 +7,7 @@ public class Mini_Island : MonoBehaviour
     private float speed;
     void Start()
     {
-        speed = Random.Range(5, 30);
+        speed = Random.Range(1, 5);
     }
 
     

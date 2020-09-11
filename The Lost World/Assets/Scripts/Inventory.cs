@@ -11,7 +11,8 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public GameObject Inventory_Crafting_Panel;                       //ala de are si inventoriu si craftingu
     public GameObject Inventory_Panel;                                  // numa inventoryu
     public GameObject Crafting_Panel;                                   //numa craftingu
-    public GameObject Switch_Buttton;
+    public GameObject Switch_To_Inventory_Buttton;
+    public GameObject Switch_To_Crafting_Buttton;
     public bool inventory_craftingIsActive;                            //e activ panelu cu ambele
     public bool inventoryIsActive = true;                                   //numa inventaru
     [SerializeField]
@@ -204,16 +205,21 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             Crafting_Panel.SetActive(true);
             inventoryIsActive = false;
         }
-        else
+        
+    }
+
+    public void ChangeToInventoryButton()
+    {
+        if (inventoryIsActive == false)   //inseamna ca e active craftingu
         {
             Crafting_Panel.SetActive(false);
             Inventory_Panel.SetActive(true);
             inventoryIsActive = true;
         }
-        
+
     }
 
-   public void OnPointerDown(PointerEventData eventData)
+    public void OnPointerDown(PointerEventData eventData)
     {
        
         Debug.Log("OnPointerDown");

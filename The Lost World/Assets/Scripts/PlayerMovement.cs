@@ -24,8 +24,6 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask GroundMask;
     [SerializeField]
     public bool MovementFrozen;  //daca e deschis vreun inventar sau ceva
-    
-
 
     void Start()
     {
@@ -60,6 +58,19 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
 
+     //   MiniIslandMove();
+
+    }
+
+    void MiniIslandMove()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, -transform.up, out hit, 5f, GroundMask))
+            if (hit.collider.tag == "MiniIsland")
+            {
+                transform.SetParent(hit.collider.GetComponentInParent<Transform>().transform);
+                transform.position = new Vector3(GetComponentInParent<Transform>().transform.position.x, hit.point.y + 2f, transform.position.z);           
+            }
     }
     
 }
