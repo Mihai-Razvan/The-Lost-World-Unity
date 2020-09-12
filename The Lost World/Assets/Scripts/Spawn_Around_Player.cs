@@ -13,26 +13,11 @@ public class Spawn_Around_Player : MonoBehaviour
     [SerializeField]
     GameObject island_forest_1;
     [SerializeField]
-    GameObject island_forest_2;
-    [SerializeField]
-    GameObject island_forest_3;
-    [SerializeField]
-    GameObject island_forest_4;
-    [SerializeField]
-    GameObject island_forest_5;
-    [SerializeField]
-    GameObject island_forest_6;
-    [SerializeField]
-    GameObject island_forest_7;
-    [SerializeField]
-    GameObject island_forest_8;
-    [SerializeField]
-    GameObject island_forest_9;
-    [SerializeField]
-    GameObject island_forest_10;
-    [SerializeField]
     GameObject island_snow_1;
-                                                                                                                               
+    [SerializeField]
+    GameObject island_desert_1;
+
+
 
     [SerializeField]
     private LayerMask islandMask;
@@ -82,11 +67,13 @@ public class Spawn_Around_Player : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(spawnPosition, IslanSphereRadius);
         if (colliders.Length == 0)
         {
-            randomIslandNumber = Random.Range(1, 4) ;
-            if (randomIslandNumber < 3)
+            randomIslandNumber = (int) Random.Range(1, 4) ;
+            if (randomIslandNumber == 1)
               spawnedIsland = Instantiate(island_forest_1, spawnPosition, Quaternion.identity);
-            else
+            else if(randomIslandNumber == 2)
               spawnedIsland = Instantiate(island_snow_1, spawnPosition, Quaternion.identity);
+            else if (randomIslandNumber == 3)
+                spawnedIsland = Instantiate(island_desert_1, spawnPosition, Quaternion.identity);
 
         }
     }
