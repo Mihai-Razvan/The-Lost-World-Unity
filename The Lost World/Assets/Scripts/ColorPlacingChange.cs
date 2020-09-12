@@ -33,7 +33,7 @@ public class ColorPlacingChange : MonoBehaviour
             }
                     
 
-        if (numberOfCollidingObjects == 0)
+        if (numberOfCollidingObjects == 0 && gameObject.tag != "Sap extractor")
         {
 
             if (gameObject.tag != "Floating_Prefabs" || gameObject.tag == "Platform")     //ca la bridge sa fie rosu si daca e in aer si nu e snapped 
@@ -58,15 +58,28 @@ public class ColorPlacingChange : MonoBehaviour
                     gameObject.GetComponent<Renderer>().materials = CollidingmaterialsArray;
                     placeable = false;
                 }
-            }
-            
-          //  placeable = true;
-          //  gameObject.GetComponent<Renderer>().materials = OkmaterialsArray;
+            }                 
         }
-        else
+        else if (gameObject.tag != "Sap extractor")
         {
             gameObject.GetComponent<Renderer>().materials = CollidingmaterialsArray;
             placeable = false;
+        }
+       
+
+
+        if(gameObject.tag == "Sap extractor")//asta ca sa fie placeable tre sa fie colliding cu cactusu
+        {
+            if(numberOfCollidingObjects == 1)
+            {
+                placeable = true;
+                gameObject.GetComponent<Renderer>().materials = OkmaterialsArray;
+            }
+            else
+            {
+                gameObject.GetComponent<Renderer>().materials = CollidingmaterialsArray;
+                placeable = false;
+            }
         }
 
 
@@ -79,7 +92,12 @@ public class ColorPlacingChange : MonoBehaviour
     {
         if (gameObject.layer == 13)      // inseamna ca e building si nu e prob daca se loveste de floor ca se pune pe floor
         {
-            if (collision.collider.gameObject.layer == 11 || collision.collider.gameObject.layer == 13 || (collision.collider.gameObject.layer == 18 && collision.collider.tag != "Platform") || collision.collider.gameObject.layer == 19)
+            if (gameObject.tag != "Sap extractor")
+            {
+                if (collision.collider.gameObject.layer == 11 || collision.collider.gameObject.layer == 13 || (collision.collider.gameObject.layer == 18 && collision.collider.tag != "Platform") || collision.collider.gameObject.layer == 19)
+                    numberOfCollidingObjects++;
+            }
+            else if (collision.collider.tag == "Cactus")
                 numberOfCollidingObjects++;
         }
         else if (gameObject.layer == 15)   // e floor si la asta se pune si flooru ca nu se poate lovi de el sau pune peste
@@ -103,7 +121,12 @@ public class ColorPlacingChange : MonoBehaviour
     { 
         if (gameObject.layer == 13)
         {
-            if (collision.collider.gameObject.layer == 11 || collision.collider.gameObject.layer == 13 || (collision.collider.gameObject.layer == 18 && collision.collider.tag != "Platform"))
+            if (gameObject.tag != "Sap extractor")
+            {
+                if (collision.collider.gameObject.layer == 11 || collision.collider.gameObject.layer == 13 || (collision.collider.gameObject.layer == 18 && collision.collider.tag != "Platform"))
+                    numberOfCollidingObjects--;
+            }
+            else if (collision.collider.tag == "Cactus")
                 numberOfCollidingObjects--;
         }
         else if (gameObject.layer == 15)   

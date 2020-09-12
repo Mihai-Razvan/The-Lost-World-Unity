@@ -982,7 +982,7 @@ MonoBehaviour:
   InitialSlotNumberDrag: 0
   InitialSlotItemCodeDrag: 0
   InitialSlotQuantityDrag: 0
-  Slot_Item_Code: 070000001300000015000000160000001700000018000000060000000000000000000000000000000000000000000000000000000000000000000000000000000400000008000000090000000e0000000e0000000e00000011000000100000000f00000000000000
+  Slot_Item_Code: 070000001300000015000000160000001700000018000000060000000000000000000000000000000000000000000000000000000000000000000000000000000400000008000000090000001a0000000e0000000e00000011000000100000000f00000000000000
   Slot_Item_Quantity: 01000000f4010000f4010000f4010000f4010000f4010000f4010000000000000000000000000000000000000000000000000000000000000000000000000000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f401000000000000
   quantityToAdd: 0
   itemCodeToAdd: 0
@@ -1005,7 +1005,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &95051174
 MonoBehaviour:
@@ -1047,8 +1047,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ecf6af6494f19284088e80216914a6df, type: 3}
   - {fileID: 21300000, guid: 1275a91d15027fb41be2eb8c948aac11, type: 3}
   - {fileID: 21300000, guid: 19592a4faa0a05b4baca0f2aba337a9a, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: fd44bed833ee45b409dcd4c575bc3578, type: 3}
+  - {fileID: 21300000, guid: fd44bed833ee45b409dcd4c575bc3578, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   Item_Name:
@@ -1078,8 +1078,8 @@ MonoBehaviour:
   - Rich iron ore
   - Electronics
   - GPS
-  - 
-  - 
+  - Sap extractor
+  - Cactus sap
   - 
   - 
   Item_Description:
@@ -5160,7 +5160,7 @@ Transform:
   - {fileID: 926697324}
   - {fileID: 101224777}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &447224288
 GameObject:
@@ -10108,7 +10108,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1019792456
 MonoBehaviour:
@@ -10131,6 +10131,7 @@ MonoBehaviour:
   Building_Inventory_Opened: 0
   IC_Backup_Position: {fileID: 954073399}
   IC_Normal_Position: {fileID: 1857702316}
+  aaaa: 0
 --- !u!114 &1019792457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10217,9 +10218,12 @@ MonoBehaviour:
   Building_placeable_Surface_Mask:
     serializedVersion: 2
     m_Bits: 300544
+  isSnapped: 0
   Item_004: {fileID: 8574104564120655810, guid: c364c2c0792271947be19af2c74bcb58,
     type: 3}
   Item_009: {fileID: 769704251212185657, guid: 3810d89b5f32eff44bdd3fd6fdb386af, type: 3}
+  Item_026: {fileID: 4417404850659537282, guid: aa3c9cc73e3e15241980435c350d5129,
+    type: 3}
 --- !u!114 &1019792460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12318,7 +12322,7 @@ RectTransform:
   - {fileID: 200966327}
   - {fileID: 1976877861}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -20824,75 +20828,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2027487126}
   m_CullTransparentMesh: 0
---- !u!1001 &2052802848
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 820ca0104213efe4dae0f3eb7c0b4223,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1511.5083
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 820ca0104213efe4dae0f3eb7c0b4223,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1130.9169
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 820ca0104213efe4dae0f3eb7c0b4223,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1274.9142
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 820ca0104213efe4dae0f3eb7c0b4223,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 820ca0104213efe4dae0f3eb7c0b4223,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 820ca0104213efe4dae0f3eb7c0b4223,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 820ca0104213efe4dae0f3eb7c0b4223,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071067
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 820ca0104213efe4dae0f3eb7c0b4223,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 820ca0104213efe4dae0f3eb7c0b4223,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 820ca0104213efe4dae0f3eb7c0b4223,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 820ca0104213efe4dae0f3eb7c0b4223,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 820ca0104213efe4dae0f3eb7c0b4223,
-        type: 3}
-      propertyPath: m_Name
-      value: cactus_1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 820ca0104213efe4dae0f3eb7c0b4223, type: 3}
 --- !u!1001 &2108482065
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21326,7 +21261,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &666833074069240959
 PrefabInstance:

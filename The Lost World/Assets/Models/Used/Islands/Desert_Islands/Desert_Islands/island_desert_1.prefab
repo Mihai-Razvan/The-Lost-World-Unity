@@ -79,11 +79,13 @@ MonoBehaviour:
   - {fileID: 3582716097041796950, guid: 321ee2f130025594d912641a72f8554f, type: 3}
   - {fileID: 304941722004331920, guid: 904b46bbb19a1db429b56a139dbfdb1a, type: 3}
   - {fileID: 6836445221519573157, guid: 849ceb11a37b6e04fa8e2e6859bff33a, type: 3}
+  - {fileID: 1089587642096906231, guid: c096a235fa1be6d4fbf8b759cb8f630b, type: 3}
+  - {fileID: 9161183052242728310, guid: cb1a0ed714fe0134ea0386cebaea2915, type: 3}
   Collectables:
   - {fileID: 0}
   - {fileID: 5186552759174715207, guid: 0f6208a86a3bdfb4d8ec6a5cbbcd77fa, type: 3}
   - {fileID: 7962113399035296089, guid: 843df2e22f731f542af7822494fad81e, type: 3}
-  Mini_Forest_Island: {fileID: 4785332356287954717, guid: 198db9f29c1272b409b62657a41cdcc4,
+  Mini_Forest_Island: {fileID: 1456334791812909378, guid: d80c83c4c38cb8f4983b51af4f3058d3,
     type: 3}
   islandActivated: 1
   islandMask:
@@ -92,7 +94,7 @@ MonoBehaviour:
   animalMask:
     serializedVersion: 2
     m_Bits: 65536
-  forest_animal_1: {fileID: 6940758417008733545, guid: e533279b02342c941aa48b033d5fbd75,
+  forest_animal_1: {fileID: 7035544949235947964, guid: bcbfa79dbf4d548449c73ee71bbad56e,
     type: 3}
 --- !u!1001 &749290818009877030
 PrefabInstance:

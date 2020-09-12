@@ -18,8 +18,9 @@ public class Acces_Building : MonoBehaviour
     private GameObject IC_Backup_Position;
     [SerializeField]
     private GameObject IC_Normal_Position;
-    
 
+    [SerializeField]
+    bool aaaa;
 
     void Start()
     {
@@ -33,8 +34,7 @@ public class Acces_Building : MonoBehaviour
             Collider[] colliders = Physics.OverlapCapsule(Camera.main.transform.position, Camera.main.transform.position + Camera.main.transform.forward * DetectionCapsuleLength, DetectionCapsuleRadius, DetectionSphereMask);
             if (colliders.Length > 0)
             {
-                FindObjectOfType<Buttons>().AccesBuildingButton.SetActive(true);
-                FindObjectOfType<Buttons>().AccesBuildingButton.transform.Find("Building_Name").GetComponent<TextMeshProUGUI>().text = "Acces '" + colliders[0].gameObject.tag + "'";
+                Buttons(colliders);
 
                 if (Input.GetKeyDown(KeyCode.E))
                 {
@@ -60,6 +60,16 @@ public class Acces_Building : MonoBehaviour
                             FindObjectOfType<Inventory>().Item_004_Inventory_Panel.SetActive(false);
                             FindObjectOfType<PlayerMovement>().MovementFrozen = false;
                         }
+                    }
+                    else if(colliders[0].tag == "Sap extractor")
+                    {
+                        if(colliders[0].transform.parent.GetComponent<Item_026>().time_On_This_Round >= colliders[0].transform.parent.GetComponent<Item_026>().production_Time)  //cu parent ca scriptu e pe punct da colliders[0] nu e pct ci gameobjectu de pe punct
+                        {
+                            FindObjectOfType<Inventory>().quantityToAdd = 1;
+                            FindObjectOfType<Inventory>().itemCodeToAdd = 27;
+                            colliders[0].transform.parent.GetComponent<Item_026>().time_On_This_Round = 0;
+                        }
+
                     }
 
                 }
@@ -87,5 +97,28 @@ public class Acces_Building : MonoBehaviour
 
         }
     }    
+
+
+
+    void Buttons(Collider[] colliders)
+    {
+        FindObjectOfType<Buttons>().AccesBuildingButton.SetActive(true);
+
+        if (colliders[0].gameObject.tag == "Furnace")
+        {
+            if (colliders[0].GetComponent<Item_004>().BuildingAccessed == false)
+                FindObjectOfType<Buttons>().AccesBuildingButton.transform.Find("Building_Name").GetComponent<TextMeshProUGUI>().text = "Acces 'Furnace'";
+            else
+                FindObjectOfType<Buttons>().AccesBuildingButton.transform.Find("Building_Name").GetComponent<TextMeshProUGUI>().text = "Close 'Furnace'";
+        }
+        else if (colliders[0].gameObject.tag == "Sap extractor")
+        {
+            if (colliders[0].transform.parent.GetComponent<Item_026>().time_On_This_Round >= colliders[0].transform.parent.GetComponent<Item_026>().production_Time)
+                FindObjectOfType<Buttons>().AccesBuildingButton.transform.Find("Building_Name").GetComponent<TextMeshProUGUI>().text = "Collect 'Cactus sap'";               
+            else
+                FindObjectOfType<Buttons>().AccesBuildingButton.transform.Find("Building_Name").GetComponent<TextMeshProUGUI>().text = "Time remained: " + ((int)(colliders[0].transform.parent.GetComponent<Item_026>().production_Time - colliders[0].transform.parent.GetComponent<Item_026>().time_On_This_Round) / 60).ToString() + ":" + ((int)(colliders[0].transform.parent.GetComponent<Item_026>().production_Time - colliders[0].transform.parent.GetComponent<Item_026>().time_On_This_Round) % 60).ToString();
+        }
+
+    }
 
 }

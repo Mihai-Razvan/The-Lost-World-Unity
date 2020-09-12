@@ -12,8 +12,8 @@ public class IslandObjects_Desert : MonoBehaviour
     private GameObject island;
     [SerializeField]
     public float SpawnHeight;         // se adunna la pozitia insulei si acolo spawneaza obiectele si de acolo face uin ray in jos 
-    private int minRange = -350;     //de la centru insulei la ce x si z random sa se spawneze obiectele
-    private int maxRange = 350;
+    private int minRange = -300;     //de la centru insulei la ce x si z random sa se spawneze obiectele
+    private int maxRange = 300;
     private int minRangeRelief = -120;   // e mai mic ca iese de pe insula
     private int maxRangeRelief = 120;
     private int minRangeBigRelief = -80;
@@ -161,7 +161,7 @@ public class IslandObjects_Desert : MonoBehaviour
                 if (colliders.Length == 0)
                 {
                     randomReliefScale = Random.Range(1, 3);
-                    GameObject relief = Instantiate(Relief[1], hit.point, Quaternion.identity);
+                    GameObject relief = Instantiate(Relief[1], hit.point, Quaternion.Euler(0, Random.Range(0, 360), 0));
                     relief.transform.localScale = new Vector3(randomReliefScale, randomReliefScale, randomReliefScale);
                     relief.transform.SetParent(island.transform);         //relief ca e lastspawned
                 }
@@ -172,7 +172,7 @@ public class IslandObjects_Desert : MonoBehaviour
                 if (colliders.Length == 0)
                 {
                     randomReliefScale = Random.Range(1, 3);
-                    GameObject relief = Instantiate(Relief[2], hit.point, Quaternion.identity);
+                    GameObject relief = Instantiate(Relief[2], hit.point, Quaternion.Euler(0, Random.Range(0, 360), 0));
                     relief.transform.localScale = new Vector3(randomReliefScale, randomReliefScale, randomReliefScale);
                     relief.transform.SetParent(island.transform);
                 }
@@ -183,7 +183,7 @@ public class IslandObjects_Desert : MonoBehaviour
                 if (colliders.Length == 0)
                 {
                     randomReliefScale = Random.Range(1, 3);
-                    GameObject relief = Instantiate(Relief[3], hit.point, Quaternion.identity);
+                    GameObject relief = Instantiate(Relief[3], hit.point, Quaternion.Euler(0, Random.Range(0, 360), 0));
                     relief.transform.localScale = new Vector3(randomReliefScale, randomReliefScale, randomReliefScale);
                     relief.transform.SetParent(island.transform);
                 }
@@ -194,7 +194,7 @@ public class IslandObjects_Desert : MonoBehaviour
                 if (colliders.Length == 0)
                 {
                     randomReliefScale = Random.Range(1, 3);
-                    GameObject relief = Instantiate(Relief[4], hit.point, Quaternion.identity);
+                    GameObject relief = Instantiate(Relief[4], hit.point, Quaternion.Euler(0, Random.Range(0, 360), 0));
                     relief.transform.localScale = new Vector3(randomReliefScale, randomReliefScale, randomReliefScale);
                     relief.transform.SetParent(island.transform);
                 }
@@ -209,59 +209,47 @@ public class IslandObjects_Desert : MonoBehaviour
     {
         spawnedObjectsNumber = 0;
         notSpawnedConsecutively = 0;
-        numberOfObjects = Random.Range(80, 120);       //15,30
+        numberOfObjects = Random.Range(140, 200);       //15,30
         while (spawnedObjectsNumber < numberOfObjects && notSpawnedConsecutively < 50)
         {
             RaycastHit hit;
-            Physics.Raycast(new Vector3(transform.position.x + Random.Range(minRange, maxRange), transform.position.y + SpawnHeight, transform.position.z + Random.Range(minRange, maxRange)), Vector3.down, out hit, 100, Spawn_Surface_Mask);
-            if (hit.normal.x > -40 && hit.normal.x < 40 && hit.normal.z > -40 && hit.normal.z < 40)
+            
+            if (Physics.Raycast(new Vector3(transform.position.x + Random.Range(minRange, maxRange), transform.position.y + SpawnHeight, transform.position.z + Random.Range(minRange, maxRange)), Vector3.down, out hit, 100, Spawn_Surface_Mask) && hit.normal.x > -40 && hit.normal.x < 40 && hit.normal.z > -40 && hit.normal.z < 40)
             {
-                objectRandomNumber = Random.Range(1, 9);
+                objectRandomNumber = Random.Range(1, 30);
                 if (objectRandomNumber == 1)
                 {
-                    Collider[] colliders = Physics.OverlapSphere(hit.point, 10, objectsMask);
-                    if (colliders.Length == 0)
-                    {
-                        lastSpawned = Instantiate(Objects[1], hit.point, Quaternion.identity);
+                 
+                        lastSpawned = Instantiate(Objects[1], hit.point, Quaternion.Euler(0, Random.Range(0, 360), 0));
                         lastSpawned.transform.SetParent(island.transform);
                         notSpawnedConsecutively = 0;
                         spawnedObjectsNumber++;
-                    }
-                    else
-                        notSpawnedConsecutively++;
+                    
                 }
                 else if (objectRandomNumber == 2)
                 {
-                    Collider[] colliders = Physics.OverlapSphere(hit.point, 10, objectsMask);
-                    if (colliders.Length == 0)
-                    {
-                        lastSpawned = Instantiate(Objects[2], hit.point, Quaternion.identity);
+                    
+                        lastSpawned = Instantiate(Objects[2], hit.point, Quaternion.Euler(0, Random.Range(0, 360), 0));
                         lastSpawned.transform.SetParent(island.transform);
                         notSpawnedConsecutively = 0;
                         spawnedObjectsNumber++;
-                    }
-                    else
-                        notSpawnedConsecutively++;
+                   
                 }
                 else if (objectRandomNumber == 3)
                 {
-                    Collider[] colliders = Physics.OverlapSphere(hit.point, 15, objectsMask);
-                    if (colliders.Length == 0)
-                    {
-                        lastSpawned = Instantiate(Objects[3], hit.point, Quaternion.identity);
+                   
+                        lastSpawned = Instantiate(Objects[3], hit.point, Quaternion.Euler(0, Random.Range(0, 360), 0));
                         lastSpawned.transform.SetParent(island.transform);
                         notSpawnedConsecutively = 0;
                         spawnedObjectsNumber++;
-                    }
-                    else
-                        notSpawnedConsecutively++;
+                   
                 }
                 else if (objectRandomNumber == 4)
                 {
-                    Collider[] colliders = Physics.OverlapSphere(hit.point, 15, objectsMask);
+                    Collider[] colliders = Physics.OverlapSphere(hit.point, 5, objectsMask);
                     if (colliders.Length == 0)
                     {
-                        lastSpawned = Instantiate(Objects[4], hit.point, Quaternion.identity);
+                        lastSpawned = Instantiate(Objects[4], hit.point, Quaternion.Euler(0, Random.Range(0, 360), 0));
                         lastSpawned.transform.SetParent(island.transform);
                         notSpawnedConsecutively = 0;
                         spawnedObjectsNumber++;
@@ -271,10 +259,10 @@ public class IslandObjects_Desert : MonoBehaviour
                 }
                 else if (objectRandomNumber == 5)
                 {
-                    Collider[] colliders = Physics.OverlapSphere(hit.point, 15, objectsMask);
+                    Collider[] colliders = Physics.OverlapSphere(hit.point, 5, objectsMask);
                     if (colliders.Length == 0)
                     {
-                        lastSpawned = Instantiate(Objects[5], hit.point, Quaternion.identity);
+                        lastSpawned = Instantiate(Objects[5], hit.point, Quaternion.Euler(0, Random.Range(0, 360), 0));
                         lastSpawned.transform.SetParent(island.transform);
                         notSpawnedConsecutively = 0;
                         spawnedObjectsNumber++;
@@ -284,10 +272,10 @@ public class IslandObjects_Desert : MonoBehaviour
                 }
                 else if (objectRandomNumber == 6)
                 {
-                    Collider[] colliders = Physics.OverlapSphere(hit.point, 15, objectsMask);
+                    Collider[] colliders = Physics.OverlapSphere(hit.point, 5, objectsMask);
                     if (colliders.Length == 0)
                     {
-                        lastSpawned = Instantiate(Objects[6], hit.point, Quaternion.identity);
+                        lastSpawned = Instantiate(Objects[6], hit.point, Quaternion.Euler(0, Random.Range(0, 360), 0));
                         lastSpawned.transform.SetParent(island.transform);
                         notSpawnedConsecutively = 0;
                         spawnedObjectsNumber++;
@@ -297,10 +285,10 @@ public class IslandObjects_Desert : MonoBehaviour
                 }
                 else if (objectRandomNumber == 7)
                 {
-                    Collider[] colliders = Physics.OverlapSphere(hit.point, 15, objectsMask);
+                    Collider[] colliders = Physics.OverlapSphere(hit.point, 5, objectsMask);
                     if (colliders.Length == 0)
                     {
-                        lastSpawned = Instantiate(Objects[7], hit.point, Quaternion.identity);
+                        lastSpawned = Instantiate(Objects[7], hit.point, Quaternion.Euler(0, Random.Range(0, 360), 0));
                         lastSpawned.transform.SetParent(island.transform);
                         notSpawnedConsecutively = 0;
                         spawnedObjectsNumber++;
@@ -310,10 +298,36 @@ public class IslandObjects_Desert : MonoBehaviour
                 }
                 else if (objectRandomNumber == 8)
                 {
-                    Collider[] colliders = Physics.OverlapSphere(hit.point, 15, objectsMask);
+                    Collider[] colliders = Physics.OverlapSphere(hit.point, 5, objectsMask);
                     if (colliders.Length == 0)
                     {
-                        lastSpawned = Instantiate(Objects[8], hit.point, Quaternion.identity);
+                        lastSpawned = Instantiate(Objects[8], hit.point, Quaternion.Euler(0, Random.Range(0, 360), 0));
+                        lastSpawned.transform.SetParent(island.transform);
+                        notSpawnedConsecutively = 0;
+                        spawnedObjectsNumber++;
+                    }
+                    else
+                        notSpawnedConsecutively++;
+                }
+                else if (objectRandomNumber == 9)
+                {
+                    Collider[] colliders = Physics.OverlapSphere(hit.point, 20, objectsMask);
+                    if (colliders.Length == 0)
+                    {
+                        lastSpawned = Instantiate(Objects[9], hit.point, Quaternion.Euler(0, Random.Range(0, 360), 0));
+                        lastSpawned.transform.SetParent(island.transform);
+                        notSpawnedConsecutively = 0;
+                        spawnedObjectsNumber++;
+                    }
+                    else
+                        notSpawnedConsecutively++;
+                }
+                else 
+                {
+                    Collider[] colliders = Physics.OverlapSphere(hit.point, 5, objectsMask);
+                    if (colliders.Length == 0)
+                    {
+                        lastSpawned = Instantiate(Objects[10], hit.point, Quaternion.Euler(0, Random.Range(0, 360), 0));
                         lastSpawned.transform.SetParent(island.transform);
                         notSpawnedConsecutively = 0;
                         spawnedObjectsNumber++;

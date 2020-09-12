@@ -36,6 +36,9 @@ TagManager:
   - Rich iron ore
   - Ice Peak
   - Cave Decoration
+  - Sap extractor
+  - Cactus
+  - Snap_Sap_Extractor_Collider
   layers:
   - Default
   - TransparentFX

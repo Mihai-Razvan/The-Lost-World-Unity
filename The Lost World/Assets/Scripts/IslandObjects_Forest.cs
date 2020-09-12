@@ -213,8 +213,8 @@ public class IslandObjects_Forest : MonoBehaviour
         while (spawnedObjectsNumber < numberOfObjects && notSpawnedConsecutively < 50)
         {
             RaycastHit hit;
-            Physics.Raycast(new Vector3(transform.position.x + Random.Range(minRange, maxRange), transform.position.y + SpawnHeight, transform.position.z + Random.Range(minRange, maxRange)), Vector3.down, out hit, 100, Spawn_Surface_Mask);
-            if (hit.normal.x > -40 && hit.normal.x < 40 && hit.normal.z > -40 && hit.normal.z < 40)
+            
+            if (Physics.Raycast(new Vector3(transform.position.x + Random.Range(minRange, maxRange), transform.position.y + SpawnHeight, transform.position.z + Random.Range(minRange, maxRange)), Vector3.down, out hit, 100, Spawn_Surface_Mask) && hit.normal.x > -40 && hit.normal.x < 40 && hit.normal.z > -40 && hit.normal.z < 40)
             {
                 objectRandomNumber = Random.Range(1, 5);
                 if (objectRandomNumber == 1)
