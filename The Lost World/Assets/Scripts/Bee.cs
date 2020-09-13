@@ -26,6 +26,7 @@ public class Bee : MonoBehaviour
     [SerializeField]
     public bool hitWhenDead;
     private float timeSinceHitWhenDead;
+    public bool isPet;
 
 
     void Start()
@@ -45,17 +46,23 @@ public class Bee : MonoBehaviour
     {
         if (health > 0)
         {
-            if (attackPhase == false)
+            if (attackPhase == false && isPet == false)
             {
                 if (transform.position == destination)
                     Destination();
 
                 Movement();
             }
-            else
+            else if (attackPhase == true)
             {
                 Attack();
                 if (Vector3.Distance(transform.position, player.transform.position) > 3)    //sa nu se puna exact in pozitia playerului
+                    Movement();
+            }
+            else if (isPet == true)
+            {
+                destination = player.transform.position;
+                if (Vector3.Distance(transform.position, player.transform.position) > 10)    //sa nu se puna exact in pozitia playerului
                     Movement();
             }
         }
@@ -72,8 +79,9 @@ public class Bee : MonoBehaviour
                     Destroy(this.gameObject);
             }
         }
-
-        Despawn();   //daca sunt departe de player
+         
+        if(isPet == false)        //nu se despawneaza daca e pet
+           Despawn();   //daca sunt departe de player
     }
 
 
@@ -139,7 +147,7 @@ public class Bee : MonoBehaviour
             attackInstantiateTime = 0;
         
 
-        if (Vector3.Distance(transform.position, player.transform.position) > 300) //daca e prea departe renunta la atac
+        if (Vector3.Distance(transform.position, player.transform.position) > 50) //daca e prea departe renunta la atac
         {
             attackPhase = false;
             Destination();
@@ -176,12 +184,14 @@ public class Bee : MonoBehaviour
     }
 
 
+   
+
 
     private void OnCollisionEnter(Collision collision)   //daca se loveste de cv schimba destinatia
     {
         //Destination();
 
-        if (isDead == false)
+        if (isDead == false && collision.collider.tag != "Bee" && isPet == false)      //cand e pet poate trece prin lucruri
         {
             attackPhase = false;
             CollidingDestination();

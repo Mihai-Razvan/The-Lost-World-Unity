@@ -58,7 +58,8 @@ public class Item_012 : MonoBehaviour
                     if (hit.collider.transform.GetComponentInParent<Bee>().health > 0)      //is not dead
                     {
                         hit.collider.GetComponent<Bee>().health -= damage;
-                        hit.collider.GetComponent<Bee>().attackPhase = true;
+                        if(hit.collider.gameObject.GetComponent<Bee>().isPet == false)   //daca e pet nu te atac chiar daca dai in ea
+                           hit.collider.GetComponent<Bee>().attackPhase = true;
                     }
                     else
                     {

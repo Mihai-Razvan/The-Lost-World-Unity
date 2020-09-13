@@ -28,7 +28,7 @@ public class Item_004 : MonoBehaviour
     private int rich_ore_transform_time = 5;
     private int copper_ore_transform_time = 5;
 
-    public 
+    
     void Start()
     {
         

@@ -22,6 +22,8 @@ public class Place_Building : MonoBehaviour
     private GameObject Item_009;
     [SerializeField]
     private GameObject Item_026;
+    [SerializeField]
+    private GameObject Item_030;
 
     void Start()
     {
@@ -107,6 +109,20 @@ public class Place_Building : MonoBehaviour
             Building_In_Hand.transform.SetParent(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform);
             Building_In_Hand.transform.localRotation = Quaternion.identity;
             Building_In_Hand.transform.GetChild(0).gameObject.AddComponent<Snap_Sap_Extractor>();
+        }
+        else if (FindObjectOfType<Handing_Item>().SelectedItemCode == 30) // storage box
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform.position, -transform.up, out hit, 10f, Building_placeable_Surface_Mask))
+            {
+                FindObjectOfType<Handing_Item>().handing_placeable = true;
+                Has_Building_In_Hand = true;
+                Building_In_Hand = Instantiate(Item_030, hit.point, Quaternion.Euler(Building_Spawn_Position.transform.rotation.x, Building_Spawn_Position.transform.rotation.y, Building_Spawn_Position.transform.rotation.z));
+                Building_In_Hand.transform.GetChild(0).gameObject.AddComponent<ColorPlacingChange>();
+            }
+
+            Building_In_Hand.transform.SetParent(FindObjectOfType<Handing_Item>().Building_Spawn_Position.transform);
+            Building_In_Hand.transform.localRotation = Quaternion.identity;
 
         }
     }
@@ -126,6 +142,8 @@ public class Place_Building : MonoBehaviour
             GameObject spawnedBuilding = Instantiate(Item_026, Building_In_Hand.transform.position, Quaternion.Euler(Building_In_Hand.transform.rotation.x, Building_In_Hand.transform.eulerAngles.y, Building_In_Hand.transform.rotation.z));
             spawnedBuilding.GetComponent<Item_026>().isPlaced = true;
         }
+        else if (FindObjectOfType<Handing_Item>().SelectedItemCode == 30)  //storage box
+            Instantiate(Item_030, Building_In_Hand.transform.position, Quaternion.Euler(Building_In_Hand.transform.rotation.x, Building_In_Hand.transform.eulerAngles.y, Building_In_Hand.transform.rotation.z));
 
 
 

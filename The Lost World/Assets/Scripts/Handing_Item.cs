@@ -12,12 +12,13 @@ public class Handing_Item : MonoBehaviour
     public int SelectedItemBarSlot;
     public int SelectedItemCode;
     public bool handing_placeable;          //true daca poti sa o vezi in fata ta adica e in plasare 
-    public bool handing_Tool;
-    public GameObject tool_In_Hands;
+    public bool handing_Item;                     //aici intra toolurile gen spear gps bee ood
+    public GameObject item_In_Hands;
     [SerializeField]
     public GameObject Building_Spawn_Position;
     public RaycastHit hit;
-    
+    [SerializeField]
+    private LayerMask animalMask;
   
 
     //pt scriptu  ColorPlacingChange 
@@ -50,31 +51,32 @@ public class Handing_Item : MonoBehaviour
         if (FindObjectOfType<Inventory>().inventory_craftingIsActive == false)
         {
             SelectItemSlot();
-            UseTool();
+            UseItem();
             Eat();
         }
 
-        if (handing_placeable == true || handing_Tool == true)
+        if (handing_placeable == true || handing_Item == true)
             FindObjectOfType<Buttons>().RemoveButton.gameObject.SetActive(true);
         else
             FindObjectOfType<Buttons>().RemoveButton.gameObject.SetActive(false);
     }
 
 
-    void UseTool()
+    void UseItem()
     {
         if (SelectedItemCode == 12)    //spear
         {
             Item_012.SetActive(true);
-            handing_Tool = true;
-            tool_In_Hands = Item_012;
+            handing_Item = true;
+            item_In_Hands = Item_012;
         }
         else if (SelectedItemCode == 25)    //GPS
         {
             Item_025.SetActive(true);
-            handing_Tool = true;
-            tool_In_Hands = Item_025;
+            handing_Item = true;
+            item_In_Hands = Item_025;
         }
+        
 
         Item_25_Text_Panel.SetActive(Item_025.activeSelf);
 
@@ -105,7 +107,7 @@ public class Handing_Item : MonoBehaviour
             FindObjectOfType<Buttons>().EatButton.transform.Find("Food_Name").GetComponent<TextMeshProUGUI>().text = "Eat 'Honeycomb'";
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
-                FindObjectOfType<Player_Stats>().playerFood += 5;
+                FindObjectOfType<Player_Stats>().playerFood += 10;
                 FindObjectOfType<Player_Stats>().playerPoison -= 5;
 
                 FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15]--;
@@ -116,6 +118,64 @@ public class Handing_Item : MonoBehaviour
                 }
             }
         }
+        else if (SelectedItemCode == 27)  //cactus sap
+        {
+            FindObjectOfType<Buttons>().EatButton.SetActive(true);
+            FindObjectOfType<Buttons>().EatButton.transform.Find("Food_Name").GetComponent<TextMeshProUGUI>().text = "Eat 'Cactus sap'";
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                FindObjectOfType<Player_Stats>().playerPoison -= 10;
+
+                FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15]--;
+                if (FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] == 0)
+                {
+                    FindObjectOfType<Inventory>().Slot_Item_Code[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] = 0;
+                    FindObjectOfType<Handing_Item>().SelectedItemCode = 0;
+                }
+            }
+        }
+        else if (SelectedItemCode == 28)  //Blackberries
+        {
+            FindObjectOfType<Buttons>().EatButton.SetActive(true);
+            FindObjectOfType<Buttons>().EatButton.transform.Find("Food_Name").GetComponent<TextMeshProUGUI>().text = "Eat 'Blackberries'";
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                FindObjectOfType<Player_Stats>().playerFood += 20;
+                FindObjectOfType<Player_Stats>().playerPoison += 5;
+
+                FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15]--;
+                if (FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] == 0)
+                {
+                    FindObjectOfType<Inventory>().Slot_Item_Code[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] = 0;
+                    FindObjectOfType<Handing_Item>().SelectedItemCode = 0;
+                }
+            }
+        }
+        else if (SelectedItemCode == 29)  //bee food chiar daca nu se poate manca pot manca albinele
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 20f, animalMask) && hit.collider.tag == "Bee" && hit.collider.gameObject.GetComponent<Bee>().isPet == false)
+            {
+                FindObjectOfType<Buttons>().EatButton.SetActive(true);
+                FindObjectOfType<Buttons>().EatButton.transform.Find("Food_Name").GetComponent<TextMeshProUGUI>().text = "Pet Bee'";
+
+                if (Input.GetKeyDown(KeyCode.Mouse1))
+                {
+                    hit.collider.gameObject.GetComponent<Bee>().isPet = true;
+                    hit.collider.gameObject.GetComponent<Bee>().attackPhase = false; //daca ii dai pet cand te ataca sa nu te mai atace
+
+                    FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15]--;
+                    if (FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] == 0)
+                    {
+                        FindObjectOfType<Inventory>().Slot_Item_Code[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] = 0;
+                        FindObjectOfType<Handing_Item>().SelectedItemCode = 0;
+                    }
+                }
+            }
+            else
+                FindObjectOfType<Buttons>().EatButton.SetActive(false);
+        }
+
         else
 
             FindObjectOfType<Buttons>().EatButton.SetActive(false);
@@ -141,10 +201,10 @@ public class Handing_Item : MonoBehaviour
             FindObjectOfType<Place_Building>().Has_Building_In_Hand = false;
             FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand = false;
 
-            if (handing_Tool == true)
+            if (handing_Item == true)
             {
-                tool_In_Hands.SetActive(false);
-                handing_Tool = false;
+                item_In_Hands.SetActive(false);
+                handing_Item = false;
             }      
 
         }
@@ -165,10 +225,10 @@ public class Handing_Item : MonoBehaviour
             FindObjectOfType<Place_Building>().Has_Building_In_Hand = false;
             FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand = false;
 
-            if (handing_Tool == true)
+            if (handing_Item == true)
             {
-                tool_In_Hands.SetActive(false);
-                handing_Tool = false;
+                item_In_Hands.SetActive(false);
+                handing_Item = false;
             }
 
 
@@ -190,10 +250,10 @@ public class Handing_Item : MonoBehaviour
             FindObjectOfType<Place_Building>().Has_Building_In_Hand = false;
             FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand = false;
 
-            if (handing_Tool == true)
+            if (handing_Item == true)
             {
-                tool_In_Hands.SetActive(false);
-                handing_Tool = false;
+                item_In_Hands.SetActive(false);
+                handing_Item = false;
             }
 
 
@@ -215,10 +275,10 @@ public class Handing_Item : MonoBehaviour
             FindObjectOfType<Place_Building>().Has_Building_In_Hand = false;
             FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand = false;
 
-            if (handing_Tool == true)
+            if (handing_Item == true)
             {
-                tool_In_Hands.SetActive(false);
-                handing_Tool = false;
+                item_In_Hands.SetActive(false);
+                handing_Item = false;
             }
 
         }
@@ -239,10 +299,10 @@ public class Handing_Item : MonoBehaviour
             FindObjectOfType<Place_Building>().Has_Building_In_Hand = false;
             FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand = false;
 
-            if (handing_Tool == true)
+            if (handing_Item == true)
             {
-                tool_In_Hands.SetActive(false);
-                handing_Tool = false;
+                item_In_Hands.SetActive(false);
+                handing_Item = false;
             }
 
 
@@ -264,10 +324,10 @@ public class Handing_Item : MonoBehaviour
             FindObjectOfType<Place_Building>().Has_Building_In_Hand = false;
             FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand = false;
 
-            if (handing_Tool == true)
+            if (handing_Item == true)
             {
-                tool_In_Hands.SetActive(false);
-                handing_Tool = false;
+                item_In_Hands.SetActive(false);
+                handing_Item = false;
             }
 
         }
@@ -288,10 +348,10 @@ public class Handing_Item : MonoBehaviour
             FindObjectOfType<Place_Building>().Has_Building_In_Hand = false;
             FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand = false;
 
-            if (handing_Tool == true)
+            if (handing_Item == true)
             {
-                tool_In_Hands.SetActive(false);
-                handing_Tool = false;
+                item_In_Hands.SetActive(false);
+                handing_Item = false;
             }
 
         }
@@ -312,10 +372,10 @@ public class Handing_Item : MonoBehaviour
             FindObjectOfType<Place_Building>().Has_Building_In_Hand = false;
             FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand = false;
 
-            if (handing_Tool == true)
+            if (handing_Item == true)
             {
-                tool_In_Hands.SetActive(false);
-                handing_Tool = false;
+                item_In_Hands.SetActive(false);
+                handing_Item = false;
             }
 
         }
@@ -336,10 +396,10 @@ public class Handing_Item : MonoBehaviour
             FindObjectOfType<Place_Building>().Has_Building_In_Hand = false;
             FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand = false;
 
-            if (handing_Tool == true)
+            if (handing_Item == true)
             {
-                tool_In_Hands.SetActive(false);
-                handing_Tool = false;
+                item_In_Hands.SetActive(false);
+                handing_Item = false;
             }
 
         }
@@ -358,10 +418,10 @@ public class Handing_Item : MonoBehaviour
             FindObjectOfType<Place_Building>().Has_Building_In_Hand = false;
             FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand = false;
 
-            if (handing_Tool == true)
+            if (handing_Item == true)
             {
-                tool_In_Hands.SetActive(false);
-                handing_Tool = false;
+                item_In_Hands.SetActive(false);
+                handing_Item = false;
             }
 
         }

@@ -68,8 +68,33 @@ public class Acces_Building : MonoBehaviour
                             FindObjectOfType<Inventory>().quantityToAdd = 1;
                             FindObjectOfType<Inventory>().itemCodeToAdd = 27;
                             colliders[0].transform.parent.GetComponent<Item_026>().time_On_This_Round = 0;
+
+                            FindObjectOfType<Pickup_Item>().BeeAttract();      //cand ieisapu din extractor atragi albinele ca cand culegi merele 
                         }
 
+                    }
+                    else if (colliders[0].gameObject.tag == "Storage box")
+                    {
+                        if (colliders[0].GetComponent<Item_030>().BuildingAccessed == false)
+                        {
+                            AccesedBuilding = colliders[0].gameObject;
+
+                            colliders[0].GetComponent<Item_030>().BuildingAccessed = true;
+                            FindObjectOfType<Inventory>().Item_030_Inventory_Panel.SetActive(true);
+                            FindObjectOfType<Inventory>().inventory_craftingIsActive = true;
+                            Building_Inventory_Opened = true;
+                        }
+                        else           // e deja in meniu la furnace si acu iese
+                        {
+                            AccesedBuilding = null;
+
+                            colliders[0].GetComponent<Item_030>().BuildingAccessed = false;
+                            Building_Inventory_Opened = false;
+                            FindObjectOfType<Inventory>().inventory_craftingIsActive = false;
+                            FindObjectOfType<Inventory>().Inventory_Crafting_Panel.SetActive(false);
+                            FindObjectOfType<Inventory>().Item_030_Inventory_Panel.SetActive(false);
+                            FindObjectOfType<PlayerMovement>().MovementFrozen = false;
+                        }
                     }
 
                 }
@@ -117,6 +142,13 @@ public class Acces_Building : MonoBehaviour
                 FindObjectOfType<Buttons>().AccesBuildingButton.transform.Find("Building_Name").GetComponent<TextMeshProUGUI>().text = "Collect 'Cactus sap'";               
             else
                 FindObjectOfType<Buttons>().AccesBuildingButton.transform.Find("Building_Name").GetComponent<TextMeshProUGUI>().text = "Time remained: " + ((int)(colliders[0].transform.parent.GetComponent<Item_026>().production_Time - colliders[0].transform.parent.GetComponent<Item_026>().time_On_This_Round) / 60).ToString() + ":" + ((int)(colliders[0].transform.parent.GetComponent<Item_026>().production_Time - colliders[0].transform.parent.GetComponent<Item_026>().time_On_This_Round) % 60).ToString();
+        }
+        else if (colliders[0].gameObject.tag == "Storage box")
+        {
+            if (colliders[0].GetComponent<Item_030>().BuildingAccessed == false)
+                FindObjectOfType<Buttons>().AccesBuildingButton.transform.Find("Building_Name").GetComponent<TextMeshProUGUI>().text = "Acces 'Storage box'";
+            else
+                FindObjectOfType<Buttons>().AccesBuildingButton.transform.Find("Building_Name").GetComponent<TextMeshProUGUI>().text = "Close 'Storage box'";
         }
 
     }

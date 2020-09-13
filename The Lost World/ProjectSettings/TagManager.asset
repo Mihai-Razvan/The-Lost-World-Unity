@@ -40,6 +40,7 @@ TagManager:
   - Cactus
   - Snap_Sap_Extractor_Collider
   - Blackberries
+  - Storage box
   layers:
   - Default
   - TransparentFX

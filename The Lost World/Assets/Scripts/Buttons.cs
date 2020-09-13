@@ -40,6 +40,15 @@ public class Buttons : MonoBehaviour
                 AccesBuildingButton.transform.position = rightPosition.position;
                 EatButton.transform.position = leftPosition.position;
             }
+
+
+            if (RemoveButton.activeInHierarchy == false)
+                AccesBuildingButton.transform.position = normalPosition.position;
+            else
+            {
+                AccesBuildingButton.transform.position = rightPosition.position;
+                RemoveButton.transform.position = leftPosition.position;
+            }
         }
         else if (RemoveButton.activeInHierarchy == true)                   //nu au cum sa fie si acces si remove active in ac tim asa ca pun else pt optimizare
         {
