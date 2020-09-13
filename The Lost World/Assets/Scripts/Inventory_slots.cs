@@ -17,7 +17,7 @@ public class Inventory_slots : MonoBehaviour, IPointerDownHandler, IDragHandler,
     {
         transform.Find("Item_Image").gameObject.SetActive(false);
 
-        if (Slot_Number > 15)
+        if (Slot_Number > 15 && Slot_Number < 25)
             transform.Find("Highlight").gameObject.SetActive(false);
     }
 
@@ -25,9 +25,9 @@ public class Inventory_slots : MonoBehaviour, IPointerDownHandler, IDragHandler,
     void Update()
     {
         
-        if(FindObjectOfType<Handing_Item>().SelectedItemBarSlot == Slot_Number - 15 && Slot_Number > 15)
+        if(FindObjectOfType<Handing_Item>().SelectedItemBarSlot == Slot_Number - 15 && Slot_Number > 15 && Slot_Number < 25)
             transform.Find("Highlight").gameObject.SetActive(true);
-        else if(Slot_Number > 15)
+        else if(Slot_Number > 15 && Slot_Number < 25)
             transform.Find("Highlight").gameObject.SetActive(false);
         
 
@@ -59,7 +59,7 @@ public class Inventory_slots : MonoBehaviour, IPointerDownHandler, IDragHandler,
     {
         Debug.Log("OnPointerDown");
 
-        if (FindObjectOfType<Inventory>().inventory_craftingIsActive == true)
+        if (FindObjectOfType<Inventory>().inventory_craftingIsActive == true && Slot_Number != 25)
         {
             FindObjectOfType<Inventory>().Initial_Slot_Gameobject = this.gameObject;
 
@@ -80,7 +80,7 @@ public class Inventory_slots : MonoBehaviour, IPointerDownHandler, IDragHandler,
     {
         Debug.Log("OnEndDrag");
 
-        if (Slot_Number != 0 || (Slot_Number == 25 && FindObjectOfType<Inventory>().InitialSlotItemCodeDrag == 7))    //special item slot
+        if (Slot_Number != 25  || (Slot_Number == 25 && FindObjectOfType<Inventory>().InitialSlotItemCodeDrag == 7))   //nu poti dropa iteme pe special slot
         if (FindObjectOfType<Inventory>().inventory_craftingIsActive == true)
         {
             if (FindObjectOfType<Inventory>().Initial_Slot_Gameobject.tag == "Inventory_Slot")
