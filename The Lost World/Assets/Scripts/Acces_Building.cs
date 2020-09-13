@@ -73,7 +73,7 @@ public class Acces_Building : MonoBehaviour
                         }
 
                     }
-                    else if (colliders[0].gameObject.tag == "Storage box")
+                    else if (colliders[0].gameObject.tag == "Chest")
                     {
                         if (colliders[0].GetComponent<Item_030>().BuildingAccessed == false)
                         {
@@ -143,12 +143,12 @@ public class Acces_Building : MonoBehaviour
             else
                 FindObjectOfType<Buttons>().AccesBuildingButton.transform.Find("Building_Name").GetComponent<TextMeshProUGUI>().text = "Time remained: " + ((int)(colliders[0].transform.parent.GetComponent<Item_026>().production_Time - colliders[0].transform.parent.GetComponent<Item_026>().time_On_This_Round) / 60).ToString() + ":" + ((int)(colliders[0].transform.parent.GetComponent<Item_026>().production_Time - colliders[0].transform.parent.GetComponent<Item_026>().time_On_This_Round) % 60).ToString();
         }
-        else if (colliders[0].gameObject.tag == "Storage box")
+        else if (colliders[0].gameObject.tag == "Chest")
         {
             if (colliders[0].GetComponent<Item_030>().BuildingAccessed == false)
-                FindObjectOfType<Buttons>().AccesBuildingButton.transform.Find("Building_Name").GetComponent<TextMeshProUGUI>().text = "Acces 'Storage box'";
+                FindObjectOfType<Buttons>().AccesBuildingButton.transform.Find("Building_Name").GetComponent<TextMeshProUGUI>().text = "Acces 'Chest'";
             else
-                FindObjectOfType<Buttons>().AccesBuildingButton.transform.Find("Building_Name").GetComponent<TextMeshProUGUI>().text = "Close 'Storage box'";
+                FindObjectOfType<Buttons>().AccesBuildingButton.transform.Find("Building_Name").GetComponent<TextMeshProUGUI>().text = "Close 'Chest'";
         }
 
     }

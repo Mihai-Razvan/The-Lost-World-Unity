@@ -17,7 +17,7 @@ public class Show_Item_Crafting : MonoBehaviour
     void Start()
     {
         transform.Find("Item_Image").gameObject.SetActive(false);
-        for (int i = 1; i <= requiredItemSlot.Length; i++)
+        for (int i = 1; i < requiredItemSlot.Length; i++)
             requiredItemSlot[i].transform.Find("Item_Image").gameObject.SetActive(false);
     }
 

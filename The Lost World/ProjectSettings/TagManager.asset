@@ -40,7 +40,8 @@ TagManager:
   - Cactus
   - Snap_Sap_Extractor_Collider
   - Blackberries
-  - Storage box
+  - Chest_Inventory_Slot
+  - Chest
   layers:
   - Default
   - TransparentFX

@@ -523,7 +523,7 @@ PrefabInstance:
     - target: {fileID: 1316893501197521929, guid: d5532a2b224be8e4a800065984b695d8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1316893501197521929, guid: d5532a2b224be8e4a800065984b695d8,
         type: 3}
@@ -982,8 +982,8 @@ MonoBehaviour:
   InitialSlotNumberDrag: 0
   InitialSlotItemCodeDrag: 0
   InitialSlotQuantityDrag: 0
-  Slot_Item_Code: 070000001300000015000000160000001700000018000000060000000b000000120000001b0000001c00000000000000000000000000000000000000000000000400000008000000090000001a0000000e0000001e00000011000000100000000f00000000000000
-  Slot_Item_Quantity: 01000000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f40100000000000000000000000000000000000000000000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f401000000000000
+  Slot_Item_Code: 000000001300000015000000160000001700000018000000060000000b000000120000001b0000001c00000000000000000000000000000000000000000000000400000008000000090000001a0000000e0000001e00000011000000100000000f00000007000000
+  Slot_Item_Quantity: 00000000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f40100000000000000000000000000000000000000000000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f401000001000000
   quantityToAdd: 0
   itemCodeToAdd: 0
   SelectedItemBarSlot: 0
@@ -1020,7 +1020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9aa0fc0562f7fd459e66089730b67a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item_Stack_Number: 00000000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000
+  Item_Stack_Number: 00000000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000
   Inventory_Sprite:
   - {fileID: 0}
   - {fileID: 21300000, guid: 20d31e0f68488b543ba564a928b249c5, type: 3}
@@ -1052,7 +1052,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 50c6daf6b8966ec42a69e605dc1aa602, type: 3}
   - {fileID: 21300000, guid: 6a507a121db44d049bf9f55ce5b943d4, type: 3}
   - {fileID: 21300000, guid: 418ac7098a0a57f43af79718c58ddc6c, type: 3}
-  - {fileID: 21300000, guid: fd44bed833ee45b409dcd4c575bc3578, type: 3}
+  - {fileID: 21300000, guid: ad133cc8ec59ce1498c85622580d4f85, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -1088,7 +1088,7 @@ MonoBehaviour:
   - Cactus sap
   - Blackberries
   - Bee food
-  - Storage box
+  - Chest
   - 
   - 
   - 
@@ -1103,6 +1103,11 @@ MonoBehaviour:
   - 
   - 
   - A simple foundation for your base
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -1368,7 +1373,7 @@ RectTransform:
   - {fileID: 1663509483}
   - {fileID: 725439310}
   m_Father: {fileID: 1019860421}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2270,7 +2275,7 @@ RectTransform:
   - {fileID: 1568435721}
   - {fileID: 1870941975}
   m_Father: {fileID: 1019860421}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3694,8 +3699,8 @@ GameObject:
   - component: {fileID: 279043874}
   - component: {fileID: 279043873}
   m_Layer: 5
-  m_Name: Furnace_Inventory_Slot_6
-  m_TagString: Furnace_Inventory_Slot
+  m_Name: Storage_Box_Inventory_Slot_6
+  m_TagString: Chest_Inventory_Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3714,7 +3719,7 @@ RectTransform:
   - {fileID: 144569755}
   - {fileID: 667910269}
   m_Father: {fileID: 835288596}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3730,7 +3735,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 279043871}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb6213c2bb238df4f9dc015b6623a337, type: 3}
+  m_Script: {fileID: 11500000, guid: dc1b867914ceaaa499a927c529914f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemCode: 0
@@ -4119,7 +4124,7 @@ RectTransform:
   - {fileID: 1743707648}
   - {fileID: 1781324169}
   m_Father: {fileID: 1019860421}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4212,7 +4217,7 @@ RectTransform:
   - {fileID: 987253487}
   - {fileID: 438260973}
   m_Father: {fileID: 1019860421}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4698,8 +4703,8 @@ GameObject:
   - component: {fileID: 385513764}
   - component: {fileID: 385513763}
   m_Layer: 5
-  m_Name: Furnace_Inventory_Slot_20
-  m_TagString: Furnace_Inventory_Slot
+  m_Name: Storage_Box_Inventory_Slot_20
+  m_TagString: Chest_Inventory_Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4718,7 +4723,7 @@ RectTransform:
   - {fileID: 166036199}
   - {fileID: 563829000}
   m_Father: {fileID: 835288596}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4734,7 +4739,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 385513761}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb6213c2bb238df4f9dc015b6623a337, type: 3}
+  m_Script: {fileID: 11500000, guid: dc1b867914ceaaa499a927c529914f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemCode: 0
@@ -4966,7 +4971,7 @@ RectTransform:
   - {fileID: 56834258}
   - {fileID: 398169778}
   m_Father: {fileID: 1019860421}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6764,7 +6769,7 @@ RectTransform:
   - {fileID: 746272775}
   - {fileID: 491216111}
   m_Father: {fileID: 1019860421}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6911,8 +6916,8 @@ GameObject:
   - component: {fileID: 496487855}
   - component: {fileID: 496487854}
   m_Layer: 5
-  m_Name: Furnace_Inventory_Slot_12
-  m_TagString: Furnace_Inventory_Slot
+  m_Name: Storage_Box_Inventory_Slot_12
+  m_TagString: Chest_Inventory_Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6931,7 +6936,7 @@ RectTransform:
   - {fileID: 1850952813}
   - {fileID: 1881031414}
   m_Father: {fileID: 835288596}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6947,7 +6952,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 496487852}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb6213c2bb238df4f9dc015b6623a337, type: 3}
+  m_Script: {fileID: 11500000, guid: dc1b867914ceaaa499a927c529914f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemCode: 0
@@ -6990,80 +6995,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 496487852}
-  m_CullTransparentMesh: 0
---- !u!1 &508715738
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 508715739}
-  - component: {fileID: 508715741}
-  - component: {fileID: 508715740}
-  m_Layer: 5
-  m_Name: Furnace_Inventory_Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &508715739
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 508715738}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1019860421}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: 212}
-  m_SizeDelta: {x: 400, y: 310}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &508715740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 508715738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d6a0a3888ff6ffa479468ec1ffd9e290, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &508715741
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 508715738}
   m_CullTransparentMesh: 0
 --- !u!1 &537032009
 GameObject:
@@ -7308,8 +7239,8 @@ GameObject:
   - component: {fileID: 568310800}
   - component: {fileID: 568310799}
   m_Layer: 5
-  m_Name: Furnace_Inventory_Slot_1
-  m_TagString: Furnace_Inventory_Slot
+  m_Name: Storage_Box_Inventory_Slot_1
+  m_TagString: Chest_Inventory_Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7328,7 +7259,7 @@ RectTransform:
   - {fileID: 954485889}
   - {fileID: 1939047838}
   m_Father: {fileID: 835288596}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7344,7 +7275,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 568310797}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb6213c2bb238df4f9dc015b6623a337, type: 3}
+  m_Script: {fileID: 11500000, guid: dc1b867914ceaaa499a927c529914f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemCode: 0
@@ -7475,8 +7406,8 @@ GameObject:
   - component: {fileID: 607056059}
   - component: {fileID: 607056058}
   m_Layer: 5
-  m_Name: Furnace_Inventory_Slot_11
-  m_TagString: Furnace_Inventory_Slot
+  m_Name: Storage_Box_Inventory_Slot_11
+  m_TagString: Chest_Inventory_Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7495,7 +7426,7 @@ RectTransform:
   - {fileID: 1887769460}
   - {fileID: 760479823}
   m_Father: {fileID: 835288596}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7511,7 +7442,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 607056056}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb6213c2bb238df4f9dc015b6623a337, type: 3}
+  m_Script: {fileID: 11500000, guid: dc1b867914ceaaa499a927c529914f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemCode: 0
@@ -7744,7 +7675,7 @@ RectTransform:
   - {fileID: 900276246}
   - {fileID: 1518194361}
   m_Father: {fileID: 1019860421}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7946,8 +7877,8 @@ GameObject:
   - component: {fileID: 641191254}
   - component: {fileID: 641191253}
   m_Layer: 5
-  m_Name: Furnace_Inventory_Slot_13
-  m_TagString: Furnace_Inventory_Slot
+  m_Name: Storage_Box_Inventory_Slot_13
+  m_TagString: Chest_Inventory_Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7966,7 +7897,7 @@ RectTransform:
   - {fileID: 438045423}
   - {fileID: 1497604012}
   m_Father: {fileID: 835288596}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7982,7 +7913,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 641191251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb6213c2bb238df4f9dc015b6623a337, type: 3}
+  m_Script: {fileID: 11500000, guid: dc1b867914ceaaa499a927c529914f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemCode: 0
@@ -8656,8 +8587,8 @@ GameObject:
   - component: {fileID: 690159422}
   - component: {fileID: 690159421}
   m_Layer: 5
-  m_Name: Furnace_Inventory_Slot_15
-  m_TagString: Furnace_Inventory_Slot
+  m_Name: Storage_Box_Inventory_Slot_15
+  m_TagString: Chest_Inventory_Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8676,7 +8607,7 @@ RectTransform:
   - {fileID: 575021680}
   - {fileID: 899613927}
   m_Father: {fileID: 835288596}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8692,7 +8623,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 690159419}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb6213c2bb238df4f9dc015b6623a337, type: 3}
+  m_Script: {fileID: 11500000, guid: dc1b867914ceaaa499a927c529914f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemCode: 0
@@ -8769,7 +8700,7 @@ RectTransform:
   - {fileID: 447224289}
   - {fileID: 1997144569}
   m_Father: {fileID: 1019860421}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9698,8 +9629,8 @@ GameObject:
   - component: {fileID: 752254758}
   - component: {fileID: 752254757}
   m_Layer: 5
-  m_Name: Furnace_Inventory_Slot_7
-  m_TagString: Furnace_Inventory_Slot
+  m_Name: Storage_Box_Inventory_Slot_7
+  m_TagString: Chest_Inventory_Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9718,7 +9649,7 @@ RectTransform:
   - {fileID: 467131562}
   - {fileID: 1127725168}
   m_Father: {fileID: 835288596}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9734,7 +9665,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 752254755}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb6213c2bb238df4f9dc015b6623a337, type: 3}
+  m_Script: {fileID: 11500000, guid: dc1b867914ceaaa499a927c529914f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemCode: 0
@@ -10791,7 +10722,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &802949247
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10865,8 +10796,8 @@ GameObject:
   - component: {fileID: 809616437}
   - component: {fileID: 809616436}
   m_Layer: 5
-  m_Name: Furnace_Inventory_Slot_19
-  m_TagString: Furnace_Inventory_Slot
+  m_Name: Storage_Box_Inventory_Slot_19
+  m_TagString: Chest_Inventory_Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10885,7 +10816,7 @@ RectTransform:
   - {fileID: 792412568}
   - {fileID: 358078312}
   m_Father: {fileID: 835288596}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10901,7 +10832,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 809616434}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb6213c2bb238df4f9dc015b6623a337, type: 3}
+  m_Script: {fileID: 11500000, guid: dc1b867914ceaaa499a927c529914f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemCode: 0
@@ -11170,7 +11101,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: -0.0002244709}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1479090898}
   - {fileID: 568310798}
   - {fileID: 1083262900}
   - {fileID: 1103797614}
@@ -12134,8 +12064,8 @@ GameObject:
   - component: {fileID: 931895240}
   - component: {fileID: 931895239}
   m_Layer: 5
-  m_Name: Furnace_Inventory_Slot_18
-  m_TagString: Furnace_Inventory_Slot
+  m_Name: Storage_Box_Inventory_Slot_18
+  m_TagString: Chest_Inventory_Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12154,7 +12084,7 @@ RectTransform:
   - {fileID: 1416317155}
   - {fileID: 1203260908}
   m_Father: {fileID: 835288596}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12170,7 +12100,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 931895237}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb6213c2bb238df4f9dc015b6623a337, type: 3}
+  m_Script: {fileID: 11500000, guid: dc1b867914ceaaa499a927c529914f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemCode: 0
@@ -12595,7 +12525,7 @@ RectTransform:
   - {fileID: 537032010}
   - {fileID: 1923801591}
   m_Father: {fileID: 1019860421}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13118,7 +13048,7 @@ PrefabInstance:
     - target: {fileID: 1316893501197521929, guid: d5532a2b224be8e4a800065984b695d8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1316893501197521929, guid: d5532a2b224be8e4a800065984b695d8,
         type: 3}
@@ -13613,7 +13543,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: -0.0002244709}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 508715739}
   - {fileID: 961695780}
   - {fileID: 1101019034}
   - {fileID: 625265726}
@@ -13692,8 +13621,8 @@ GameObject:
   - component: {fileID: 1020089106}
   - component: {fileID: 1020089105}
   m_Layer: 5
-  m_Name: Furnace_Inventory_Slot_5
-  m_TagString: Furnace_Inventory_Slot
+  m_Name: Storage_Box_Inventory_Slot_5
+  m_TagString: Chest_Inventory_Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13712,7 +13641,7 @@ RectTransform:
   - {fileID: 1803755830}
   - {fileID: 223967146}
   m_Father: {fileID: 835288596}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13728,7 +13657,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1020089103}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb6213c2bb238df4f9dc015b6623a337, type: 3}
+  m_Script: {fileID: 11500000, guid: dc1b867914ceaaa499a927c529914f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemCode: 0
@@ -14550,7 +14479,7 @@ RectTransform:
   - {fileID: 981331196}
   - {fileID: 111984419}
   m_Father: {fileID: 1019860421}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -14779,8 +14708,8 @@ GameObject:
   - component: {fileID: 1083262902}
   - component: {fileID: 1083262901}
   m_Layer: 5
-  m_Name: Furnace_Inventory_Slot_2
-  m_TagString: Furnace_Inventory_Slot
+  m_Name: Storage_Box_Inventory_Slot_2
+  m_TagString: Chest_Inventory_Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14799,7 +14728,7 @@ RectTransform:
   - {fileID: 876811564}
   - {fileID: 765128389}
   m_Father: {fileID: 835288596}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -14815,7 +14744,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1083262899}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb6213c2bb238df4f9dc015b6623a337, type: 3}
+  m_Script: {fileID: 11500000, guid: dc1b867914ceaaa499a927c529914f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemCode: 0
@@ -14892,7 +14821,7 @@ RectTransform:
   - {fileID: 2023582037}
   - {fileID: 1554454087}
   m_Father: {fileID: 1019860421}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -15059,7 +14988,7 @@ RectTransform:
   - {fileID: 336599727}
   - {fileID: 1079792663}
   m_Father: {fileID: 1019860421}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -15132,8 +15061,8 @@ GameObject:
   - component: {fileID: 1103797616}
   - component: {fileID: 1103797615}
   m_Layer: 5
-  m_Name: Furnace_Inventory_Slot_3
-  m_TagString: Furnace_Inventory_Slot
+  m_Name: Storage_Box_Inventory_Slot_3
+  m_TagString: Chest_Inventory_Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15152,7 +15081,7 @@ RectTransform:
   - {fileID: 465974516}
   - {fileID: 920886265}
   m_Father: {fileID: 835288596}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -15168,7 +15097,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1103797613}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb6213c2bb238df4f9dc015b6623a337, type: 3}
+  m_Script: {fileID: 11500000, guid: dc1b867914ceaaa499a927c529914f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemCode: 0
@@ -16534,8 +16463,8 @@ GameObject:
   - component: {fileID: 1206698768}
   - component: {fileID: 1206698767}
   m_Layer: 5
-  m_Name: Furnace_Inventory_Slot_8
-  m_TagString: Furnace_Inventory_Slot
+  m_Name: Storage_Box_Inventory_Slot_8
+  m_TagString: Chest_Inventory_Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16554,7 +16483,7 @@ RectTransform:
   - {fileID: 1719240708}
   - {fileID: 1465956969}
   m_Father: {fileID: 835288596}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16570,7 +16499,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1206698765}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb6213c2bb238df4f9dc015b6623a337, type: 3}
+  m_Script: {fileID: 11500000, guid: dc1b867914ceaaa499a927c529914f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemCode: 0
@@ -16627,8 +16556,8 @@ GameObject:
   - component: {fileID: 1208136139}
   - component: {fileID: 1208136138}
   m_Layer: 5
-  m_Name: Furnace_Inventory_Slot_14
-  m_TagString: Furnace_Inventory_Slot
+  m_Name: Storage_Box_Inventory_Slot_14
+  m_TagString: Chest_Inventory_Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16647,7 +16576,7 @@ RectTransform:
   - {fileID: 1804072923}
   - {fileID: 168909629}
   m_Father: {fileID: 835288596}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16663,7 +16592,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1208136136}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb6213c2bb238df4f9dc015b6623a337, type: 3}
+  m_Script: {fileID: 11500000, guid: dc1b867914ceaaa499a927c529914f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemCode: 0
@@ -16816,7 +16745,7 @@ RectTransform:
   - {fileID: 1233623450}
   - {fileID: 1388813950}
   m_Father: {fileID: 1019860421}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -17896,7 +17825,7 @@ RectTransform:
   - {fileID: 199590785}
   - {fileID: 789349595}
   m_Father: {fileID: 1019860421}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -18540,7 +18469,7 @@ RectTransform:
   - {fileID: 68817620}
   - {fileID: 1145752322}
   m_Father: {fileID: 1019860421}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -19170,7 +19099,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: eb2d3198464b4f249b7a56f14ebde402, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 37ff9a561d66dfa48850755559072fef, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -19386,7 +19315,7 @@ RectTransform:
   - {fileID: 2027487127}
   - {fileID: 741512835}
   m_Father: {fileID: 1019860421}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -19972,80 +19901,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1467438841}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1479090897
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1479090898}
-  - component: {fileID: 1479090900}
-  - component: {fileID: 1479090899}
-  m_Layer: 5
-  m_Name: Furnace_Inventory_Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1479090898
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1479090897}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 835288596}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: 212}
-  m_SizeDelta: {x: 400, y: 310}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1479090899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1479090897}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d6a0a3888ff6ffa479468ec1ffd9e290, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1479090900
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1479090897}
-  m_CullTransparentMesh: 0
 --- !u!1 &1497604011
 GameObject:
   m_ObjectHideFlags: 0
@@ -20215,8 +20070,8 @@ GameObject:
   - component: {fileID: 1503189664}
   - component: {fileID: 1503189663}
   m_Layer: 5
-  m_Name: Furnace_Inventory_Slot_9
-  m_TagString: Furnace_Inventory_Slot
+  m_Name: Storage_Box_Inventory_Slot_9
+  m_TagString: Chest_Inventory_Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20235,7 +20090,7 @@ RectTransform:
   - {fileID: 1297214968}
   - {fileID: 1644926105}
   m_Father: {fileID: 835288596}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -20251,7 +20106,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1503189661}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb6213c2bb238df4f9dc015b6623a337, type: 3}
+  m_Script: {fileID: 11500000, guid: dc1b867914ceaaa499a927c529914f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemCode: 0
@@ -21421,7 +21276,7 @@ RectTransform:
   - {fileID: 1093937123}
   - {fileID: 239700202}
   m_Father: {fileID: 1019860421}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -22153,7 +22008,7 @@ RectTransform:
   - {fileID: 1287155274}
   - {fileID: 160737922}
   m_Father: {fileID: 1019860421}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -22337,7 +22192,7 @@ PrefabInstance:
     - target: {fileID: 1316893501197521929, guid: d5532a2b224be8e4a800065984b695d8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1316893501197521929, guid: d5532a2b224be8e4a800065984b695d8,
         type: 3}
@@ -22815,6 +22670,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
         type: 3}
+      propertyPath: itemCode.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
+        type: 3}
+      propertyPath: itemQuantity.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
+        type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -22822,8 +22687,43 @@ PrefabInstance:
         type: 3}
       propertyPath: Object_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: fd44bed833ee45b409dcd4c575bc3578,
+      objectReference: {fileID: 21300000, guid: ad133cc8ec59ce1498c85622580d4f85,
         type: 3}
+    - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
+        type: 3}
+      propertyPath: Item_Code_Has_To_Craft
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
+        type: 3}
+      propertyPath: itemCode.Array.data[1]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
+        type: 3}
+      propertyPath: itemCode.Array.data[2]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
+        type: 3}
+      propertyPath: itemCode.Array.data[3]
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
+        type: 3}
+      propertyPath: itemQuantity.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
+        type: 3}
+      propertyPath: itemQuantity.Array.data[2]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
+        type: 3}
+      propertyPath: itemQuantity.Array.data[3]
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3da4af9806bc6f479944953db00a2f0, type: 3}
 --- !u!224 &1682076193 stripped
@@ -23029,10 +22929,10 @@ RectTransform:
   - {fileID: 1677655502}
   - {fileID: 953569290}
   - {fileID: 1408274577}
-  - {fileID: 1316893501902873871}
   - {fileID: 1004385254}
   - {fileID: 1668075961}
   - {fileID: 34997391}
+  - {fileID: 1316893501902873871}
   m_Father: {fileID: 802949247}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -23611,7 +23511,7 @@ RectTransform:
   - {fileID: 91147170}
   - {fileID: 1712438483}
   m_Father: {fileID: 1019860421}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -26483,8 +26383,8 @@ GameObject:
   - component: {fileID: 1970414437}
   - component: {fileID: 1970414436}
   m_Layer: 5
-  m_Name: Furnace_Inventory_Slot_10
-  m_TagString: Furnace_Inventory_Slot
+  m_Name: Storage_Box_Inventory_Slot_10
+  m_TagString: Chest_Inventory_Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26503,7 +26403,7 @@ RectTransform:
   - {fileID: 425863475}
   - {fileID: 1299536253}
   m_Father: {fileID: 835288596}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -26519,7 +26419,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1970414434}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb6213c2bb238df4f9dc015b6623a337, type: 3}
+  m_Script: {fileID: 11500000, guid: dc1b867914ceaaa499a927c529914f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemCode: 0
@@ -26657,7 +26557,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1980295875
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26727,8 +26627,8 @@ GameObject:
   - component: {fileID: 1985679628}
   - component: {fileID: 1985679627}
   m_Layer: 5
-  m_Name: Furnace_Inventory_Slot_17
-  m_TagString: Furnace_Inventory_Slot
+  m_Name: Storage_Box_Inventory_Slot_17
+  m_TagString: Chest_Inventory_Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26747,7 +26647,7 @@ RectTransform:
   - {fileID: 1798776126}
   - {fileID: 2027102580}
   m_Father: {fileID: 835288596}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -26763,7 +26663,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1985679625}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb6213c2bb238df4f9dc015b6623a337, type: 3}
+  m_Script: {fileID: 11500000, guid: dc1b867914ceaaa499a927c529914f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemCode: 0
@@ -26976,8 +26876,8 @@ GameObject:
   - component: {fileID: 2006968908}
   - component: {fileID: 2006968907}
   m_Layer: 5
-  m_Name: Furnace_Inventory_Slot_16
-  m_TagString: Furnace_Inventory_Slot
+  m_Name: Storage_Box_Inventory_Slot_16
+  m_TagString: Chest_Inventory_Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26996,7 +26896,7 @@ RectTransform:
   - {fileID: 1136874509}
   - {fileID: 1774790632}
   m_Father: {fileID: 835288596}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -27012,7 +26912,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2006968905}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb6213c2bb238df4f9dc015b6623a337, type: 3}
+  m_Script: {fileID: 11500000, guid: dc1b867914ceaaa499a927c529914f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemCode: 0
@@ -27549,8 +27449,8 @@ GameObject:
   - component: {fileID: 2076429548}
   - component: {fileID: 2076429547}
   m_Layer: 5
-  m_Name: Furnace_Inventory_Slot_4
-  m_TagString: Furnace_Inventory_Slot
+  m_Name: Storage_Box_Inventory_Slot_4
+  m_TagString: Chest_Inventory_Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27569,7 +27469,7 @@ RectTransform:
   - {fileID: 1233117826}
   - {fileID: 422308381}
   m_Father: {fileID: 835288596}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -27585,7 +27485,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2076429545}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb6213c2bb238df4f9dc015b6623a337, type: 3}
+  m_Script: {fileID: 11500000, guid: dc1b867914ceaaa499a927c529914f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemCode: 0
@@ -27685,7 +27585,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: eb2d3198464b4f249b7a56f14ebde402, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 80d587519b1f3834280116c0f4e0d843, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -27977,7 +27877,7 @@ RectTransform:
   - {fileID: 937756545}
   - {fileID: 1121160286}
   m_Father: {fileID: 1019860421}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -28308,7 +28208,7 @@ RectTransform:
   - {fileID: 20917515}
   - {fileID: 1606103549}
   m_Father: {fileID: 1708167266}
-  m_RootOrder: 13
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -28697,7 +28597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemCode: 0
-  Slot_Number: 0
+  Slot_Number: 25
   itemQuantity: 0
 --- !u!114 &3956924258380686397
 MonoBehaviour:

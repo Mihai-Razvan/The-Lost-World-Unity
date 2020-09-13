@@ -25,7 +25,7 @@ public class Special_Item : MonoBehaviour
     
     void Update()
     {
-        if (FindObjectOfType<Inventory>().Slot_Item_Code[0] == 7)
+        if (FindObjectOfType<Inventory>().Slot_Item_Code[25] == 7)
             Jetpack();
     }
 

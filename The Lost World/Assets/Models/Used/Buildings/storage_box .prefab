@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2573987818936272072}
   m_Layer: 13
   m_Name: 'storage_box '
-  m_TagString: Storage box
+  m_TagString: Chest
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,8 +73,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BuildingAccessed: 0
-  Slot_Item_Code: 
-  Slot_Item_Quantity: 
+  Slot_Item_Code: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  Slot_Item_Quantity: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!1001 &4379398018817932570
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -95,7 +95,7 @@ PrefabInstance:
     - target: {fileID: 82517201656420860, guid: f7a38df7feec5a945a9004c6caf51dcc,
         type: 3}
       propertyPath: m_TagString
-      value: Storage box
+      value: Chest
       objectReference: {fileID: 0}
     - target: {fileID: 751811252009255750, guid: f7a38df7feec5a945a9004c6caf51dcc,
         type: 3}
