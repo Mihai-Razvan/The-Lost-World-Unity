@@ -83,6 +83,12 @@ public class Pickup_Item : MonoBehaviour
                         FindObjectOfType<Inventory>().itemCodeToAdd = 23;
                         Destroy(colliders[0].transform.parent.gameObject);
                     }
+                    else if (colliders[0].gameObject.tag == "Blackberries")
+                    {
+                        FindObjectOfType<Inventory>().itemCodeToAdd = 28;
+                        Destroy(colliders[0].gameObject);    //maru nu are pct ca nu trebuie si optimizare
+                        BeeAttract();
+                    }
 
                 }
             }

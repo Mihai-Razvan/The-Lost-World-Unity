@@ -240,7 +240,7 @@ public class IslandObjects_Snow : MonoBehaviour
 
             if (Physics.Raycast(new Vector3(transform.position.x + Random.Range(minRange, maxRange), transform.position.y + SpawnHeight, transform.position.z + Random.Range(minRange, maxRange)), Vector3.down, out hit, 100, Spawn_Surface_Mask) && hit.collider.tag != "Cave Over")
             {
-                objectRandomNumber = Random.Range(1, 5);
+                objectRandomNumber = Random.Range(1, 7);
                 if (objectRandomNumber == 1)
                 {
                     Collider[] colliders = Physics.OverlapSphere(hit.point, 10, objectsMask);
@@ -299,6 +299,19 @@ public class IslandObjects_Snow : MonoBehaviour
                     if (colliders.Length == 0)
                     {
                         lastSpawned = Instantiate(Objects[5], hit.point, Quaternion.identity);
+                        lastSpawned.transform.SetParent(island.transform);
+                        notSpawnedConsecutively = 0;
+                        spawnedObjectsNumber++;
+                    }
+                    else
+                        notSpawnedConsecutively++;
+                }
+                else if (objectRandomNumber == 6)
+                {
+                    Collider[] colliders = Physics.OverlapSphere(hit.point, 10, objectsMask);
+                    if (colliders.Length == 0)
+                    {
+                        lastSpawned = Instantiate(Objects[9], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
                         lastSpawned.transform.SetParent(island.transform);
                         notSpawnedConsecutively = 0;
                         spawnedObjectsNumber++;

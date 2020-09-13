@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 4400867362748602823}
   m_Layer: 0
   m_Name: 'sap_extractor '
-  m_TagString: Sap extractor
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,7 +105,7 @@ Transform:
   m_GameObject: {fileID: 4417404850659537282}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3346.8896, y: 157.02321, z: 859.19904}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 8335623192379952039}
   - {fileID: 2918007888505938203}
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlaced: 0
-  production_Time: 300
+  production_Time: 5
   time_On_This_Round: 0
   full: {fileID: 2536942874006616993}
 --- !u!54 &6234364102030437509
@@ -224,32 +224,32 @@ PrefabInstance:
     - target: {fileID: 8799825141915702474, guid: 4f760d6674d3e7b428f96d938fa7741b,
         type: 3}
       propertyPath: m_Size.x
-      value: 0.04301445
+      value: 0.027492143
       objectReference: {fileID: 0}
     - target: {fileID: 8799825141915702474, guid: 4f760d6674d3e7b428f96d938fa7741b,
         type: 3}
       propertyPath: m_Size.z
-      value: 0.30812258
+      value: 0.25418586
       objectReference: {fileID: 0}
     - target: {fileID: 8799825141915702474, guid: 4f760d6674d3e7b428f96d938fa7741b,
         type: 3}
       propertyPath: m_Center.x
-      value: -0.002801572
+      value: -0.0010223945
       objectReference: {fileID: 0}
     - target: {fileID: 8799825141915702474, guid: 4f760d6674d3e7b428f96d938fa7741b,
         type: 3}
       propertyPath: m_Center.y
-      value: 0.008119445
+      value: 0.0028757972
       objectReference: {fileID: 0}
     - target: {fileID: 8799825141915702474, guid: 4f760d6674d3e7b428f96d938fa7741b,
         type: 3}
       propertyPath: m_Center.z
-      value: 0.06851468
+      value: 0.04154633
       objectReference: {fileID: 0}
     - target: {fileID: 8799825141915702474, guid: 4f760d6674d3e7b428f96d938fa7741b,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.054296147
+      value: 0.02841267
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f760d6674d3e7b428f96d938fa7741b, type: 3}

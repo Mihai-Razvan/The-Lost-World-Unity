@@ -97,7 +97,7 @@ public class ColorPlacingChange : MonoBehaviour
                 if (collision.collider.gameObject.layer == 11 || collision.collider.gameObject.layer == 13 || (collision.collider.gameObject.layer == 18 && collision.collider.tag != "Platform") || collision.collider.gameObject.layer == 19)
                     numberOfCollidingObjects++;
             }
-            else if (collision.collider.tag == "Cactus")
+            else if (collision.collider.tag == "Cactus" || collision.collider.tag == "Sap extractor")
                 numberOfCollidingObjects++;
         }
         else if (gameObject.layer == 15)   // e floor si la asta se pune si flooru ca nu se poate lovi de el sau pune peste
@@ -126,7 +126,7 @@ public class ColorPlacingChange : MonoBehaviour
                 if (collision.collider.gameObject.layer == 11 || collision.collider.gameObject.layer == 13 || (collision.collider.gameObject.layer == 18 && collision.collider.tag != "Platform"))
                     numberOfCollidingObjects--;
             }
-            else if (collision.collider.tag == "Cactus")
+            else if (collision.collider.tag == "Cactus" || collision.collider.tag == "Sap extractor")
                 numberOfCollidingObjects--;
         }
         else if (gameObject.layer == 15)   

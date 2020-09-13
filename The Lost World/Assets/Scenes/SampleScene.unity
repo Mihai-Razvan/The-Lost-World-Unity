@@ -1047,9 +1047,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ecf6af6494f19284088e80216914a6df, type: 3}
   - {fileID: 21300000, guid: 1275a91d15027fb41be2eb8c948aac11, type: 3}
   - {fileID: 21300000, guid: 19592a4faa0a05b4baca0f2aba337a9a, type: 3}
-  - {fileID: 21300000, guid: fd44bed833ee45b409dcd4c575bc3578, type: 3}
-  - {fileID: 21300000, guid: fd44bed833ee45b409dcd4c575bc3578, type: 3}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 968d7504b4939fd4ab8ce326acabb1d0, type: 3}
+  - {fileID: 21300000, guid: 50c6daf6b8966ec42a69e605dc1aa602, type: 3}
+  - {fileID: 21300000, guid: 6a507a121db44d049bf9f55ce5b943d4, type: 3}
   - {fileID: 0}
   Item_Name:
   - 
@@ -1080,7 +1080,7 @@ MonoBehaviour:
   - GPS
   - Sap extractor
   - Cactus sap
-  - 
+  - Blackberries
   - 
   Item_Description:
   - 
@@ -22255,6 +22255,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
         type: 3}
+      propertyPath: itemCode.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
+        type: 3}
+      propertyPath: itemQuantity.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
+        type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -22262,8 +22272,53 @@ PrefabInstance:
         type: 3}
       propertyPath: Object_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: fd44bed833ee45b409dcd4c575bc3578,
+      objectReference: {fileID: 21300000, guid: 968d7504b4939fd4ab8ce326acabb1d0,
         type: 3}
+    - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
+        type: 3}
+      propertyPath: Item_Code_Has_To_Craft
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
+        type: 3}
+      propertyPath: itemCode.Array.data[1]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
+        type: 3}
+      propertyPath: itemCode.Array.data[2]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
+        type: 3}
+      propertyPath: itemCode.Array.data[3]
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
+        type: 3}
+      propertyPath: itemCode.Array.data[4]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
+        type: 3}
+      propertyPath: itemQuantity.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
+        type: 3}
+      propertyPath: itemQuantity.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
+        type: 3}
+      propertyPath: itemQuantity.Array.data[3]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
+        type: 3}
+      propertyPath: itemQuantity.Array.data[4]
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3da4af9806bc6f479944953db00a2f0, type: 3}
 --- !u!114 &6519566499303470421
