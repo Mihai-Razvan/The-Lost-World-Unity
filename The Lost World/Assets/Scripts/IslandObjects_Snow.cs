@@ -75,21 +75,18 @@ public class IslandObjects_Snow : MonoBehaviour
     private GameObject snow_animal_1;   //bee
 
 
+    public bool Respawned;
 
     private void Start()
     {
-        FindObjectOfType<Save>().numberOfIslands++;
-        FindObjectOfType<Save>().String_island_Type[FindObjectOfType<Save>().numberOfIslands] = "Island_Number_" + FindObjectOfType<Save>().numberOfIslands.ToString();
-        FindObjectOfType<Save>().island_Type[FindObjectOfType<Save>().numberOfIslands] = 2;
-
-        FindObjectOfType<Save>().String_island_X[FindObjectOfType<Save>().numberOfIslands] = "String_island_X" + FindObjectOfType<Save>().numberOfIslands.ToString();
-        FindObjectOfType<Save>().island_X[FindObjectOfType<Save>().numberOfIslands] = transform.position.x;
-
-        FindObjectOfType<Save>().String_island_Y[FindObjectOfType<Save>().numberOfIslands] = "String_island_Y" + FindObjectOfType<Save>().numberOfIslands.ToString();
-        FindObjectOfType<Save>().island_Y[FindObjectOfType<Save>().numberOfIslands] = transform.position.y;
-
-        FindObjectOfType<Save>().String_island_Z[FindObjectOfType<Save>().numberOfIslands] = "String_island_Z" + FindObjectOfType<Save>().numberOfIslands.ToString();
-        FindObjectOfType<Save>().island_Z[FindObjectOfType<Save>().numberOfIslands] = transform.position.z;
+        if (Respawned == false)
+        {
+            FindObjectOfType<Save>().numberOfIslands++;
+            FindObjectOfType<Save>().island_Type[FindObjectOfType<Save>().numberOfIslands] = 2;
+            FindObjectOfType<Save>().island_X[FindObjectOfType<Save>().numberOfIslands] = transform.position.x;
+            FindObjectOfType<Save>().island_Y[FindObjectOfType<Save>().numberOfIslands] = transform.position.y;
+            FindObjectOfType<Save>().island_Z[FindObjectOfType<Save>().numberOfIslands] = transform.position.z;
+        }
     }
 
 

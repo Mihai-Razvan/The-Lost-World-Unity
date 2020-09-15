@@ -33,14 +33,14 @@ public class Spawn_Around_Player : MonoBehaviour
 
 
 
-
+    float time;
     void Start()
     {
-        spawnedIsland = Instantiate(island_forest_1, new Vector3(2315, 0 ,1000), Quaternion.identity);    //spawn island
+        //spawnedIsland = Instantiate(island_forest_1, new Vector3(2315, 0 ,1000), Quaternion.identity);    //spawn island
 
-        for (int i = 1; i <= 200; i++)         //spawneaza nori la inceput 
+        for (int i = 1; i <= 20; i++)         //spawneaza nori la inceput 
         {
-            IslandSpawn();
+           // IslandSpawn();
             CloudsSpawn();
         }
         
@@ -49,8 +49,10 @@ public class Spawn_Around_Player : MonoBehaviour
 
     void Update()
     {
+
+        //if(FindObjectOfType<Save>().loaded == true)
         IslandSpawn();
-     ;
+     
         if((int) Random.Range(1, 50) == 1)
            CloudsSpawn();
 
