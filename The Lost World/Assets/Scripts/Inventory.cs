@@ -100,6 +100,11 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
                     FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Code[InitialSlotNumberDrag] = 0;
                     FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Quantity[InitialSlotNumberDrag] = 0;
                 }
+                else if (Initial_Slot_Gameobject.tag == "Chest_Inventory_Slot")
+                {
+                    FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_030>().Slot_Item_Code[InitialSlotNumberDrag] = 0;
+                    FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_030>().Slot_Item_Quantity[InitialSlotNumberDrag] = 0;
+                }
 
                 InitialSlotNumberDrag = -1;
                 InitialSlotItemCodeDrag = -1;

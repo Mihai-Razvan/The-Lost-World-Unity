@@ -25,40 +25,49 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     public bool MovementFrozen;  //daca e deschis vreun inventar sau ceva
 
+    private float time = 0;
     void Start()
     {
-        
+        time = 0;
     }
 
    
     void FixedUpdate()
-    {   
-        isGrounded = Physics.CheckSphere(groundCheck.position, sphereRadius, GroundMask);
-
-        if (isGrounded == true && velocity.y < 0)
-            velocity.y = -2f;
-
-        if (MovementFrozen == false)   
+    {
+        time += Time.deltaTime;
+        if (time > 5)
         {
-             x = Input.GetAxisRaw("Horizontal");
-             z = Input.GetAxisRaw("Vertical");
+            isGrounded = Physics.CheckSphere(groundCheck.position, sphereRadius, GroundMask);
+
+            if (isGrounded == true && velocity.y < 0)
+                velocity.y = -2f;
+
+            if (MovementFrozen == false)
+            {
+                x = Input.GetAxisRaw("Horizontal");
+                z = Input.GetAxisRaw("Vertical");
+            }
+
+            if (FindObjectOfType<Special_Item>().useJetpack == true)    //asta cu jetpacku sa nu poti merge normal daca folosesti jetpacku pt ca se aduna vitezele si se poate exploata
+                moveSpeed = 0;
+            else
+                moveSpeed = 10;
+
+            Vector3 move = transform.right * x + transform.forward * z;
+
+            if (MovementFrozen == false)
+                controller.Move(move * moveSpeed * Time.deltaTime);
+
+            velocity.y += gravity * Time.deltaTime;
+
+            controller.Move(velocity * Time.deltaTime);
+
+            //   MiniIslandMove();
+
+
+            if (Input.GetKey(KeyCode.M))
+                Application.Quit();
         }
-
-        if (FindObjectOfType<Special_Item>().useJetpack == true)    //asta cu jetpacku sa nu poti merge normal daca folosesti jetpacku pt ca se aduna vitezele si se poate exploata
-            moveSpeed = 0;
-        else
-            moveSpeed = 10;
-
-       Vector3 move = transform.right * x + transform.forward * z;
-
-        if(MovementFrozen == false)
-        controller.Move(move * moveSpeed * Time.deltaTime);
-
-        velocity.y += gravity * Time.deltaTime;
-
-        controller.Move(velocity * Time.deltaTime);
-
-     //   MiniIslandMove();
 
     }
 
