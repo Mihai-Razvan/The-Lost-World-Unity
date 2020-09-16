@@ -57,7 +57,7 @@ public class IslandObjects_Forest : MonoBehaviour
     [SerializeField]
     private bool islandActivated = true;
 
-
+    
 
     //animals
 
@@ -74,10 +74,10 @@ public class IslandObjects_Forest : MonoBehaviour
 
 
     public bool Respawned;
-
+    private float timeSinceSpawn;
 
     private void Start()
-    {
+    {/*
         if (Respawned == false)
         {
             FindObjectOfType<Save>().numberOfIslands++;
@@ -86,10 +86,12 @@ public class IslandObjects_Forest : MonoBehaviour
             FindObjectOfType<Save>().island_Y[FindObjectOfType<Save>().numberOfIslands] = transform.position.y;
             FindObjectOfType<Save>().island_Z[FindObjectOfType<Save>().numberOfIslands] = transform.position.z;
         }
+        */
     }
 
     void Update()
     {
+        timeSinceSpawn += Time.deltaTime;
         if (ReliefHasSpawned == false)
         {
             island = transform.GetChild(0).gameObject;
@@ -125,6 +127,7 @@ public class IslandObjects_Forest : MonoBehaviour
 
         AnimalSpawn();
 
+        if(timeSinceSpawn > 10)
         DespawnIsland();
         InactiveIsland();
         IslandObjectsDeavtivateAtivate();

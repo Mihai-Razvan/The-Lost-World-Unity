@@ -42,6 +42,10 @@ TagManager:
   - Blackberries
   - Chest_Inventory_Slot
   - Chest
+  - Island Point Type 1
+  - Island Point Type 2
+  - Island Point Type 3
+  - Island Point
   layers:
   - Default
   - TransparentFX

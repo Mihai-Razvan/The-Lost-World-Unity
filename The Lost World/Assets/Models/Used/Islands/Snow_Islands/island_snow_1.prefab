@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1938822434563726179}
   - component: {fileID: -2154744025854465964}
+  - component: {fileID: 9007437532873510346}
   m_Layer: 9
   m_Name: island_snow_1
-  m_TagString: Island
+  m_TagString: Island Point Type 2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,6 +116,20 @@ MonoBehaviour:
     m_Bits: 65536
   snow_animal_1: {fileID: 6940758417008733545, guid: e533279b02342c941aa48b033d5fbd75,
     type: 3}
+  Respawned: 0
+--- !u!65 &9007437532873510346
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2391071011022119934}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &959139210597260429
 PrefabInstance:
   m_ObjectHideFlags: 0

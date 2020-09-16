@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6885608610452281022}
   - component: {fileID: 7479865091310657406}
+  - component: {fileID: 753915083287112077}
   m_Layer: 9
   m_Name: island_forest_1
-  m_TagString: Untagged
+  m_TagString: Island Point Type 1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,6 +94,20 @@ MonoBehaviour:
     m_Bits: 65536
   forest_animal_1: {fileID: 4406930104288571550, guid: 4301f74a0dfcc06489486a777d848b85,
     type: 3}
+  Respawned: 0
+--- !u!65 &753915083287112077
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6885608610452281017}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &6885608609901726655
 PrefabInstance:
   m_ObjectHideFlags: 0
