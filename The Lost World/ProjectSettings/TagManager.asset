@@ -62,6 +62,15 @@ TagManager:
   - Relief Point Type 14
   - Relief Point Type 15
   - Relief Point Type 16
+  - Item Point 004
+  - Item Point 008
+  - Item Point 009
+  - Item Point 014
+  - Item Point 015
+  - Item Point 016
+  - Item Point 017
+  - Item Point 026
+  - Item Point 030
   layers:
   - Default
   - TransparentFX

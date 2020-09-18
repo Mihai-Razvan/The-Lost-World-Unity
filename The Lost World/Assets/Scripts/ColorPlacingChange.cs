@@ -33,10 +33,10 @@ public class ColorPlacingChange : MonoBehaviour
             }
                     
 
-        if (numberOfCollidingObjects == 0 && gameObject.tag != "Sap extractor")
+        if (numberOfCollidingObjects == 0 && gameObject.tag != "Sap extractor")     
         {
 
-            if (gameObject.tag != "Floating_Prefabs" || gameObject.tag == "Platform")     //ca la bridge sa fie rosu si daca e in aer si nu e snapped 
+            if (gameObject.tag != "Floating_Prefabs" || gameObject.tag == "Platorm")     //ca la bridge sa fie rosu si daca e in aer si nu e snapped 
             {
                 placeable = true;
                 gameObject.GetComponent<Renderer>().materials = OkmaterialsArray;

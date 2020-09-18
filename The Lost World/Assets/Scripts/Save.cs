@@ -7,14 +7,18 @@ public class Save : MonoBehaviour
     [SerializeField]
     private GameObject player;
     [SerializeField]
-    private LayerMask saveableMask;
+    private LayerMask Island_Relief_SaveableMask;     //masku pt insula si relie sa salveze
+    [SerializeField]
+    private LayerMask Buiding_SaveableMask;
     [SerializeField]
     private LayerMask islandMask;        //sa devina child la insula relieu sa se poate despawna
 
     [SerializeField]
-    public int numberOfIslands;
+    private int numberOfIslands;
     [SerializeField]
     private int numberOfRelief;
+    [SerializeField]
+    private int numberOfBuildings;
     
 
     [SerializeField]
@@ -27,6 +31,8 @@ public class Save : MonoBehaviour
 
     [SerializeField]
     private GameObject[] relief_type;
+    [SerializeField]
+    private GameObject[] building_type;
     
 
 
@@ -55,12 +61,14 @@ public class Save : MonoBehaviour
 
         SavePlayer();     
         SaveIslandsANDRelief();
+        SaveBuildings();
     }
 
     public void LoadFunction()
     {
         LoadPlayer();
         LoadIslandsANDRelief();
+        LoadBuildings();
     }
 
 
@@ -69,36 +77,42 @@ public class Save : MonoBehaviour
         PlayerPrefs.SetFloat("Player_Position_X", player.transform.position.x);
         PlayerPrefs.SetFloat("Player_Position_Y", player.transform.position.y);
         PlayerPrefs.SetFloat("Player_Position_Z", player.transform.position.z);
-
-        for(int i = 1; i <= 25; i ++)
+        PlayerPrefs.SetFloat("Player_Health", FindObjectOfType<Player_Stats>().playerHealth);
+        PlayerPrefs.SetFloat("Player_Food", FindObjectOfType<Player_Stats>().playerFood);
+        PlayerPrefs.SetFloat("Player_Poison", FindObjectOfType<Player_Stats>().playerPoison);
+        /*
+        for (int i = 1; i <= 25; i ++)
         {
             PlayerPrefs.SetInt("Inventory_Item_Code_Slot_" + i.ToString(), FindObjectOfType<Inventory>().Slot_Item_Code[i]);
             PlayerPrefs.SetInt("Inventory_Item_Quantity_Slot_" + i.ToString(), FindObjectOfType<Inventory>().Slot_Item_Quantity[i]);
-        }
+        }*/
     }
-
-
 
     void LoadPlayer()
     {
         float playerX = PlayerPrefs.GetFloat("Player_Position_X");
         float playerY = PlayerPrefs.GetFloat("Player_Position_Y");
         float playerZ = PlayerPrefs.GetFloat("Player_Position_Z");
-
         player.transform.position = new Vector3(playerX, playerY, playerZ);
 
+        FindObjectOfType<Player_Stats>().playerHealth = PlayerPrefs.GetFloat("Player_Health");
+        FindObjectOfType<Player_Stats>().playerFood = PlayerPrefs.GetFloat("Player_Food");
+        FindObjectOfType<Player_Stats>().playerPoison = PlayerPrefs.GetFloat("Player_Poison");
+        /*
         for (int i = 1; i <= 25; i++)
         {
             FindObjectOfType<Inventory>().Slot_Item_Code[i] = PlayerPrefs.GetInt("Inventory_Item_Code_Slot_" + i.ToString());
             FindObjectOfType<Inventory>().Slot_Item_Quantity[i] = PlayerPrefs.GetInt("Inventory_Item_Quantity_Slot_" + i.ToString());
-        }
+        }*/
     }
+
+
 
 
 
     void SaveIslandsANDRelief()
     {
-        Collider[] colliders = Physics.OverlapSphere(player.transform.position, 7000, saveableMask);
+        Collider[] colliders = Physics.OverlapSphere(player.transform.position, 7000, Island_Relief_SaveableMask);
 
         numberOfIslands = 0;
         numberOfRelief = 0;
@@ -129,8 +143,7 @@ public class Save : MonoBehaviour
         PlayerPrefs.SetInt("Number_Of_Relief", numberOfRelief);
     }
 
-
-    private void LoadIslandsANDRelief()
+    void LoadIslandsANDRelief()
     {
         numberOfIslands = PlayerPrefs.GetInt("Number_Of_Islands");
         numberOfRelief = PlayerPrefs.GetInt("Number_Of_Relief");
@@ -177,7 +190,55 @@ public class Save : MonoBehaviour
 
         }
     }
-     
+
+
+
+
+    void SaveBuildings()
+    {
+        Collider[] colliders = Physics.OverlapSphere(player.transform.position, 7000, Buiding_SaveableMask);
+
+        numberOfBuildings = 0;
+
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (GetBuildingType(colliders, i) != 0) //inseamna ca e o cladire
+            {
+                numberOfBuildings++;
+
+                PlayerPrefs.SetInt("String_building_Type_" + numberOfBuildings.ToString(), GetBuildingType(colliders, i));
+                PlayerPrefs.SetFloat("String_building_X_" + numberOfBuildings.ToString(), colliders[i].transform.position.x);
+                PlayerPrefs.SetFloat("String_building_Y_" + numberOfBuildings.ToString(), colliders[i].transform.position.y);
+                PlayerPrefs.SetFloat("String_building_Z_" + numberOfBuildings.ToString(), colliders[i].transform.position.z);
+
+                if (GetBuildingType(colliders, i) == 4)       // furnaca 
+                    SaveFurnaceInventory(colliders, i);
+            }
+        }
+
+
+        PlayerPrefs.SetInt("Number_Of_Buildings", numberOfBuildings);
+
+    }
+
+    void LoadBuildings()
+    {
+        numberOfBuildings = PlayerPrefs.GetInt("Number_Of_Buildings");
+
+        for (int i = 1; i <= numberOfBuildings; i++)
+        {
+             test[i] = PlayerPrefs.GetInt("String_building_Type_" + i.ToString());
+            float xPos = PlayerPrefs.GetFloat("String_building_X_" + i.ToString());
+            float yPos = PlayerPrefs.GetFloat("String_building_Y_" + i.ToString());
+            float zPos = PlayerPrefs.GetFloat("String_building_Z_" + i.ToString());
+
+            Instantiate(building_type[PlayerPrefs.GetInt("String_building_Type_" + i.ToString())], new Vector3(xPos, yPos, zPos), Quaternion.identity);      //CAND FAC CLADIRILE SA IE CHILD LA INSULE SA AC SI ACI CAND SE RESPAWNEAZ       
+            
+             
+        }
+    }
+
+
     private int GetIslandType(Collider[] colliders, int i)
     {
 
@@ -190,7 +251,7 @@ public class Save : MonoBehaviour
         
 
 
-        return -1;
+        return 0;
     }
 
 
@@ -201,5 +262,31 @@ public class Save : MonoBehaviour
                 return j;
 
         return 0;    
+    }
+
+
+    private int GetBuildingType(Collider[] colliders, int i)
+    {
+        for (int j = 1; j <= 9; j++)
+            if (colliders[i].tag == "Item Point 00" + j.ToString())
+                return j;
+
+        for (int j = 10; j <= 30; j++)
+            if (colliders[i].tag == "Item Point 0" + j.ToString())
+                return j;
+
+        return 0;
+    }
+
+
+
+
+    void SaveFurnaceInventory(Collider[] colliders, int i)
+    {
+        for (int j = 1; j <= 20; j++)
+        {
+            PlayerPrefs.SetInt("String_building_" + numberOfBuildings.ToString() + "_Inventory_Slot_" + j.ToString() + "_Item_Code", colliders[i].GetComponent<Item_004>().Slot_Item_Code[j]);
+            PlayerPrefs.SetInt("String_building_" + numberOfBuildings.ToString() + "_Inventory_Slot_" + j.ToString() + "_Item_Quantity", colliders[i].GetComponent<Item_004>().Slot_Item_Quantity[j]);
+        }
     }
 }

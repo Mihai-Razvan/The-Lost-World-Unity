@@ -139,9 +139,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2446378242579983962}
+  - component: {fileID: 9014286128702300943}
   m_Layer: 18
   m_Name: Ramp_Wooden
-  m_TagString: Floating_Prefabs
+  m_TagString: Item Point 015
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,6 +163,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &9014286128702300943
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4600331469334539470}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 0.01, z: 0.01}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6294428891935697160
 GameObject:
   m_ObjectHideFlags: 0

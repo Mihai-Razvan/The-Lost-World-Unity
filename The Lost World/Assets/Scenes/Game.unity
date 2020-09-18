@@ -13792,14 +13792,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 446034137}
-  saveableMask:
+  Island_Relief_SaveableMask:
     serializedVersion: 2
     m_Bits: 1536
+  Buiding_SaveableMask:
+    serializedVersion: 2
+    m_Bits: 303104
   islandMask:
     serializedVersion: 2
     m_Bits: 512
   numberOfIslands: 0
   numberOfRelief: 0
+  numberOfBuildings: 0
   island_type_1: {fileID: 6885608610452281017, guid: 7aba3d7791ba09d41819b9857fd81e2f,
     type: 3}
   island_type_2: {fileID: 2391071011022119934, guid: d88c61579a6829447a42d0236665c035,
@@ -13824,6 +13828,38 @@ MonoBehaviour:
   - {fileID: 2127635578136817712, guid: 9a4c8e54569d7fe469cb9c0a16c31ed6, type: 3}
   - {fileID: 8833194676832449832, guid: 0b66e00fdd0f5a942a02f82e7547fd18, type: 3}
   - {fileID: 5255361817746735144, guid: db72d0764db358b4fbbe282616b7b6de, type: 3}
+  building_type:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 8574104564120655810, guid: c364c2c0792271947be19af2c74bcb58, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 3722863607514799801, guid: 06ea0a08a070202498d81c1766bacec8, type: 3}
+  - {fileID: 769704251212185657, guid: 3810d89b5f32eff44bdd3fd6fdb386af, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 130516188139543142, guid: 51dccf8af49f070458bfa9fdfd5ab5f4, type: 3}
+  - {fileID: 4600331469334539470, guid: b5e684fa8daab8345a335a897ef5ba30, type: 3}
+  - {fileID: 2458581867794152249, guid: 85c3f0b2794b43c46b1dc5cb606ab815, type: 3}
+  - {fileID: 8447679313134457274, guid: 14c199c9b733e444a8a18fd6980609fb, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 4417404850659537282, guid: aa3c9cc73e3e15241980435c350d5129, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 3470267581561924277, guid: ec7888fd523a6c64aa80708cebe78f21, type: 3}
   test: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!1 &1019860420
 GameObject:

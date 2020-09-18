@@ -97,9 +97,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7044232984425975381}
+  - component: {fileID: 670170793537744265}
   m_Layer: 18
   m_Name: Platform_Wooden
-  m_TagString: Platform
+  m_TagString: Item Point 016
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,6 +128,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &670170793537744265
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2458581867794152249}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 0.01, z: 0.01}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3029397253052779746
 GameObject:
   m_ObjectHideFlags: 0
