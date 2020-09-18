@@ -74,7 +74,7 @@ public class IslandObjects_Forest : MonoBehaviour
 
 
     public bool Respawned;
-    private float timeSinceSpawn;
+    
 
     private void Start()
     {/*
@@ -91,13 +91,18 @@ public class IslandObjects_Forest : MonoBehaviour
 
     void Update()
     {
-        timeSinceSpawn += Time.deltaTime;
+        
         if (ReliefHasSpawned == false)
         {
             island = transform.GetChild(0).gameObject;
             ReliefHasSpawned = true;
-            BigReliefSpawn();
-            ReliefSpawn();
+
+            if (Respawned == false)
+            {
+                BigReliefSpawn();
+                ReliefSpawn();
+            }
+
             SpawnMiniIsland();
 
             for (int i = 1; i < 50; i++)
@@ -126,8 +131,7 @@ public class IslandObjects_Forest : MonoBehaviour
         }
 
         AnimalSpawn();
-
-        if(timeSinceSpawn > 10)
+       
         DespawnIsland();
         InactiveIsland();
         IslandObjectsDeavtivateAtivate();
@@ -364,7 +368,7 @@ public class IslandObjects_Forest : MonoBehaviour
 
                 for (int i = 0; i < island.transform.childCount; i++)
                     // island.transform.GetChild(i).gameObject.SetActive(false);
-                    if (island.transform.GetChild(i).gameObject.tag != "Relief")
+                    if (island.transform.GetChild(i).gameObject.layer != 10)
                         Destroy(island.transform.GetChild(i).gameObject);
 
 

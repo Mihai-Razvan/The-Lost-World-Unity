@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         time += Time.deltaTime;
-        if (time > 5)
+        if (time > 2)
         {
             isGrounded = Physics.CheckSphere(groundCheck.position, sphereRadius, GroundMask);
 

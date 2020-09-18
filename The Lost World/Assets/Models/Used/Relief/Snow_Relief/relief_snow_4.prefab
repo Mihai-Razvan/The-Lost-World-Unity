@@ -23,9 +23,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 252002516051435010}
+  - component: {fileID: 4638039960153419481}
   m_Layer: 10
   m_Name: relief_snow_4
-  m_TagString: Relief
+  m_TagString: Relief Point Type 11
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,6 +46,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4638039960153419481
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7075366747591728354}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 0.01, z: 0.01}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &6707683825480133602
 PrefabInstance:
   m_ObjectHideFlags: 0

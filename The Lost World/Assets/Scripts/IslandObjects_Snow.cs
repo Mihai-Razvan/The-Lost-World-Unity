@@ -76,7 +76,7 @@ public class IslandObjects_Snow : MonoBehaviour
 
 
     public bool Respawned;
-    private float timeSinceSpawn;
+  
     private void Start()
     {
         /*
@@ -94,13 +94,18 @@ public class IslandObjects_Snow : MonoBehaviour
 
     void Update()
     {
-        timeSinceSpawn += Time.deltaTime;
+       
         if (ReliefHasSpawned == false)
         {
             island = transform.GetChild(0).gameObject;
             ReliefHasSpawned = true;
-            BigReliefSpawn();
-            ReliefSpawn();
+
+            if (Respawned == false)
+            {
+                BigReliefSpawn();
+                ReliefSpawn();
+            }
+
             SpawnMiniIsland();
 
           //  for (int i = 1; i < 50; i++)
@@ -136,8 +141,7 @@ public class IslandObjects_Snow : MonoBehaviour
 
         AnimalSpawn();
 
-        if (timeSinceSpawn > 10)
-            DespawnIsland();
+        DespawnIsland();
         InactiveIsland();
         IslandObjectsDeavtivateAtivate();
     }
@@ -405,7 +409,7 @@ public class IslandObjects_Snow : MonoBehaviour
                 thingsOnIslandActive = false;
 
                 for (int i = 0; i < island.transform.childCount; i++)               
-                    if (island.transform.GetChild(i).gameObject.tag != "Relief" && island.transform.GetChild(i).gameObject.tag != "Ice Peak" && island.transform.GetChild(i).gameObject.tag != "Cave Decorations")
+                    if (island.transform.GetChild(i).gameObject.layer != 10 && island.transform.GetChild(i).gameObject.tag != "Cave Decorations")
                         Destroy(island.transform.GetChild(i).gameObject);
     
 
