@@ -71,6 +71,7 @@ TagManager:
   - Item Point 017
   - Item Point 026
   - Item Point 030
+  - Undespawnable Object
   layers:
   - Default
   - TransparentFX

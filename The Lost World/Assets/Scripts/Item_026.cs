@@ -11,9 +11,20 @@ public class Item_026 : MonoBehaviour
     public float time_On_This_Round;    //cat timp a trecut din prod asta
     [SerializeField]
     private GameObject full;          //ala verde
-    void Start()
+
+    [SerializeField]
+    private GameObject cactusCheckPoint;   //punctu ala de verifica daca e legat de cactus
+    [SerializeField]
+    public GameObject cactusSpawnPoint;
+    [SerializeField]
+    private LayerMask islandObjectsMask;
+
+    void Awake()
     {
-        
+
+        Collider[] colliders = Physics.OverlapSphere(cactusCheckPoint.transform.position, 3f, islandObjectsMask);
+        if(colliders.Length != 0)
+            colliders[0].transform.parent.gameObject.tag = "Undespawnable Object";
     }
 
     

@@ -412,7 +412,7 @@ public class IslandObjects_Desert : MonoBehaviour
 
                 for (int i = 0; i < island.transform.childCount; i++)
                     // island.transform.GetChild(i).gameObject.SetActive(false);
-                    if (island.transform.GetChild(i).gameObject.layer != 10)
+                    if (island.transform.GetChild(i).gameObject.layer != 10 && island.transform.GetChild(i).gameObject.tag != "Undespawnable Object")
                         Destroy(island.transform.GetChild(i).gameObject);
 
 

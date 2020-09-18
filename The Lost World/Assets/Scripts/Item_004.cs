@@ -14,12 +14,12 @@ public class Item_004 : MonoBehaviour
 
     public int[] Slot_Item_Code;             //codu itemului din fiecare slot din inventar
     public int[] Slot_Item_Quantity;          //cantitatea
-    private int quantityToAdd;
+    public int quantityToAdd;
     private int itemCodeToAdd;
     [SerializeField]
-    private float fuel;
-    private float Transforming_Time_Left;
-    private int produced_item_code;
+    public float fuel;
+    public float Transforming_Time_Left;
+    public int produced_item_code;
 
     private int woodFuel = 30;      //cat fuel da wood
     private int logFuel = 100;

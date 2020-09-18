@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Save : MonoBehaviour
-{
+{                                //dupa ce ffac baterii la jetpack pun inclusiv 25 la save si load player la inventar
     [SerializeField]
     private GameObject player;
     [SerializeField]
@@ -33,8 +33,10 @@ public class Save : MonoBehaviour
     private GameObject[] relief_type;
     [SerializeField]
     private GameObject[] building_type;
-    
 
+
+    [SerializeField]
+    private GameObject cactus;  //cand respawneaza sap collector sa respawneze si un cactus cu el ca altfel e pe nmk sap collectoru
 
     [SerializeField]
     private int[] test;
@@ -80,12 +82,12 @@ public class Save : MonoBehaviour
         PlayerPrefs.SetFloat("Player_Health", FindObjectOfType<Player_Stats>().playerHealth);
         PlayerPrefs.SetFloat("Player_Food", FindObjectOfType<Player_Stats>().playerFood);
         PlayerPrefs.SetFloat("Player_Poison", FindObjectOfType<Player_Stats>().playerPoison);
-        /*
-        for (int i = 1; i <= 25; i ++)
+        
+        for (int i = 1; i < 25; i ++)  //dupa ce ffac baterii la jetpack pun inclusiv 25
         {
             PlayerPrefs.SetInt("Inventory_Item_Code_Slot_" + i.ToString(), FindObjectOfType<Inventory>().Slot_Item_Code[i]);
             PlayerPrefs.SetInt("Inventory_Item_Quantity_Slot_" + i.ToString(), FindObjectOfType<Inventory>().Slot_Item_Quantity[i]);
-        }*/
+        }
     }
 
     void LoadPlayer()
@@ -98,12 +100,12 @@ public class Save : MonoBehaviour
         FindObjectOfType<Player_Stats>().playerHealth = PlayerPrefs.GetFloat("Player_Health");
         FindObjectOfType<Player_Stats>().playerFood = PlayerPrefs.GetFloat("Player_Food");
         FindObjectOfType<Player_Stats>().playerPoison = PlayerPrefs.GetFloat("Player_Poison");
-        /*
-        for (int i = 1; i <= 25; i++)
+        
+        for (int i = 1; i < 25; i++) //dupa ce ffac baterii la jetpack pun inclusiv 25
         {
             FindObjectOfType<Inventory>().Slot_Item_Code[i] = PlayerPrefs.GetInt("Inventory_Item_Code_Slot_" + i.ToString());
             FindObjectOfType<Inventory>().Slot_Item_Quantity[i] = PlayerPrefs.GetInt("Inventory_Item_Quantity_Slot_" + i.ToString());
-        }*/
+        }
     }
 
 
@@ -211,8 +213,12 @@ public class Save : MonoBehaviour
                 PlayerPrefs.SetFloat("String_building_Y_" + numberOfBuildings.ToString(), colliders[i].transform.position.y);
                 PlayerPrefs.SetFloat("String_building_Z_" + numberOfBuildings.ToString(), colliders[i].transform.position.z);
 
-                if (GetBuildingType(colliders, i) == 4)       // furnaca 
-                    SaveFurnaceInventory(colliders, i);
+                if (GetBuildingType(colliders, i) == 4)       // furnace
+                    SaveFurnaceDetails(colliders, i);
+                else if (GetBuildingType(colliders, i) == 26)
+                    SaveSapExtractorDetails(colliders, i);
+                else if (GetBuildingType(colliders, i) == 30)
+                    SaveChestDetails(colliders, i);
             }
         }
 
@@ -232,11 +238,20 @@ public class Save : MonoBehaviour
             float yPos = PlayerPrefs.GetFloat("String_building_Y_" + i.ToString());
             float zPos = PlayerPrefs.GetFloat("String_building_Z_" + i.ToString());
 
-            Instantiate(building_type[PlayerPrefs.GetInt("String_building_Type_" + i.ToString())], new Vector3(xPos, yPos, zPos), Quaternion.identity);      //CAND FAC CLADIRILE SA IE CHILD LA INSULE SA AC SI ACI CAND SE RESPAWNEAZ       
-            
-             
+            GameObject spawnedBuilding = Instantiate(building_type[PlayerPrefs.GetInt("String_building_Type_" + i.ToString())], new Vector3(xPos, yPos, zPos), Quaternion.identity);      //CAND FAC CLADIRILE SA IE CHILD LA INSULE SA AC SI ACI CAND SE RESPAWNEAZ       
+
+            if (PlayerPrefs.GetInt("String_building_Type_" + i.ToString()) == 4)   //furnace
+                LoadFurnaceDetails(spawnedBuilding, i);
+            else if (PlayerPrefs.GetInt("String_building_Type_" + i.ToString()) == 26)  //sap extractor
+                LoadSapExtractorDetails(spawnedBuilding, i);
+            else if (PlayerPrefs.GetInt("String_building_Type_" + i.ToString()) == 30)  //chest
+                LoadChestDetails(spawnedBuilding, i);
+        
         }
     }
+
+
+    
 
 
     private int GetIslandType(Collider[] colliders, int i)
@@ -281,12 +296,67 @@ public class Save : MonoBehaviour
 
 
 
-    void SaveFurnaceInventory(Collider[] colliders, int i)
+                                    //BUILDINGS DETAILS
+
+    void SaveFurnaceDetails(Collider[] colliders, int i)
     {
         for (int j = 1; j <= 20; j++)
         {
-            PlayerPrefs.SetInt("String_building_" + numberOfBuildings.ToString() + "_Inventory_Slot_" + j.ToString() + "_Item_Code", colliders[i].GetComponent<Item_004>().Slot_Item_Code[j]);
-            PlayerPrefs.SetInt("String_building_" + numberOfBuildings.ToString() + "_Inventory_Slot_" + j.ToString() + "_Item_Quantity", colliders[i].GetComponent<Item_004>().Slot_Item_Quantity[j]);
+            PlayerPrefs.SetInt("String_building_" + numberOfBuildings.ToString() + "_Inventory_Slot_" + j.ToString() + "_Item_Code", colliders[i].transform.GetChild(0).GetComponent<Item_004>().Slot_Item_Code[j]);
+            PlayerPrefs.SetInt("String_building_" + numberOfBuildings.ToString() + "_Inventory_Slot_" + j.ToString() + "_Item_Quantity", colliders[i].transform.GetChild(0).GetComponent<Item_004>().Slot_Item_Quantity[j]);
+        }
+
+        PlayerPrefs.SetFloat("String_building_" + numberOfBuildings.ToString() + "_Fuel", colliders[i].transform.GetChild(0).GetComponent<Item_004>().fuel);
+        PlayerPrefs.SetFloat("String_building_" + numberOfBuildings.ToString() + "_Transforming_Time_Left", colliders[i].transform.GetChild(0).GetComponent<Item_004>().Transforming_Time_Left);
+        PlayerPrefs.SetInt("String_building_" + numberOfBuildings.ToString() + "_Produced_Item_Code", colliders[i].transform.GetChild(0).GetComponent<Item_004>().produced_item_code);
+        PlayerPrefs.SetInt("String_building_" + numberOfBuildings.ToString() + "_Quantity_To_Add", colliders[i].transform.GetChild(0).GetComponent<Item_004>().quantityToAdd);
+    }
+
+    void LoadFurnaceDetails(GameObject spawnedBuilding, int i)
+    {
+        for(int j = 1; j <= 20; j ++)
+        {
+            spawnedBuilding.transform.GetChild(0).GetComponent<Item_004>().Slot_Item_Code[j] = PlayerPrefs.GetInt("String_building_" + i.ToString() + "_Inventory_Slot_" + j.ToString() + "_Item_Code");
+            spawnedBuilding.transform.GetChild(0).GetComponent<Item_004>().Slot_Item_Quantity[j] = PlayerPrefs.GetInt("String_building_" + i.ToString() + "_Inventory_Slot_" + j.ToString() + "_Item_Quantity");
+        }
+
+        spawnedBuilding.transform.GetChild(0).GetComponent<Item_004>().fuel = PlayerPrefs.GetFloat("String_building_" + i.ToString() + "_Fuel");
+        spawnedBuilding.transform.GetChild(0).GetComponent<Item_004>().Transforming_Time_Left = PlayerPrefs.GetFloat("String_building_" + i.ToString() + "_Transforming_Time_Left");
+        spawnedBuilding.transform.GetChild(0).GetComponent<Item_004>().produced_item_code = PlayerPrefs.GetInt("String_building_" + i.ToString() + "_Produced_Item_Code");
+        spawnedBuilding.transform.GetChild(0).GetComponent<Item_004>().quantityToAdd = PlayerPrefs.GetInt("String_building_" + i.ToString() + "_Quantity_To_Add");
+    }
+
+
+
+    void SaveSapExtractorDetails(Collider[] colliders, int i)
+    {
+        PlayerPrefs.SetFloat("String_building_" + numberOfBuildings.ToString() + "_Time_On_This_Round", colliders[i].GetComponent<Item_026>().time_On_This_Round);
+    }
+
+    void LoadSapExtractorDetails(GameObject spawnedBuilding, int i)
+    {
+        spawnedBuilding.GetComponent<Item_026>().time_On_This_Round = PlayerPrefs.GetInt("String_building_" + i.ToString() + "_Time_On_This_Round");
+        GameObject spawnedCactus = Instantiate(cactus, spawnedBuilding.GetComponent<Item_026>().cactusSpawnPoint.transform.position, Quaternion.identity);
+        spawnedCactus.gameObject.tag = "Undespawnable Object";
+    }
+
+
+
+    void SaveChestDetails(Collider[] colliders, int i)
+    {
+        for (int j = 1; j <= 20; j++)
+        {
+            PlayerPrefs.SetInt("String_building_" + numberOfBuildings.ToString() + "_Inventory_Slot_" + j.ToString() + "_Item_Code", colliders[i].transform.GetChild(0).GetComponent<Item_030>().Slot_Item_Code[j]);
+            PlayerPrefs.SetInt("String_building_" + numberOfBuildings.ToString() + "_Inventory_Slot_" + j.ToString() + "_Item_Quantity", colliders[i].transform.GetChild(0).GetComponent<Item_030>().Slot_Item_Quantity[j]);
+        }
+    }
+
+    void LoadChestDetails(GameObject spawnedBuilding, int i)
+    {
+        for (int j = 1; j <= 20; j++)
+        {
+            spawnedBuilding.transform.GetChild(0).GetComponent<Item_030>().Slot_Item_Code[j] = PlayerPrefs.GetInt("String_building_" + i.ToString() + "_Inventory_Slot_" + j.ToString() + "_Item_Code");
+            spawnedBuilding.transform.GetChild(0).GetComponent<Item_030>().Slot_Item_Quantity[j] = PlayerPrefs.GetInt("String_building_" + i.ToString() + "_Inventory_Slot_" + j.ToString() + "_Item_Quantity");
         }
     }
 }
