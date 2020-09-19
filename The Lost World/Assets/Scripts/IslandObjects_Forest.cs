@@ -74,7 +74,15 @@ public class IslandObjects_Forest : MonoBehaviour
 
 
     public bool Respawned;
+
+    private Vector3 firstMiniIslandPos;
+    private Vector3 lastMiniIslandPos;
+
+    [SerializeField]
+    private GameObject[] asdad;
+    private int jjj;
     
+
 
     private void Start()
     {/*
@@ -103,7 +111,8 @@ public class IslandObjects_Forest : MonoBehaviour
                 ReliefSpawn();
             }
 
-            SpawnMiniIsland();
+           // SpawnMiniIsland();
+            MiniIslandsBridgeSpawn();
 
             for (int i = 1; i < 50; i++)
                 AnimalSpawn();
@@ -474,6 +483,64 @@ public class IslandObjects_Forest : MonoBehaviour
                             Instantiate(forest_animal_1, spawnPoint, Quaternion.identity);
                     }
 
+                }
+
+            }
+        }
+    }
+
+
+    void MiniIslandsBridgeSpawn()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 1000f, islandMask);
+
+        for(int i = 0; i < colliders.Length; i++)
+        {
+            if(colliders[i].tag == "Island Point Type 1" || colliders[i].tag == "Island Point Type 2" || colliders[i].tag == "Island Point Type 3" && (Mathf.Abs(transform.position.y - colliders[i].transform.position.y) < Mathf.Abs(transform.position.x - colliders[i].transform.position.x) || Mathf.Abs(transform.position.y - colliders[i].transform.position.y) < Mathf.Abs(transform.position.z - colliders[i].transform.position.z)))
+            {//asta cu Math.abs e ca daca diferenta dintre Y e cea mai mica diff si nu e mai mica dif dintr Z sau X nu calculeaza bn last island adica bug
+                Vector3 firstdirection = (colliders[i].gameObject.transform.position - transform.position).normalized;
+                for(int j = 0; j <= 100; j++)
+                {
+                    Vector3 point = transform.position + firstdirection * j * 50;
+
+                    if(Physics.Raycast(new Vector3(point.x, point.y + 100, point.z), - transform.up, 200f, islandMask) == false)
+                    {
+                        GameObject firstMiniIsland = Instantiate(Mini_Forest_Island, new Vector3(point.x, transform.position.y - 10, point.z), Quaternion.identity);
+                        firstMiniIsland.transform.SetParent(this.gameObject.transform);
+                        firstMiniIslandPos = new Vector3(point.x, transform.position.y - 10, point.z);
+                        break;
+                    }              
+                }
+
+                
+                Vector3 lastdirection = (transform.position - colliders[i].gameObject.transform.position).normalized;
+                for (int j = 0; j <= 100; j++)
+                {
+                    Vector3 point = colliders[i].gameObject.transform.position + lastdirection * j * 50;
+
+                    if (Physics.Raycast(new Vector3(point.x, point.y + 100, point.z), -transform.up, 200f, islandMask) == false)
+                    {
+                        GameObject lastMiniIsland = Instantiate(Mini_Forest_Island, new Vector3(point.x, colliders[i].gameObject.transform.position.y, point.z), Quaternion.identity);
+                        lastMiniIsland.transform.SetParent(colliders[i].gameObject.transform);
+                        lastMiniIslandPos = new Vector3(point.x, colliders[i].gameObject.transform.position.y, point.z);
+                        break;
+                    }
+                }
+
+
+                Vector3 direction = (lastMiniIslandPos - firstMiniIslandPos).normalized;
+
+                for (int j = 0; ; j++)
+                {
+                    Vector3 point = firstMiniIslandPos + direction * j * 50;
+
+                    if (Vector3.Distance(lastMiniIslandPos, point) > 40)
+                    {
+                        GameObject spawned = Instantiate(Mini_Forest_Island, point, Quaternion.identity);
+                        spawned.transform.SetParent(this.gameObject.transform);
+                    }
+                    else
+                        break;
                 }
 
             }

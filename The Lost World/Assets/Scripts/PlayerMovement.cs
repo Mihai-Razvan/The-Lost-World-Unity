@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     public Transform groundCheck;
     [SerializeField]
-    float sphereRadius = 0.4f;
+    float sphereRadius = 1f;
     [SerializeField]
     public bool isGrounded;
     [SerializeField]
@@ -25,10 +25,19 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     public bool MovementFrozen;  //daca e deschis vreun inventar sau ceva
 
+    [SerializeField]
+    private float flySpeed;
+    [SerializeField]
+    private bool isFlying;
+    [SerializeField]
+    private int flyFrame;
+    private Vector3 jumpDirection;
+
     private float time = 0;
     void Start()
     {
         time = 0;
+        jumpDirection = new Vector3(0, 1, 0);
     }
 
    
@@ -62,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
 
             controller.Move(velocity * Time.deltaTime);
 
-            //   MiniIslandMove();
+            Jump();
 
 
             if (Input.GetKey(KeyCode.M))
@@ -80,6 +89,31 @@ public class PlayerMovement : MonoBehaviour
                 transform.SetParent(hit.collider.GetComponentInParent<Transform>().transform);
                 transform.position = new Vector3(GetComponentInParent<Transform>().transform.position.x, hit.point.y + 2f, transform.position.z);           
             }
+    }
+
+    void Jump()
+    {
+        if(isGrounded == true && isFlying == false)
+        {
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                isFlying = true;
+                flyFrame = 0;             
+            }
+        }
+        else if (isFlying == true)
+        {
+            if (flyFrame < 10)
+            {
+                FindObjectOfType<PlayerMovement>().controller.Move(jumpDirection * flySpeed * (10 - flyFrame) * Time.deltaTime);
+                FindObjectOfType<PlayerMovement>().controller.Move(Camera.main.transform.forward * flySpeed * 3 * (10 - flyFrame) * Time.deltaTime);
+                flyFrame++;
+            }
+            else
+                isFlying = false;
+        }
+            
+
     }
     
 }

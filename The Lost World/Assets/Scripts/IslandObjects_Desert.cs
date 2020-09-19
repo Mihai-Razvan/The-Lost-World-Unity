@@ -102,7 +102,7 @@ public class IslandObjects_Desert : MonoBehaviour
                 ReliefSpawn();
             }
 
-            SpawnMiniIsland();
+           // SpawnMiniIsland();
 
             for (int i = 1; i < 50; i++)
                 AnimalSpawn();

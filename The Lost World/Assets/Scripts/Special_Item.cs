@@ -33,7 +33,7 @@ public class Special_Item : MonoBehaviour
     {
         isLanded = Physics.Raycast(FindObjectOfType<PlayerMovement>().player.transform.position, -transform.up, 5, islandMask);  // are ceva sub
 
-        if (Input.GetKey(KeyCode.Space) && FindObjectOfType<PlayerMovement>().MovementFrozen == false)
+        if (Input.GetKey(KeyCode.LeftControl) && FindObjectOfType<PlayerMovement>().MovementFrozen == false)
         {
             useJetpack = true;
 
