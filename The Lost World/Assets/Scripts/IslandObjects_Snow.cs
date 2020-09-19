@@ -76,20 +76,8 @@ public class IslandObjects_Snow : MonoBehaviour
 
 
     public bool Respawned;
-  
-    private void Start()
-    {
-        /*
-        if (Respawned == false)
-        {
-            FindObjectOfType<Save>().numberOfIslands++;
-            FindObjectOfType<Save>().island_Type[FindObjectOfType<Save>().numberOfIslands] = 2;
-            FindObjectOfType<Save>().island_X[FindObjectOfType<Save>().numberOfIslands] = transform.position.x;
-            FindObjectOfType<Save>().island_Y[FindObjectOfType<Save>().numberOfIslands] = transform.position.y;
-            FindObjectOfType<Save>().island_Z[FindObjectOfType<Save>().numberOfIslands] = transform.position.z;
-        }
-        */
-    }
+
+    public bool GotBuildingOnIt;
 
 
     void Update()
@@ -106,7 +94,7 @@ public class IslandObjects_Snow : MonoBehaviour
                 ReliefSpawn();
             }
 
-          //  SpawnMiniIsland();
+            SpawnMiniIsland();
 
           //  for (int i = 1; i < 50; i++)
              //   AnimalSpawn();
@@ -573,7 +561,7 @@ public class IslandObjects_Snow : MonoBehaviour
 
     void SpawnMiniIsland()
     {
-        for (int i = 1; i <= 18; i++)
+        for (int i = 1; i <= 10; i++)
         {
             float y = 15 * i;                //asta nu e random ca e ca sa nu se ciocneasca mini insulele
             if ((int)Random.Range(1, 3) == 1)

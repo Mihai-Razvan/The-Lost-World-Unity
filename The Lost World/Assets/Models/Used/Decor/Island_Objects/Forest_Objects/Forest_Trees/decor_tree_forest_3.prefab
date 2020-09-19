@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 8633787575646989520}
   - component: {fileID: 759532399679870694}
   - component: {fileID: 6464618035567815199}
-  - component: {fileID: 987289880706668205}
-  - component: {fileID: 5941303168867746923}
   - component: {fileID: 4102891001802758280}
+  - component: {fileID: 7163969883272323811}
   m_Layer: 11
   m_Name: forest_tree_3
   m_TagString: Tree
@@ -83,33 +82,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &987289880706668205
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4722650752802643651}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.004707522
-  m_Height: 0.021799989
-  m_Direction: 2
-  m_Center: {x: -0.0007815661, y: 0.0035926083, z: 0.019123541}
---- !u!135 &5941303168867746923
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4722650752802643651}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.011024247
-  m_Center: {x: 1.7821522e-11, y: 0.0030177762, z: 0.00030818259}
 --- !u!114 &4102891001802758280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +95,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 125
+--- !u!65 &7163969883272323811
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4722650752802643651}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.010412322, y: 0.009184613, z: 0.017213887}
+  m_Center: {x: -0.0009877107, y: 0.0038696106, z: 0.018725514}
 --- !u!1 &5274178684351786177
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,7 +119,7 @@ GameObject:
   - component: {fileID: 6356568141737351490}
   m_Layer: 11
   m_Name: decor_tree_forest_3
-  m_TagString: Tree
+  m_TagString: Collectable_Objects Point
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

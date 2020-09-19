@@ -78,9 +78,7 @@ public class IslandObjects_Forest : MonoBehaviour
     private Vector3 firstMiniIslandPos;
     private Vector3 lastMiniIslandPos;
 
-    [SerializeField]
-    private GameObject[] asdad;
-    private int jjj;
+    public bool GotBuildingOnIt;
     
 
 
@@ -111,8 +109,8 @@ public class IslandObjects_Forest : MonoBehaviour
                 ReliefSpawn();
             }
 
-           // SpawnMiniIsland();
-            MiniIslandsBridgeSpawn();
+            SpawnMiniIsland();
+           // MiniIslandsBridgeSpawn();
 
             for (int i = 1; i < 50; i++)
                 AnimalSpawn();
@@ -437,7 +435,7 @@ public class IslandObjects_Forest : MonoBehaviour
 
     void SpawnMiniIsland()
     {
-        for (int i = 1; i <= 18; i++)
+        for (int i = 1; i <= 10; i++)
         {
             float y = 15 * i;                //asta nu e random ca e ca sa nu se ciocneasca mini insulele
             if ((int)Random.Range(1, 3) == 1)

@@ -1,7 +1,7 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!136 &6432172896119874368
-CapsuleCollider:
+--- !u!65 &4814320824392251936
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -10,10 +10,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.004707522
-  m_Height: 0.021799989
-  m_Direction: 2
-  m_Center: {x: -0.0007815661, y: 0.0035926083, z: 0.019123541}
+  serializedVersion: 2
+  m_Size: {x: 0.009213467, y: 0.009510284, z: 0.019601421}
+  m_Center: {x: -0.000776959, y: 0.0037184523, z: 0.017532093}
 --- !u!1 &8482008273134942007
 GameObject:
   m_ObjectHideFlags: 0

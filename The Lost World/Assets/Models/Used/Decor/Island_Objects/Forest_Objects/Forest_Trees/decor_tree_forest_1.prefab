@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1996814823436056680}
   m_Layer: 11
   m_Name: decor_tree_forest_1
-  m_TagString: Tree
+  m_TagString: Collectable_Objects Point
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -42,9 +42,8 @@ GameObject:
   - component: {fileID: 1417962085677782948}
   - component: {fileID: 7477120421757358443}
   - component: {fileID: 436935796787634011}
-  - component: {fileID: 2642085577923112353}
-  - component: {fileID: 5732559932396709618}
   - component: {fileID: 4375955677948910532}
+  - component: {fileID: 626153617039931482}
   m_Layer: 11
   m_Name: forest_tree_1
   m_TagString: Tree
@@ -114,33 +113,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &2642085577923112353
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5203726078347367575}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.018327165
-  m_Center: {x: -0.0045305914, y: -0.0031009507, z: 0.011453007}
---- !u!136 &5732559932396709618
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5203726078347367575}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0041939863
-  m_Height: 0.048506625
-  m_Direction: 2
-  m_Center: {x: 0.0008709692, y: 0.0038440684, z: -0.020556476}
 --- !u!114 &4375955677948910532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,3 +126,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 225
+--- !u!65 &626153617039931482
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5203726078347367575}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0060309493, y: 0.007331173, z: 0.061334882}
+  m_Center: {x: 0.0010728153, y: 0.0038999186, z: -0.014780539}

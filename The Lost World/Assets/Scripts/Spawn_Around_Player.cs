@@ -53,7 +53,7 @@ public class Spawn_Around_Player : MonoBehaviour
         //if(FindObjectOfType<Save>().loaded == true)
         IslandSpawn();
      
-        if((int) Random.Range(1, 50) == 1)
+        if((int) Random.Range(1, 500) == 1)
            CloudsSpawn();
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, 1000f, islandMask);      //activeaza insulele din apropiere; dezactivarea insulelor se face din scriptu lor

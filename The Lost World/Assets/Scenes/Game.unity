@@ -6309,7 +6309,7 @@ GameObject:
   - component: {fileID: 446034138}
   m_Layer: 14
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6382,9 +6382,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 962068
   MovementFrozen: 0
-  flySpeed: 0
+  flySpeed: 2
   isFlying: 0
   flyFrame: 0
+  buildingMask:
+    serializedVersion: 2
+    m_Bits: 827392
+  objects_collectablesMask:
+    serializedVersion: 2
+    m_Bits: 6144
+  cccc: 0
 --- !u!143 &446034141
 CharacterController:
   m_ObjectHideFlags: 0

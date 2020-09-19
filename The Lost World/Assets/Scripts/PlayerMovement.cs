@@ -34,6 +34,13 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 jumpDirection;
 
     private float time = 0;
+
+    [SerializeField]
+    private LayerMask buildingMask;
+    [SerializeField]
+    private LayerMask objects_collectablesMask;
+    [SerializeField]
+    private int cccc;
     void Start()
     {
         time = 0;
@@ -72,7 +79,8 @@ public class PlayerMovement : MonoBehaviour
             controller.Move(velocity * Time.deltaTime);
 
             Jump();
-
+            InactiveBuildings();
+            
 
             if (Input.GetKey(KeyCode.M))
                 Application.Quit();
@@ -105,8 +113,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (flyFrame < 10)
             {
-                FindObjectOfType<PlayerMovement>().controller.Move(jumpDirection * flySpeed * (10 - flyFrame) * Time.deltaTime);
-                FindObjectOfType<PlayerMovement>().controller.Move(Camera.main.transform.forward * flySpeed * 3 * (10 - flyFrame) * Time.deltaTime);
+                FindObjectOfType<PlayerMovement>().controller.Move((Camera.main.transform.forward + new Vector3(0,1,0)) * flySpeed * (10 - flyFrame) * Time.deltaTime);             
                 flyFrame++;
             }
             else
@@ -115,5 +122,27 @@ public class PlayerMovement : MonoBehaviour
             
 
     }
-    
+
+
+
+    void InactiveBuildings()
+    {
+        
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 100, buildingMask);
+        
+        for (int i = 0; i < colliders.Length; i++)
+            if (colliders[i].tag == "Item Point 008" || colliders[i].tag == "Item Point 009" || colliders[i].tag == "Item Point 014" || colliders[i].tag == "Item Point 015" || colliders[i].tag == "Item Point 016" || colliders[i].tag == "Item Point 017" || colliders[i].tag == "Item Point 030")
+            {
+                if (Vector3.Distance(transform.position, colliders[i].gameObject.transform.position) < 30)
+                    for(int j = 0; j < colliders[i].transform.childCount; j++)
+                        colliders[i].transform.GetChild(j).gameObject.SetActive(true);
+                else
+                    for (int j = 0; j < colliders[i].transform.childCount; j++)
+                        colliders[i].transform.GetChild(j).gameObject.SetActive(false);
+            }     
+    }
+
+
+  
+
 }

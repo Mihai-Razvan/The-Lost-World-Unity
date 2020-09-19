@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4868029925245412023}
   m_Layer: 12
   m_Name: 'Iron_Ore '
-  m_TagString: Iron ore
+  m_TagString: Collectable_Objects Point
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
