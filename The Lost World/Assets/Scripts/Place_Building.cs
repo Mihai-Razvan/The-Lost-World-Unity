@@ -10,7 +10,8 @@ public class Place_Building : MonoBehaviour
     public GameObject Building_Spawn_Position;
     [SerializeField]
     private LayerMask Building_placeable_Surface_Mask;          //pe care pot fi puse cladirile
-
+    [SerializeField]
+    private LayerMask islandMask;       //cand da place insula pe care pune sa aiba hasbuil;dingonit true ca sa nu se mai despawneza
 
     public bool isSnapped;
 
@@ -24,6 +25,8 @@ public class Place_Building : MonoBehaviour
     private GameObject Item_026;
     [SerializeField]
     private GameObject Item_030;
+
+   
 
     void Start()
     {
@@ -145,7 +148,16 @@ public class Place_Building : MonoBehaviour
         else if (FindObjectOfType<Handing_Item>().SelectedItemCode == 30)  //storage box
             Instantiate(Item_030, Building_In_Hand.transform.position, Quaternion.Euler(Building_In_Hand.transform.rotation.x, Building_In_Hand.transform.eulerAngles.y, Building_In_Hand.transform.rotation.z));
 
-
+        RaycastHit hit;
+        if (Physics.Raycast(Building_Spawn_Position.transform.position, -transform.up, out hit, 100f, islandMask))
+        {
+            if (hit.collider.transform.parent.tag == "Island Point Type 1")
+                hit.collider.transform.parent.GetComponent<IslandObjects_Forest>().hasBuildingOnIt = true;
+            else if (hit.collider.transform.parent.tag == "Island Point Type 2")
+                hit.collider.transform.parent.GetComponent<IslandObjects_Snow>().hasBuildingOnIt = true;
+            else if (hit.collider.transform.parent.tag == "Island Point Type 3")
+                hit.collider.transform.parent.GetComponent<IslandObjects_Desert>().hasBuildingOnIt = true;
+        }
 
         Destroy(Building_In_Hand.gameObject);
 

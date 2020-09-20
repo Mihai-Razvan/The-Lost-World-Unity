@@ -78,7 +78,7 @@ public class IslandObjects_Forest : MonoBehaviour
     private Vector3 firstMiniIslandPos;
     private Vector3 lastMiniIslandPos;
 
-    public bool GotBuildingOnIt;
+    public bool hasBuildingOnIt;
     
 
 
@@ -138,8 +138,10 @@ public class IslandObjects_Forest : MonoBehaviour
         }
 
         AnimalSpawn();
-       
-        DespawnIsland();
+
+        if (hasBuildingOnIt == false)
+            DespawnIsland();
+
         InactiveIsland();
         IslandObjectsDeavtivateAtivate();
     }

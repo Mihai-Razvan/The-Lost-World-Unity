@@ -45,7 +45,7 @@ public class Place_Prefab : MonoBehaviour
     private GameObject Item_017;    //wall wooden
 
     [SerializeField]
-    private bool asdadad;
+    private LayerMask islandMask;
 
     void Start()
     {
@@ -267,6 +267,19 @@ public class Place_Prefab : MonoBehaviour
             Instantiate(Item_017, Prefab_In_Hand.transform.position, Quaternion.Euler(Prefab_In_Hand.transform.rotation.x, Prefab_In_Hand.transform.eulerAngles.y, Prefab_In_Hand.transform.rotation.z));
 
         isSnapped = false;
+
+
+        RaycastHit hit;
+        if (Physics.Raycast(Building_Spawn_Position.transform.position, -transform.up, out hit, 100f, islandMask))
+        {
+            if (hit.collider.transform.parent.tag == "Island Point Type 1")
+                hit.collider.transform.parent.GetComponent<IslandObjects_Forest>().hasBuildingOnIt = true;
+            else if (hit.collider.transform.parent.tag == "Island Point Type 2")
+                hit.collider.transform.parent.GetComponent<IslandObjects_Snow>().hasBuildingOnIt = true;
+            else if (hit.collider.transform.parent.tag == "Island Point Type 3")
+                hit.collider.transform.parent.GetComponent<IslandObjects_Desert>().hasBuildingOnIt = true;
+        }
+
 
         Destroy(Prefab_In_Hand.gameObject);
 

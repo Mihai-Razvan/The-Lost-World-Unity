@@ -76,8 +76,8 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             Destroy(FindObjectOfType<Place_Building>().Building_In_Hand.gameObject);
             Destroy(FindObjectOfType<Place_Prefab>().Prefab_In_Hand.gameObject);
             FindObjectOfType<Handing_Item>().handing_placeable = false;
-            FindObjectOfType<Handing_Item>().SelectedItemBarSlot = -1;
-            FindObjectOfType<Handing_Item>().SelectedItemCode = -1;
+            FindObjectOfType<Handing_Item>().SelectedItemBarSlot = 0;
+            FindObjectOfType<Handing_Item>().SelectedItemCode = 0;
 
             if (InitialSlotItemCodeDrag > 0)
             {
@@ -90,25 +90,25 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
             if (Input.GetKeyUp(KeyCode.Mouse0))
             {
-                if (Initial_Slot_Gameobject.tag == "Inventory_Slot")            //drop la iteme din inventory
+                if (Initial_Slot_Gameobject != null && Initial_Slot_Gameobject.tag == "Inventory_Slot")            //drop la iteme din inventory
                 {
                     Slot_Item_Code[InitialSlotNumberDrag] = 0;
                     Slot_Item_Quantity[InitialSlotNumberDrag] = 0;
                 }
-                else if (Initial_Slot_Gameobject.tag == "Furnace_Inventory_Slot")
+                else if (Initial_Slot_Gameobject != null && Initial_Slot_Gameobject.tag == "Furnace_Inventory_Slot")
                 {
                     FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Code[InitialSlotNumberDrag] = 0;
                     FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Quantity[InitialSlotNumberDrag] = 0;
                 }
-                else if (Initial_Slot_Gameobject.tag == "Chest_Inventory_Slot")
+                else if (Initial_Slot_Gameobject != null && Initial_Slot_Gameobject.tag == "Chest_Inventory_Slot")
                 {
                     FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_030>().Slot_Item_Code[InitialSlotNumberDrag] = 0;
                     FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_030>().Slot_Item_Quantity[InitialSlotNumberDrag] = 0;
                 }
 
-                InitialSlotNumberDrag = -1;
-                InitialSlotItemCodeDrag = -1;
-                InitialSlotQuantityDrag = -1;
+                InitialSlotNumberDrag = 0;
+                InitialSlotItemCodeDrag = 0;
+                InitialSlotQuantityDrag = 0;
                 Initial_Slot_Gameobject = null;
 
             }

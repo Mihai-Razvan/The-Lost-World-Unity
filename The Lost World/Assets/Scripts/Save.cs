@@ -209,9 +209,12 @@ public class Save : MonoBehaviour
                 numberOfBuildings++;
 
                 PlayerPrefs.SetInt("String_building_Type_" + numberOfBuildings.ToString(), GetBuildingType(colliders, i));
-                PlayerPrefs.SetFloat("String_building_X_" + numberOfBuildings.ToString(), colliders[i].transform.position.x);
-                PlayerPrefs.SetFloat("String_building_Y_" + numberOfBuildings.ToString(), colliders[i].transform.position.y);
-                PlayerPrefs.SetFloat("String_building_Z_" + numberOfBuildings.ToString(), colliders[i].transform.position.z);
+                PlayerPrefs.SetFloat("String_building_Position_X_" + numberOfBuildings.ToString(), colliders[i].transform.position.x);
+                PlayerPrefs.SetFloat("String_building_Position_Y_" + numberOfBuildings.ToString(), colliders[i].transform.position.y);
+                PlayerPrefs.SetFloat("String_building_Position_Z_" + numberOfBuildings.ToString(), colliders[i].transform.position.z);
+                PlayerPrefs.SetFloat("String_building_Rotation_X_" + numberOfBuildings.ToString(), colliders[i].transform.eulerAngles.x);
+                PlayerPrefs.SetFloat("String_building_Rotation_Y_" + numberOfBuildings.ToString(), colliders[i].transform.eulerAngles.y);
+                PlayerPrefs.SetFloat("String_building_Rotation_Z_" + numberOfBuildings.ToString(), colliders[i].transform.eulerAngles.z);
 
                 if (GetBuildingType(colliders, i) == 4)       // furnace
                     SaveFurnaceDetails(colliders, i);
@@ -234,11 +237,14 @@ public class Save : MonoBehaviour
         for (int i = 1; i <= numberOfBuildings; i++)
         {
              test[i] = PlayerPrefs.GetInt("String_building_Type_" + i.ToString());
-            float xPos = PlayerPrefs.GetFloat("String_building_X_" + i.ToString());
-            float yPos = PlayerPrefs.GetFloat("String_building_Y_" + i.ToString());
-            float zPos = PlayerPrefs.GetFloat("String_building_Z_" + i.ToString());
+            float xPos = PlayerPrefs.GetFloat("String_building_Position_X_" + i.ToString());
+            float yPos = PlayerPrefs.GetFloat("String_building_Position_Y_" + i.ToString());
+            float zPos = PlayerPrefs.GetFloat("String_building_Position_Z_" + i.ToString());
+            float xRotation = PlayerPrefs.GetFloat("String_building_Rotation_X_" + i.ToString());
+            float yRotation = PlayerPrefs.GetFloat("String_building_Rotation_Y_" + i.ToString());
+            float zRotation = PlayerPrefs.GetFloat("String_building_Rotation_Z_" + i.ToString());
 
-            GameObject spawnedBuilding = Instantiate(building_type[PlayerPrefs.GetInt("String_building_Type_" + i.ToString())], new Vector3(xPos, yPos, zPos), Quaternion.identity);      //CAND FAC CLADIRILE SA IE CHILD LA INSULE SA AC SI ACI CAND SE RESPAWNEAZ       
+            GameObject spawnedBuilding = Instantiate(building_type[PlayerPrefs.GetInt("String_building_Type_" + i.ToString())], new Vector3(xPos, yPos, zPos), Quaternion.Euler(xRotation, yRotation, zRotation));      //CAND FAC CLADIRILE SA IE CHILD LA INSULE SA AC SI ACI CAND SE RESPAWNEAZ       
 
             if (PlayerPrefs.GetInt("String_building_Type_" + i.ToString()) == 4)   //furnace
                 LoadFurnaceDetails(spawnedBuilding, i);
@@ -335,7 +341,7 @@ public class Save : MonoBehaviour
 
     void LoadSapExtractorDetails(GameObject spawnedBuilding, int i)
     {
-        spawnedBuilding.GetComponent<Item_026>().time_On_This_Round = PlayerPrefs.GetInt("String_building_" + i.ToString() + "_Time_On_This_Round");
+        spawnedBuilding.GetComponent<Item_026>().time_On_This_Round = PlayerPrefs.GetFloat("String_building_" + i.ToString() + "_Time_On_This_Round");
         GameObject spawnedCactus = Instantiate(cactus, spawnedBuilding.GetComponent<Item_026>().cactusSpawnPoint.transform.position, Quaternion.identity);
         spawnedCactus.gameObject.tag = "Undespawnable Object";
     }

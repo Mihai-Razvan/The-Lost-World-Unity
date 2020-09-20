@@ -77,7 +77,7 @@ public class IslandObjects_Snow : MonoBehaviour
 
     public bool Respawned;
 
-    public bool GotBuildingOnIt;
+    public bool hasBuildingOnIt;
 
 
     void Update()
@@ -129,7 +129,9 @@ public class IslandObjects_Snow : MonoBehaviour
 
         AnimalSpawn();
 
-        DespawnIsland();
+        if(hasBuildingOnIt == false)
+            DespawnIsland();
+
         InactiveIsland();
         IslandObjectsDeavtivateAtivate();
     }

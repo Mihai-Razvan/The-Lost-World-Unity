@@ -193,7 +193,7 @@ public class Handing_Item : MonoBehaviour
             
             SelectedItemBarSlot = 1;
             if (FindObjectOfType<Inventory>().Slot_Item_Quantity[16] <= 0)
-                FindObjectOfType<Inventory>().Slot_Item_Code[16] = -1;
+                FindObjectOfType<Inventory>().Slot_Item_Code[16] = 0;
 
             SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[16];
 
@@ -217,7 +217,7 @@ public class Handing_Item : MonoBehaviour
 
             SelectedItemBarSlot = 2;
             if (FindObjectOfType<Inventory>().Slot_Item_Quantity[17] <= 0)
-                FindObjectOfType<Inventory>().Slot_Item_Code[17] = -1;
+                FindObjectOfType<Inventory>().Slot_Item_Code[17] = 0;
 
             SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[17];
 
@@ -242,7 +242,7 @@ public class Handing_Item : MonoBehaviour
 
             SelectedItemBarSlot = 3;
             if (FindObjectOfType<Inventory>().Slot_Item_Quantity[18] <= 0)
-                FindObjectOfType<Inventory>().Slot_Item_Code[18] = -1;
+                FindObjectOfType<Inventory>().Slot_Item_Code[18] = 0;
 
             SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[18];
 
@@ -267,7 +267,7 @@ public class Handing_Item : MonoBehaviour
 
             SelectedItemBarSlot = 4;
             if (FindObjectOfType<Inventory>().Slot_Item_Quantity[19] <= 0)
-                FindObjectOfType<Inventory>().Slot_Item_Code[19] = -1;
+                FindObjectOfType<Inventory>().Slot_Item_Code[19] = 0;
 
             SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[19];
 
@@ -291,7 +291,7 @@ public class Handing_Item : MonoBehaviour
 
             SelectedItemBarSlot = 5;
             if (FindObjectOfType<Inventory>().Slot_Item_Quantity[20] <= 0)
-                FindObjectOfType<Inventory>().Slot_Item_Code[20] = -1;
+                FindObjectOfType<Inventory>().Slot_Item_Code[20] = 0;
 
             SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[20];
 
@@ -316,7 +316,7 @@ public class Handing_Item : MonoBehaviour
 
             SelectedItemBarSlot = 6;
             if (FindObjectOfType<Inventory>().Slot_Item_Quantity[21] <= 0)
-                FindObjectOfType<Inventory>().Slot_Item_Code[21] = -1;
+                FindObjectOfType<Inventory>().Slot_Item_Code[21] = 0;
 
             SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[21];
 
@@ -340,7 +340,7 @@ public class Handing_Item : MonoBehaviour
 
             SelectedItemBarSlot = 7;
             if (FindObjectOfType<Inventory>().Slot_Item_Quantity[22] <= 0)
-                FindObjectOfType<Inventory>().Slot_Item_Code[22] = -1;
+                FindObjectOfType<Inventory>().Slot_Item_Code[22] = 0;
 
             SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[22];
 
@@ -364,7 +364,7 @@ public class Handing_Item : MonoBehaviour
 
             SelectedItemBarSlot = 8;
             if (FindObjectOfType<Inventory>().Slot_Item_Quantity[23] <= 0)
-                FindObjectOfType<Inventory>().Slot_Item_Code[23] = -1;
+                FindObjectOfType<Inventory>().Slot_Item_Code[23] = 0;
 
             SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[23];
 
@@ -388,7 +388,7 @@ public class Handing_Item : MonoBehaviour
 
             SelectedItemBarSlot = 9;
             if (FindObjectOfType<Inventory>().Slot_Item_Quantity[24] <= 0)
-                FindObjectOfType<Inventory>().Slot_Item_Code[24] = -1;
+                FindObjectOfType<Inventory>().Slot_Item_Code[24] = 0;
 
             SelectedItemCode = FindObjectOfType<Inventory>().Slot_Item_Code[24];
 
@@ -405,15 +405,14 @@ public class Handing_Item : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.X))    // daca ai ceva in mana sa nu mai ai
         {
-            if (handing_placeable == true)
-            {
-                Destroy(FindObjectOfType<Place_Building>().Building_In_Hand.gameObject);
+            if (FindObjectOfType<Place_Building>().Has_Building_In_Hand == true)                
+                Destroy(FindObjectOfType<Place_Building>().Building_In_Hand.gameObject);  
+            else if (FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand == true)
                 Destroy(FindObjectOfType<Place_Prefab>().Prefab_In_Hand.gameObject);
-            }
 
-            SelectedItemCode = -1;
-            SelectedItemBarSlot = -1;
-
+            SelectedItemBarSlot = 0;
+            SelectedItemCode = 0;
+            
             handing_placeable = false;
             FindObjectOfType<Place_Building>().Has_Building_In_Hand = false;
             FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand = false;
