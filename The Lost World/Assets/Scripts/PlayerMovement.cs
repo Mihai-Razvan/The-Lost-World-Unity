@@ -127,19 +127,30 @@ public class PlayerMovement : MonoBehaviour
 
     void InactiveBuildings()
     {
-        
+        //daca e departe e activ doar punctu/// daca e la dist medie e activ doar child(0) adica cladirea da nu si colliderele de le mai are gen cum au prefaburile ///daca e apropae tot activ
         Collider[] colliders = Physics.OverlapSphere(transform.position, 100, buildingMask);
         
         for (int i = 0; i < colliders.Length; i++)
             if (colliders[i].tag == "Item Point 008" || colliders[i].tag == "Item Point 009" || colliders[i].tag == "Item Point 014" || colliders[i].tag == "Item Point 015" || colliders[i].tag == "Item Point 016" || colliders[i].tag == "Item Point 017" || colliders[i].tag == "Item Point 030")
             {
-                if (Vector3.Distance(transform.position, colliders[i].gameObject.transform.position) < 30)
-                    for(int j = 0; j < colliders[i].transform.childCount; j++)
-                        colliders[i].transform.GetChild(j).gameObject.SetActive(true);
+                if (Vector3.Distance(transform.position, colliders[i].gameObject.transform.position) < 50)
+                {
+                    if (Vector3.Distance(transform.position, colliders[i].gameObject.transform.position) < 20)
+                        for (int j = 0; j < colliders[i].transform.childCount; j++)
+                            colliders[i].transform.GetChild(j).gameObject.SetActive(true);
+                    else
+                    {
+                        colliders[i].transform.GetChild(0).gameObject.SetActive(true);
+                        for (int j = 1; j < colliders[i].transform.childCount; j++)
+                            colliders[i].transform.GetChild(j).gameObject.SetActive(false);
+                    }
+                }
                 else
                     for (int j = 0; j < colliders[i].transform.childCount; j++)
                         colliders[i].transform.GetChild(j).gameObject.SetActive(false);
             }     
+
+
     }
 
 

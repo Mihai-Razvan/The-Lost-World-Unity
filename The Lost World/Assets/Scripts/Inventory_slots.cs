@@ -171,9 +171,9 @@ public class Inventory_slots : MonoBehaviour, IPointerDownHandler, IDragHandler,
 
 
 
-                FindObjectOfType<Inventory>().InitialSlotNumberDrag = -1;
-            FindObjectOfType<Inventory>().InitialSlotItemCodeDrag = -1;
-            FindObjectOfType<Inventory>().InitialSlotQuantityDrag = -1;
+                FindObjectOfType<Inventory>().InitialSlotNumberDrag = 0;
+            FindObjectOfType<Inventory>().InitialSlotItemCodeDrag = 0;
+            FindObjectOfType<Inventory>().InitialSlotQuantityDrag = 0;
             FindObjectOfType<Inventory>().Initial_Slot_Gameobject = null;
         }
     }

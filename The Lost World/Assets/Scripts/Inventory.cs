@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerUpHandler
 {
@@ -47,8 +48,6 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public GameObject Item_030_Inventory_Panel;
     /// 
 
-
-
     public bool ok;  // pt teste
     void Start()
     {
@@ -65,7 +64,7 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         ToggleInventory();
 
         AddToInventory();
-
+        
         if (inventory_craftingIsActive == true)
         {
             Cursor.visible = true;
@@ -73,17 +72,20 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
                 if (Slot_Item_Quantity[i] == 0)
                     Slot_Item_Code[i] = 0;
 
-            Destroy(FindObjectOfType<Place_Building>().Building_In_Hand.gameObject);
-            Destroy(FindObjectOfType<Place_Prefab>().Prefab_In_Hand.gameObject);
+            if (FindObjectOfType<Place_Building>().Has_Building_In_Hand == true)
+                Destroy(FindObjectOfType<Place_Building>().Building_In_Hand.gameObject);
+            else if (FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand == true)
+                Destroy(FindObjectOfType<Place_Prefab>().Prefab_In_Hand.gameObject);
+
             FindObjectOfType<Handing_Item>().handing_placeable = false;
             FindObjectOfType<Handing_Item>().SelectedItemBarSlot = 0;
             FindObjectOfType<Handing_Item>().SelectedItemCode = 0;
 
-            if (InitialSlotItemCodeDrag > 0)
-            {
+            if (InitialSlotItemCodeDrag != 0)
+            {           
                 ImageOnMouse.gameObject.SetActive(true);
                 ImageOnMouse.transform.position = Input.mousePosition;
-                ImageOnMouse.GetComponent<Image>().sprite = FindObjectOfType<List_Of_Items>().Inventory_Sprite[InitialSlotItemCodeDrag];
+                ImageOnMouse.GetComponent<Image>().sprite = FindObjectOfType<List_Of_Items>().Inventory_Sprite[InitialSlotItemCodeDrag];              
             }
             else
                 ImageOnMouse.gameObject.SetActive(false);
@@ -147,9 +149,9 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
                 Inventory_Crafting_Panel.SetActive(false);
                 inventory_craftingIsActive = false;
 
-                InitialSlotNumberDrag = -1;
-                InitialSlotItemCodeDrag = -1;
-                InitialSlotQuantityDrag = -1;
+                InitialSlotNumberDrag = 0;
+                InitialSlotItemCodeDrag = 0;
+                InitialSlotQuantityDrag = 0;
 
                 FindObjectOfType<PlayerMovement>().MovementFrozen = false;
 

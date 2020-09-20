@@ -186,8 +186,8 @@ public class Handing_Item : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if (FindObjectOfType<Place_Building>().Has_Building_In_Hand == true)               //daca nu scriu asta apare un bug de incurca unityu            
-                Destroy(FindObjectOfType<Place_Building>().Building_In_Hand.gameObject);  //daca ai o cladire in mana si schimbi pe alt slot sau tot pe ala pe care esti sa nu mai ai cladirea in mana
+            if (FindObjectOfType<Place_Building>().Has_Building_In_Hand == true)                    
+                Destroy(FindObjectOfType<Place_Building>().Building_In_Hand.gameObject);  
             else if (FindObjectOfType<Place_Prefab>().Has_Prefab_In_Hand == true)
                 Destroy(FindObjectOfType<Place_Prefab>().Prefab_In_Hand.gameObject);
             
