@@ -41,6 +41,10 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     [SerializeField]
     public int itemCodeHovered;
     public GameObject craftingSlotHovered;
+
+    [SerializeField]
+    public GameObject drop_box;
+
     // items panels //
     [SerializeField]
     public GameObject Item_004_Inventory_Panel;
@@ -90,6 +94,7 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             else
                 ImageOnMouse.gameObject.SetActive(false);
 
+            /*
             if (Input.GetKeyUp(KeyCode.Mouse0))
             {
                 if (Initial_Slot_Gameobject != null && Initial_Slot_Gameobject.tag == "Inventory_Slot")            //drop la iteme din inventory
@@ -108,12 +113,14 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
                     FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_030>().Slot_Item_Quantity[InitialSlotNumberDrag] = 0;
                 }
 
+                Instantiate(drop_box, player.transform.position, Quaternion.identity);
                 InitialSlotNumberDrag = 0;
                 InitialSlotItemCodeDrag = 0;
                 InitialSlotQuantityDrag = 0;
                 Initial_Slot_Gameobject = null;
-
+                
             }
+            */
         }
         else
             Cursor.visible = false;
