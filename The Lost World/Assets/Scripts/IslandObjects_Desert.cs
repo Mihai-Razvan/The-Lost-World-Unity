@@ -12,8 +12,8 @@ public class IslandObjects_Desert : MonoBehaviour
     private GameObject island;
     [SerializeField]
     public float SpawnHeight;         // se adunna la pozitia insulei si acolo spawneaza obiectele si de acolo face uin ray in jos 
-    private int minRange = -300;     //de la centru insulei la ce x si z random sa se spawneze obiectele
-    private int maxRange = 300;
+    private int minRange = -350;     //de la centru insulei la ce x si z random sa se spawneze obiectele
+    private int maxRange = 350;
     private int minRangeRelief = -120;   // e mai mic ca iese de pe insula
     private int maxRangeRelief = 120;
     private int minRangeBigRelief = -80;
@@ -219,8 +219,8 @@ public class IslandObjects_Desert : MonoBehaviour
     {
         spawnedObjectsNumber = 0;
         notSpawnedConsecutively = 0;
-        numberOfObjects = Random.Range(140, 200);       //15,30
-        while (spawnedObjectsNumber < numberOfObjects && notSpawnedConsecutively < 50)
+        numberOfObjects = Random.Range(300, 400);       //15,30
+        while (spawnedObjectsNumber < numberOfObjects && notSpawnedConsecutively < 100)
         {
             RaycastHit hit;
             
@@ -332,12 +332,32 @@ public class IslandObjects_Desert : MonoBehaviour
                     else
                         notSpawnedConsecutively++;
                 }
-                else 
+                else if (objectRandomNumber <= 15)
                 {
-                    Collider[] colliders = Physics.OverlapSphere(hit.point, 5, objectsMask);
+                    Collider[] colliders = Physics.OverlapSphere(hit.point, 2, objectsMask);
                     if (colliders.Length == 0)
                     {
                         lastSpawned = Instantiate(Objects[10], hit.point, Quaternion.Euler(0, Random.Range(0, 360), 0));
+                        lastSpawned.transform.SetParent(island.transform);
+                        notSpawnedConsecutively = 0;
+                        spawnedObjectsNumber++;
+                    }
+                    else
+                        notSpawnedConsecutively++;
+                }
+                else if (objectRandomNumber <=20)
+                {
+                    lastSpawned = Instantiate(Objects[11], hit.point, Quaternion.Euler(0, Random.Range(0, 360), 0));
+                    lastSpawned.transform.SetParent(island.transform);
+                    notSpawnedConsecutively = 0;
+                    spawnedObjectsNumber++;
+                }
+                else 
+                {
+                    Collider[] colliders = Physics.OverlapSphere(hit.point, 3, objectsMask);
+                    if (colliders.Length == 0)
+                    {
+                        lastSpawned = Instantiate(Objects[12], hit.point, Quaternion.Euler(0, Random.Range(0, 360), 0));
                         lastSpawned.transform.SetParent(island.transform);
                         notSpawnedConsecutively = 0;
                         spawnedObjectsNumber++;

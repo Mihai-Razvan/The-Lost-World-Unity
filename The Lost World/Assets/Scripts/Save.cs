@@ -39,7 +39,7 @@ public class Save : MonoBehaviour
     private GameObject cactus;  //cand respawneaza sap collector sa respawneze si un cactus cu el ca altfel e pe nmk sap collectoru
 
     [SerializeField]
-    private int[] test;
+    private GameObject special_slot;
 
     private void Awake()
     {
@@ -88,6 +88,10 @@ public class Save : MonoBehaviour
             PlayerPrefs.SetInt("Inventory_Item_Code_Slot_" + i.ToString(), FindObjectOfType<Inventory>().Slot_Item_Code[i]);
             PlayerPrefs.SetInt("Inventory_Item_Quantity_Slot_" + i.ToString(), FindObjectOfType<Inventory>().Slot_Item_Quantity[i]);
         }
+
+        PlayerPrefs.SetInt("Inventory_Battery_Code_Special_Slot", special_slot.GetComponent<Inventory_slots>().batteryCode);
+        PlayerPrefs.SetFloat("Inventory_Battery_Charge_Special_Slot", special_slot.GetComponent<Inventory_slots>().batteryCharge);
+        PlayerPrefs.SetFloat("Inventory_Battery_Max_Charge_Special_Slot", special_slot.GetComponent<Inventory_slots>().maxcharge);
     }
 
     void LoadPlayer()
@@ -106,6 +110,10 @@ public class Save : MonoBehaviour
             FindObjectOfType<Inventory>().Slot_Item_Code[i] = PlayerPrefs.GetInt("Inventory_Item_Code_Slot_" + i.ToString());
             FindObjectOfType<Inventory>().Slot_Item_Quantity[i] = PlayerPrefs.GetInt("Inventory_Item_Quantity_Slot_" + i.ToString());
         }
+
+          special_slot.GetComponent<Inventory_slots>().batteryCode = PlayerPrefs.GetInt("Inventory_Battery_Code_Special_Slot");
+          special_slot.GetComponent<Inventory_slots>().batteryCharge = PlayerPrefs.GetFloat("Inventory_Battery_Charge_Special_Slot");
+          special_slot.GetComponent<Inventory_slots>().maxcharge = PlayerPrefs.GetFloat("Inventory_Battery_Max_Charge_Special_Slot");
     }
 
 
@@ -236,7 +244,6 @@ public class Save : MonoBehaviour
 
         for (int i = 1; i <= numberOfBuildings; i++)
         {
-             test[i] = PlayerPrefs.GetInt("String_building_Type_" + i.ToString());
             float xPos = PlayerPrefs.GetFloat("String_building_Position_X_" + i.ToString());
             float yPos = PlayerPrefs.GetFloat("String_building_Position_Y_" + i.ToString());
             float zPos = PlayerPrefs.GetFloat("String_building_Position_Z_" + i.ToString());

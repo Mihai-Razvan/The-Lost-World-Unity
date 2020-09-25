@@ -81,6 +81,8 @@ MonoBehaviour:
   - {fileID: 304941722004331920, guid: 904b46bbb19a1db429b56a139dbfdb1a, type: 3}
   - {fileID: 6836445221519573157, guid: 849ceb11a37b6e04fa8e2e6859bff33a, type: 3}
   - {fileID: 1089587642096906231, guid: c096a235fa1be6d4fbf8b759cb8f630b, type: 3}
+  - {fileID: 92381781287656289, guid: 68ffe7cffdb77cf4da42ee45ff27959b, type: 3}
+  - {fileID: 3204097991563876448, guid: 957a8cbd100b1ec4f9ad3b4d4ad530b0, type: 3}
   - {fileID: 9161183052242728310, guid: cb1a0ed714fe0134ea0386cebaea2915, type: 3}
   Collectables:
   - {fileID: 0}
@@ -98,6 +100,7 @@ MonoBehaviour:
   forest_animal_1: {fileID: 7035544949235947964, guid: bcbfa79dbf4d548449c73ee71bbad56e,
     type: 3}
   Respawned: 0
+  hasBuildingOnIt: 0
 --- !u!65 &1375364515538986932
 BoxCollider:
   m_ObjectHideFlags: 0

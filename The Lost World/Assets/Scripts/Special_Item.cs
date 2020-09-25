@@ -17,6 +17,9 @@ public class Special_Item : MonoBehaviour
     [SerializeField]
     private LayerMask islandMask;
 
+
+    [SerializeField]
+    private GameObject special_slot;
     void Start()
     {
         MinimumjetpackMoveSpeed = 100;//1 FindObjectOfType<PlayerMovement>().moveSpeed;  // viteza minima de zbor e viteza normala de mers   
@@ -33,7 +36,7 @@ public class Special_Item : MonoBehaviour
     {
         isLanded = Physics.Raycast(FindObjectOfType<PlayerMovement>().player.transform.position, -transform.up, 5, islandMask);  // are ceva sub
 
-        if (Input.GetKey(KeyCode.LeftControl) && FindObjectOfType<PlayerMovement>().MovementFrozen == false)
+        if (Input.GetKey(KeyCode.LeftControl) && FindObjectOfType<PlayerMovement>().MovementFrozen == false && special_slot.GetComponent<Inventory_slots>().batteryCharge > 0)
         {
             useJetpack = true;
 
@@ -48,6 +51,8 @@ public class Special_Item : MonoBehaviour
 
             FindObjectOfType<PlayerMovement>().velocity.y = -2f;
             FindObjectOfType<PlayerMovement>().controller.Move(Camera.main.transform.forward * flySpeed * Time.deltaTime);
+
+            special_slot.GetComponent<Inventory_slots>().batteryCharge -= Time.deltaTime;
         }
         else     
         {

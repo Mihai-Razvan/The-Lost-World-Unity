@@ -13,12 +13,28 @@ public class Inventory_slots : MonoBehaviour, IPointerDownHandler, IDragHandler,
     public int Slot_Number;          //numaru slotului in inventar
     public int itemQuantity;
 
+              //numa pt special slot ca astea sunt numa pt jetpack si momentan jetpacku poate fi numai in special slot
+    public int batteryCode;
+    [SerializeField]
+    public float maxcharge;       //cat ar avea max bateria asta e pt fill
+    private float battery_Charge_31 = 20;
+    private float battery_Charge_32 = 50;
+    private float battery_Charge_33 = 600;
+    public float batteryCharge;   //cat mai are
+    
+
     void Start()
     {
         transform.Find("Item_Image").gameObject.SetActive(false);
 
         if (Slot_Number > 15 && Slot_Number < 25)
             transform.Find("Highlight").gameObject.SetActive(false);
+
+        if (Slot_Number == 25)
+        {
+            transform.Find("Battery_Image").gameObject.SetActive(false);
+            transform.Find("Battery_Backround").gameObject.SetActive(false);
+        }
     }
 
 
@@ -51,9 +67,41 @@ public class Inventory_slots : MonoBehaviour, IPointerDownHandler, IDragHandler,
             transform.Find("Quantity").gameObject.SetActive(false);
         }
 
-
+        if (Slot_Number == 25)
+            Battery();
 
     }
+
+
+    private void Battery()
+    {
+        if(batteryCharge > 0)
+        {
+            transform.Find("Battery_Image").gameObject.SetActive(true);
+            transform.Find("Battery_Image").GetComponent<Image>().sprite = FindObjectOfType<List_Of_Items>().Inventory_Sprite[batteryCode];
+            transform.Find("Battery_Backround").gameObject.SetActive(true);
+            transform.Find("Battery_Backround").GetComponent<Image>().sprite = FindObjectOfType<List_Of_Items>().Inventory_Sprite[batteryCode];
+            transform.Find("Battery_Image").GetComponent<Image>().fillAmount = batteryCharge / maxcharge; 
+        }
+        else
+        {
+            transform.Find("Battery_Image").gameObject.SetActive(false);
+            transform.Find("Battery_Backround").gameObject.SetActive(false);
+        }
+    }
+
+    private void BatteryCharge()
+    {
+        if (batteryCode == 31)
+            batteryCharge = battery_Charge_31;
+        else if (batteryCode == 32)
+            batteryCharge = battery_Charge_32;
+        else if (batteryCode == 33)
+            batteryCharge = battery_Charge_33;
+
+        maxcharge = batteryCharge;
+    }
+
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -80,11 +128,13 @@ public class Inventory_slots : MonoBehaviour, IPointerDownHandler, IDragHandler,
     {
         Debug.Log("OnEndDrag");
 
-        if (Slot_Number != 25  || (Slot_Number == 25 && FindObjectOfType<Inventory>().InitialSlotItemCodeDrag == 7))   //nu poti dropa iteme pe special slot
-        if (FindObjectOfType<Inventory>().inventory_craftingIsActive == true)
+        if (Slot_Number != 25 || (Slot_Number == 25 && FindObjectOfType<Inventory>().InitialSlotItemCodeDrag == 7))   //nu poti dropa iteme pe special slot
+
         {
-            if (FindObjectOfType<Inventory>().Initial_Slot_Gameobject.tag == "Inventory_Slot")
+            if (FindObjectOfType<Inventory>().inventory_craftingIsActive == true)
             {
+                if (FindObjectOfType<Inventory>().Initial_Slot_Gameobject.tag == "Inventory_Slot")
+                {
                     if (FindObjectOfType<Inventory>().InitialSlotItemCodeDrag != itemCode || (FindObjectOfType<Inventory>().InitialSlotItemCodeDrag == itemCode && (FindObjectOfType<Inventory>().InitialSlotQuantityDrag == FindObjectOfType<List_Of_Items>().Item_Stack_Number[itemCode] || itemQuantity == FindObjectOfType<List_Of_Items>().Item_Stack_Number[itemCode])))  //swapu normal
                     {
                         FindObjectOfType<Inventory>().Slot_Item_Code[FindObjectOfType<Inventory>().InitialSlotNumberDrag] = itemCode;
@@ -108,10 +158,10 @@ public class Inventory_slots : MonoBehaviour, IPointerDownHandler, IDragHandler,
                         }
 
                     }
-            }
-            else if (FindObjectOfType<Inventory>().Initial_Slot_Gameobject.tag == "Furnace_Inventory_Slot")
-            {
-              
+                }
+                else if (FindObjectOfType<Inventory>().Initial_Slot_Gameobject.tag == "Furnace_Inventory_Slot")
+                {
+
 
                     if (FindObjectOfType<Inventory>().InitialSlotItemCodeDrag != itemCode || (FindObjectOfType<Inventory>().InitialSlotItemCodeDrag == itemCode && (FindObjectOfType<Inventory>().InitialSlotQuantityDrag == FindObjectOfType<List_Of_Items>().Item_Stack_Number[itemCode] || itemQuantity == FindObjectOfType<List_Of_Items>().Item_Stack_Number[itemCode])))  //swapu normal
                     {
@@ -137,7 +187,7 @@ public class Inventory_slots : MonoBehaviour, IPointerDownHandler, IDragHandler,
 
                     }
 
-            }
+                }
                 else if (FindObjectOfType<Inventory>().Initial_Slot_Gameobject.tag == "Chest_Inventory_Slot")
                 {
 
@@ -172,9 +222,42 @@ public class Inventory_slots : MonoBehaviour, IPointerDownHandler, IDragHandler,
 
 
                 FindObjectOfType<Inventory>().InitialSlotNumberDrag = 0;
-            FindObjectOfType<Inventory>().InitialSlotItemCodeDrag = 0;
-            FindObjectOfType<Inventory>().InitialSlotQuantityDrag = 0;
-            FindObjectOfType<Inventory>().Initial_Slot_Gameobject = null;
+                FindObjectOfType<Inventory>().InitialSlotItemCodeDrag = 0;
+                FindObjectOfType<Inventory>().InitialSlotQuantityDrag = 0;
+                FindObjectOfType<Inventory>().Initial_Slot_Gameobject = null;
+            }
+        }
+        else if (Slot_Number == 25 && (FindObjectOfType<Inventory>().InitialSlotItemCodeDrag == 31 || FindObjectOfType<Inventory>().InitialSlotItemCodeDrag == 32 || FindObjectOfType<Inventory>().InitialSlotItemCodeDrag == 33)) //baterii
+        {
+            if (FindObjectOfType<Inventory>().inventory_craftingIsActive == true)
+            {
+                if (FindObjectOfType<Inventory>().Initial_Slot_Gameobject.tag == "Inventory_Slot")
+                {
+                    batteryCode = FindObjectOfType<Inventory>().InitialSlotItemCodeDrag;
+                    BatteryCharge();
+                    FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Inventory>().InitialSlotNumberDrag]--;                 
+                }
+                else if (FindObjectOfType<Inventory>().Initial_Slot_Gameobject.tag == "Furnace_Inventory_Slot")
+                {
+                    batteryCode = FindObjectOfType<Inventory>().InitialSlotItemCodeDrag;
+                    BatteryCharge();
+                    FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Quantity[FindObjectOfType<Inventory>().InitialSlotNumberDrag]--;
+                }
+                else if (FindObjectOfType<Inventory>().Initial_Slot_Gameobject.tag == "Chest_Inventory_Slot")
+                {
+                    batteryCode = FindObjectOfType<Inventory>().InitialSlotItemCodeDrag;
+                    BatteryCharge();
+                    FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_030>().Slot_Item_Quantity[FindObjectOfType<Inventory>().InitialSlotNumberDrag]--;
+                }
+
+
+
+
+                FindObjectOfType<Inventory>().InitialSlotNumberDrag = 0;
+                FindObjectOfType<Inventory>().InitialSlotItemCodeDrag = 0;
+                FindObjectOfType<Inventory>().InitialSlotQuantityDrag = 0;
+                FindObjectOfType<Inventory>().Initial_Slot_Gameobject = null;
+            }
         }
     }
 

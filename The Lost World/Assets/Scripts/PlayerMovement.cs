@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
 
             velocity.y += gravity * Time.deltaTime;
 
-            controller.Move(velocity * Time.deltaTime);
+           // controller.Move(velocity * Time.deltaTime);
 
             Jump();
             InactiveBuildings();
@@ -84,6 +84,31 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetKey(KeyCode.M))
                 Application.Quit();
+        }
+
+        if (Input.GetKey(KeyCode.V))
+        {
+            FindObjectOfType<Inventory>().itemCodeToAdd = 25;
+            FindObjectOfType<Inventory>().quantityToAdd = 100;
+
+        }
+        if (Input.GetKey(KeyCode.Z))
+        {
+            FindObjectOfType<Inventory>().itemCodeToAdd = 26;
+            FindObjectOfType<Inventory>().quantityToAdd = 100;
+            
+        }
+        if (Input.GetKey(KeyCode.X))
+        {
+            FindObjectOfType<Inventory>().itemCodeToAdd = 29;
+            FindObjectOfType<Inventory>().quantityToAdd = 100;
+
+        }
+        if (Input.GetKey(KeyCode.C))
+        {
+            FindObjectOfType<Inventory>().itemCodeToAdd = 30;
+            FindObjectOfType<Inventory>().quantityToAdd = 100;
+
         }
 
     }
