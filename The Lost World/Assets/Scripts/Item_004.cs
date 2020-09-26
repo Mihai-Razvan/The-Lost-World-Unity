@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class Item_004 : MonoBehaviour
 {                                                                   ////////////// FURNACE \\\\\\\\\\\\\\\\\
@@ -21,13 +22,16 @@ public class Item_004 : MonoBehaviour
     public float Transforming_Time_Left;
     public int produced_item_code;
 
-    private int woodFuel = 30;      //cat fuel da wood
+    private int woodFuel = 10;      //cat fuel da wood
     private int logFuel = 100;
 
     private int iron_ore_transform_time= 5;
     private int rich_ore_transform_time = 5;
     private int copper_ore_transform_time = 5;
 
+
+    [SerializeField]
+    private AudioSource fireSound;
     
     void Start()
     {
@@ -186,11 +190,14 @@ public class Item_004 : MonoBehaviour
         {
             fire_animation.SetActive(false);
             smoke_animation.SetActive(false);
+            fireSound.Stop();
         }
         else
         {
             fire_animation.SetActive(true);
             smoke_animation.SetActive(true);
+            if (fireSound.isPlaying == false)
+                fireSound.Play();
         }
     }
 

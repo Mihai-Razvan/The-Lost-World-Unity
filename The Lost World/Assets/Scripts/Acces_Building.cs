@@ -68,6 +68,7 @@ public class Acces_Building : MonoBehaviour
                             FindObjectOfType<Inventory>().quantityToAdd = 1;
                             FindObjectOfType<Inventory>().itemCodeToAdd = 27;
                             colliders[0].transform.parent.GetComponent<Item_026>().time_On_This_Round = 0;
+                            FindObjectOfType<Sounds_Player>().collect_item_sound.Play();
 
                             FindObjectOfType<Pickup_Item>().BeeAttract();      //cand ieisapu din extractor atragi albinele ca cand culegi merele 
                         }
@@ -139,9 +140,13 @@ public class Acces_Building : MonoBehaviour
         else if (colliders[0].gameObject.tag == "Sap extractor")
         {
             if (colliders[0].transform.parent.GetComponent<Item_026>().time_On_This_Round >= colliders[0].transform.parent.GetComponent<Item_026>().production_Time)
-                FindObjectOfType<Buttons>().AccesBuildingButton.transform.Find("Building_Name").GetComponent<TextMeshProUGUI>().text = "Collect 'Cactus sap'";               
+                FindObjectOfType<Buttons>().AccesBuildingButton.transform.Find("Building_Name").GetComponent<TextMeshProUGUI>().text = "Collect 'Cactus sap'";
             else
-                FindObjectOfType<Buttons>().AccesBuildingButton.transform.Find("Building_Name").GetComponent<TextMeshProUGUI>().text = "Time remained: " + ((int)(colliders[0].transform.parent.GetComponent<Item_026>().production_Time - colliders[0].transform.parent.GetComponent<Item_026>().time_On_This_Round) / 60).ToString() + ":" + ((int)(colliders[0].transform.parent.GetComponent<Item_026>().production_Time - colliders[0].transform.parent.GetComponent<Item_026>().time_On_This_Round) % 60).ToString();
+            {   if((int)(colliders[0].transform.parent.GetComponent<Item_026>().production_Time - colliders[0].transform.parent.GetComponent<Item_026>().time_On_This_Round) % 60 >= 10)
+                    FindObjectOfType<Buttons>().AccesBuildingButton.transform.Find("Building_Name").GetComponent<TextMeshProUGUI>().text = "Time remained: " + ((int)(colliders[0].transform.parent.GetComponent<Item_026>().production_Time - colliders[0].transform.parent.GetComponent<Item_026>().time_On_This_Round) / 60).ToString() + ":" + ((int)(colliders[0].transform.parent.GetComponent<Item_026>().production_Time - colliders[0].transform.parent.GetComponent<Item_026>().time_On_This_Round) % 60).ToString();
+                else
+                    FindObjectOfType<Buttons>().AccesBuildingButton.transform.Find("Building_Name").GetComponent<TextMeshProUGUI>().text = "Time remained: " + ((int)(colliders[0].transform.parent.GetComponent<Item_026>().production_Time - colliders[0].transform.parent.GetComponent<Item_026>().time_On_This_Round) / 60).ToString() + ": 0" + ((int)(colliders[0].transform.parent.GetComponent<Item_026>().production_Time - colliders[0].transform.parent.GetComponent<Item_026>().time_On_This_Round) % 60).ToString();
+            }
         }
         else if (colliders[0].gameObject.tag == "Chest")
         {

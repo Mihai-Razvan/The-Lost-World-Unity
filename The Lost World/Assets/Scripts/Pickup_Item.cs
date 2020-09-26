@@ -15,7 +15,7 @@ public class Pickup_Item : MonoBehaviour
     private LayerMask animalMask;
     [SerializeField]
     private GameObject player;
-   
+
     void Start()
     {
         
@@ -90,6 +90,7 @@ public class Pickup_Item : MonoBehaviour
                         BeeAttract();
                     }
 
+                    FindObjectOfType<Sounds_Player>().collect_item_sound.Play();
                 }
             }
             else
