@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 4771039728061100181}
   - component: {fileID: 155736047547131882}
   - component: {fileID: -1637135508806604120}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: drop_box
-  m_TagString: Untagged
+  m_TagString: Trash Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -84,6 +84,8 @@ public class Acces_Building : MonoBehaviour
                             FindObjectOfType<Inventory>().Item_030_Inventory_Panel.SetActive(true);
                             FindObjectOfType<Inventory>().inventory_craftingIsActive = true;
                             Building_Inventory_Opened = true;
+
+                            FindObjectOfType<Sounds_Player>().chest_open_sound.Play();
                         }
                         else           // e deja in meniu la furnace si acu iese
                         {
@@ -95,6 +97,8 @@ public class Acces_Building : MonoBehaviour
                             FindObjectOfType<Inventory>().Inventory_Crafting_Panel.SetActive(false);
                             FindObjectOfType<Inventory>().Item_030_Inventory_Panel.SetActive(false);
                             FindObjectOfType<PlayerMovement>().MovementFrozen = false;
+
+                            FindObjectOfType<Sounds_Player>().chest_open_sound.Play();
                         }
                     }
 

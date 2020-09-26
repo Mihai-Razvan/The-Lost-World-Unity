@@ -7,8 +7,4 @@ public class Dropped_Box : MonoBehaviour
     public int itemCode;
     public int itemQuantity;
 
-    void Update()
-    {
-        
-    }
 }

@@ -72,6 +72,8 @@ TagManager:
   - Item Point 026
   - Item Point 030
   - Undespawnable Object
+  - Collectable_Objects Point
+  - Trash Box
   layers:
   - Default
   - TransparentFX
