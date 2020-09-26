@@ -218,6 +218,11 @@ PrefabInstance:
       propertyPath: fireSound
       value: 
       objectReference: {fileID: 3322658007850588529}
+    - target: {fileID: 2708140921397815765, guid: a7d934f6021378945ad427c3a9073b0e,
+        type: 3}
+      propertyPath: BuildingAccessed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2978099811808744590, guid: a7d934f6021378945ad427c3a9073b0e,
         type: 3}
       propertyPath: m_Name

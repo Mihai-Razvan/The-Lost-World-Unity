@@ -173,6 +173,7 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         if (quantityToAdd == 0)
             itemCodeToAdd = 0;
 
+
         for (int i = 1; i <= 24 && quantityToAdd != 0; i++)
             if (Slot_Item_Code[i] == itemCodeToAdd)
             {
@@ -209,6 +210,16 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
                     }
                 }
             }
+
+        if(quantityToAdd != 0)       //inventaru e full sau nu chiar full da trebuie facut slot nou pt a adauga ce trebuie si nu mai sunt sloturi libere
+        {
+            GameObject spawnedBox = Instantiate(drop_box, player.transform.position, Quaternion.identity);
+            spawnedBox.GetComponent<Dropped_Box>().itemCode = itemCodeToAdd;
+            spawnedBox.GetComponent<Dropped_Box>().itemQuantity = quantityToAdd;
+
+            itemCodeToAdd = 0;
+            quantityToAdd = 0;
+        }
 
 
     }

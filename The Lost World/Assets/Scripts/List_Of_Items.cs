@@ -9,15 +9,6 @@ public class List_Of_Items : MonoBehaviour
     public Sprite[] Inventory_Sprite;
     public string[] Item_Name;
     public string[] Item_Description;
-    void Start()
-    {
-      
-    }
-
-
-    void Update()
-    {
-
-    }
+    
 }
 
