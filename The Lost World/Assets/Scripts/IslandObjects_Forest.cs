@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class IslandObjects_Forest : MonoBehaviour
 {
@@ -118,7 +119,7 @@ public class IslandObjects_Forest : MonoBehaviour
 
         if (CollesctablesHaveSpawned == false)       //spawneaza cand e playeru aproape de is
         {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, 700f, playerMask);
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 300f, playerMask);
             if (colliders.Length != 0)
             {
                 CollectablesSpawn();
@@ -437,7 +438,20 @@ public class IslandObjects_Forest : MonoBehaviour
 
     void SpawnMiniIsland()
     {
-        for (int i = 1; i <= 10; i++)
+        int number;
+        int distance;
+        if(SceneManager.GetActiveScene().name == "Menu")      // asta ca sa spawneze mai multe miniislanduri pe insula din main menu
+        {
+            number = 15;
+            distance = 200;
+        }
+        else
+        {
+            number = 10;
+            distance = 220;
+        }
+
+        for (int i = 1; i <= number; i++)
         {
             float y = 15 * i;                //asta nu e random ca e ca sa nu se ciocneasca mini insulele
             if ((int)Random.Range(1, 3) == 1)
@@ -453,7 +467,7 @@ public class IslandObjects_Forest : MonoBehaviour
             if ((int)Random.Range(1, 3) == 1)
                 x = -x;
 
-            if (Vector3.Distance(transform.position, new Vector3(transform.position.x + x, transform.position.y + y, transform.position.z + z)) > 220)  // sa nu spawneze in insula
+            if (Vector3.Distance(transform.position, new Vector3(transform.position.x + x, transform.position.y + y, transform.position.z + z)) > distance)  // sa nu spawneze in insula
             {
                 GameObject spawnedMiniIsland = Instantiate(Mini_Forest_Island, new Vector3(transform.position.x + x, transform.position.y + y, transform.position.z + z), Quaternion.identity);
                 spawnedMiniIsland.transform.SetParent(this.gameObject.transform);

@@ -13,6 +13,6 @@ public class Mini_Island : MonoBehaviour
     
     void Update()
     {
-        transform.RotateAround(transform.parent.position, Vector3.up , speed * Time.deltaTime);
+        transform.RotateAround(transform.parent.position, - Vector3.up , speed * Time.deltaTime);
     }
 }
