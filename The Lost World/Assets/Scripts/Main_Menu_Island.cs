@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Main_Menu_Island : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class Main_Menu_Island : MonoBehaviour
     {
         spawnedIsland = Instantiate(island_type[(int)Random.Range(1, 3)], new Vector3(0, 0, 0), Quaternion.identity);
 
-        for (int i = 1; i < 300; i++)
+        for (int i = 1; i < 50; i++)
             CloudsSpawn();
     }
 
@@ -27,6 +28,7 @@ public class Main_Menu_Island : MonoBehaviour
 
         if ((int)Random.Range(1, 300) == 1)
             CloudsSpawn();
+
     }
 
 
@@ -34,5 +36,12 @@ public class Main_Menu_Island : MonoBehaviour
     {
         Vector3 spawnPoint = Random.insideUnitSphere * 800 + new Vector3(0, 0, 0);
         Instantiate(cloud, spawnPoint, Quaternion.Euler(0, Random.Range(-180, 180), 0));
+    }
+
+
+
+    public void LoadWorld()
+    {
+        SceneManager.LoadScene("Game");
     }
 }

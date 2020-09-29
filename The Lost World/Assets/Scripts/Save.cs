@@ -41,7 +41,7 @@ public class Save : MonoBehaviour
     [SerializeField]
     private GameObject special_slot;
 
-    private void Awake()
+    private void Start()
     {
         LoadFunction();
        
