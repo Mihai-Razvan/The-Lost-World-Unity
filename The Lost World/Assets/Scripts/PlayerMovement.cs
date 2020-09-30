@@ -39,8 +39,7 @@ public class PlayerMovement : MonoBehaviour
     private LayerMask buildingMask;
     [SerializeField]
     private LayerMask objects_collectablesMask;
-    [SerializeField]
-    private int cccc;
+
     void Start()
     {
         time = 0;

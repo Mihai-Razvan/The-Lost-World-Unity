@@ -58,6 +58,13 @@ public class Main_Menu_Island : MonoBehaviour
         PlayerPrefs.SetFloat("Inventory_Battery_Charge_Special_Slot", 20);
         PlayerPrefs.SetFloat("Inventory_Battery_Max_Charge_Special_Slot", 20);
 
+        PlayerPrefs.SetInt("String_island_Type_1", 1);
+        PlayerPrefs.SetFloat("String_island_X_1", 1000);
+        PlayerPrefs.SetFloat("String_island_Y_1", 1000);
+        PlayerPrefs.SetFloat("String_island_Z_1", 1000);
+
+        PlayerPrefs.SetInt("Number_Of_Islands", 1);
+
         SceneManager.LoadScene("Game");
     }
 

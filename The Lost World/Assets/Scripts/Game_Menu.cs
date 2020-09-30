@@ -40,6 +40,7 @@ public class Game_Menu : MonoBehaviour
 
     public void MainMenu()
     {
+        FindObjectOfType<Save>().SaveFunction();
         SceneManager.LoadScene("Menu");
     }
 
