@@ -13,6 +13,8 @@ public class Main_Menu_Island : MonoBehaviour
     [SerializeField]
     private GameObject cloud;
 
+   
+
     void Start()
     {
         spawnedIsland = Instantiate(island_type[(int)Random.Range(1, 3)], new Vector3(0, 0, 0), Quaternion.identity);
@@ -40,8 +42,34 @@ public class Main_Menu_Island : MonoBehaviour
 
 
 
+    public void NewWorld()
+    {
+        PlayerPrefs.DeleteAll();
+
+        PlayerPrefs.SetFloat("Player_Position_X", 1000);
+        PlayerPrefs.SetFloat("Player_Position_Y", 1030);
+        PlayerPrefs.SetFloat("Player_Position_Z", 1000);
+
+        PlayerPrefs.SetFloat("Player_Health", 100);
+        PlayerPrefs.SetFloat("Player_Food", 100);
+        PlayerPrefs.SetFloat("Player_Poison", 0);
+
+        PlayerPrefs.SetInt("Inventory_Battery_Code_Special_Slot", 31);
+        PlayerPrefs.SetFloat("Inventory_Battery_Charge_Special_Slot", 20);
+        PlayerPrefs.SetFloat("Inventory_Battery_Max_Charge_Special_Slot", 20);
+
+        SceneManager.LoadScene("Game");
+    }
+
+
     public void LoadWorld()
     {
         SceneManager.LoadScene("Game");
+    }
+
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }

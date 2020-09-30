@@ -69,7 +69,7 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
         AddToInventory();
         
-        if (inventory_craftingIsActive == true)
+        if (inventory_craftingIsActive == true || FindObjectOfType<Game_Menu>().game_menu_isactive == true)
         {
             Cursor.visible = true;
             for (int i = 1; i <= 15; i++)
