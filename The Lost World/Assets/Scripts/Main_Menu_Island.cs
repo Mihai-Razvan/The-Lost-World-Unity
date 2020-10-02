@@ -15,7 +15,8 @@ public class Main_Menu_Island : MonoBehaviour
     private GameObject cloud;
     [SerializeField]
     private Button Load_World_Button;
-   
+    [SerializeField]
+     private GameObject are_you_sure_Panel;
 
     void Start()
     {
@@ -47,8 +48,16 @@ public class Main_Menu_Island : MonoBehaviour
     }
 
 
-
     public void NewWorld()
+    {
+        if (PlayerPrefs.GetInt("First_Created_World") == 1)
+            are_you_sure_Panel.SetActive(true);
+        else
+            Yes();
+ 
+    }
+
+    public void Yes()
     {
         PlayerPrefs.DeleteAll();
 
@@ -73,6 +82,12 @@ public class Main_Menu_Island : MonoBehaviour
 
         PlayerPrefs.SetInt("First_Created_World", 1);
         SceneManager.LoadScene("Game");
+    }
+
+
+    public void No()
+    {
+        are_you_sure_Panel.SetActive(false);
     }
 
 
