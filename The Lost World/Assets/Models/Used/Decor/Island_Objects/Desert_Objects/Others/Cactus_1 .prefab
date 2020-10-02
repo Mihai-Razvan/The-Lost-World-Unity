@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 40241258271402192}
   - component: {fileID: 5475501541720967125}
   m_Layer: 11
-  m_Name: Sap_Extractor_Collider
+  m_Name: Sap_Collector_Point
   m_TagString: Snap_Sap_Extractor_Collider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

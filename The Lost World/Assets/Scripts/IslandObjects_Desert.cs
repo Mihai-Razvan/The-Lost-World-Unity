@@ -100,7 +100,7 @@ public class IslandObjects_Desert : MonoBehaviour
 
         if (CollesctablesHaveSpawned == false)       //spawneaza cand e playeru aproape de is
         {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, 300f, playerMask);
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 300f, playerMask); //300
             if (colliders.Length != 0)
             {
                 CollectablesSpawn();

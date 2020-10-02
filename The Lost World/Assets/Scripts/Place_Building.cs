@@ -167,6 +167,8 @@ public class Place_Building : MonoBehaviour
             FindObjectOfType<Inventory>().Slot_Item_Code[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] = 0;
             FindObjectOfType<Handing_Item>().SelectedItemCode = 0;
         }
+
+        FindObjectOfType<Sounds_Player>().place_building_prefab_sound.Play();
     }
 
 

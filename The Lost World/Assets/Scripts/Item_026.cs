@@ -18,13 +18,16 @@ public class Item_026 : MonoBehaviour
     public GameObject cactusSpawnPoint;
     [SerializeField]
     private LayerMask islandObjectsMask;
-
+    public Vector3 attached_cactus_rotation;
     void Awake()
     {
 
         Collider[] colliders = Physics.OverlapSphere(cactusCheckPoint.transform.position, 3f, islandObjectsMask);
-        if(colliders.Length != 0)
+        if (colliders.Length != 0)
+        {
             colliders[0].transform.parent.gameObject.tag = "Undespawnable Object";
+            attached_cactus_rotation = new Vector3(colliders[0].transform.parent.transform.eulerAngles.x, colliders[0].transform.parent.transform.eulerAngles.y, colliders[0].transform.parent.transform.eulerAngles.z);
+        }
     }
 
     

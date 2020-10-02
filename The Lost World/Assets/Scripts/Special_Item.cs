@@ -53,6 +53,7 @@ public class Special_Item : MonoBehaviour
             FindObjectOfType<PlayerMovement>().controller.Move(Camera.main.transform.forward * flySpeed * Time.deltaTime);
 
             special_slot.GetComponent<Inventory_slots>().batteryCharge -= Time.deltaTime;
+          
         }
         else     
         {
@@ -64,5 +65,17 @@ public class Special_Item : MonoBehaviour
 
         flySpeed = Mathf.Max(flySpeed, MinimumjetpackMoveSpeed);        //daca scade prea mult sub cand ai ceva sub
 
+        JetpackSound();
+    }
+
+    void JetpackSound()
+    {
+        if(useJetpack == true)
+        {
+            if (FindObjectOfType<Sounds_Player>().jetpack_sound.isPlaying == false)
+                FindObjectOfType<Sounds_Player>().jetpack_sound.Play();
+        }
+        else
+            FindObjectOfType<Sounds_Player>().jetpack_sound.Stop();
     }
 }

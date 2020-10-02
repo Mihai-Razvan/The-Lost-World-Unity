@@ -154,6 +154,7 @@ public class Save : MonoBehaviour
 
         PlayerPrefs.SetInt("Number_Of_Islands", numberOfIslands);
         PlayerPrefs.SetInt("Number_Of_Relief", numberOfRelief);
+        PlayerPrefs.SetInt("World_Created", 1);
     }
 
     void LoadIslandsANDRelief()
@@ -347,11 +348,17 @@ public class Save : MonoBehaviour
     void SaveSapExtractorDetails(Collider[] colliders, int i)
     {
         PlayerPrefs.SetFloat("String_building_" + numberOfBuildings.ToString() + "_Time_On_This_Round", colliders[i].GetComponent<Item_026>().time_On_This_Round);
+        /*
+        PlayerPrefs.SetFloat("String_Cactus_X_" + numberOfBuildings.ToString(), colliders[i].GetComponent<Item_026>().attached_cactus_rotation.x);
+        PlayerPrefs.SetFloat("String_Cactus_Y_" + numberOfBuildings.ToString(), colliders[i].GetComponent<Item_026>().attached_cactus_rotation.y);
+        PlayerPrefs.SetFloat("String_Cactus_Z_" + numberOfBuildings.ToString(), colliders[i].GetComponent<Item_026>().attached_cactus_rotation.z);
+        */
     }
 
     void LoadSapExtractorDetails(GameObject spawnedBuilding, int i)
     {
         spawnedBuilding.GetComponent<Item_026>().time_On_This_Round = PlayerPrefs.GetFloat("String_building_" + i.ToString() + "_Time_On_This_Round");
+     // Vector3 cactus_rotation = new Vector3(PlayerPrefs.GetFloat("String_Cactus_X_" + i.ToString()), PlayerPrefs.GetFloat("String_Cactus_Y_" + i.ToString()), PlayerPrefs.GetFloat("String_Cactus_Z_" + i.ToString()));
         GameObject spawnedCactus = Instantiate(cactus, spawnedBuilding.GetComponent<Item_026>().cactusSpawnPoint.transform.position, Quaternion.identity);
         spawnedCactus.gameObject.tag = "Undespawnable Object";
     }

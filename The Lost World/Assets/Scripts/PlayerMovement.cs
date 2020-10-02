@@ -54,8 +54,14 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrounded = Physics.CheckSphere(groundCheck.position, sphereRadius, GroundMask);
 
+
             if (isGrounded == true && velocity.y < 0)
+            {
+                if (velocity.y < -50)
+                    FindObjectOfType<Player_Stats>().playerHealth -= Mathf.Abs((velocity.y + 50) * FindObjectOfType<Player_Stats>().falling_damage);
                 velocity.y = -2f;
+            }
+
 
             if (MovementFrozen == false)
             {
@@ -75,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
 
             velocity.y += gravity * Time.deltaTime;
 
-            controller.Move(velocity * Time.deltaTime);
+          //  controller.Move(velocity * Time.deltaTime);
 
             if(MovementFrozen == false)
                 Jump();
@@ -87,30 +93,6 @@ public class PlayerMovement : MonoBehaviour
                 Application.Quit();
         }
 
-        if (Input.GetKey(KeyCode.V))
-        {
-            FindObjectOfType<Inventory>().itemCodeToAdd = 25;
-            FindObjectOfType<Inventory>().quantityToAdd = 100;
-
-        }
-        if (Input.GetKey(KeyCode.Z))
-        {
-            FindObjectOfType<Inventory>().itemCodeToAdd = 26;
-            FindObjectOfType<Inventory>().quantityToAdd = 100;
-            
-        }
-        if (Input.GetKey(KeyCode.X))
-        {
-            FindObjectOfType<Inventory>().itemCodeToAdd = 29;
-            FindObjectOfType<Inventory>().quantityToAdd = 100;
-
-        }
-        if (Input.GetKey(KeyCode.C))
-        {
-            FindObjectOfType<Inventory>().itemCodeToAdd = 30;
-            FindObjectOfType<Inventory>().quantityToAdd = 100;
-
-        }
 
     }
 

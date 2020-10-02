@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Main_Menu_Island : MonoBehaviour
+public class Main_Menu : MonoBehaviour
 {
     [SerializeField]
     private float camera_rotation_speed;
@@ -34,10 +34,11 @@ public class Main_Menu_Island : MonoBehaviour
         if ((int)Random.Range(1, 300) == 1)
             CloudsSpawn();
 
-        if (PlayerPrefs.GetInt("First_Created_World") == 1)
+        if (PlayerPrefs.GetInt("World_Created") == 1)
             Load_World_Button.GetComponent<Button>().interactable = true;
         else
             Load_World_Button.GetComponent<Button>().interactable = false;
+
     }
 
 
@@ -50,11 +51,10 @@ public class Main_Menu_Island : MonoBehaviour
 
     public void NewWorld()
     {
-        if (PlayerPrefs.GetInt("First_Created_World") == 1)
+        if (PlayerPrefs.GetInt("World_Created") == 1)
             are_you_sure_Panel.SetActive(true);
         else
-            Yes();
- 
+            Yes();       
     }
 
     public void Yes()
@@ -62,7 +62,7 @@ public class Main_Menu_Island : MonoBehaviour
         PlayerPrefs.DeleteAll();
 
         PlayerPrefs.SetFloat("Player_Position_X", 1000);
-        PlayerPrefs.SetFloat("Player_Position_Y", 1005);
+        PlayerPrefs.SetFloat("Player_Position_Y", 1002);
         PlayerPrefs.SetFloat("Player_Position_Z", 1000);
 
         PlayerPrefs.SetFloat("Player_Health", 100);
@@ -80,7 +80,7 @@ public class Main_Menu_Island : MonoBehaviour
 
         PlayerPrefs.SetInt("Number_Of_Islands", 1);
 
-        PlayerPrefs.SetInt("First_Created_World", 1);
+        PlayerPrefs.SetInt("World_Created", 1);
         SceneManager.LoadScene("Game");
     }
 

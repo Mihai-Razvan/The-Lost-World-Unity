@@ -103,7 +103,7 @@ public class IslandObjects_Snow : MonoBehaviour
 
         if (CollesctablesHaveSpawned == false)       //spawneaza cand e playeru aproape de is
         {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, 300f, playerMask);
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 30f, playerMask);
             if (colliders.Length != 0)
             {
                 CollectablesSpawn();

@@ -290,6 +290,7 @@ public class Place_Prefab : MonoBehaviour
             FindObjectOfType<Handing_Item>().SelectedItemCode = 0;
         }
 
+        FindObjectOfType<Sounds_Player>().place_building_prefab_sound.Play();
     }
 
     void SnapDetach()      // e snapeed si te departezi sa nu mai ffie snapped si sa fie din nou dupa tine
