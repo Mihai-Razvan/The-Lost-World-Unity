@@ -220,14 +220,14 @@ public class IslandObjects_Desert : MonoBehaviour
     {
         spawnedObjectsNumber = 0;
         notSpawnedConsecutively = 0;
-        numberOfObjects = Random.Range(300, 400);       //15,30
+        numberOfObjects = Random.Range(300, 400);       //300 400
         while (spawnedObjectsNumber < numberOfObjects && notSpawnedConsecutively < 100)
         {
             RaycastHit hit;
             
             if (Physics.Raycast(new Vector3(transform.position.x + Random.Range(minRange, maxRange), transform.position.y + SpawnHeight, transform.position.z + Random.Range(minRange, maxRange)), Vector3.down, out hit, 100, Spawn_Surface_Mask) && hit.normal.x > -40 && hit.normal.x < 40 && hit.normal.z > -40 && hit.normal.z < 40)
             {
-                objectRandomNumber = Random.Range(1, 30);
+                objectRandomNumber = Random.Range(1, 40);
                 if (objectRandomNumber == 1)
                 {
                  
@@ -387,14 +387,14 @@ public class IslandObjects_Desert : MonoBehaviour
                 Collider[] colliders = Physics.OverlapSphere(hit.point, 3, collectablesMask);
                 if (colliders.Length == 0)
                 {
-                    objectRandomNumber = (int)Random.Range(1, 5);
+                    objectRandomNumber = (int)Random.Range(1, 100);
 
-                    if (objectRandomNumber == 1)
+                    if (objectRandomNumber <= 30)
                     {
                         lastSpawned = Instantiate(Collectables[1], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
                         lastSpawned.transform.SetParent(island.transform);
                     }
-                    else if (objectRandomNumber == 2)
+                    else 
                     {
                         lastSpawned = Instantiate(Collectables[2], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
                         lastSpawned.transform.SetParent(island.transform);

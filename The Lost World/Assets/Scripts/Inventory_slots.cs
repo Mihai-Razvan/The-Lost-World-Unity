@@ -17,9 +17,9 @@ public class Inventory_slots : MonoBehaviour, IPointerDownHandler, IDragHandler,
     public int batteryCode;
     [SerializeField]
     public float maxcharge;       //cat ar avea max bateria asta e pt fill
-    private float battery_Charge_31 = 20;
-    private float battery_Charge_32 = 50;
-    private float battery_Charge_33 = 600;
+    private float battery_Charge_31 = 30;
+    private float battery_Charge_32 = 90;
+    private float battery_Charge_33 = 300;
     public float batteryCharge;   //cat mai are
     
 

@@ -239,7 +239,7 @@ public class IslandObjects_Forest : MonoBehaviour
     {
         spawnedObjectsNumber = 0;
         notSpawnedConsecutively = 0;
-        numberOfObjects = Random.Range(80, 120);       //15,30
+        numberOfObjects = Random.Range(80, 120);       //80 120
         while (spawnedObjectsNumber < numberOfObjects && notSpawnedConsecutively < 50)
         {
             RaycastHit hit;
@@ -332,24 +332,24 @@ public class IslandObjects_Forest : MonoBehaviour
                 Collider[] colliders = Physics.OverlapSphere(hit.point, 3, collectablesMask);
                 if (colliders.Length == 0)
                 {
-                    objectRandomNumber = (int)Random.Range(1, 5);
+                    objectRandomNumber = (int)Random.Range(1, 100);
 
-                    if (objectRandomNumber == 1)
+                    if (objectRandomNumber <= 30)
                     {
                         lastSpawned = Instantiate(Collectables[1], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
                         lastSpawned.transform.SetParent(island.transform);
                     }
-                    else if (objectRandomNumber == 2)
+                    else if (objectRandomNumber <= 60)
                     {
                         lastSpawned = Instantiate(Collectables[2], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
                         lastSpawned.transform.SetParent(island.transform);
                     }
-                    else if (objectRandomNumber == 3)
+                    else if (objectRandomNumber <= 85)
                     {
                         lastSpawned = Instantiate(Collectables[3], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
                         lastSpawned.transform.SetParent(island.transform);
                     }
-                    else if (objectRandomNumber == 4)
+                    else 
                     {
                         lastSpawned = Instantiate(Collectables[4], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
                         lastSpawned.transform.SetParent(island.transform);

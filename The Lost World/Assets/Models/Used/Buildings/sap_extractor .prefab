@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlaced: 1
-  production_Time: 5
+  production_Time: 90
   time_On_This_Round: 0
   full: {fileID: 2536942874006616993}
   cactusCheckPoint: {fileID: 1300675911113168975}
@@ -166,6 +166,7 @@ MonoBehaviour:
   islandObjectsMask:
     serializedVersion: 2
     m_Bits: 2048
+  attached_cactus_rotation: {x: 0, y: 0, z: 0}
 --- !u!65 &1254604402482240578
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -22,12 +22,12 @@ public class Item_004 : MonoBehaviour
     public float Transforming_Time_Left;
     public int produced_item_code;
 
-    private int woodFuel = 10;      //cat fuel da wood
-    private int logFuel = 100;
+    private int woodFuel = 30;      //cat fuel da wood
+    private int logFuel = 90;
 
-    private int iron_ore_transform_time= 5;
-    private int rich_ore_transform_time = 5;
-    private int copper_ore_transform_time = 5;
+    private int iron_ore_transform_time= 15;
+    private int rich_ore_transform_time = 25;
+    private int copper_ore_transform_time = 15;
 
 
     [SerializeField]

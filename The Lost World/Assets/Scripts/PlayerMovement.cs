@@ -81,13 +81,18 @@ public class PlayerMovement : MonoBehaviour
 
             velocity.y += gravity * Time.deltaTime;
 
-          //  controller.Move(velocity * Time.deltaTime);
+            controller.Move(velocity * Time.deltaTime);
 
             if(MovementFrozen == false)
                 Jump();
 
             InactiveBuildings();
             
+            if(Input.GetKey(KeyCode.N))
+            {
+                FindObjectOfType<Inventory>().quantityToAdd = 50;
+                FindObjectOfType<Inventory>().itemCodeToAdd = 33;
+            }
 
             if (Input.GetKey(KeyCode.M))
                 Application.Quit();

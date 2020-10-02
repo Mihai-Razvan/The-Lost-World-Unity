@@ -1861,7 +1861,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flySpeed: 10
-  MaximumjetpackMoveSpeed: 1000
   acceleration: 15
   useJetpack: 0
   islandMask:
@@ -7164,7 +7163,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 0
+  MinDistance: 0.1
   MaxDistance: 5
   Pan2D: 0
   rolloffMode: 0
@@ -7200,7 +7199,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -11552,8 +11551,8 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 1200
-  field of view: 60
+  far clip plane: 2600
+  field of view: 70
   orthographic: 0
   orthographic size: 5
   m_Depth: -1

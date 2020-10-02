@@ -86,8 +86,8 @@ MonoBehaviour:
   - {fileID: 9161183052242728310, guid: cb1a0ed714fe0134ea0386cebaea2915, type: 3}
   Collectables:
   - {fileID: 0}
-  - {fileID: 5186552759174715207, guid: 0f6208a86a3bdfb4d8ec6a5cbbcd77fa, type: 3}
   - {fileID: 7962113399035296089, guid: 843df2e22f731f542af7822494fad81e, type: 3}
+  - {fileID: 5186552759174715207, guid: 0f6208a86a3bdfb4d8ec6a5cbbcd77fa, type: 3}
   Mini_Forest_Island: {fileID: 1456334791812909378, guid: d80c83c4c38cb8f4983b51af4f3058d3,
     type: 3}
   islandActivated: 1

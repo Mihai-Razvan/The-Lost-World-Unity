@@ -98,13 +98,13 @@ MonoBehaviour:
   Collectables:
   - {fileID: 0}
   - {fileID: 7962113399035296089, guid: 843df2e22f731f542af7822494fad81e, type: 3}
-  - {fileID: 4642869297304928665, guid: 88736fbb81cc8624ab651317cbe06d83, type: 3}
   - {fileID: 5186552759174715207, guid: 0f6208a86a3bdfb4d8ec6a5cbbcd77fa, type: 3}
   - {fileID: 7830436593261658875, guid: 4c650e0e95cb26146a7fcaa9fe36547e, type: 3}
+  - {fileID: 4642869297304928665, guid: 88736fbb81cc8624ab651317cbe06d83, type: 3}
+  - {fileID: 8836009711492379744, guid: 03a4798424451904994514dabe52c827, type: 3}
   - {fileID: 2877075445177184968, guid: 8f2fcc2f938f21741908c1659b3226f6, type: 3}
   - {fileID: 4336798209637963580, guid: 688ed1e030e1e6441815b8d973298afd, type: 3}
   - {fileID: 4563156725651044954, guid: 7263ccfcf7a2b4140b8b5305c8396fe2, type: 3}
-  - {fileID: 8836009711492379744, guid: 03a4798424451904994514dabe52c827, type: 3}
   islandActivated: 1
   Mini_Snow_Island: {fileID: 4785332356287954717, guid: 198db9f29c1272b409b62657a41cdcc4,
     type: 3}
@@ -117,6 +117,7 @@ MonoBehaviour:
   snow_animal_1: {fileID: 6940758417008733545, guid: e533279b02342c941aa48b033d5fbd75,
     type: 3}
   Respawned: 0
+  hasBuildingOnIt: 0
 --- !u!65 &9007437532873510346
 BoxCollider:
   m_ObjectHideFlags: 0

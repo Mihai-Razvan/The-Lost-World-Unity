@@ -103,7 +103,7 @@ public class IslandObjects_Snow : MonoBehaviour
 
         if (CollesctablesHaveSpawned == false)       //spawneaza cand e playeru aproape de is
         {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, 30f, playerMask);
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 300f, playerMask);
             if (colliders.Length != 0)
             {
                 CollectablesSpawn();
@@ -245,7 +245,7 @@ public class IslandObjects_Snow : MonoBehaviour
     {
         spawnedObjectsNumber = 0;
         notSpawnedConsecutively = 0;
-        numberOfObjects = Random.Range(80, 150);       //15,30
+        numberOfObjects = Random.Range(80, 150);       //80 150
         while (spawnedObjectsNumber < numberOfObjects && notSpawnedConsecutively < 50)
         {
             RaycastHit hit;
@@ -353,24 +353,24 @@ public class IslandObjects_Snow : MonoBehaviour
                 Collider[] colliders = Physics.OverlapSphere(hit.point, 3, collectablesMask);
                 if (colliders.Length == 0)
                 {
-                    objectRandomNumber = (int)Random.Range(1, 5);
+                    objectRandomNumber = (int)Random.Range(1, 100);
 
-                    if (objectRandomNumber == 1)
+                    if (objectRandomNumber <= 15)
                     {
                         lastSpawned = Instantiate(Collectables[1], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
                         lastSpawned.transform.SetParent(island.transform);
                     }
-                    else if (objectRandomNumber == 2)
+                    else if (objectRandomNumber <= 55)
                     {
                         lastSpawned = Instantiate(Collectables[2], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
                         lastSpawned.transform.SetParent(island.transform);
                     }
-                    else if (objectRandomNumber == 3)
+                    else if (objectRandomNumber <= 75)
                     {
                         lastSpawned = Instantiate(Collectables[3], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
                         lastSpawned.transform.SetParent(island.transform);
                     }
-                    else if (objectRandomNumber == 4)
+                    else 
                     {
                         lastSpawned = Instantiate(Collectables[4], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
                         lastSpawned.transform.SetParent(island.transform);
@@ -476,24 +476,24 @@ public class IslandObjects_Snow : MonoBehaviour
                     Collider[] colliders = Physics.OverlapSphere(hit[i].point, 3, collectablesMask);
                     if (colliders.Length == 0)
                     {
-                        objectRandomNumber = (int)Random.Range(1, 5);
+                        objectRandomNumber = (int)Random.Range(1, 100);
 
-                        if (objectRandomNumber == 1)        //copper ingot
+                        if (objectRandomNumber <= 35)        
                         {
                             lastSpawned = Instantiate(Collectables[5], hit[i].point, Quaternion.FromToRotation(Vector3.up, hit[i].normal));
                             lastSpawned.transform.SetParent(island.transform);
                         }
-                        else if (objectRandomNumber == 2)     //silicon
+                        else if (objectRandomNumber <= 70)     
                         {
                             lastSpawned = Instantiate(Collectables[6], hit[i].point, Quaternion.FromToRotation(Vector3.up, hit[i].normal));
                             lastSpawned.transform.SetParent(island.transform);
                         }
-                        else if (objectRandomNumber == 3)     //crystal
+                        else if (objectRandomNumber <= 90)     
                         {
                             lastSpawned = Instantiate(Collectables[7], hit[i].point, Quaternion.FromToRotation(Vector3.up, hit[i].normal));
                             lastSpawned.transform.SetParent(island.transform);
                         }
-                        else if (objectRandomNumber == 4)     //rich iron ore
+                        else    
                         {
                             lastSpawned = Instantiate(Collectables[8], hit[i].point, Quaternion.FromToRotation(Vector3.up, hit[i].normal));
                             lastSpawned.transform.SetParent(island.transform);
