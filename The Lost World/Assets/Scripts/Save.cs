@@ -92,7 +92,10 @@ public class Save : MonoBehaviour
         PlayerPrefs.SetInt("Inventory_Battery_Code_Special_Slot", special_slot.GetComponent<Inventory_slots>().batteryCode);
         PlayerPrefs.SetFloat("Inventory_Battery_Charge_Special_Slot", special_slot.GetComponent<Inventory_slots>().batteryCharge);
         PlayerPrefs.SetFloat("Inventory_Battery_Max_Charge_Special_Slot", special_slot.GetComponent<Inventory_slots>().maxcharge);
+
+        PlayerPrefs.SetInt("First_Created_World", 1);
     }
+
 
     void LoadPlayer()
     {

@@ -69,9 +69,8 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
         AddToInventory();
         
-        if (inventory_craftingIsActive == true || FindObjectOfType<Game_Menu>().game_menu_isactive == true)
+        if (inventory_craftingIsActive == true)
         {
-            Cursor.visible = true;
             for (int i = 1; i <= 15; i++)
                 if (Slot_Item_Quantity[i] == 0)
                     Slot_Item_Code[i] = 0;
@@ -86,70 +85,45 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             FindObjectOfType<Handing_Item>().SelectedItemCode = 0;
 
             if (InitialSlotItemCodeDrag != 0)
-            {           
+            {
                 ImageOnMouse.gameObject.SetActive(true);
                 ImageOnMouse.transform.position = Input.mousePosition;
-                ImageOnMouse.GetComponent<Image>().sprite = FindObjectOfType<List_Of_Items>().Inventory_Sprite[InitialSlotItemCodeDrag];              
+                ImageOnMouse.GetComponent<Image>().sprite = FindObjectOfType<List_Of_Items>().Inventory_Sprite[InitialSlotItemCodeDrag];
             }
             else
                 ImageOnMouse.gameObject.SetActive(false);
+        }
 
-            /*
-            if (Input.GetKeyUp(KeyCode.Mouse0))
-            {
-                if (Initial_Slot_Gameobject != null && Initial_Slot_Gameobject.tag == "Inventory_Slot")            //drop la iteme din inventory
-                {
-                    Slot_Item_Code[InitialSlotNumberDrag] = 0;
-                    Slot_Item_Quantity[InitialSlotNumberDrag] = 0;
-                }
-                else if (Initial_Slot_Gameobject != null && Initial_Slot_Gameobject.tag == "Furnace_Inventory_Slot")
-                {
-                    FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Code[InitialSlotNumberDrag] = 0;
-                    FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Quantity[InitialSlotNumberDrag] = 0;
-                }
-                else if (Initial_Slot_Gameobject != null && Initial_Slot_Gameobject.tag == "Chest_Inventory_Slot")
-                {
-                    FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_030>().Slot_Item_Code[InitialSlotNumberDrag] = 0;
-                    FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_030>().Slot_Item_Quantity[InitialSlotNumberDrag] = 0;
-                }
 
-                Instantiate(drop_box, player.transform.position, Quaternion.identity);
-                InitialSlotNumberDrag = 0;
-                InitialSlotItemCodeDrag = 0;
-                InitialSlotQuantityDrag = 0;
-                Initial_Slot_Gameobject = null;
-                
-            }
-            */
+
+        if (inventory_craftingIsActive == true || FindObjectOfType<Game_Menu>().game_menu_isactive == true)
+        {
+            Cursor.visible = true;
+            FindObjectOfType<PlayerMovement>().MovementFrozen = true;
         }
         else
+        {
             Cursor.visible = false;
-        
+            FindObjectOfType<PlayerMovement>().MovementFrozen = false;
+        }
 
-       /* for (int i = 16; i <= 24; i++)
-            if (Slot_Item_Quantity[i] == 0)
-                Slot_Item_Code[i] = 0;
-                */
-        
-
-        Center_Dot.SetActive(!inventory_craftingIsActive);
-       // Cursor.visible = inventory_craftingIsActive;
+            Center_Dot.SetActive(!inventory_craftingIsActive);
     }
     
 
     void ToggleInventory()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && FindObjectOfType<Acces_Building>().Building_Inventory_Opened == false)
+        if (Input.GetKeyDown(KeyCode.Tab) && FindObjectOfType<Acces_Building>().Building_Inventory_Opened == false && FindObjectOfType<Game_Menu>().game_menu_isactive == false)
         {
             if (inventory_craftingIsActive == false)
             {
                 Inventory_Crafting_Panel.SetActive(true);
                 inventory_craftingIsActive = true;
 
-                Inventory_Panel.SetActive(true);
-                Crafting_Panel.SetActive(false);
+                inventoryIsActive = true;
 
-                FindObjectOfType<PlayerMovement>().MovementFrozen = true;
+                Inventory_Panel.SetActive(true);
+                Crafting_Panel.SetActive(false);             
             }
             else
             {
@@ -159,9 +133,6 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
                 InitialSlotNumberDrag = 0;
                 InitialSlotItemCodeDrag = 0;
                 InitialSlotQuantityDrag = 0;
-
-                FindObjectOfType<PlayerMovement>().MovementFrozen = false;
-
             }
         }
     }

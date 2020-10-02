@@ -77,7 +77,9 @@ public class PlayerMovement : MonoBehaviour
 
             controller.Move(velocity * Time.deltaTime);
 
-            Jump();
+            if(MovementFrozen == false)
+                Jump();
+
             InactiveBuildings();
             
 

@@ -47,6 +47,9 @@ public class Acces_Building : MonoBehaviour
                             colliders[0].GetComponent<Item_004>().BuildingAccessed = true;
                             FindObjectOfType<Inventory>().Item_004_Inventory_Panel.SetActive(true);
                             FindObjectOfType<Inventory>().inventory_craftingIsActive = true;
+                            FindObjectOfType<Inventory>().inventoryIsActive = true;
+                            FindObjectOfType<Inventory>().Inventory_Panel.SetActive(true);
+                            FindObjectOfType<Inventory>().Crafting_Panel.SetActive(false);
                             Building_Inventory_Opened = true;
                         }
                         else           // e deja in meniu la furnace si acu iese
@@ -83,6 +86,9 @@ public class Acces_Building : MonoBehaviour
                             colliders[0].GetComponent<Item_030>().BuildingAccessed = true;
                             FindObjectOfType<Inventory>().Item_030_Inventory_Panel.SetActive(true);
                             FindObjectOfType<Inventory>().inventory_craftingIsActive = true;
+                            FindObjectOfType<Inventory>().inventoryIsActive = true;
+                            FindObjectOfType<Inventory>().Inventory_Panel.SetActive(true);
+                            FindObjectOfType<Inventory>().Crafting_Panel.SetActive(false);
                             Building_Inventory_Opened = true;
 
                             FindObjectOfType<Sounds_Player>().chest_open_sound.Play();
