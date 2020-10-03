@@ -53,8 +53,8 @@ public class Player_Stats : MonoBehaviour
         playerHealth -= (playerPoison / 100) * Time.deltaTime;                                      //daca ai otrava scade viata;    
 
 
-        if (playerHealth <= 0)
-            PlayerDie();
+       // if (playerHealth <= 0)
+       //     PlayerDie();
 
 
         if (playerHealth <= 20)

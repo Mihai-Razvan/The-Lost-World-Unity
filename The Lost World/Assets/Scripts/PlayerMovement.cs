@@ -83,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
 
             controller.Move(velocity * Time.deltaTime);
 
+          
             if(MovementFrozen == false)
                 Jump();
 
@@ -90,8 +91,58 @@ public class PlayerMovement : MonoBehaviour
             
             if(Input.GetKey(KeyCode.N))
             {
-                FindObjectOfType<Inventory>().quantityToAdd = 50;
+                FindObjectOfType<Inventory>().quantityToAdd = 1;
                 FindObjectOfType<Inventory>().itemCodeToAdd = 33;
+            }
+            if (Input.GetKey(KeyCode.Z))
+            {
+                FindObjectOfType<Inventory>().quantityToAdd = 1;
+                FindObjectOfType<Inventory>().itemCodeToAdd = 4;
+            }
+            if (Input.GetKey(KeyCode.X))
+            {
+                FindObjectOfType<Inventory>().quantityToAdd = 1;
+                FindObjectOfType<Inventory>().itemCodeToAdd = 8;
+            }
+            if (Input.GetKey(KeyCode.V))
+            {
+                FindObjectOfType<Inventory>().quantityToAdd = 1;
+                FindObjectOfType<Inventory>().itemCodeToAdd = 9;
+            }
+            if (Input.GetKey(KeyCode.B))
+            {
+                FindObjectOfType<Inventory>().quantityToAdd = 1;
+                FindObjectOfType<Inventory>().itemCodeToAdd = 14;
+            }
+            if (Input.GetKey(KeyCode.L))
+            {
+                FindObjectOfType<Inventory>().quantityToAdd = 1;
+                FindObjectOfType<Inventory>().itemCodeToAdd = 15;
+            }
+            if (Input.GetKey(KeyCode.H))
+            {
+                FindObjectOfType<Inventory>().quantityToAdd = 1;
+                FindObjectOfType<Inventory>().itemCodeToAdd = 16;
+            }
+            if (Input.GetKey(KeyCode.V))
+            {
+                FindObjectOfType<Inventory>().quantityToAdd = 1;
+                FindObjectOfType<Inventory>().itemCodeToAdd = 17;
+            }
+            if (Input.GetKey(KeyCode.K))
+            {
+                FindObjectOfType<Inventory>().quantityToAdd = 1;
+                FindObjectOfType<Inventory>().itemCodeToAdd = 26;
+            }
+            if (Input.GetKey(KeyCode.J))
+            {
+                FindObjectOfType<Inventory>().quantityToAdd = 1;
+                FindObjectOfType<Inventory>().itemCodeToAdd = 30;
+            }
+            if (Input.GetKey(KeyCode.G))
+            {
+                FindObjectOfType<Inventory>().quantityToAdd = 1;
+                FindObjectOfType<Inventory>().itemCodeToAdd = 13;
             }
 
             if (Input.GetKey(KeyCode.M))

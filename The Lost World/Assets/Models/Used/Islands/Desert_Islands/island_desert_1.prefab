@@ -54,10 +54,10 @@ MonoBehaviour:
     m_Bits: 1024
   objectsMask:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 829440
   collectablesMask:
     serializedVersion: 2
-    m_Bits: 6144
+    m_Bits: 833536
   Spawn_Surface_Mask:
     serializedVersion: 2
     m_Bits: 1536
