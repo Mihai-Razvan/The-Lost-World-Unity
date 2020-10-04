@@ -53,7 +53,7 @@ public class Save : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        SaveFunction();
+       // SaveFunction();
 
     }
 

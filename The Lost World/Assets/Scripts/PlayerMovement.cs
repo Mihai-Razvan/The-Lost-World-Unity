@@ -34,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 jumpDirection;
 
     private float time = 0;
+    [SerializeField]
+    private GameObject canvas;
 
     [SerializeField]
     private LayerMask buildingMask;
@@ -144,9 +146,14 @@ public class PlayerMovement : MonoBehaviour
                 FindObjectOfType<Inventory>().quantityToAdd = 1;
                 FindObjectOfType<Inventory>().itemCodeToAdd = 13;
             }
+            if (Input.GetKey(KeyCode.F))
+            {
+                FindObjectOfType<Inventory>().quantityToAdd = 1;
+                FindObjectOfType<Inventory>().itemCodeToAdd = 9;
+            }
 
             if (Input.GetKey(KeyCode.M))
-                Application.Quit();
+                canvas.SetActive(!canvas.activeSelf);
         }
 
 
