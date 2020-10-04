@@ -69,6 +69,7 @@ public class Game_Menu : MonoBehaviour
 
     public void Exit()
     {
+        FindObjectOfType<Save>().SaveFunction();
         Application.Quit();
     }
 }
