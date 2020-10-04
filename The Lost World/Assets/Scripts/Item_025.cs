@@ -22,8 +22,8 @@ public class Item_025 : MonoBehaviour
     
     void Update()
     {
-        Xcoord.GetComponent<TextMeshProUGUI>().text = "X: " + ((int) (player.transform.position.x / 10)).ToString();
-        Ycoord.GetComponent<TextMeshProUGUI>().text = "Y: " + ((int) (player.transform.position.y / 10)).ToString();
-        Zcoord.GetComponent<TextMeshProUGUI>().text = "Z: " + ((int) (player.transform.position.z / 10)).ToString();
+        Xcoord.GetComponent<TextMeshPro>().text = "X:" + ((int) (player.transform.position.x / 10)).ToString();
+        Ycoord.GetComponent<TextMeshPro>().text = "Y:" + ((int) (player.transform.position.y / 10)).ToString();
+        Zcoord.GetComponent<TextMeshPro>().text = "Z:" + ((int) (player.transform.position.z / 10)).ToString();
     }
 }

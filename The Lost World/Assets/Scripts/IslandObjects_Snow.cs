@@ -7,14 +7,15 @@ public class IslandObjects_Snow : MonoBehaviour
 {
     [SerializeField]
     private LayerMask playerMask;
+    [SerializeField]
     private bool CollesctablesHaveSpawned;
     private bool ObjectdHaveSpawned;
     private bool ReliefHasSpawned;
     private GameObject island;
     [SerializeField]
     public float SpawnHeight;         // se adunna la pozitia insulei si acolo spawneaza obiectele si de acolo face uin ray in jos 
-    private int minRange = -350;     //de la centru insulei la ce x si z random sa se spawneze obiectele
-    private int maxRange = 350;
+    private int minRange = -320;     //de la centru insulei la ce x si z random sa se spawneze obiectele
+    private int maxRange = 320;
     private int minRangeRelief = -120;   // e mai mic ca iese de pe insula
     private int maxRangeRelief = 120;
     private int minRangeBigRelief = -40;
@@ -50,7 +51,7 @@ public class IslandObjects_Snow : MonoBehaviour
     private GameObject[] Collectables;
 
     private GameObject lastSpawned;
-
+    [SerializeField]
     private bool thingsOnIslandActive;
     
     [SerializeField]
@@ -107,12 +108,12 @@ public class IslandObjects_Snow : MonoBehaviour
             if (colliders.Length != 0)
             {
                 CollectablesSpawn();
-                if (IsCaveOnIsland)
+                CollesctablesHaveSpawned = true;
+                if (IsCaveOnIsland == true)
                 {
                     CaveCollectablesSpawn();
                     CaveObjectSpawn();
-                }
-                CollesctablesHaveSpawned = true;
+                }             
             }
         }
 
@@ -246,7 +247,7 @@ public class IslandObjects_Snow : MonoBehaviour
         spawnedObjectsNumber = 0;
         notSpawnedConsecutively = 0;
         numberOfObjects = Random.Range(80, 150);       //80 150
-        while (spawnedObjectsNumber < numberOfObjects && notSpawnedConsecutively < 50)
+        while (spawnedObjectsNumber < numberOfObjects && notSpawnedConsecutively < 150)
         {
             RaycastHit hit;
 
@@ -416,9 +417,10 @@ public class IslandObjects_Snow : MonoBehaviour
             // for (int i = 0; i < island.transform.childCount; i++)
             //island.transform.GetChild(i).gameObject.SetActive(true);
 
-         //   CaveObjectSpawn();
-            CaveCollectablesSpawn();
+            //   CaveObjectSpawn();
+
             ObjectsSpawn();
+            CaveCollectablesSpawn();          
             CollectablesSpawn();
             
         }

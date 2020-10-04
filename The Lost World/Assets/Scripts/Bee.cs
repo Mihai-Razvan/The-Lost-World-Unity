@@ -166,6 +166,7 @@ public class Bee : MonoBehaviour
 
         GetComponent<Rigidbody>().useGravity = true;
         Destroy(GetComponent<Animator>());
+        Destroy(GetComponent<AudioSource>());
     }
 
 

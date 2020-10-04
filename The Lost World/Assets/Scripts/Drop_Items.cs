@@ -70,7 +70,7 @@ public class Drop_Items : MonoBehaviour
             FindObjectOfType<Inventory>().Initial_Slot_Gameobject = null;
         }
 
-        GameObject spawnedBox = Instantiate(FindObjectOfType<Inventory>().drop_box, FindObjectOfType<Inventory>().player.transform.position, Quaternion.identity);
+        GameObject spawnedBox = Instantiate(FindObjectOfType<Inventory>().drop_box, FindObjectOfType<Inventory>().player.transform.position + FindObjectOfType<Inventory>().player.transform.forward.normalized * 2, Quaternion.identity);
         spawnedBox.GetComponent<Dropped_Box>().itemCode = FindObjectOfType<Inventory>().InitialSlotItemCodeDrag;
         spawnedBox.GetComponent<Dropped_Box>().itemQuantity = FindObjectOfType<Inventory>().InitialSlotQuantityDrag;
 
