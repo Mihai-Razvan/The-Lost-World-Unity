@@ -196,7 +196,7 @@ public class Bee : MonoBehaviour
     {
         //Destination();
 
-        if (isDead == false && collision.collider.tag != "Bee" && isPet == false)      //cand e pet poate trece prin lucruri
+        if (isDead == false && collision.collider.tag != "Bee" && collision.collider.tag != "Player" && isPet == false)      //cand e pet poate trece prin lucruri
         {
             attackPhase = false;
             CollidingDestination();

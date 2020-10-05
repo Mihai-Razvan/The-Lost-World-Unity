@@ -150,8 +150,8 @@ public class IslandObjects_Snow : MonoBehaviour
             
             if(Physics.Raycast(new Vector3(transform.position.x + Random.Range(minRangeBigRelief, maxRangeBigRelief), transform.position.y + SpawnHeight, transform.position.z + Random.Range(minRangeBigRelief, maxRangeBigRelief)), Vector3.down, out hit, 100, Spawn_Surface_Mask))
             {
-                objectRandomNumber = (int)Random.Range(1, 3);
-                if (objectRandomNumber == 1)
+                objectRandomNumber = (int)Random.Range(1, 100);
+                if (objectRandomNumber <= 75)
                 {
                     Collider[] colliders = Physics.OverlapSphere(hit.point, 300, reliefMask);
                     if (colliders.Length == 0)

@@ -36,9 +36,6 @@ public class Handing_Item : MonoBehaviour
     private GameObject Item_025;    //GPS
 
 
-    [SerializeField]
-    private GameObject Item_25_Text_Panel;    //panelu de la gps de are x,y,z coord
-
     void Start()
     {
         Item_012.SetActive(false);
@@ -76,9 +73,6 @@ public class Handing_Item : MonoBehaviour
             handing_Item = true;
             item_In_Hands = Item_025;
         }
-        
-
-        Item_25_Text_Panel.SetActive(Item_025.activeSelf);
 
     }
 
@@ -177,7 +171,6 @@ public class Handing_Item : MonoBehaviour
         }
 
         else
-
             FindObjectOfType<Buttons>().EatButton.SetActive(false);
     }
 
