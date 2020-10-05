@@ -28,6 +28,10 @@ public class Bee : MonoBehaviour
     private float timeSinceHitWhenDead;
     public bool isPet;
 
+    [SerializeField]
+    private float damage_given;
+    [SerializeField]
+    private float poison_given;
 
     void Start()
     {
@@ -136,8 +140,8 @@ public class Bee : MonoBehaviour
             attackInstantiateTime += Time.deltaTime;
             if (attackInstantiateTime >= 2f)
             {
-                FindObjectOfType<Player_Stats>().playerHealth -= 5;
-                FindObjectOfType<Player_Stats>().playerPoison += 5;
+                FindObjectOfType<Player_Stats>().playerHealth -= damage_given;
+                FindObjectOfType<Player_Stats>().playerPoison += poison_given;
                 if (FindObjectOfType<Player_Stats>().playerPoison > 100)
                     FindObjectOfType<Player_Stats>().playerPoison = 100;
                 attackInstantiateTime = 0;

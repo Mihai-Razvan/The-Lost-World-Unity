@@ -59,8 +59,8 @@ public class PlayerMovement : MonoBehaviour
 
             if (isGrounded == true && velocity.y < 0)
             {
-                if (velocity.y < -50)
-                    FindObjectOfType<Player_Stats>().playerHealth -= Mathf.Abs((velocity.y + 50) * FindObjectOfType<Player_Stats>().falling_damage);
+                if (velocity.y < -30)
+                    FindObjectOfType<Player_Stats>().playerHealth -= Mathf.Abs((velocity.y + 30) * FindObjectOfType<Player_Stats>().falling_damage);
                 velocity.y = -2f;
             }
 
@@ -91,6 +91,7 @@ public class PlayerMovement : MonoBehaviour
 
             InactiveBuildings();
             
+            /*
             if(Input.GetKey(KeyCode.N))
             {
                 FindObjectOfType<Inventory>().quantityToAdd = 1;
@@ -154,6 +155,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetKey(KeyCode.M))
                 canvas.SetActive(!canvas.activeSelf);
+            */
         }
 
 
@@ -204,9 +206,9 @@ public class PlayerMovement : MonoBehaviour
         for (int i = 0; i < colliders.Length; i++)
             if (colliders[i].tag == "Item Point 008" || colliders[i].tag == "Item Point 009" || colliders[i].tag == "Item Point 014" || colliders[i].tag == "Item Point 015" || colliders[i].tag == "Item Point 016" || colliders[i].tag == "Item Point 017" || colliders[i].tag == "Item Point 030")
             {
-                if (Vector3.Distance(transform.position, colliders[i].gameObject.transform.position) < 50)
+                if (Vector3.Distance(transform.position, colliders[i].gameObject.transform.position) < 65)
                 {
-                    if (Vector3.Distance(transform.position, colliders[i].gameObject.transform.position) < 20)
+                    if (Vector3.Distance(transform.position, colliders[i].gameObject.transform.position) < 30)
                         for (int j = 0; j < colliders[i].transform.childCount; j++)
                             colliders[i].transform.GetChild(j).gameObject.SetActive(true);
                     else

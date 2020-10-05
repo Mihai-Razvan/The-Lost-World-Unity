@@ -6891,7 +6891,7 @@ MonoBehaviour:
   healthFill: {fileID: 1322078946}
   foodFill: {fileID: 978250908}
   poisonFill: {fileID: 738110518}
-  falling_damage: 1
+  falling_damage: 3
 --- !u!114 &446034139
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -334,17 +334,17 @@ public class IslandObjects_Forest : MonoBehaviour
                 {
                     objectRandomNumber = (int)Random.Range(1, 100);
 
-                    if (objectRandomNumber <= 30)
+                    if (objectRandomNumber <= 25)
                     {
                         lastSpawned = Instantiate(Collectables[1], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
                         lastSpawned.transform.SetParent(island.transform);
                     }
-                    else if (objectRandomNumber <= 60)
+                    else if (objectRandomNumber <= 55)
                     {
                         lastSpawned = Instantiate(Collectables[2], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
                         lastSpawned.transform.SetParent(island.transform);
                     }
-                    else if (objectRandomNumber <= 85)
+                    else if (objectRandomNumber <= 80)
                     {
                         lastSpawned = Instantiate(Collectables[3], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
                         lastSpawned.transform.SetParent(island.transform);

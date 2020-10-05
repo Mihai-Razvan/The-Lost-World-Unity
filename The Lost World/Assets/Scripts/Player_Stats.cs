@@ -25,6 +25,7 @@ public class Player_Stats : MonoBehaviour
     private float poisonDecrease = 1f;    //daca are mancare playeru poisinu scade cu 1 pe sec
     private float foodDecrease = 0.15f;         //cat scade food odata pe sec
     private float healthDecrease = 1;                     //cand nu are mancare deloc scade viara
+    private float poison_damage = 5; //cat scade cand ai poision din viata
     void Start()
     {
         
@@ -45,16 +46,16 @@ public class Player_Stats : MonoBehaviour
             if (playerHealth < 100)
                 playerHealth += playerFood * 0.02f * Time.deltaTime;                                        //daca ai mancare creste viata
 
-            playerFood -= (foodDecrease + foodDecrease * (playerPoison / 25)) * Time.deltaTime;         //daca ai otrava cu cat ai mai multa cu atat scade mancarea mai repede daca nu ai scade normal
+            playerFood -= (foodDecrease + foodDecrease * (playerPoison / 10)) * Time.deltaTime;         //daca ai otrava cu cat ai mai multa cu atat scade mancarea mai repede daca nu ai scade normal
         }
         else
             playerHealth -= healthDecrease * Time.deltaTime;
 
-        playerHealth -= (playerPoison / 100) * Time.deltaTime;                                      //daca ai otrava scade viata;    
+        playerHealth -= (playerPoison / 100) * poison_damage * Time.deltaTime;                                      //daca ai otrava scade viata;    
 
 
-       // if (playerHealth <= 0)
-       //     PlayerDie();
+        if (playerHealth <= 0)
+            PlayerDie();
 
 
         if (playerHealth <= 20)

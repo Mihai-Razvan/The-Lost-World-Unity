@@ -69,12 +69,12 @@ public class Spawn_Around_Player : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(spawnPosition, IslanSphereRadius);
         if (colliders.Length == 0)
         {
-            randomIslandNumber = (int) Random.Range(1, 4) ;
-            if (randomIslandNumber == 1)
+            randomIslandNumber = (int) Random.Range(1, 100) ;
+            if (randomIslandNumber <= 40)
               spawnedIsland = Instantiate(island_forest_1, spawnPosition, Quaternion.identity);
-            else if(randomIslandNumber == 2)
+            else if(randomIslandNumber <= 75)
               spawnedIsland = Instantiate(island_snow_1, spawnPosition, Quaternion.identity);
-            else if (randomIslandNumber == 3)
+            else 
                 spawnedIsland = Instantiate(island_desert_1, spawnPosition, Quaternion.identity);
 
         }

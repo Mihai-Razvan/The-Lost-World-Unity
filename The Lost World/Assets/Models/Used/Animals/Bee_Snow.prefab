@@ -84,6 +84,8 @@ MonoBehaviour:
   grounded: 0
   hitWhenDead: 0
   isPet: 0
+  damage_given: 15
+  poison_given: 5
 --- !u!65 &8042504051578702195
 BoxCollider:
   m_ObjectHideFlags: 0
