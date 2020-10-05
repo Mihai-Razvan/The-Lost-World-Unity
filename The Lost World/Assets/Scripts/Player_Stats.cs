@@ -53,6 +53,7 @@ public class Player_Stats : MonoBehaviour
 
         playerHealth -= (playerPoison / 100) * poison_damage * Time.deltaTime;                                      //daca ai otrava scade viata;    
 
+        Limits();
 
         if (playerHealth <= 0)
             PlayerDie();
@@ -72,5 +73,23 @@ public class Player_Stats : MonoBehaviour
         PlayerPrefs.DeleteAll();
         PlayerPrefs.SetInt("World_Created", 0);
         SceneManager.LoadScene("Dead");
+    }
+
+    void Limits()
+    {
+        if (playerHealth < 0)
+            playerHealth = 0;
+        else if (playerHealth > 100)
+            playerHealth = 100;
+
+        if (playerFood < 0)
+            playerFood = 0;
+        else if (playerFood > 100)
+            playerFood = 100;
+
+        if (playerPoison < 0)
+            playerPoison = 0;
+        else if (playerPoison > 100)
+            playerPoison = 100;
     }
 }

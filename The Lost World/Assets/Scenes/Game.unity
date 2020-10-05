@@ -6964,7 +6964,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 1
   m_Radius: 0.2
-  m_SlopeLimit: 75
+  m_SlopeLimit: 45
   m_StepOffset: 0.6
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -14731,7 +14731,6 @@ MonoBehaviour:
   CollidingMaterial: {fileID: 2100000, guid: 4bee31b7ad621394a8234a338cb3f551, type: 2}
   Item_012: {fileID: 1567729086}
   Item_025: {fileID: 158253007}
-  Item_25_Text_Panel: {fileID: 0}
 --- !u!114 &1019792458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25774,12 +25773,12 @@ PrefabInstance:
     - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
         type: 3}
       propertyPath: itemCode.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
         type: 3}
       propertyPath: itemQuantity.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
         type: 3}
@@ -25800,7 +25799,7 @@ PrefabInstance:
     - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
         type: 3}
       propertyPath: itemCode.Array.data[2]
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
         type: 3}
@@ -25810,7 +25809,7 @@ PrefabInstance:
     - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
         type: 3}
       propertyPath: itemQuantity.Array.data[2]
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
         type: 3}

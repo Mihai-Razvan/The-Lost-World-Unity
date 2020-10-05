@@ -27,7 +27,7 @@ public class Spawn_Around_Player : MonoBehaviour
   
     [SerializeField]
     private LayerMask cloudMask;
-    private int cloudSphereRadius = 800;
+    private int cloudSphereRadius = 1000;
     [SerializeField]
     private GameObject cloud;
 
@@ -38,7 +38,7 @@ public class Spawn_Around_Player : MonoBehaviour
     {
         //spawnedIsland = Instantiate(island_forest_1, new Vector3(2315, 0 ,1000), Quaternion.identity);    //spawn island
 
-        for (int i = 1; i <= 20; i++)         //spawneaza nori la inceput 
+        for (int i = 1; i <= 50; i++)         //spawneaza nori la inceput 
         {
            // IslandSpawn();
             CloudsSpawn();
@@ -53,7 +53,7 @@ public class Spawn_Around_Player : MonoBehaviour
         //if(FindObjectOfType<Save>().loaded == true)
         IslandSpawn();
      
-        if((int) Random.Range(1, 50) == 1)
+        if((int) Random.Range(1, 40) == 1)
            CloudsSpawn();
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, 1000f, islandMask);      //activeaza insulele din apropiere; dezactivarea insulelor se face din scriptu lor
