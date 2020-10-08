@@ -6932,7 +6932,8 @@ MonoBehaviour:
   player: {fileID: 446034137}
   controller: {fileID: 446034141}
   x: 0
-  moveSpeed: 10
+  moveSpeed: 5
+  runSpeed: 10
   velocity: {x: 0, y: 0, z: 0}
   groundCheck: {fileID: 926697324}
   sphereRadius: 0.4

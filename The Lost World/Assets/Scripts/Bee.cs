@@ -151,7 +151,7 @@ public class Bee : MonoBehaviour
             attackInstantiateTime = 0;
         
 
-        if (Vector3.Distance(transform.position, player.transform.position) > 50) //daca e prea departe renunta la atac
+        if (Vector3.Distance(transform.position, player.transform.position) > 120) //daca e prea departe renunta la atac
         {
             attackPhase = false;
             Destination();

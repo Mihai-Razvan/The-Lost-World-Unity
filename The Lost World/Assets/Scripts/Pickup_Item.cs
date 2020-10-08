@@ -123,7 +123,7 @@ public class Pickup_Item : MonoBehaviour
 
     public void BeeAttract()
     {
-        Collider[] colliders = Physics.OverlapSphere(player.transform.position, 500f, animalMask);
+        Collider[] colliders = Physics.OverlapSphere(player.transform.position, 60f, animalMask);
         for (int i = 0; i < colliders.Length; i++)
             if(colliders[i].tag == "Bee" && colliders[i].gameObject.GetComponent<Bee>().isPet == false)
                 colliders[i].gameObject.GetComponent<Bee>().attackPhase = true;

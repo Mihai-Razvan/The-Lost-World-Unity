@@ -430,7 +430,7 @@ public class IslandObjects_Snow : MonoBehaviour
 
     void DespawnIsland()     //daca e la sit mare dispare de tot CU TOT CU PUNCT
     {
-        Collider[] despawnIslandCollider = Physics.OverlapSphere(transform.position, 5000f, playerMask);   //5000
+        Collider[] despawnIslandCollider = Physics.OverlapSphere(transform.position, 3000f, playerMask);   //3000
         if (despawnIslandCollider.Length == 0)
             Destroy(gameObject);
     }

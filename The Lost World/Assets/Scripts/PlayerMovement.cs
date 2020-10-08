@@ -10,7 +10,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float x;
     private float z;
-    public int moveSpeed;
+    public int moveSpeed;     //walk speed
+    public int runSpeed; 
     [SerializeField]
     public Vector3 velocity;
     float gravity = -20f;
@@ -72,14 +73,25 @@ public class PlayerMovement : MonoBehaviour
             }
 
             if (FindObjectOfType<Special_Item>().useJetpack == true)    //asta cu jetpacku sa nu poti merge normal daca folosesti jetpacku pt ca se aduna vitezele si se poate exploata
+            {
                 moveSpeed = 0;
+                runSpeed = 0;
+            }
             else
-                moveSpeed = 10;
+            {
+                moveSpeed = 5;
+                runSpeed = 10;
+            }
 
             Vector3 move = transform.right * x + transform.forward * z;
 
             if (MovementFrozen == false)
-                controller.Move(move * moveSpeed * Time.deltaTime);
+            {
+                if(Input.GetKey(KeyCode.LeftShift))
+                    controller.Move(move * runSpeed * Time.deltaTime);
+                else
+                    controller.Move(move * moveSpeed * Time.deltaTime);
+            }
 
             velocity.y += gravity * Time.deltaTime;
 
