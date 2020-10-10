@@ -210,7 +210,7 @@ public class Save : MonoBehaviour
 
     void SaveBuildings()
     {
-        Collider[] colliders = Physics.OverlapSphere(player.transform.position, 7000, Buiding_SaveableMask);
+        Collider[] colliders = Physics.OverlapSphere(player.transform.position, 100000, Buiding_SaveableMask);
 
         numberOfBuildings = 0;
 

@@ -38,7 +38,7 @@ public class Spawn_Around_Player : MonoBehaviour
     {
         //spawnedIsland = Instantiate(island_forest_1, new Vector3(2315, 0 ,1000), Quaternion.identity);    //spawn island
 
-        for (int i = 1; i <= 50; i++)         //spawneaza nori la inceput 
+        for (int i = 1; i <= 80; i++)         //spawneaza nori la inceput 
         {
            // IslandSpawn();
             CloudsSpawn();

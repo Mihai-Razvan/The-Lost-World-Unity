@@ -24,7 +24,7 @@ public class Item_004_Inventory_Slots : MonoBehaviour, IPointerDownHandler, IDra
         itemQuantity = FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Quantity[Slot_Number];
         itemCode = FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Code[Slot_Number];
 
-        if (itemCode != 0 && itemQuantity != 0)
+        if (itemCode != 0 && itemQuantity > 0)
         {
             transform.Find("Item_Image").gameObject.SetActive(true);
             transform.Find("Item_Image").GetComponent<Image>().sprite = FindObjectOfType<List_Of_Items>().Inventory_Sprite[itemCode];
@@ -68,7 +68,7 @@ public class Item_004_Inventory_Slots : MonoBehaviour, IPointerDownHandler, IDra
     {
         Debug.Log("OnEndDrag");
 
-        if (FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().BuildingAccessed == true)
+        if (FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().BuildingAccessed == true && FindObjectOfType<Inventory>().Initial_Slot_Gameobject != this.gameObject)
         {
             if (FindObjectOfType<Inventory>().Initial_Slot_Gameobject.tag == "Furnace_Inventory_Slot")
             {

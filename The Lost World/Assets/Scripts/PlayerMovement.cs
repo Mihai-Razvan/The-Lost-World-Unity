@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -102,72 +103,10 @@ public class PlayerMovement : MonoBehaviour
                 Jump();
 
             InactiveBuildings();
-            
-            /*
-            if(Input.GetKey(KeyCode.N))
-            {
-                FindObjectOfType<Inventory>().quantityToAdd = 1;
-                FindObjectOfType<Inventory>().itemCodeToAdd = 33;
-            }
-            if (Input.GetKey(KeyCode.Z))
-            {
-                FindObjectOfType<Inventory>().quantityToAdd = 1;
-                FindObjectOfType<Inventory>().itemCodeToAdd = 4;
-            }
-            if (Input.GetKey(KeyCode.X))
-            {
-                FindObjectOfType<Inventory>().quantityToAdd = 1;
-                FindObjectOfType<Inventory>().itemCodeToAdd = 8;
-            }
-            if (Input.GetKey(KeyCode.V))
-            {
-                FindObjectOfType<Inventory>().quantityToAdd = 1;
-                FindObjectOfType<Inventory>().itemCodeToAdd = 9;
-            }
-            if (Input.GetKey(KeyCode.B))
-            {
-                FindObjectOfType<Inventory>().quantityToAdd = 1;
-                FindObjectOfType<Inventory>().itemCodeToAdd = 14;
-            }
-            if (Input.GetKey(KeyCode.L))
-            {
-                FindObjectOfType<Inventory>().quantityToAdd = 1;
-                FindObjectOfType<Inventory>().itemCodeToAdd = 15;
-            }
-            if (Input.GetKey(KeyCode.H))
-            {
-                FindObjectOfType<Inventory>().quantityToAdd = 1;
-                FindObjectOfType<Inventory>().itemCodeToAdd = 16;
-            }
-            if (Input.GetKey(KeyCode.V))
-            {
-                FindObjectOfType<Inventory>().quantityToAdd = 1;
-                FindObjectOfType<Inventory>().itemCodeToAdd = 17;
-            }
-            if (Input.GetKey(KeyCode.K))
-            {
-                FindObjectOfType<Inventory>().quantityToAdd = 1;
-                FindObjectOfType<Inventory>().itemCodeToAdd = 26;
-            }
-            if (Input.GetKey(KeyCode.J))
-            {
-                FindObjectOfType<Inventory>().quantityToAdd = 1;
-                FindObjectOfType<Inventory>().itemCodeToAdd = 30;
-            }
-            if (Input.GetKey(KeyCode.G))
-            {
-                FindObjectOfType<Inventory>().quantityToAdd = 1;
-                FindObjectOfType<Inventory>().itemCodeToAdd = 13;
-            }
-            if (Input.GetKey(KeyCode.F))
-            {
-                FindObjectOfType<Inventory>().quantityToAdd = 1;
-                FindObjectOfType<Inventory>().itemCodeToAdd = 9;
-            }
 
-            if (Input.GetKey(KeyCode.M))
-                canvas.SetActive(!canvas.activeSelf);
-            */
+
+            Development();
+            
             
         }
 
@@ -205,7 +144,7 @@ public class PlayerMovement : MonoBehaviour
             else
                 isFlying = false;
         }
-            
+
 
     }
 
@@ -236,6 +175,77 @@ public class PlayerMovement : MonoBehaviour
                         colliders[i].transform.GetChild(j).gameObject.SetActive(false);
             }     
 
+
+    }
+
+
+    void Development()
+    {
+        if (Input.GetKey(KeyCode.N))
+        {
+            FindObjectOfType<Inventory>().quantityToAdd = 1;
+            FindObjectOfType<Inventory>().itemCodeToAdd = 33;
+        }
+        if (Input.GetKey(KeyCode.Z))
+        {
+            FindObjectOfType<Inventory>().quantityToAdd = 1;
+            FindObjectOfType<Inventory>().itemCodeToAdd = 4;
+        }
+        if (Input.GetKey(KeyCode.C))
+        {
+            FindObjectOfType<Inventory>().quantityToAdd = 1;
+            FindObjectOfType<Inventory>().itemCodeToAdd = 8;
+        }
+        if (Input.GetKey(KeyCode.V))
+        {
+            FindObjectOfType<Inventory>().quantityToAdd = 1;
+            FindObjectOfType<Inventory>().itemCodeToAdd = 9;
+        }
+        if (Input.GetKey(KeyCode.B))
+        {
+            FindObjectOfType<Inventory>().quantityToAdd = 1;
+            FindObjectOfType<Inventory>().itemCodeToAdd = 14;
+        }
+        if (Input.GetKey(KeyCode.L))
+        {
+            FindObjectOfType<Inventory>().quantityToAdd = 1;
+            FindObjectOfType<Inventory>().itemCodeToAdd = 15;
+        }
+        if (Input.GetKey(KeyCode.H))
+        {
+            FindObjectOfType<Inventory>().quantityToAdd = 1;
+            FindObjectOfType<Inventory>().itemCodeToAdd = 16;
+        }
+        if (Input.GetKey(KeyCode.V))
+        {
+            FindObjectOfType<Inventory>().quantityToAdd = 1;
+            FindObjectOfType<Inventory>().itemCodeToAdd = 17;
+        }
+        if (Input.GetKey(KeyCode.K))
+        {
+            FindObjectOfType<Inventory>().quantityToAdd = 1;
+            FindObjectOfType<Inventory>().itemCodeToAdd = 26;
+        }
+        if (Input.GetKey(KeyCode.J))
+        {
+            FindObjectOfType<Inventory>().quantityToAdd = 1;
+            FindObjectOfType<Inventory>().itemCodeToAdd = 30;
+        }
+        if (Input.GetKey(KeyCode.G))
+        {
+            FindObjectOfType<Inventory>().quantityToAdd = 1;
+            FindObjectOfType<Inventory>().itemCodeToAdd = 13;
+        }
+        if (Input.GetKey(KeyCode.F))
+        {
+            FindObjectOfType<Inventory>().quantityToAdd = 1;
+            FindObjectOfType<Inventory>().itemCodeToAdd = 9;
+        }
+
+        if (Input.GetKey(KeyCode.M))
+            canvas.SetActive(!canvas.activeSelf);
+        if(Input.GetKey(KeyCode.O))
+            SceneManager.LoadScene("Camera_Rotate");
 
     }
 

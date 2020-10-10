@@ -68,7 +68,7 @@ public class Item_030_Inventory_Slots : MonoBehaviour, IPointerDownHandler, IDra
     {
         Debug.Log("OnEndDrag");
 
-        if (FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_030>().BuildingAccessed == true)
+        if (FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_030>().BuildingAccessed == true && FindObjectOfType<Inventory>().Initial_Slot_Gameobject != this.gameObject)
         {
             if (FindObjectOfType<Inventory>().Initial_Slot_Gameobject.tag == "Chest_Inventory_Slot")
             {

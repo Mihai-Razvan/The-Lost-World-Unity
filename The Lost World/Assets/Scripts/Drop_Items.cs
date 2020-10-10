@@ -46,33 +46,28 @@ public class Drop_Items : MonoBehaviour
 
     void Drop()
     {
-        Debug.Log("dasdad");
-        if (FindObjectOfType<Inventory>().Initial_Slot_Gameobject != null && FindObjectOfType<Inventory>().Initial_Slot_Gameobject.tag == "Inventory_Slot")            //drop la iteme din inventory
+        if (FindObjectOfType<Inventory>().Initial_Slot_Gameobject != null && FindObjectOfType<Inventory>().InitialSlotQuantityDrag > 0)
         {
-            FindObjectOfType<Inventory>().Slot_Item_Code[FindObjectOfType<Inventory>().InitialSlotNumberDrag] = 0;
-            FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Inventory>().InitialSlotNumberDrag] = 0;
-        }
-        else if (FindObjectOfType<Inventory>().Initial_Slot_Gameobject != null && FindObjectOfType<Inventory>().Initial_Slot_Gameobject.tag == "Furnace_Inventory_Slot")
-        {
-            FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Code[FindObjectOfType<Inventory>().InitialSlotNumberDrag] = 0;
-            FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Quantity[FindObjectOfType<Inventory>().InitialSlotNumberDrag] = 0;
-        }
-        else if (FindObjectOfType<Inventory>().Initial_Slot_Gameobject != null && FindObjectOfType<Inventory>().Initial_Slot_Gameobject.tag == "Chest_Inventory_Slot")
-        {
-            FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_030>().Slot_Item_Code[FindObjectOfType<Inventory>().InitialSlotNumberDrag] = 0;
-            FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_030>().Slot_Item_Quantity[FindObjectOfType<Inventory>().InitialSlotNumberDrag] = 0;
-        }
-        else
-        {
-            FindObjectOfType<Inventory>().InitialSlotNumberDrag = 0;
-            FindObjectOfType<Inventory>().InitialSlotItemCodeDrag = 0;
-            FindObjectOfType<Inventory>().InitialSlotQuantityDrag = 0;
-            FindObjectOfType<Inventory>().Initial_Slot_Gameobject = null;
-        }
+            if (FindObjectOfType<Inventory>().Initial_Slot_Gameobject.tag == "Inventory_Slot")            //drop la iteme din inventory
+            {
+                FindObjectOfType<Inventory>().Slot_Item_Code[FindObjectOfType<Inventory>().InitialSlotNumberDrag] = 0;
+                FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Inventory>().InitialSlotNumberDrag] = 0;
+            }
+            else if (FindObjectOfType<Inventory>().Initial_Slot_Gameobject.tag == "Furnace_Inventory_Slot")
+            {
+                FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Code[FindObjectOfType<Inventory>().InitialSlotNumberDrag] = 0;
+                FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().Slot_Item_Quantity[FindObjectOfType<Inventory>().InitialSlotNumberDrag] = 0;
+            }
+            else if (FindObjectOfType<Inventory>().Initial_Slot_Gameobject.tag == "Chest_Inventory_Slot")
+            {
+                FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_030>().Slot_Item_Code[FindObjectOfType<Inventory>().InitialSlotNumberDrag] = 0;
+                FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_030>().Slot_Item_Quantity[FindObjectOfType<Inventory>().InitialSlotNumberDrag] = 0;
+            }
 
-        GameObject spawnedBox = Instantiate(FindObjectOfType<Inventory>().drop_box, FindObjectOfType<Inventory>().player.transform.position + FindObjectOfType<Inventory>().player.transform.forward.normalized * 2, Quaternion.identity);
-        spawnedBox.GetComponent<Dropped_Box>().itemCode = FindObjectOfType<Inventory>().InitialSlotItemCodeDrag;
-        spawnedBox.GetComponent<Dropped_Box>().itemQuantity = FindObjectOfType<Inventory>().InitialSlotQuantityDrag;
+            GameObject spawnedBox = Instantiate(FindObjectOfType<Inventory>().drop_box, FindObjectOfType<Inventory>().player.transform.position + FindObjectOfType<Inventory>().player.transform.forward.normalized * 2, Quaternion.identity);
+            spawnedBox.GetComponent<Dropped_Box>().itemCode = FindObjectOfType<Inventory>().InitialSlotItemCodeDrag;
+            spawnedBox.GetComponent<Dropped_Box>().itemQuantity = FindObjectOfType<Inventory>().InitialSlotQuantityDrag;
+        }    
 
         FindObjectOfType<Inventory>().InitialSlotNumberDrag = 0;
         FindObjectOfType<Inventory>().InitialSlotItemCodeDrag = 0;

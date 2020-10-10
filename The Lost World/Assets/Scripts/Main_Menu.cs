@@ -20,7 +20,7 @@ public class Main_Menu : MonoBehaviour
 
     void Start()
     {
-        spawnedIsland = Instantiate(island_type[(int)Random.Range(1, 3)], new Vector3(0, 0, 0), Quaternion.identity);
+        spawnedIsland = Instantiate(island_type[(int)Random.Range(1, 4)], new Vector3(0, 0, 0), Quaternion.identity);
 
         for (int i = 1; i < 50; i++)
             CloudsSpawn();

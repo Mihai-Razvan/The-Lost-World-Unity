@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Dead.unity
     guid: 3fe1b5a2ac6bcdc469ba322bc2ca65d4
+  - enabled: 1
+    path: Assets/Scenes/Camera_Rotate.unity
+    guid: de218e331525dd549b8792f925df4035
   m_configObjects: {}
