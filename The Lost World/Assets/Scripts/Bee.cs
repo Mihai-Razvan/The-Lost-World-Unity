@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+
 
 public class Bee : MonoBehaviour
 {
@@ -32,6 +34,9 @@ public class Bee : MonoBehaviour
     private float damage_given;
     [SerializeField]
     private float poison_given;
+
+    [SerializeField]
+    private AudioSource bee_sound;
 
     void Start()
     {
@@ -86,6 +91,9 @@ public class Bee : MonoBehaviour
          
         if(isPet == false)        //nu se despawneaza daca e pet
            Despawn();   //daca sunt departe de player
+
+
+        bee_sound.volume = FindObjectOfType<Game_Menu>().master_volume_Slider.value * FindObjectOfType<Sounds_Player>().normal_bee_volume;
     }
 
 

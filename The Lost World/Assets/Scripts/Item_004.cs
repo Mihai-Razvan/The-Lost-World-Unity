@@ -57,6 +57,8 @@ public class Item_004 : MonoBehaviour
                 if (Slot_Item_Quantity[i] == 0)
                     Slot_Item_Code[i] = 0;
                     */
+
+        fireSound.volume = FindObjectOfType<Game_Menu>().master_volume_Slider.value * FindObjectOfType<Sounds_Player>().normal_furnace_volume;
     }
 
     

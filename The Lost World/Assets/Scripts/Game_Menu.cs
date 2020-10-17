@@ -2,15 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+
 
 public class Game_Menu : MonoBehaviour
 {
     [SerializeField]
     private GameObject game_menu_panel;
     public bool game_menu_isactive;
+    [SerializeField]
+    private GameObject settings_panel;
+    public Slider ambience_volume_Slider;
+    public Slider master_volume_Slider;
     void Start()
     {
-        
+        game_menu_panel.SetActive(false);
+        settings_panel.SetActive(false);
     }
 
     
@@ -24,6 +32,17 @@ public class Game_Menu : MonoBehaviour
                 game_menu_isactive = true;
                 CloseOtherMenues();
             }         
+        }
+
+        if(settings_panel.activeInHierarchy == true)
+        {
+            FindObjectOfType<Sounds_Player>().wind_sound.volume = ambience_volume_Slider.value * FindObjectOfType<Sounds_Player>().normal_wind_volume;
+
+            FindObjectOfType<Sounds_Player>().collect_item_sound.volume = master_volume_Slider.value * FindObjectOfType<Sounds_Player>().normal_collect_item_volume;
+            FindObjectOfType<Sounds_Player>().chest_open_sound.volume = master_volume_Slider.value * FindObjectOfType<Sounds_Player>().normal_chest_open_volume;
+            FindObjectOfType<Sounds_Player>().jetpack_sound.volume = master_volume_Slider.value * FindObjectOfType<Sounds_Player>().normal_jetpack_volume;
+            FindObjectOfType<Sounds_Player>().place_building_prefab_sound.volume = master_volume_Slider.value * FindObjectOfType<Sounds_Player>().normal_place_building_prefab_sound_volume;
+            FindObjectOfType<Sounds_Player>().heart_beat_sound.volume = master_volume_Slider.value * FindObjectOfType<Sounds_Player>().normal_heart_beat_sound_volume;
         }
 
     }
@@ -67,9 +86,23 @@ public class Game_Menu : MonoBehaviour
         
     }
 
+
+    public void SettingsButton()
+    {
+        settings_panel.SetActive(true);
+    }
+
+
+    public void Back()           //butonu de back din settings menu
+    {
+        settings_panel.SetActive(false);
+    }
+
     public void Exit()
     {
         FindObjectOfType<Save>().SaveFunction();
         Application.Quit();
     }
+
+
 }

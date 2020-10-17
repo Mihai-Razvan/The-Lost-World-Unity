@@ -86,6 +86,7 @@ MonoBehaviour:
   isPet: 0
   damage_given: 5
   poison_given: 15
+  bee_sound: {fileID: 5741073101403080526}
 --- !u!65 &7957147000324373926
 BoxCollider:
   m_ObjectHideFlags: 0
