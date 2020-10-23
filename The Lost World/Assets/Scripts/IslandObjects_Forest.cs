@@ -364,6 +364,9 @@ public class IslandObjects_Forest : MonoBehaviour
             }
 
         }
+
+
+        HalloweenCollectablesSpawn();
     }
 
 
@@ -560,6 +563,34 @@ public class IslandObjects_Forest : MonoBehaviour
                 }
 
             }
+        }
+    }
+
+
+    private void HalloweenCollectablesSpawn()
+    {
+        spawnedAlready = 0;
+        notSpawnedConsecutively = 0;
+        numberOfCollectables = Random.Range(5, 10);     //20,30
+        while (spawnedAlready < numberOfCollectables && notSpawnedConsecutively < 50)
+        {
+            RaycastHit hit;
+            Physics.Raycast(new Vector3(transform.position.x + Random.Range(minRange, maxRange), transform.position.y + SpawnHeight, transform.position.z + Random.Range(minRange, maxRange)), Vector3.down, out hit, 100, Spawn_Surface_Mask);
+            if (hit.normal.x > -40 && hit.normal.x < 40 && hit.normal.z > -40 && hit.normal.z < 40)
+            {
+                Collider[] colliders = Physics.OverlapSphere(hit.point, 3, collectablesMask);
+                if (colliders.Length == 0)
+                {
+                    lastSpawned = Instantiate(Collectables[5], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+                    lastSpawned.transform.SetParent(island.transform);
+
+                    notSpawnedConsecutively = 0;
+                    spawnedAlready++;
+                }
+                else
+                    notSpawnedConsecutively++;
+            }
+
         }
     }
 }

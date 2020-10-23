@@ -1775,7 +1775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9aa0fc0562f7fd459e66089730b67a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item_Stack_Number: 00000000140000000100000014000000030000001400000014000000010000001400000014000000140000001400000001000000140000001400000014000000140000001400000014000000140000001400000014000000140000001400000014000000010000000300000014000000140000001400000003000000140000001400000014000000f4010000
+  Item_Stack_Number: 0000000014000000010000001400000003000000140000001400000001000000140000001400000014000000140000000100000014000000140000001400000014000000140000001400000014000000140000001400000014000000140000001400000001000000030000001400000014000000140000000300000014000000140000001400000014000000
   Inventory_Sprite:
   - {fileID: 0}
   - {fileID: 21300000, guid: 20d31e0f68488b543ba564a928b249c5, type: 3}
@@ -1811,7 +1811,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: dfff03f864fbf39469485b00e7ab8501, type: 3}
   - {fileID: 21300000, guid: 741c79b7041707947af5625dddff3ec5, type: 3}
   - {fileID: 21300000, guid: c55ee5a3973df344a9a1d813dde4de86, type: 3}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: fd44bed833ee45b409dcd4c575bc3578, type: 3}
   Item_Name:
   - 
   - Stick
@@ -1847,7 +1847,7 @@ MonoBehaviour:
   - Waste Battery
   - High Power Battery
   - Nuclear Battery
-  - 
+  - Pumpkin
   Item_Description:
   - 
   - Perfect to start a fire
@@ -1883,7 +1883,7 @@ MonoBehaviour:
   - Powers the jetpack, but depletes very fast
   - A more powerful battery than the waste one
   - A battery made of the most dangerous resources
-  - 
+  - Deascription
 --- !u!114 &95051175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11019,8 +11019,8 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
+    m_Type: 2
+    m_Resolution: 3
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.05
@@ -12008,7 +12008,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.01
+  near clip plane: 0.1
   far clip plane: 1500
   field of view: 70
   orthographic: 0
@@ -27172,12 +27172,12 @@ PrefabInstance:
     - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
         type: 3}
       propertyPath: itemCode.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
         type: 3}
       propertyPath: itemQuantity.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8049970606977239964, guid: f3da4af9806bc6f479944953db00a2f0,
         type: 3}

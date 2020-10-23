@@ -108,7 +108,13 @@ public class Pickup_Item : MonoBehaviour
                         FindObjectOfType<Inventory>().itemCodeToAdd = colliders[0].GetComponent<Dropped_Box>().itemCode;
                         Destroy(colliders[0].gameObject);
                     }
-                    
+                    else if (colliders[0].gameObject.tag == "Pumpkin")
+                    {
+                        FindObjectOfType<Inventory>().quantityToAdd = 1;
+                        FindObjectOfType<Inventory>().itemCodeToAdd = 34;
+                        Destroy(colliders[0].transform.parent.gameObject);
+                    }
+
 
                     FindObjectOfType<Sounds_Player>().collect_item_sound.Play();
                 }

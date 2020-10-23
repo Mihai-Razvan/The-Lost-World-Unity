@@ -83,6 +83,7 @@ MonoBehaviour:
   - {fileID: 5186552759174715207, guid: 0f6208a86a3bdfb4d8ec6a5cbbcd77fa, type: 3}
   - {fileID: 7830436593261658875, guid: 4c650e0e95cb26146a7fcaa9fe36547e, type: 3}
   - {fileID: 4642869297304928665, guid: 88736fbb81cc8624ab651317cbe06d83, type: 3}
+  - {fileID: 859411326933883880, guid: ebae904f4a649894eaa763c866f2c698, type: 3}
   Mini_Forest_Island: {fileID: 6964081990431678984, guid: 006ec46504747d34fb4ec49e84521f1e,
     type: 3}
   islandActivated: 1
@@ -189,6 +190,11 @@ PrefabInstance:
     - target: {fileID: 3098891562369534509, guid: e78e302339381cf4e8a4b99e1b144167,
         type: 3}
       propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098891562369534509, guid: e78e302339381cf4e8a4b99e1b144167,
+        type: 3}
+      propertyPath: m_ReceiveShadows
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3692300206456438513, guid: e78e302339381cf4e8a4b99e1b144167,
