@@ -1775,7 +1775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9aa0fc0562f7fd459e66089730b67a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item_Stack_Number: 0000000014000000010000001400000003000000140000001400000001000000140000001400000014000000140000000100000014000000140000001400000014000000140000001400000014000000140000001400000014000000140000001400000001000000030000001400000014000000140000000300000014000000140000001400000014000000
+  Item_Stack_Number: 00000000140000000100000014000000030000001400000014000000010000001400000014000000140000001400000001000000140000001400000014000000140000001400000014000000140000001400000014000000140000001400000014000000010000000300000014000000140000001400000003000000140000001400000014000000140000000300000014000000140000001400000014000000
   Inventory_Sprite:
   - {fileID: 0}
   - {fileID: 21300000, guid: 20d31e0f68488b543ba564a928b249c5, type: 3}
@@ -1811,6 +1811,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: dfff03f864fbf39469485b00e7ab8501, type: 3}
   - {fileID: 21300000, guid: 741c79b7041707947af5625dddff3ec5, type: 3}
   - {fileID: 21300000, guid: c55ee5a3973df344a9a1d813dde4de86, type: 3}
+  - {fileID: 21300000, guid: fd44bed833ee45b409dcd4c575bc3578, type: 3}
+  - {fileID: 21300000, guid: fd44bed833ee45b409dcd4c575bc3578, type: 3}
+  - {fileID: 21300000, guid: fd44bed833ee45b409dcd4c575bc3578, type: 3}
+  - {fileID: 21300000, guid: fd44bed833ee45b409dcd4c575bc3578, type: 3}
+  - {fileID: 21300000, guid: fd44bed833ee45b409dcd4c575bc3578, type: 3}
   - {fileID: 21300000, guid: fd44bed833ee45b409dcd4c575bc3578, type: 3}
   Item_Name:
   - 
@@ -1848,6 +1853,11 @@ MonoBehaviour:
   - High Power Battery
   - Nuclear Battery
   - Pumpkin
+  - Cooking Pot
+  - 
+  - 
+  - 
+  - 
   Item_Description:
   - 
   - Perfect to start a fire
@@ -1883,6 +1893,11 @@ MonoBehaviour:
   - Powers the jetpack, but depletes very fast
   - A more powerful battery than the waste one
   - A battery made of the most dangerous resources
+  - Deascription
+  - Deascription
+  - Deascription
+  - Deascription
+  - Deascription
   - Deascription
 --- !u!114 &95051175
 MonoBehaviour:
@@ -15346,6 +15361,7 @@ MonoBehaviour:
     type: 3}
   Item_030: {fileID: 3470267581561924277, guid: ec7888fd523a6c64aa80708cebe78f21,
     type: 3}
+  Item_035: {fileID: 916088625564952076, guid: d3feb9b91faf40b47b2820f28bb47a1e, type: 3}
 --- !u!114 &1019792460
 MonoBehaviour:
   m_ObjectHideFlags: 0
