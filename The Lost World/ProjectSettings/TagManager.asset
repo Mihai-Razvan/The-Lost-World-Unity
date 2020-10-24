@@ -75,6 +75,7 @@ TagManager:
   - Collectable_Objects Point
   - Trash Box
   - Pumpkin
+  - Cooking pot
   layers:
   - Default
   - TransparentFX

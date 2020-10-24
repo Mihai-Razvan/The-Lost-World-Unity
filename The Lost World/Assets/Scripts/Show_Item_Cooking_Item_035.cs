@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Show_Item_Crafting : MonoBehaviour
-{                                                                            
-    //SCRIPTU ASTA E PUS PE CRATING_SHOW_ITEM (ala de sub casutele de crating) SI SE APLICA LA CASUTELE ALEA 4 LA CARE ARATA CE ITIT TREBUIE PT CRAFTING
-    [SerializeField] 
+
+public class Show_Item_Cooking_Item_035 : MonoBehaviour
+{
+    //SCRIPTU ASTA E PUS PE Cooking_SHOW_ITEM (ala de sub casutele de cookibg) SI SE APLICA LA CASUTELE ALEA 4 LA CARE ARATA CE ITIT TREBUIE PT COOKING
+    [SerializeField]
     private GameObject[] requiredItemSlot;     //sloturile alea mici
     private float thisItemQuantity;
     [SerializeField]
@@ -22,7 +23,7 @@ public class Show_Item_Crafting : MonoBehaviour
             requiredItemSlot[i].transform.Find("Item_Image").gameObject.SetActive(false);
     }
 
-   
+
     void Update()
     {
         if (FindObjectOfType<Inventory>().itemCodeHovered > 0)
@@ -42,7 +43,7 @@ public class Show_Item_Crafting : MonoBehaviour
                 requiredItemSlot[i].transform.Find("Quantity_Have").gameObject.SetActive(false);
             }
 
-              /////// 
+            /////// 
 
             transform.Find("Item_Image").gameObject.SetActive(true);
             transform.Find("Item_Image").GetComponent<Image>().sprite = FindObjectOfType<List_Of_Items>().Inventory_Sprite[FindObjectOfType<Inventory>().itemCodeHovered];
@@ -53,25 +54,25 @@ public class Show_Item_Crafting : MonoBehaviour
             transform.Find("Item_Description").gameObject.SetActive(true);
             transform.Find("Item_Description").GetComponent<TextMeshProUGUI>().text = FindObjectOfType<List_Of_Items>().Item_Description[FindObjectOfType<Inventory>().itemCodeHovered];
 
-            for (int i = 1; i < FindObjectOfType<Inventory>().craftingSlotHovered.GetComponent<Crafting>().itemCode.Length; i++)
+            for (int i = 1; i < FindObjectOfType<Inventory>().craftingSlotHovered.GetComponent<Item_035_Cooking_Slots>().itemCode.Length; i++)
             {
-                requiredItemSlot[i].transform.Find("Item_Image").GetComponent<Image>().sprite = FindObjectOfType<List_Of_Items>().Inventory_Sprite[FindObjectOfType<Inventory>().craftingSlotHovered.GetComponent<Crafting>().itemCode[i]];
+                requiredItemSlot[i].transform.Find("Item_Image").GetComponent<Image>().sprite = FindObjectOfType<List_Of_Items>().Inventory_Sprite[FindObjectOfType<Inventory>().craftingSlotHovered.GetComponent<Item_035_Cooking_Slots>().itemCode[i]];
                 requiredItemSlot[i].transform.Find("Item_Image").gameObject.SetActive(true);
 
                 thisItemQuantity = 0;
-                for (int j = 1; j <= 24; j++)
-                     if (FindObjectOfType<Inventory>().Slot_Item_Code[j] == FindObjectOfType<Inventory>().craftingSlotHovered.GetComponent<Crafting>().itemCode[i])
-                            thisItemQuantity += FindObjectOfType<Inventory>().Slot_Item_Quantity[j];
-
+                for (int j = 1; j <= 5; j++)
+                    if (FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_035>().cooking_pot_incredients_item_code[j] == FindObjectOfType<Inventory>().craftingSlotHovered.GetComponent<Item_035_Cooking_Slots>().itemCode[i])
+                        thisItemQuantity += FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_035>().cooking_pot_incredients_item_quantity[j];
+                
 
                 requiredItemSlot[i].transform.Find("Quantity_Required").gameObject.SetActive(true);
                 requiredItemSlot[i].transform.Find("Bar").gameObject.SetActive(true);
                 requiredItemSlot[i].transform.Find("Quantity_Have").gameObject.SetActive(true);
 
-                requiredItemSlot[i].transform.Find("Quantity_Required").GetComponent<TextMeshProUGUI>().text = FindObjectOfType<Inventory>().craftingSlotHovered.GetComponent<Crafting>().itemQuantity[i].ToString();
+                requiredItemSlot[i].transform.Find("Quantity_Required").GetComponent<TextMeshProUGUI>().text = FindObjectOfType<Inventory>().craftingSlotHovered.GetComponent<Item_035_Cooking_Slots>().itemQuantity[i].ToString();
                 requiredItemSlot[i].transform.Find("Quantity_Have").GetComponent<TextMeshProUGUI>().text = thisItemQuantity.ToString();
-
-                if (thisItemQuantity >= FindObjectOfType<Inventory>().craftingSlotHovered.GetComponent<Crafting>().itemQuantity[i])
+                
+                if (thisItemQuantity >= FindObjectOfType<Inventory>().craftingSlotHovered.GetComponent<Item_035_Cooking_Slots>().itemQuantity[i])
                     requiredItemSlot[i].transform.Find("Quantity_Have").GetComponent<TextMeshProUGUI>().color = enoughtResourceColor;
                 else
                     requiredItemSlot[i].transform.Find("Quantity_Have").GetComponent<TextMeshProUGUI>().color = NotenoughtResourceColor;

@@ -14,6 +14,7 @@ public class Acces_Building : MonoBehaviour
     [SerializeField]
     private LayerMask DetectionSphereMask;
     public bool Building_Inventory_Opened;
+    public bool Building_Menu_Opened;      //un menu al unei cladiri care se poate deschide si fara sa fie inventaru deschis gen la cooking pot ca acolo inventaru nu se deschide
     [SerializeField]
     private GameObject IC_Backup_Position;
     [SerializeField]
@@ -107,6 +108,26 @@ public class Acces_Building : MonoBehaviour
                             FindObjectOfType<Sounds_Player>().chest_open_sound.Play();
                         }
                     }
+                    else if (colliders[0].gameObject.tag == "Cooking pot")
+                    {
+                        if (colliders[0].GetComponent<Item_035>().BuildingAccessed == false)
+                        {
+                            AccesedBuilding = colliders[0].gameObject;
+                            FindObjectOfType<Inventory>().Item_035_Crafting_Panel.SetActive(true);
+                            colliders[0].GetComponent<Item_035>().BuildingAccessed = true;
+                            Building_Menu_Opened = true;                //nu e inventory da e tot building ceva
+                        }
+                        else           // e deja in meniu la furnace si acu iese
+                        {
+                            AccesedBuilding = null;
+                            FindObjectOfType<Inventory>().Item_035_Crafting_Panel.SetActive(false);
+                            colliders[0].GetComponent<Item_035>().BuildingAccessed = false;
+                            Building_Menu_Opened = false;
+                            FindObjectOfType<PlayerMovement>().MovementFrozen = false;
+
+                        }
+                    }
+
 
                 }
 

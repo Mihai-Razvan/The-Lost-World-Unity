@@ -50,6 +50,8 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public GameObject Item_004_Inventory_Panel;
     [SerializeField]
     public GameObject Item_030_Inventory_Panel;
+    [SerializeField]
+    public GameObject Item_035_Crafting_Panel;         //il pun aici si nu pe scriptu itemului 35 pt ca nu pot atribui la preffab panelu din canvas  
     /// 
 
     public bool ok;  // pt teste
@@ -96,7 +98,7 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
 
 
-        if (inventory_craftingIsActive == true || FindObjectOfType<Game_Menu>().game_menu_isactive == true)
+        if (inventory_craftingIsActive == true || FindObjectOfType<Game_Menu>().game_menu_isactive == true || FindObjectOfType<Acces_Building>().Building_Menu_Opened == true)
         {
             Cursor.visible = true;
             FindObjectOfType<PlayerMovement>().MovementFrozen = true;
@@ -113,7 +115,7 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     void ToggleInventory()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && FindObjectOfType<Acces_Building>().Building_Inventory_Opened == false && FindObjectOfType<Game_Menu>().game_menu_isactive == false)
+        if (Input.GetKeyDown(KeyCode.Tab) && FindObjectOfType<Acces_Building>().Building_Inventory_Opened == false && FindObjectOfType<Acces_Building>().Building_Menu_Opened == false && FindObjectOfType<Game_Menu>().game_menu_isactive == false)
         {
             if (inventory_craftingIsActive == false)
             {

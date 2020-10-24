@@ -196,11 +196,6 @@ public class PlayerMovement : MonoBehaviour
             FindObjectOfType<Inventory>().quantityToAdd = 1;
             FindObjectOfType<Inventory>().itemCodeToAdd = 8;
         }
-        if (Input.GetKey(KeyCode.V))
-        {
-            FindObjectOfType<Inventory>().quantityToAdd = 1;
-            FindObjectOfType<Inventory>().itemCodeToAdd = 9;
-        }
         if (Input.GetKey(KeyCode.B))
         {
             FindObjectOfType<Inventory>().quantityToAdd = 1;
@@ -239,7 +234,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.F))
         {
             FindObjectOfType<Inventory>().quantityToAdd = 1;
-            FindObjectOfType<Inventory>().itemCodeToAdd = 9;
+            FindObjectOfType<Inventory>().itemCodeToAdd = 35;
         }
 
         if (Input.GetKey(KeyCode.M))

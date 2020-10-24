@@ -4786,6 +4786,21 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &4423704431750373029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5778177319453679045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8a34a1146e21247ab4e08096f3deae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BuildingAccessed: 0
+  cooking_pot_incredients_item_code: 000000000100000000000000000000000000000000000000
+  cooking_pot_incredients_item_quantity: 000000000400000000000000000000000000000000000000
 --- !u!1001 &5334553405230717835
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4858,8 +4873,19 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 1889279450984597070, guid: 7d477a2eac907e34a918e6e298f9c769,
+        type: 3}
+      propertyPath: m_TagString
+      value: Cooking pot
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d477a2eac907e34a918e6e298f9c769, type: 3}
+--- !u!1 &5778177319453679045 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1889279450984597070, guid: 7d477a2eac907e34a918e6e298f9c769,
+    type: 3}
+  m_PrefabInstance: {fileID: 5334553405230717835}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6592114289055696767 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1257560969791511796, guid: 7d477a2eac907e34a918e6e298f9c769,

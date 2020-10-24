@@ -12,7 +12,6 @@ public class Crafting : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
     public int[] itemCode;     //codu la itemele de trebuie olosite ca sa cratezi pe asta
     [SerializeField]
     public int[] itemQuantity;           //cantitatea la itemele de trebuie olosite ca sa cratezi pe asta
-    private float timeBetweenClicks;           //ca da crat la double click
     private bool alreadyFirstClick;
     private int thisItemQuantity;
     [SerializeField]
