@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 
 public class Acces_Building : MonoBehaviour
-{
+{                                           //CA SA INTERACTIONEZI CU CLADIRILE NU NUMAI CA SA ACCESEZI INVENTARU LOR (GEN SI CA SA PUI LEMNE SI INCREDIENTE IN COOKING POT
 
     public GameObject AccesedBuilding;
     [SerializeField]
@@ -65,9 +65,9 @@ public class Acces_Building : MonoBehaviour
                             FindObjectOfType<PlayerMovement>().MovementFrozen = false;
                         }
                     }
-                    else if(colliders[0].tag == "Sap extractor")
+                    else if (colliders[0].tag == "Sap extractor")
                     {
-                        if(colliders[0].transform.parent.GetComponent<Item_026>().time_On_This_Round >= colliders[0].transform.parent.GetComponent<Item_026>().production_Time)  //cu parent ca scriptu e pe punct da colliders[0] nu e pct ci gameobjectu de pe punct
+                        if (colliders[0].transform.parent.GetComponent<Item_026>().time_On_This_Round >= colliders[0].transform.parent.GetComponent<Item_026>().production_Time)  //cu parent ca scriptu e pe punct da colliders[0] nu e pct ci gameobjectu de pe punct
                         {
                             FindObjectOfType<Inventory>().quantityToAdd = 1;
                             FindObjectOfType<Inventory>().itemCodeToAdd = 27;
@@ -131,17 +131,26 @@ public class Acces_Building : MonoBehaviour
 
                 }
 
+                if (colliders[0].gameObject.tag == "Cooking pot")
+                    CookingPotAdd(colliders);
+
             }
             else
+            {
                 FindObjectOfType<Buttons>().AccesBuildingButton.SetActive(false);
+                FindObjectOfType<Buttons>().AddButton.SetActive(false);
+            }
         }
         else
+        {
             FindObjectOfType<Buttons>().AccesBuildingButton.SetActive(false);
+            FindObjectOfType<Buttons>().AddButton.SetActive(false);
+        }
 
 
-        ////////////////////////////////ceva separare
+            ////////////////////////////////ceva separare
 
-        if (Building_Inventory_Opened == true)
+            if (Building_Inventory_Opened == true)
         {
             FindObjectOfType<Inventory>().Inventory_Crafting_Panel.transform.position = IC_Backup_Position.transform.position;
             FindObjectOfType<Inventory>().Inventory_Crafting_Panel.SetActive(true);
@@ -186,7 +195,93 @@ public class Acces_Building : MonoBehaviour
             else
                 FindObjectOfType<Buttons>().AccesBuildingButton.transform.Find("Building_Name").GetComponent<TextMeshProUGUI>().text = "Close 'Chest'";
         }
+        else if (colliders[0].gameObject.tag == "Cooking pot")
+        {
+            if (colliders[0].GetComponent<Item_035>().BuildingAccessed == false)
+                FindObjectOfType<Buttons>().AccesBuildingButton.transform.Find("Building_Name").GetComponent<TextMeshProUGUI>().text = "Acces 'Cooking pot'";
+            else
+                FindObjectOfType<Buttons>().AccesBuildingButton.transform.Find("Building_Name").GetComponent<TextMeshProUGUI>().text = "Close 'Cooking pot'";
+        }
 
+    }
+
+
+
+
+    void CookingPotAdd(Collider[] colliders)            //adaugi lemne si incrediente la COOKING POT
+    {     
+        if (FindObjectOfType<Handing_Item>().SelectedItemCode == 1)       //stick
+        {
+            if (Input.GetKey(KeyCode.F))
+            {
+                colliders[0].GetComponent<Item_035>().energy_left += colliders[0].GetComponent<Item_035>().stick_energy;
+
+                FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15]--;
+                if (FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] == 0)
+                {
+                    FindObjectOfType<Inventory>().Slot_Item_Code[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] = 0;
+                    FindObjectOfType<Handing_Item>().SelectedItemCode = 0;
+                }
+            }
+
+            FindObjectOfType<Buttons>().AddButton.SetActive(true);
+            FindObjectOfType<Buttons>().AddButton.transform.Find("Item_To_Add_Name").GetComponent<TextMeshProUGUI>().text = "Add 'Stick'";
+        }
+        else if (FindObjectOfType<Handing_Item>().SelectedItemCode == 18)       //log
+        {
+            if (Input.GetKey(KeyCode.F))
+            {
+                colliders[0].GetComponent<Item_035>().energy_left += colliders[0].GetComponent<Item_035>().log_energy;
+
+                FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15]--;
+                if (FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] == 0)
+                {
+                    FindObjectOfType<Inventory>().Slot_Item_Code[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] = 0;
+                    FindObjectOfType<Handing_Item>().SelectedItemCode = 0;
+                }
+            }
+
+            FindObjectOfType<Buttons>().AddButton.SetActive(true);
+            FindObjectOfType<Buttons>().AddButton.transform.Find("Item_To_Add_Name").GetComponent<TextMeshProUGUI>().text = "Add 'Log'";
+        }
+        else if(FindObjectOfType<Handing_Item>().SelectedItemCode == 13)       //honeycomb
+        {
+            if(Input.GetKey(KeyCode.F))
+            {
+                colliders[0].GetComponent<Item_035>().quantityToAdd = 1;
+                colliders[0].GetComponent<Item_035>().itemCodeToAdd = 13;
+
+                FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15]--;
+                if (FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] == 0)
+                {
+                    FindObjectOfType<Inventory>().Slot_Item_Code[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] = 0;
+                    FindObjectOfType<Handing_Item>().SelectedItemCode = 0;
+                }
+            }
+
+            FindObjectOfType<Buttons>().AddButton.SetActive(true);
+            FindObjectOfType<Buttons>().AddButton.transform.Find("Item_To_Add_Name").GetComponent<TextMeshProUGUI>().text = "Add 'Honeycomb'";
+        }
+        else if (FindObjectOfType<Handing_Item>().SelectedItemCode == 34)       //pumpkin
+        {
+            if (Input.GetKey(KeyCode.F))
+            {
+                colliders[0].GetComponent<Item_035>().quantityToAdd = 1;
+                colliders[0].GetComponent<Item_035>().itemCodeToAdd = 34;
+
+                FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15]--;
+                if (FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] == 0)
+                {
+                    FindObjectOfType<Inventory>().Slot_Item_Code[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] = 0;
+                    FindObjectOfType<Handing_Item>().SelectedItemCode = 0;
+                }
+            }
+
+            FindObjectOfType<Buttons>().AddButton.SetActive(true);
+            FindObjectOfType<Buttons>().AddButton.transform.Find("Item_To_Add_Name").GetComponent<TextMeshProUGUI>().text = "Add 'Pumpkin'";
+        }
+
+        
     }
 
 }

@@ -13,6 +13,8 @@ public class Buttons : MonoBehaviour
     [SerializeField]
     public GameObject EatButton;
     [SerializeField]
+    public GameObject AddButton;         //adaugi lemene si incrediente la cooking pot
+    [SerializeField]
     private Transform normalPosition;
     [SerializeField]
     private Transform leftPosition;
@@ -26,6 +28,7 @@ public class Buttons : MonoBehaviour
         AccesBuildingButton.SetActive(false);
         RemoveButton.SetActive(false);
         EatButton.SetActive(false);
+        AddButton.SetActive(false);
     }
 
     
