@@ -27,6 +27,7 @@ public class Item_035_Cooking_Slots : MonoBehaviour, IPointerDownHandler, IPoint
     private int Item_Code_Has_To_Cook;
     public float cooking_time;
 
+
     ///////////// astea pt asta sunt folosite ////////
 
 
@@ -107,7 +108,25 @@ public class Item_035_Cooking_Slots : MonoBehaviour, IPointerDownHandler, IPoint
     public void OnPointerDown(PointerEventData eventData)
     {
         if (FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_035>().cooking == false && FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_035>().energy_left > 0)
-            ItemsToCook();
+        {
+            FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_035>().Occupied();
+
+            if (FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_035>().food_place_1_occupied == false || FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_035>().food_place_2_occupied == false)
+                ItemsToCook();
+            else
+            {
+                FindObjectOfType<Manager>().collect_others_message.SetActive(true);
+                FindObjectOfType<Manager>().click_to_start_message.SetActive(false);
+                FindObjectOfType<Manager>().no_fuel_message.SetActive(false);
+            }
+        }
+        else if (FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_035>().energy_left <= 0)
+        {
+            FindObjectOfType<Manager>().collect_others_message.SetActive(false);
+            FindObjectOfType<Manager>().click_to_start_message.SetActive(false);
+            FindObjectOfType<Manager>().no_fuel_message.SetActive(true);
+        }
+            
     }
 
 
@@ -115,11 +134,17 @@ public class Item_035_Cooking_Slots : MonoBehaviour, IPointerDownHandler, IPoint
     {
         FindObjectOfType<Inventory>().itemCodeHovered = Item_Code_Has_To_Cook;
         FindObjectOfType<Inventory>().craftingSlotHovered = this.gameObject;
+        FindObjectOfType<Manager>().click_to_start_message.SetActive(true);
+        FindObjectOfType<Manager>().collect_others_message.SetActive(false);
+        FindObjectOfType<Manager>().no_fuel_message.SetActive(false);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         FindObjectOfType<Inventory>().itemCodeHovered = 0;
         FindObjectOfType<Inventory>().craftingSlotHovered = null;
+        FindObjectOfType<Manager>().click_to_start_message.SetActive(false);
+        FindObjectOfType<Manager>().collect_others_message.SetActive(false);
+        FindObjectOfType<Manager>().no_fuel_message.SetActive(false);
     }
 }

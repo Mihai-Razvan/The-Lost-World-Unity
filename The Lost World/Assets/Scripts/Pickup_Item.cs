@@ -6,9 +6,9 @@ using TMPro;
 public class Pickup_Item : MonoBehaviour
 {
     [SerializeField]
-    private float DetectionCapsuleLength;
+    public float DetectionCapsuleLength;
     [SerializeField]
-    private float DetectionCapsuleRadius;
+    public float DetectionCapsuleRadius;
     [SerializeField]
     private LayerMask CollectablesMask;
     [SerializeField]
@@ -112,6 +112,18 @@ public class Pickup_Item : MonoBehaviour
                     {
                         FindObjectOfType<Inventory>().quantityToAdd = 1;
                         FindObjectOfType<Inventory>().itemCodeToAdd = 34;
+                        Destroy(colliders[0].transform.parent.gameObject);
+                    }
+                    else if (colliders[0].gameObject.tag == "Bee bait")
+                    {
+                        FindObjectOfType<Inventory>().quantityToAdd = 1;
+                        FindObjectOfType<Inventory>().itemCodeToAdd = 29;
+                        Destroy(colliders[0].transform.parent.gameObject);
+                    }
+                    else if (colliders[0].gameObject.tag == "Pumpkin pie")
+                    {
+                        FindObjectOfType<Inventory>().quantityToAdd = 1;
+                        FindObjectOfType<Inventory>().itemCodeToAdd = 36;
                         Destroy(colliders[0].transform.parent.gameObject);
                     }
 

@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &6934755445553651396
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844178541473230945}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.016129564, y: 0.018391918, z: 1.1065507}
+  m_Center: {x: 0.00015868794, y: -0.0006628841, z: 0.48761016}
 --- !u!1 &5668223135157263626
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,9 +22,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7848019626157889696}
-  m_Layer: 0
+  - component: {fileID: 1458225874993771951}
+  m_Layer: 12
   m_Name: 'Bee_Bait '
-  m_TagString: Untagged
+  m_TagString: Collectable Point 029
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,6 +45,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1458225874993771951
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5668223135157263626}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &5168087301703480421
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -113,8 +140,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: bee_bait
       objectReference: {fileID: 0}
+    - target: {fileID: 5480779513086002180, guid: a5e22c750314a134c9923c43101fdc17,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5480779513086002180, guid: a5e22c750314a134c9923c43101fdc17,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bee bait
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5e22c750314a134c9923c43101fdc17, type: 3}
+--- !u!1 &844178541473230945 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5480779513086002180, guid: a5e22c750314a134c9923c43101fdc17,
+    type: 3}
+  m_PrefabInstance: {fileID: 5168087301703480421}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &71159592363797211 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5135356199646699198, guid: a5e22c750314a134c9923c43101fdc17,

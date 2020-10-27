@@ -571,7 +571,7 @@ public class IslandObjects_Forest : MonoBehaviour
     {
         spawnedAlready = 0;
         notSpawnedConsecutively = 0;
-        numberOfCollectables = Random.Range(5, 10);     //20,30
+        numberOfCollectables = Random.Range(15, 30);     
         while (spawnedAlready < numberOfCollectables && notSpawnedConsecutively < 50)
         {
             RaycastHit hit;

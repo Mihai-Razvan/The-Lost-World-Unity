@@ -52,6 +52,7 @@ public class Inventory : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public GameObject Item_030_Inventory_Panel;
     [SerializeField]
     public GameObject Item_035_Crafting_Panel;         //il pun aici si nu pe scriptu itemului 35 pt ca nu pot atribui la preffab panelu din canvas  
+
     /// 
 
     public bool ok;  // pt teste

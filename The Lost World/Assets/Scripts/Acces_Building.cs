@@ -21,6 +21,8 @@ public class Acces_Building : MonoBehaviour
     private GameObject IC_Normal_Position;
 
     [SerializeField]
+    private LayerMask collectablesMask;
+    [SerializeField]
     bool aaaa;
 
     void Start()
@@ -112,10 +114,14 @@ public class Acces_Building : MonoBehaviour
                     {
                         if (colliders[0].GetComponent<Item_035>().BuildingAccessed == false)
                         {
-                            AccesedBuilding = colliders[0].gameObject;
-                            FindObjectOfType<Inventory>().Item_035_Crafting_Panel.SetActive(true);
-                            colliders[0].GetComponent<Item_035>().BuildingAccessed = true;
-                            Building_Menu_Opened = true;                //nu e inventory da e tot building ceva
+                            Collider[] colliders2 = Physics.OverlapCapsule(Camera.main.transform.position, Camera.main.transform.position + Camera.main.transform.forward * FindObjectOfType<Pickup_Item>().DetectionCapsuleLength, FindObjectOfType<Pickup_Item>().DetectionCapsuleRadius, collectablesMask);
+                            if (colliders2.Length == 0)   //sa nu poti accesa daca e cv de colectat pe masa
+                            {
+                                AccesedBuilding = colliders[0].gameObject;
+                                FindObjectOfType<Inventory>().Item_035_Crafting_Panel.SetActive(true);
+                                colliders[0].GetComponent<Item_035>().BuildingAccessed = true;
+                                Building_Menu_Opened = true;                //nu e inventory da e tot building ceva
+                            }
                         }
                         else           // e deja in meniu la furnace si acu iese
                         {
@@ -197,10 +203,16 @@ public class Acces_Building : MonoBehaviour
         }
         else if (colliders[0].gameObject.tag == "Cooking pot")
         {
-            if (colliders[0].GetComponent<Item_035>().BuildingAccessed == false)
-                FindObjectOfType<Buttons>().AccesBuildingButton.transform.Find("Building_Name").GetComponent<TextMeshProUGUI>().text = "Acces 'Cooking pot'";
+            Collider[] colliders2 = Physics.OverlapCapsule(Camera.main.transform.position, Camera.main.transform.position + Camera.main.transform.forward * FindObjectOfType<Pickup_Item>().DetectionCapsuleLength, FindObjectOfType<Pickup_Item>().DetectionCapsuleRadius, collectablesMask);
+            if (colliders2.Length == 0)
+            {
+                if (colliders[0].GetComponent<Item_035>().BuildingAccessed == false)
+                    FindObjectOfType<Buttons>().AccesBuildingButton.transform.Find("Building_Name").GetComponent<TextMeshProUGUI>().text = "Acces 'Cooking pot'";
+                else
+                    FindObjectOfType<Buttons>().AccesBuildingButton.transform.Find("Building_Name").GetComponent<TextMeshProUGUI>().text = "Close 'Cooking pot'";
+            }
             else
-                FindObjectOfType<Buttons>().AccesBuildingButton.transform.Find("Building_Name").GetComponent<TextMeshProUGUI>().text = "Close 'Cooking pot'";
+                FindObjectOfType<Buttons>().AccesBuildingButton.SetActive(false);
         }
 
     }
@@ -212,7 +224,7 @@ public class Acces_Building : MonoBehaviour
     {     
         if (FindObjectOfType<Handing_Item>().SelectedItemCode == 1)       //stick
         {
-            if (Input.GetKey(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 colliders[0].GetComponent<Item_035>().energy_left += colliders[0].GetComponent<Item_035>().stick_energy;
 
@@ -280,8 +292,62 @@ public class Acces_Building : MonoBehaviour
             FindObjectOfType<Buttons>().AddButton.SetActive(true);
             FindObjectOfType<Buttons>().AddButton.transform.Find("Item_To_Add_Name").GetComponent<TextMeshProUGUI>().text = "Add 'Pumpkin'";
         }
+        else if (FindObjectOfType<Handing_Item>().SelectedItemCode == 11)       //apple
+        {
+            if (Input.GetKey(KeyCode.F))
+            {
+                colliders[0].GetComponent<Item_035>().quantityToAdd = 1;
+                colliders[0].GetComponent<Item_035>().itemCodeToAdd = 11;
 
-        
+                FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15]--;
+                if (FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] == 0)
+                {
+                    FindObjectOfType<Inventory>().Slot_Item_Code[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] = 0;
+                    FindObjectOfType<Handing_Item>().SelectedItemCode = 0;
+                }
+            }
+
+            FindObjectOfType<Buttons>().AddButton.SetActive(true);
+            FindObjectOfType<Buttons>().AddButton.transform.Find("Item_To_Add_Name").GetComponent<TextMeshProUGUI>().text = "Add 'Apple'";
+        }
+        else if (FindObjectOfType<Handing_Item>().SelectedItemCode == 27)       //cactus sap
+        {
+            if (Input.GetKey(KeyCode.F))
+            {
+                colliders[0].GetComponent<Item_035>().quantityToAdd = 1;
+                colliders[0].GetComponent<Item_035>().itemCodeToAdd = 27;
+
+                FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15]--;
+                if (FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] == 0)
+                {
+                    FindObjectOfType<Inventory>().Slot_Item_Code[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] = 0;
+                    FindObjectOfType<Handing_Item>().SelectedItemCode = 0;
+                }
+            }
+
+            FindObjectOfType<Buttons>().AddButton.SetActive(true);
+            FindObjectOfType<Buttons>().AddButton.transform.Find("Item_To_Add_Name").GetComponent<TextMeshProUGUI>().text = "Add 'Cactus sap'";
+        }
+        else if (FindObjectOfType<Handing_Item>().SelectedItemCode == 28)       //blackberries
+        {
+            if (Input.GetKey(KeyCode.F))
+            {
+                colliders[0].GetComponent<Item_035>().quantityToAdd = 1;
+                colliders[0].GetComponent<Item_035>().itemCodeToAdd = 28;
+
+                FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15]--;
+                if (FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] == 0)
+                {
+                    FindObjectOfType<Inventory>().Slot_Item_Code[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] = 0;
+                    FindObjectOfType<Handing_Item>().SelectedItemCode = 0;
+                }
+            }
+
+            FindObjectOfType<Buttons>().AddButton.SetActive(true);
+            FindObjectOfType<Buttons>().AddButton.transform.Find("Item_To_Add_Name").GetComponent<TextMeshProUGUI>().text = "Add 'Blackberries'";
+        }
+
+
     }
 
 }

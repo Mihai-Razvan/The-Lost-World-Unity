@@ -23,11 +23,15 @@ public class Item_035 : MonoBehaviour
     private GameObject food_place_1;
     [SerializeField]
     private GameObject food_place_2;
-    private bool food_place_1_occupied;
-    private bool food_place_2_occupied;
+    public bool food_place_1_occupied;
+    public bool food_place_2_occupied;
 
     [SerializeField]
     private GameObject[] food_models;
+
+    [SerializeField]
+    private LayerMask collectables_mask;
+   
 
     void Start()
     {
@@ -40,10 +44,11 @@ public class Item_035 : MonoBehaviour
         AddItem();
         Cook();
 
-        if (energy_left > 0)
+        if (energy_left > 0 && cooking == true)
             fire_animation.SetActive(true);
         else
             fire_animation.SetActive(false);
+       
     }
 
 
@@ -80,23 +85,38 @@ public class Item_035 : MonoBehaviour
     {
         if(cooking == true)
         {
+            energy_left -= Time.deltaTime;
+
             cooking_time_remained -= Time.deltaTime;
             if(cooking_time_remained <= 0)
-            {
+            {                
                 if (food_place_1_occupied == false)
                 {
                     Instantiate(food_models[item_code_to_cook], food_place_1.transform.position, Quaternion.identity);
                     food_place_1_occupied = true;
                 }
-                else
+                else if (food_place_2_occupied == false)
                 {
                     Instantiate(food_models[item_code_to_cook], food_place_2.transform.position, Quaternion.identity);
-                    food_place_2_occupied = true;
+                    food_place_2_occupied = true;                    
                 }
-                
+
                 item_code_to_cook = 0;
                 cooking = false;
             }
         }
+    }
+
+    public void Occupied()
+    {
+        Collider[] colliders = Physics.OverlapSphere(food_place_1.transform.position, 0.2f, collectables_mask);
+
+        if (colliders.Length == 0)
+            food_place_1_occupied = false;        //true devine cand se adauga mancare deci nu tre pus aici
+
+        colliders = Physics.OverlapSphere(food_place_2.transform.position, 0.2f, collectables_mask);
+
+        if (colliders.Length == 0)
+            food_place_2_occupied = false;
     }
 }

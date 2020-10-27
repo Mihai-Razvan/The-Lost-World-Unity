@@ -169,7 +169,23 @@ public class Handing_Item : MonoBehaviour
             else
                 FindObjectOfType<Buttons>().EatButton.SetActive(false);
         }
+        else if (SelectedItemCode == 36)  //Pumpkin pie
+        {
+            FindObjectOfType<Buttons>().EatButton.SetActive(true);
+            FindObjectOfType<Buttons>().EatButton.transform.Find("Food_Name").GetComponent<TextMeshProUGUI>().text = "Eat 'Pumpkin pie'";
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                FindObjectOfType<Player_Stats>().playerFood += 25;
+                FindObjectOfType<Player_Stats>().playerPoison -= 5;
 
+                FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15]--;
+                if (FindObjectOfType<Inventory>().Slot_Item_Quantity[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] == 0)
+                {
+                    FindObjectOfType<Inventory>().Slot_Item_Code[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] = 0;
+                    FindObjectOfType<Handing_Item>().SelectedItemCode = 0;
+                }
+            }
+        }
         else
             FindObjectOfType<Buttons>().EatButton.SetActive(false);
     }

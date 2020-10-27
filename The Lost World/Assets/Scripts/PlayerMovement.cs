@@ -184,27 +184,27 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.N))
         {
             FindObjectOfType<Inventory>().quantityToAdd = 1;
-            FindObjectOfType<Inventory>().itemCodeToAdd = 33;
+            FindObjectOfType<Inventory>().itemCodeToAdd = 11;
         }
         if (Input.GetKey(KeyCode.Z))
         {
             FindObjectOfType<Inventory>().quantityToAdd = 1;
-            FindObjectOfType<Inventory>().itemCodeToAdd = 4;
+            FindObjectOfType<Inventory>().itemCodeToAdd = 1;
         }
         if (Input.GetKey(KeyCode.C))
         {
             FindObjectOfType<Inventory>().quantityToAdd = 1;
-            FindObjectOfType<Inventory>().itemCodeToAdd = 8;
+            FindObjectOfType<Inventory>().itemCodeToAdd = 18;
         }
         if (Input.GetKey(KeyCode.B))
         {
             FindObjectOfType<Inventory>().quantityToAdd = 1;
-            FindObjectOfType<Inventory>().itemCodeToAdd = 14;
+            FindObjectOfType<Inventory>().itemCodeToAdd = 27;
         }
         if (Input.GetKey(KeyCode.L))
         {
             FindObjectOfType<Inventory>().quantityToAdd = 1;
-            FindObjectOfType<Inventory>().itemCodeToAdd = 15;
+            FindObjectOfType<Inventory>().itemCodeToAdd = 28;
         }
         if (Input.GetKey(KeyCode.H))
         {

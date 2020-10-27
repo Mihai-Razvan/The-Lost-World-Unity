@@ -11,6 +11,8 @@ public class Save : MonoBehaviour
     [SerializeField]
     private LayerMask Buiding_SaveableMask;
     [SerializeField]
+    private LayerMask Collectable_SaveableMask;
+    [SerializeField]
     private LayerMask islandMask;        //sa devina child la insula relieu sa se poate despawna
 
     [SerializeField]
@@ -19,7 +21,9 @@ public class Save : MonoBehaviour
     private int numberOfRelief;
     [SerializeField]
     private int numberOfBuildings;
-    
+    [SerializeField]
+    private int numberOfCollectables;
+
 
     [SerializeField]
     private GameObject island_type_1;      //forest
@@ -33,7 +37,8 @@ public class Save : MonoBehaviour
     private GameObject[] relief_type;
     [SerializeField]
     private GameObject[] building_type;
-
+    [SerializeField]
+    private GameObject[] collectable_type;
 
     [SerializeField]
     private GameObject cactus;  //cand respawneaza sap collector sa respawneze si un cactus cu el ca altfel e pe nmk sap collectoru
@@ -64,6 +69,7 @@ public class Save : MonoBehaviour
         SavePlayer();     
         SaveIslandsANDRelief();
         SaveBuildings();
+        SaveCollectables();
     }
 
     public void LoadFunction()
@@ -71,6 +77,7 @@ public class Save : MonoBehaviour
         LoadPlayer();
         LoadIslandsANDRelief();
         LoadBuildings();
+        LoadCollectables();
     }
 
 
@@ -234,6 +241,8 @@ public class Save : MonoBehaviour
                     SaveSapExtractorDetails(colliders, i);
                 else if (GetBuildingType(colliders, i) == 30)
                     SaveChestDetails(colliders, i);
+                else if (GetBuildingType(colliders, i) == 35)
+                    SaveCookingPotDetails(colliders, i);
             }
         }
 
@@ -263,12 +272,63 @@ public class Save : MonoBehaviour
                 LoadSapExtractorDetails(spawnedBuilding, i);
             else if (PlayerPrefs.GetInt("String_building_Type_" + i.ToString()) == 30)  //chest
                 LoadChestDetails(spawnedBuilding, i);
-        
+            else if (PlayerPrefs.GetInt("String_building_Type_" + i.ToString()) == 35)  //cooking pot
+                LoadCookingPotDetails(spawnedBuilding, i);
+
         }
     }
 
 
-    
+
+
+    void SaveCollectables()
+    {
+        Collider[] colliders = Physics.OverlapSphere(player.transform.position, 100000, Collectable_SaveableMask);
+
+        numberOfCollectables = 0;
+
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            
+            if (GetCollectableType(colliders, i) != 0) //inseamna ca e o collectable
+            {
+                Debug.Log("colll");
+                numberOfCollectables++;
+
+                PlayerPrefs.SetInt("String_collectable_Type_" + numberOfCollectables.ToString(), GetCollectableType(colliders, i));
+                PlayerPrefs.SetFloat("String_collectable_Position_X_" + numberOfCollectables.ToString(), colliders[i].transform.position.x);
+                PlayerPrefs.SetFloat("String_collectable_Position_Y_" + numberOfCollectables.ToString(), colliders[i].transform.position.y);
+                PlayerPrefs.SetFloat("String_collectable_Position_Z_" + numberOfCollectables.ToString(), colliders[i].transform.position.z);
+              /*  PlayerPrefs.SetFloat("String_collectable_Rotation_X_" + numberOfCollectables.ToString(), colliders[i].transform.eulerAngles.x);
+                PlayerPrefs.SetFloat("String_collectable_Rotation_Y_" + numberOfCollectables.ToString(), colliders[i].transform.eulerAngles.y);
+                PlayerPrefs.SetFloat("String_collectable_Rotation_Z_" + numberOfCollectables.ToString(), colliders[i].transform.eulerAngles.z); */
+
+            }
+        }
+
+
+        PlayerPrefs.SetInt("Number_Of_Collectables", numberOfCollectables);
+
+    }
+
+
+    void LoadCollectables()
+    {
+        numberOfCollectables = PlayerPrefs.GetInt("Number_Of_Collectables");
+
+        for (int i = 1; i <= numberOfCollectables; i++)
+        {
+            float xPos = PlayerPrefs.GetFloat("String_collectable_Position_X_" + i.ToString());
+            float yPos = PlayerPrefs.GetFloat("String_collectable_Position_Y_" + i.ToString());
+            float zPos = PlayerPrefs.GetFloat("String_collectable_Position_Z_" + i.ToString());
+           /* float xRotation = PlayerPrefs.GetFloat("String_collectable_Rotation_X_" + i.ToString());
+            float yRotation = PlayerPrefs.GetFloat("String_collectable_Rotation_Y_" + i.ToString());
+            float zRotation = PlayerPrefs.GetFloat("String_collectable_Rotation_Z_" + i.ToString()); */
+
+            Instantiate(collectable_type[PlayerPrefs.GetInt("String_collectable_Type_" + i.ToString())], new Vector3(xPos, yPos, zPos), Quaternion.identity);      //CAND FAC CLADIRILE SA IE CHILD LA INSULE SA AC SI ACI CAND SE RESPAWNEAZ       
+
+        }
+    }
 
 
     private int GetIslandType(Collider[] colliders, int i)
@@ -303,8 +363,21 @@ public class Save : MonoBehaviour
             if (colliders[i].tag == "Item Point 00" + j.ToString())
                 return j;
 
-        for (int j = 10; j <= 30; j++)
+        for (int j = 10; j <= 99; j++)
             if (colliders[i].tag == "Item Point 0" + j.ToString())
+                return j;
+
+        return 0;
+    }
+
+    private int GetCollectableType(Collider[] colliders, int i)
+    {
+        for (int j = 1; j <= 9; j++)
+            if (colliders[i].tag == "Collectable Point 00" + j.ToString())
+                return j;
+
+        for (int j = 10; j <= 99; j++)
+            if (colliders[i].tag == "Collectable Point 0" + j.ToString())
                 return j;
 
         return 0;
@@ -313,7 +386,7 @@ public class Save : MonoBehaviour
 
 
 
-                                    //BUILDINGS DETAILS
+    //BUILDINGS DETAILS
 
     void SaveFurnaceDetails(Collider[] colliders, int i)
     {
@@ -382,4 +455,29 @@ public class Save : MonoBehaviour
             spawnedBuilding.transform.GetChild(0).GetComponent<Item_030>().Slot_Item_Quantity[j] = PlayerPrefs.GetInt("String_building_" + i.ToString() + "_Inventory_Slot_" + j.ToString() + "_Item_Quantity");
         }
     }
+
+
+    void SaveCookingPotDetails(Collider[] colliders, int i)
+    {
+        PlayerPrefs.SetFloat("String_building_" + numberOfBuildings.ToString() + "_Energy_Left", colliders[i].transform.GetChild(0).GetComponent<Item_035>().energy_left);
+        
+        for (int j = 1; j <= 5; j++)
+        {
+            PlayerPrefs.SetInt("String_building_" + numberOfBuildings.ToString() + "_Ingredient_Slot_" + j.ToString() + "_Item_Code", colliders[i].transform.GetChild(0).GetComponent<Item_035>().cooking_pot_incredients_item_code[j]);
+            PlayerPrefs.SetInt("String_building_" + numberOfBuildings.ToString() + "_Ingredient_Slot_" + j.ToString() + "_Item_Quantity", colliders[i].transform.GetChild(0).GetComponent<Item_035>().cooking_pot_incredients_item_quantity[j]);
+        }
+            
+    }
+
+    void LoadCookingPotDetails(GameObject spawnedBuilding, int i)
+    {
+        spawnedBuilding.transform.GetChild(0).GetComponent<Item_035>().energy_left = PlayerPrefs.GetFloat("String_building_" + numberOfBuildings.ToString() + "_Energy_Left");
+
+        for (int j = 1; j <= 5; j++)
+        {
+            spawnedBuilding.transform.GetChild(0).GetComponent<Item_035>().cooking_pot_incredients_item_code[j] = PlayerPrefs.GetInt("String_building_" + numberOfBuildings.ToString() + "_Ingredient_Slot_" + j.ToString() + "_Item_Code");
+            spawnedBuilding.transform.GetChild(0).GetComponent<Item_035>().cooking_pot_incredients_item_quantity[j] = PlayerPrefs.GetInt("String_building_" + numberOfBuildings.ToString() + "_Ingredient_Slot_" + j.ToString() + "_Item_Quantity");
+        }
+    }
+
 }

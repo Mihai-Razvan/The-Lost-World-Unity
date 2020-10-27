@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4416050247249329818}
-  m_Layer: 0
+  - component: {fileID: 1826264023748535487}
+  m_Layer: 12
   m_Name: 'Pumpkin_Pie '
-  m_TagString: Untagged
+  m_TagString: Collectable Point 036
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,6 +32,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1826264023748535487
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292549813009338079}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &9201526315284825463
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6019398824649842692}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.101501465, y: 0.10884097, z: 0.027145386}
+  m_Center: {x: 0.000091552734, y: -0.0031026083, z: -0.0026784728}
 --- !u!1001 &3926049391916706159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42,6 +69,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: pumpkin_pie
+      objectReference: {fileID: 0}
+    - target: {fileID: 7346798468368501099, guid: 12d50562b0304e042a27a088bcf231b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7346798468368501099, guid: 12d50562b0304e042a27a088bcf231b2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Pumpkin pie
       objectReference: {fileID: 0}
     - target: {fileID: 7980029877305562065, guid: 12d50562b0304e042a27a088bcf231b2,
         type: 3}
@@ -115,6 +152,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12d50562b0304e042a27a088bcf231b2, type: 3}
+--- !u!1 &6019398824649842692 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7346798468368501099, guid: 12d50562b0304e042a27a088bcf231b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 3926049391916706159}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6395925085212392126 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7980029877305562065, guid: 12d50562b0304e042a27a088bcf231b2,
