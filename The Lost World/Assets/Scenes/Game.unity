@@ -2020,7 +2020,7 @@ MonoBehaviour:
   - 
   - A must have resource if you want to build something
   - Collect from trees but be careful at bees!
-  - A great tool to deffend yoursel
+  - A great tool to defend yourself
   - Just a sweet reward
   - Great for connecting islands
   - Gets you to inimaginable heights
@@ -2042,9 +2042,9 @@ MonoBehaviour:
   - Powers the jetpack, but depletes very fast
   - A more powerful battery than the waste one
   - A battery made of the most dangerous resources
-  - Deascription
-  - Deascription
-  - Deascription
+  - Spooky
+  - Makes great food
+  - Perfect when you want something sweet
   - Deascription
   - Deascription
   - Deascription
@@ -17405,14 +17405,14 @@ MonoBehaviour:
   - {fileID: 4417404850659537282, guid: aa3c9cc73e3e15241980435c350d5129, type: 3}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 5668223135157263626, guid: a6bce126176c0aa49b959813d1a63c7b, type: 3}
   - {fileID: 3470267581561924277, guid: ec7888fd523a6c64aa80708cebe78f21, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 916088625564952076, guid: d3feb9b91faf40b47b2820f28bb47a1e, type: 3}
-  - {fileID: 0}
+  - {fileID: 1292549813009338079, guid: 30f33692956e7f54c9f55a85f5506592, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -39687,7 +39687,7 @@ MonoBehaviour:
   itemQuantity: 0000000003000000020000000200000002000000
   allItemsRequired: 0
   Item_Code_Has_To_Cook: 29
-  cooking_time: 5
+  cooking_time: 60
 --- !u!1 &5429191636899130259
 GameObject:
   m_ObjectHideFlags: 0
@@ -40020,7 +40020,7 @@ MonoBehaviour:
   itemQuantity: 000000000300000004000000
   allItemsRequired: 0
   Item_Code_Has_To_Cook: 36
-  cooking_time: 5
+  cooking_time: 90
 --- !u!222 &5525872383962244486
 CanvasRenderer:
   m_ObjectHideFlags: 0

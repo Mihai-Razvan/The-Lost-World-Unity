@@ -69,7 +69,7 @@ public class Save : MonoBehaviour
         SavePlayer();     
         SaveIslandsANDRelief();
         SaveBuildings();
-        SaveCollectables();
+      //  SaveCollectables();
     }
 
     public void LoadFunction()
@@ -77,7 +77,7 @@ public class Save : MonoBehaviour
         LoadPlayer();
         LoadIslandsANDRelief();
         LoadBuildings();
-        LoadCollectables();
+      //  LoadCollectables();
     }
 
 

@@ -81,6 +81,9 @@ TagManager:
   - Item Point 035
   - Collectable Point 029
   - Collectable Point 036
+  - Item Point 029
+  - Item Point 036
+  - Spooky pumpkin
   layers:
   - Default
   - TransparentFX

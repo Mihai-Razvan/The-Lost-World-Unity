@@ -31,7 +31,9 @@ public class Item_035 : MonoBehaviour
 
     [SerializeField]
     private LayerMask collectables_mask;
-   
+
+    [SerializeField]
+    private GameObject full;
 
     void Start()
     {
@@ -44,10 +46,19 @@ public class Item_035 : MonoBehaviour
         AddItem();
         Cook();
 
-        if (energy_left > 0 && cooking == true)
-            fire_animation.SetActive(true);
+        if(cooking == true)
+        {
+            full.SetActive(true);
+            if (energy_left > 0)
+                fire_animation.SetActive(true);
+            else
+                fire_animation.SetActive(false);
+        }
         else
+        {
+            full.SetActive(false);
             fire_animation.SetActive(false);
+        }
        
     }
 
@@ -112,11 +123,15 @@ public class Item_035 : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(food_place_1.transform.position, 0.2f, collectables_mask);
 
         if (colliders.Length == 0)
-            food_place_1_occupied = false;        //true devine cand se adauga mancare deci nu tre pus aici
+            food_place_1_occupied = false;
+        else
+            food_place_1_occupied = true;
 
         colliders = Physics.OverlapSphere(food_place_2.transform.position, 0.2f, collectables_mask);
 
         if (colliders.Length == 0)
             food_place_2_occupied = false;
+        else
+            food_place_2_occupied = true;
     }
 }

@@ -349,7 +349,7 @@ PrefabInstance:
     - target: {fileID: 6492031979863826236, guid: 5cd2805450745164184d3712d88b324d,
         type: 3}
       propertyPath: m_TagString
-      value: Pumpkin
+      value: Spooky pumpkin
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cd2805450745164184d3712d88b324d, type: 3}

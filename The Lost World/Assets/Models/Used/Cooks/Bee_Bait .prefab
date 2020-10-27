@@ -23,9 +23,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7848019626157889696}
   - component: {fileID: 1458225874993771951}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: 'Bee_Bait '
-  m_TagString: Collectable Point 029
+  m_TagString: Item Point 029
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
