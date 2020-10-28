@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Item_035 : MonoBehaviour
 {
@@ -34,6 +35,8 @@ public class Item_035 : MonoBehaviour
 
     [SerializeField]
     private GameObject full;
+    [SerializeField]
+    private AudioSource fire_sound;
 
     void Start()
     {
@@ -50,16 +53,26 @@ public class Item_035 : MonoBehaviour
         {
             full.SetActive(true);
             if (energy_left > 0)
+            {
                 fire_animation.SetActive(true);
+                if (fire_sound.isPlaying == false)
+                    fire_sound.Play();
+            }
             else
+            {
                 fire_animation.SetActive(false);
+                fire_sound.Stop();
+            }
         }
         else
         {
             full.SetActive(false);
             fire_animation.SetActive(false);
+            fire_sound.Stop();
         }
-       
+
+        fire_sound.volume = FindObjectOfType<Game_Menu>().master_volume_Slider.value * FindObjectOfType<Sounds_Player>().normal_furnace_volume; //are acelasi sunet ca furnace
+
     }
 
 

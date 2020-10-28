@@ -471,12 +471,12 @@ public class Save : MonoBehaviour
 
     void LoadCookingPotDetails(GameObject spawnedBuilding, int i)
     {
-        spawnedBuilding.transform.GetChild(0).GetComponent<Item_035>().energy_left = PlayerPrefs.GetFloat("String_building_" + numberOfBuildings.ToString() + "_Energy_Left");
+        spawnedBuilding.transform.GetChild(0).GetComponent<Item_035>().energy_left = PlayerPrefs.GetFloat("String_building_" + i.ToString() + "_Energy_Left");
 
         for (int j = 1; j <= 5; j++)
         {
-            spawnedBuilding.transform.GetChild(0).GetComponent<Item_035>().cooking_pot_incredients_item_code[j] = PlayerPrefs.GetInt("String_building_" + numberOfBuildings.ToString() + "_Ingredient_Slot_" + j.ToString() + "_Item_Code");
-            spawnedBuilding.transform.GetChild(0).GetComponent<Item_035>().cooking_pot_incredients_item_quantity[j] = PlayerPrefs.GetInt("String_building_" + numberOfBuildings.ToString() + "_Ingredient_Slot_" + j.ToString() + "_Item_Quantity");
+            spawnedBuilding.transform.GetChild(0).GetComponent<Item_035>().cooking_pot_incredients_item_code[j] = PlayerPrefs.GetInt("String_building_" + i.ToString() + "_Ingredient_Slot_" + j.ToString() + "_Item_Code");
+            spawnedBuilding.transform.GetChild(0).GetComponent<Item_035>().cooking_pot_incredients_item_quantity[j] = PlayerPrefs.GetInt("String_building_" + i.ToString() + "_Ingredient_Slot_" + j.ToString() + "_Item_Quantity");
         }
     }
 

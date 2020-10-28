@@ -168,6 +168,7 @@ public class Acces_Building : MonoBehaviour
             FindObjectOfType<Inventory>().Inventory_Crafting_Panel.transform.position = IC_Normal_Position.transform.position;
 
         }
+
     }    
 
 
@@ -234,6 +235,7 @@ public class Acces_Building : MonoBehaviour
                     FindObjectOfType<Inventory>().Slot_Item_Code[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] = 0;
                     FindObjectOfType<Handing_Item>().SelectedItemCode = 0;
                 }
+
             }
 
             FindObjectOfType<Buttons>().AddButton.SetActive(true);
@@ -241,7 +243,7 @@ public class Acces_Building : MonoBehaviour
         }
         else if (FindObjectOfType<Handing_Item>().SelectedItemCode == 18)       //log
         {
-            if (Input.GetKey(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 colliders[0].GetComponent<Item_035>().energy_left += colliders[0].GetComponent<Item_035>().log_energy;
 
@@ -251,6 +253,7 @@ public class Acces_Building : MonoBehaviour
                     FindObjectOfType<Inventory>().Slot_Item_Code[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] = 0;
                     FindObjectOfType<Handing_Item>().SelectedItemCode = 0;
                 }
+
             }
 
             FindObjectOfType<Buttons>().AddButton.SetActive(true);
@@ -258,7 +261,7 @@ public class Acces_Building : MonoBehaviour
         }
         else if(FindObjectOfType<Handing_Item>().SelectedItemCode == 13)       //honeycomb
         {
-            if(Input.GetKey(KeyCode.F))
+            if(Input.GetKeyDown(KeyCode.F))
             {
                 colliders[0].GetComponent<Item_035>().quantityToAdd = 1;
                 colliders[0].GetComponent<Item_035>().itemCodeToAdd = 13;
@@ -269,6 +272,7 @@ public class Acces_Building : MonoBehaviour
                     FindObjectOfType<Inventory>().Slot_Item_Code[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] = 0;
                     FindObjectOfType<Handing_Item>().SelectedItemCode = 0;
                 }
+
             }
 
             FindObjectOfType<Buttons>().AddButton.SetActive(true);
@@ -276,7 +280,7 @@ public class Acces_Building : MonoBehaviour
         }
         else if (FindObjectOfType<Handing_Item>().SelectedItemCode == 34)       //pumpkin
         {
-            if (Input.GetKey(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 colliders[0].GetComponent<Item_035>().quantityToAdd = 1;
                 colliders[0].GetComponent<Item_035>().itemCodeToAdd = 34;
@@ -287,6 +291,7 @@ public class Acces_Building : MonoBehaviour
                     FindObjectOfType<Inventory>().Slot_Item_Code[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] = 0;
                     FindObjectOfType<Handing_Item>().SelectedItemCode = 0;
                 }
+
             }
 
             FindObjectOfType<Buttons>().AddButton.SetActive(true);
@@ -294,7 +299,7 @@ public class Acces_Building : MonoBehaviour
         }
         else if (FindObjectOfType<Handing_Item>().SelectedItemCode == 11)       //apple
         {
-            if (Input.GetKey(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 colliders[0].GetComponent<Item_035>().quantityToAdd = 1;
                 colliders[0].GetComponent<Item_035>().itemCodeToAdd = 11;
@@ -305,6 +310,7 @@ public class Acces_Building : MonoBehaviour
                     FindObjectOfType<Inventory>().Slot_Item_Code[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] = 0;
                     FindObjectOfType<Handing_Item>().SelectedItemCode = 0;
                 }
+
             }
 
             FindObjectOfType<Buttons>().AddButton.SetActive(true);
@@ -312,7 +318,7 @@ public class Acces_Building : MonoBehaviour
         }
         else if (FindObjectOfType<Handing_Item>().SelectedItemCode == 27)       //cactus sap
         {
-            if (Input.GetKey(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 colliders[0].GetComponent<Item_035>().quantityToAdd = 1;
                 colliders[0].GetComponent<Item_035>().itemCodeToAdd = 27;
@@ -323,6 +329,7 @@ public class Acces_Building : MonoBehaviour
                     FindObjectOfType<Inventory>().Slot_Item_Code[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] = 0;
                     FindObjectOfType<Handing_Item>().SelectedItemCode = 0;
                 }
+
             }
 
             FindObjectOfType<Buttons>().AddButton.SetActive(true);
@@ -330,7 +337,7 @@ public class Acces_Building : MonoBehaviour
         }
         else if (FindObjectOfType<Handing_Item>().SelectedItemCode == 28)       //blackberries
         {
-            if (Input.GetKey(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 colliders[0].GetComponent<Item_035>().quantityToAdd = 1;
                 colliders[0].GetComponent<Item_035>().itemCodeToAdd = 28;
@@ -341,6 +348,7 @@ public class Acces_Building : MonoBehaviour
                     FindObjectOfType<Inventory>().Slot_Item_Code[FindObjectOfType<Handing_Item>().SelectedItemBarSlot + 15] = 0;
                     FindObjectOfType<Handing_Item>().SelectedItemCode = 0;
                 }
+
             }
 
             FindObjectOfType<Buttons>().AddButton.SetActive(true);

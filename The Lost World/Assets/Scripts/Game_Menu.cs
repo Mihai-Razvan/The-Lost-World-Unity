@@ -76,10 +76,13 @@ public class Game_Menu : MonoBehaviour
                 FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_004>().BuildingAccessed = false;
             else if (FindObjectOfType<Acces_Building>().AccesedBuilding.tag == "Chest")
                 FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_030>().BuildingAccessed = false;
+            else if (FindObjectOfType<Acces_Building>().AccesedBuilding.tag == "Cooking pot")
+                FindObjectOfType<Acces_Building>().AccesedBuilding.GetComponent<Item_035>().BuildingAccessed = false;
 
             FindObjectOfType<Acces_Building>().AccesedBuilding = null;
             FindObjectOfType<Inventory>().Item_004_Inventory_Panel.SetActive(false);
             FindObjectOfType<Inventory>().Item_030_Inventory_Panel.SetActive(false);
+            FindObjectOfType<Inventory>().Item_035_Crafting_Panel.SetActive(false);
             FindObjectOfType<Acces_Building>().Building_Inventory_Opened = false;
         }
         
