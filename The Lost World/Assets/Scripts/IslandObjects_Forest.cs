@@ -58,6 +58,8 @@ public class IslandObjects_Forest : MonoBehaviour
     [SerializeField]
     private bool islandActivated = true;
 
+    [SerializeField]
+    private GameObject[] halloweenObjects;
     
 
     //animals
@@ -133,6 +135,7 @@ public class IslandObjects_Forest : MonoBehaviour
             if (colliders.Length != 0)
             {
                 ObjectsSpawn();
+                HalloweenObjectsSpawn();
                 ObjectdHaveSpawned = true;
                 thingsOnIslandActive = true;
             }
@@ -591,6 +594,31 @@ public class IslandObjects_Forest : MonoBehaviour
                     notSpawnedConsecutively++;
             }
 
+        }
+    }
+
+    /////////////////////////////////// HALLOWEEN/////////////////
+    ///
+
+    void HalloweenObjectsSpawn()
+    {
+        int halloweenSpawnedNum = 0;
+        int numOfHalloweenObjects = Random.Range(50, 90);       
+        while (halloweenSpawnedNum < numOfHalloweenObjects)
+        {
+            RaycastHit hit;
+
+            if (Physics.Raycast(new Vector3(transform.position.x + Random.Range(minRange, maxRange), transform.position.y + SpawnHeight, transform.position.z + Random.Range(minRange, maxRange)), Vector3.down, out hit, 100, Spawn_Surface_Mask) && hit.normal.x > -40 && hit.normal.x < 40 && hit.normal.z > -40 && hit.normal.z < 40)
+            {
+                int objectRandomNumber = Random.Range(1, halloweenObjects.Length - 1);
+                Collider[] colliders = Physics.OverlapSphere(hit.point, 10, objectsMask);
+                if (colliders.Length == 0)
+                {
+                     lastSpawned = Instantiate(halloweenObjects[objectRandomNumber], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+                     lastSpawned.transform.SetParent(island.transform);
+                     halloweenSpawnedNum++;
+                }
+            }
         }
     }
 }

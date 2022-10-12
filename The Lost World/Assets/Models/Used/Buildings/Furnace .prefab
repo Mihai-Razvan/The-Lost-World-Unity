@@ -150,6 +150,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2458831997380120116, guid: a7d934f6021378945ad427c3a9073b0e,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458831997380120116, guid: a7d934f6021378945ad427c3a9073b0e,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -162,6 +167,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458831997380120116, guid: a7d934f6021378945ad427c3a9073b0e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6124793
       objectReference: {fileID: 0}
     - target: {fileID: 2458831997380120116, guid: a7d934f6021378945ad427c3a9073b0e,
         type: 3}
@@ -180,16 +190,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2458831997380120116, guid: a7d934f6021378945ad427c3a9073b0e,
         type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.6124793
-      objectReference: {fileID: 0}
-    - target: {fileID: 2458831997380120116, guid: a7d934f6021378945ad427c3a9073b0e,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2458831997380120116, guid: a7d934f6021378945ad427c3a9073b0e,
-        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -89.98
       objectReference: {fileID: 0}
@@ -205,16 +205,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2708140921397815765, guid: a7d934f6021378945ad427c3a9073b0e,
         type: 3}
-      propertyPath: Slot_Item_Code.Array.size
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 2708140921397815765, guid: a7d934f6021378945ad427c3a9073b0e,
-        type: 3}
-      propertyPath: Slot_Item_Quantity.Array.size
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 2708140921397815765, guid: a7d934f6021378945ad427c3a9073b0e,
-        type: 3}
       propertyPath: fireSound
       value: 
       objectReference: {fileID: 3322658007850588529}
@@ -222,6 +212,16 @@ PrefabInstance:
         type: 3}
       propertyPath: BuildingAccessed
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2708140921397815765, guid: a7d934f6021378945ad427c3a9073b0e,
+        type: 3}
+      propertyPath: Slot_Item_Code.Array.size
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 2708140921397815765, guid: a7d934f6021378945ad427c3a9073b0e,
+        type: 3}
+      propertyPath: Slot_Item_Quantity.Array.size
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 2978099811808744590, guid: a7d934f6021378945ad427c3a9073b0e,
         type: 3}

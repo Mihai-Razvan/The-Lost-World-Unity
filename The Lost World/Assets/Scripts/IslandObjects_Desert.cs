@@ -77,6 +77,9 @@ public class IslandObjects_Desert : MonoBehaviour
 
     public bool hasBuildingOnIt;
 
+    [SerializeField]
+    private GameObject[] halloweenObjects;
+
 
     void Update()
     {
@@ -114,6 +117,7 @@ public class IslandObjects_Desert : MonoBehaviour
             if (colliders.Length != 0)
             {
                 ObjectsSpawn();
+                HalloweenObjectsSpawn();
                 ObjectdHaveSpawned = true;
                 thingsOnIslandActive = true;
             }
@@ -547,6 +551,28 @@ public class IslandObjects_Desert : MonoBehaviour
 
                 }
 
+            }
+        }
+    }
+
+    void HalloweenObjectsSpawn()
+    {
+        int halloweenSpawnedNum = 0;
+        int numOfHalloweenObjects = Random.Range(50, 90);
+        while (halloweenSpawnedNum < numOfHalloweenObjects)
+        {
+            RaycastHit hit;
+
+            if (Physics.Raycast(new Vector3(transform.position.x + Random.Range(minRange, maxRange), transform.position.y + SpawnHeight, transform.position.z + Random.Range(minRange, maxRange)), Vector3.down, out hit, 100, Spawn_Surface_Mask) && hit.normal.x > -40 && hit.normal.x < 40 && hit.normal.z > -40 && hit.normal.z < 40)
+            {
+                int objectRandomNumber = Random.Range(1, halloweenObjects.Length - 1);
+                Collider[] colliders = Physics.OverlapSphere(hit.point, 10, objectsMask);
+                if (colliders.Length == 0)
+                {
+                    lastSpawned = Instantiate(halloweenObjects[objectRandomNumber], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+                    lastSpawned.transform.SetParent(island.transform);
+                    halloweenSpawnedNum++;
+                }
             }
         }
     }
