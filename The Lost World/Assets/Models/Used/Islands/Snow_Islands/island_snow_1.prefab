@@ -106,6 +106,7 @@ MonoBehaviour:
   - {fileID: 2877075445177184968, guid: 8f2fcc2f938f21741908c1659b3226f6, type: 3}
   - {fileID: 4336798209637963580, guid: 688ed1e030e1e6441815b8d973298afd, type: 3}
   - {fileID: 4563156725651044954, guid: 7263ccfcf7a2b4140b8b5305c8396fe2, type: 3}
+  - {fileID: 7476555014767876352, guid: f88cfc4ed24b36e40bcd72cbebd96606, type: 3}
   thingsOnIslandActive: 0
   islandActivated: 1
   Mini_Snow_Island: {fileID: 4785332356287954717, guid: 198db9f29c1272b409b62657a41cdcc4,
@@ -119,10 +120,11 @@ MonoBehaviour:
   snow_animal_1: {fileID: 6940758417008733545, guid: e533279b02342c941aa48b033d5fbd75,
     type: 3}
   Respawned: 0
-  hasBuildingOnIt: 0
+  hasBuildingOnIt: 1
   halloweenObjects:
   - {fileID: 0}
   - {fileID: 4809850827189286272, guid: 6958dd6a5393798409d863d3b5f05aa4, type: 3}
+  - {fileID: 5814213695505234801, guid: e7fbecbf448d5d140a94cb48d5f59673, type: 3}
 --- !u!65 &9007437532873510346
 BoxCollider:
   m_ObjectHideFlags: 0

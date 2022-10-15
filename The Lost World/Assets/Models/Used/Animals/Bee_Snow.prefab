@@ -252,6 +252,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Halloween_Pumpkin '
       objectReference: {fileID: 0}
+    - target: {fileID: 859411326933883880, guid: ebae904f4a649894eaa763c866f2c698,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 859411326933883880, guid: ebae904f4a649894eaa763c866f2c698,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489731742303910837, guid: ebae904f4a649894eaa763c866f2c698,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906502868947783039, guid: ebae904f4a649894eaa763c866f2c698,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3612268782210829845, guid: ebae904f4a649894eaa763c866f2c698,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472296742409661548, guid: ebae904f4a649894eaa763c866f2c698,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7546000513038438827, guid: ebae904f4a649894eaa763c866f2c698,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8532066277426622614, guid: ebae904f4a649894eaa763c866f2c698,
         type: 3}
       propertyPath: m_RootOrder

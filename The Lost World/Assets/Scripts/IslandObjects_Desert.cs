@@ -444,6 +444,7 @@ public class IslandObjects_Desert : MonoBehaviour
             //island.transform.GetChild(i).gameObject.SetActive(true);
 
             ObjectsSpawn();
+            HalloweenObjectsSpawn();
             CollectablesSpawn();
         }
     }
@@ -558,14 +559,14 @@ public class IslandObjects_Desert : MonoBehaviour
     void HalloweenObjectsSpawn()
     {
         int halloweenSpawnedNum = 0;
-        int numOfHalloweenObjects = Random.Range(50, 90);
+        int numOfHalloweenObjects = Random.Range(150, 190);
         while (halloweenSpawnedNum < numOfHalloweenObjects)
         {
             RaycastHit hit;
 
             if (Physics.Raycast(new Vector3(transform.position.x + Random.Range(minRange, maxRange), transform.position.y + SpawnHeight, transform.position.z + Random.Range(minRange, maxRange)), Vector3.down, out hit, 100, Spawn_Surface_Mask) && hit.normal.x > -40 && hit.normal.x < 40 && hit.normal.z > -40 && hit.normal.z < 40)
             {
-                int objectRandomNumber = Random.Range(1, halloweenObjects.Length - 1);
+                int objectRandomNumber = Random.Range(1, halloweenObjects.Length);
                 Collider[] colliders = Physics.OverlapSphere(hit.point, 10, objectsMask);
                 if (colliders.Length == 0)
                 {

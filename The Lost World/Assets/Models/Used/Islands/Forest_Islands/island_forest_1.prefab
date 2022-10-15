@@ -90,6 +90,8 @@ MonoBehaviour:
   halloweenObjects:
   - {fileID: 0}
   - {fileID: 4809850827189286272, guid: 6958dd6a5393798409d863d3b5f05aa4, type: 3}
+  - {fileID: 5789138672172940382, guid: e4296d3bf0c20aa49aec964f6b582ef4, type: 3}
+  - {fileID: 550179470506986804, guid: ba2e98cfdcb011649b71254f30841bb9, type: 3}
   islandMask:
     serializedVersion: 2
     m_Bits: 512
