@@ -64,6 +64,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3342012585090488587, guid: 9bb94a2e661cc7947a65058a401a9c2f,
         type: 3}
+      propertyPath: m_Size.x
+      value: 0.1201416
+      objectReference: {fileID: 0}
+    - target: {fileID: 3342012585090488587, guid: 9bb94a2e661cc7947a65058a401a9c2f,
+        type: 3}
       propertyPath: m_Size.y
       value: 0.2267212
       objectReference: {fileID: 0}
@@ -87,10 +92,25 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.0029867066
       objectReference: {fileID: 0}
-    - target: {fileID: 3342012585090488587, guid: 9bb94a2e661cc7947a65058a401a9c2f,
+    - target: {fileID: 3371944923686143035, guid: 9bb94a2e661cc7947a65058a401a9c2f,
         type: 3}
-      propertyPath: m_Size.x
-      value: 0.1201416
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371944923686143035, guid: 9bb94a2e661cc7947a65058a401a9c2f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371944923686143035, guid: 9bb94a2e661cc7947a65058a401a9c2f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371944923686143035, guid: 9bb94a2e661cc7947a65058a401a9c2f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 3371944923686143035, guid: 9bb94a2e661cc7947a65058a401a9c2f,
         type: 3}
@@ -109,6 +129,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3371944923686143035, guid: 9bb94a2e661cc7947a65058a401a9c2f,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371944923686143035, guid: 9bb94a2e661cc7947a65058a401a9c2f,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0.5
       objectReference: {fileID: 0}
@@ -121,16 +146,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3371944923686143035, guid: 9bb94a2e661cc7947a65058a401a9c2f,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3371944923686143035, guid: 9bb94a2e661cc7947a65058a401a9c2f,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3371944923686143035, guid: 9bb94a2e661cc7947a65058a401a9c2f,
         type: 3}
@@ -147,26 +162,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3371944923686143035, guid: 9bb94a2e661cc7947a65058a401a9c2f,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3371944923686143035, guid: 9bb94a2e661cc7947a65058a401a9c2f,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3371944923686143035, guid: 9bb94a2e661cc7947a65058a401a9c2f,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 5858462762133879574, guid: 9bb94a2e661cc7947a65058a401a9c2f,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
     - target: {fileID: 5858462762133879574, guid: 9bb94a2e661cc7947a65058a401a9c2f,
         type: 3}
       propertyPath: m_Mass
@@ -176,6 +171,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AngularDrag
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5858462762133879574, guid: 9bb94a2e661cc7947a65058a401a9c2f,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 126
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bb94a2e661cc7947a65058a401a9c2f, type: 3}

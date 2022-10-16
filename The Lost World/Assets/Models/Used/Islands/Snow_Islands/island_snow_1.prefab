@@ -125,6 +125,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 4809850827189286272, guid: 6958dd6a5393798409d863d3b5f05aa4, type: 3}
   - {fileID: 5814213695505234801, guid: e7fbecbf448d5d140a94cb48d5f59673, type: 3}
+  - {fileID: 6046228541803330184, guid: d78e3f2b97da20a4db5eec2e6530217e, type: 3}
+  - {fileID: 790399026663995269, guid: 12f68021ec94dd84783997feb8c5f105, type: 3}
+  - {fileID: 7460453839107076080, guid: 006fd36f23567f04ba30754cf7f29805, type: 3}
 --- !u!65 &9007437532873510346
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -620,6 +623,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1938822434563726179}
     m_Modifications:
+    - target: {fileID: 5659584468919879113, guid: a262d0ee66e0e92448a66254deb078e0,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6248238819361665301, guid: a262d0ee66e0e92448a66254deb078e0,
         type: 3}
       propertyPath: m_Name

@@ -92,6 +92,8 @@ MonoBehaviour:
   - {fileID: 4809850827189286272, guid: 6958dd6a5393798409d863d3b5f05aa4, type: 3}
   - {fileID: 5789138672172940382, guid: e4296d3bf0c20aa49aec964f6b582ef4, type: 3}
   - {fileID: 550179470506986804, guid: ba2e98cfdcb011649b71254f30841bb9, type: 3}
+  - {fileID: 6229100637584322789, guid: 1dc4edf52981b3b49972960b704f8c89, type: 3}
+  - {fileID: 1835245439488106379, guid: e9625061fb7908f479cf68696bdacc51, type: 3}
   islandMask:
     serializedVersion: 2
     m_Bits: 512
