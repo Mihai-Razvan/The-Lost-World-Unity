@@ -586,6 +586,7 @@ public class IslandObjects_Forest : MonoBehaviour
                 if (colliders.Length == 0)
                 {
                     lastSpawned = Instantiate(Collectables[5], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+                    lastSpawned.transform.rotation = Quaternion.Euler(lastSpawned.transform.rotation.eulerAngles.x, Random.Range(0, 360), lastSpawned.transform.rotation.eulerAngles.z);
                     lastSpawned.transform.SetParent(island.transform);
 
                     notSpawnedConsecutively = 0;
@@ -617,6 +618,7 @@ public class IslandObjects_Forest : MonoBehaviour
                 if (colliders.Length == 0)
                 {
                      lastSpawned = Instantiate(halloweenObjects[objectRandomNumber], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+                     lastSpawned.transform.rotation = Quaternion.Euler(lastSpawned.transform.rotation.eulerAngles.x, Random.Range(0, 360), lastSpawned.transform.rotation.eulerAngles.z);
                      lastSpawned.transform.SetParent(island.transform);
                      halloweenSpawnedNum++;
                 }
